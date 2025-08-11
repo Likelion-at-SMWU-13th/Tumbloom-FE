@@ -11,3 +11,22 @@ body,
   align-items: center;
   background: #fff;
 }
+
+@font-face {
+  font-family: 'Pretendard Variable';
+  /* font-weight: 45 920; */
+  font-style: normal;
+  font-display: swap;
+  src: url('./woff2/PretendardVariable.woff2') format('woff2-variations');
+}
+
+.phone-frame {
+  width: 24.5625rem;
+  height: 53.25rem;
+  max-width: 100%;
+  box-shadow: 0 0 0.625rem rgb(184, 181, 181);
+  overflow: hidden;
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: env(safe-area-inset-bottom);
+}
