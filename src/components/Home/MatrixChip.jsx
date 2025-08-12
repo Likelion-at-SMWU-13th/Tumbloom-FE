@@ -3,13 +3,15 @@ import * as S from './styled'
 
 const MatrixChip = ({ icon, label, value, unit }) => {
   return (
-    <div>
-      <img src={icon} alt={label} />
-      <h3>{label}</h3>
-      <h2>
+    <S.MatrixChip>
+      <S.IconBox>
+        <S.Icons src={icon} alt={label} />
+      </S.IconBox>
+      <S.Label>{label}</S.Label>
+      <S.Value>
         {value} {unit}
-      </h2>
-    </div>
+      </S.Value>
+    </S.MatrixChip>
   )
 }
 
