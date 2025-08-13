@@ -145,7 +145,7 @@ export const TapWrapper = styled.div`
   align-self: center;
 `
 
-export const TapBtn = styled.button`
+export const TapButton = styled.button`
   width: 11rem;
   height: 2.0625rem;
   flex-shrink: 0;
@@ -155,11 +155,12 @@ export const TapBtn = styled.button`
   font-size: 0.8125rem;
   font-style: normal;
   font-weight: 500;
-  line-height: 0.72256rem; /* 88.928% */
-  /* background-color: #fff;
-  border: 0.0625rem solid #cecece;
-  color: #000; */
-  background-color: ${({ active }) => (active ? '#fff' : '#efefef')};
-  border: ${({ active }) => (active ? '0.0625rem solid #cecece' : 'none')};
-  color: ${({ active }) => (active ? '#000' : '#767676')};
+  line-height: 0.72256rem;
+  align-items: center;
+`
+
+export const StarIcon = styled.img`
+  width: 0.75rem;
+  height: 0.74969rem;
+  flex-shrink: 0;
 `

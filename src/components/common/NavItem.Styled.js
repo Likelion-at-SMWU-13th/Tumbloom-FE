@@ -33,7 +33,7 @@ export const NavName = styled.span`
   height: 0.75rem;
   flex-shrink: 0;
   text-align: center;
-  color: #ababab
+  color: #ababab;
   font-family: 'Pretendard Variable';
   font-size: 0.875rem;
   font-style: normal;
