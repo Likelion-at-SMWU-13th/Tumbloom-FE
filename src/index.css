@@ -24,6 +24,7 @@ body,
   width: 24.5625rem;
   height: 53.25rem;
   max-width: 100%;
+  position: relative;
   box-shadow: 0 0 0.625rem rgb(184, 181, 181);
   overflow: hidden;
   padding-left: env(safe-area-inset-left);
