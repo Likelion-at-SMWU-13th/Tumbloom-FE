@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState } from 'react'
-import styled from 'styled-components'
 import NavItem from './NavItem'
 import homeIcon from '@/assets/icons/footer-home.svg'
 import homeClickedIcon from '@/assets/icons/footer-clicked-home.svg'
@@ -11,62 +10,15 @@ import couponClickedIcon from '@/assets/icons/footer-clicked-coupon.svg'
 import mypageIcon from '@/assets/icons/footer-mypage.svg'
 import mypageClickedIcon from '@/assets/icons/footer-clicked-mypage.svg'
 import scanIcon from '@/assets/icons/footer-scan-btn.svg'
-
-const FooterBox = styled.div`
-  display: flex;
-  left: 0;
-  bottom: 0;
-  position: absolute;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 5.6875rem;
-  flex-shrink: 0;
-  border: 1px solid #d9d9d9;
-`
-
-const FooterRow = styled.ul`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
-  list-style: none;
-  position: relative;
-  padding: 0 calc(6.30206rem / 2 + 0.5rem);
-`
-
-const LeftMenu = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-right: 7rem;
-`
-
-const RightMenu = styled.div`
-  display: flex;
-  gap: 0.5rem;
-`
-
-const ScanItem = styled.li`
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, -14.9%);
-`
-
-const ScanBtn = styled.img`
-  width: 6.30206rem;
-  height: 5.977rem;
-  flex-shrink: 0;
-  cursor: pointer;
-`
+import * as S from './Footer.Styled.js'
 
 function Footer() {
   const [currentPath, setCurrentPath] = useState('home')
 
   return (
-    <FooterBox>
-      <FooterRow>
-        <LeftMenu>
+    <S.FooterBox>
+      <S.FooterRow>
+        <S.LeftMenu>
           <NavItem
             label='홈'
             icon={homeIcon}
@@ -81,8 +33,8 @@ function Footer() {
             active={currentPath === 'map'}
             onClick={() => setCurrentPath('map')}
           />
-        </LeftMenu>
-        <RightMenu>
+        </S.LeftMenu>
+        <S.RightMenu>
           <NavItem
             label='쿠폰'
             icon={couponIcon}
@@ -97,13 +49,13 @@ function Footer() {
             active={currentPath === 'mypage'}
             onClick={() => setCurrentPath('mypage')}
           />
-        </RightMenu>
+        </S.RightMenu>
 
-        <ScanItem>
-          <ScanBtn src={scanIcon} />
-        </ScanItem>
-      </FooterRow>
-    </FooterBox>
+        <S.ScanItem>
+          <S.ScanBtn src={scanIcon} />
+        </S.ScanItem>
+      </S.FooterRow>
+    </S.FooterBox>
   )
 }
 
