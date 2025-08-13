@@ -10,11 +10,11 @@ function Footer(props) {
   return (
     <FooterBox>
       <FooterRow>
-        <NavItem label='홈' />
-        <NavItem label='지도' />
+        <NavItem to='/' label='홈' />
+        <NavItem to='/map' label='지도' />
         <li />
-        <NavItem label='쿠폰' />
-        <NavItem label='내 정보' />
+        <NavItem to='/coupon' label='쿠폰' />
+        <NavItem to='/mypage' label='내 정보' />
       </FooterRow>
     </FooterBox>
   )
