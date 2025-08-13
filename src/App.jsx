@@ -7,7 +7,6 @@ function App() {
   return (
     <div className='phone-frame'>
       <Outlet />
-      <Footer />
     </div>
   )
 }

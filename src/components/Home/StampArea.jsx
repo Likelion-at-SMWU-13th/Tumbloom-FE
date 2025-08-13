@@ -5,10 +5,10 @@ import StampComplete from './StampComplete'
 
 const StampArea = () => {
   return (
-    <div>
+    <S.StampArea>
       <S.MyStamp>내 텀블러 스탬프 (1/8)</S.MyStamp>
-      <img src={stamp_card} alt='stamp_card' />
-    </div>
+      <S.StampCard src={stamp_card} alt='stamp_card' />
+    </S.StampArea>
   )
 }
 

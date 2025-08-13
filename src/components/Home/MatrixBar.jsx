@@ -14,7 +14,7 @@ const MatrixBar = () => {
         <MatrixChip icon={cup_icon} label='아낀 물' value='0.55' unit='L' />
         <MatrixChip icon={tree_icon} label='지킨 나무' value='0.003' unit='그루' />
       </S.MatrixBar>
-      <img src={info_icon} alt='info' />
+      <S.Info src={info_icon} alt='info' />
     </S.MatrixContainer>
   )
 }

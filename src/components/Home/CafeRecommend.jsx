@@ -6,9 +6,10 @@ import PaginationDots from './PaginationDots'
 
 const CafeRecommend = () => {
   return (
-    <>
-      <h1>지금 계신 청파동의 텀블러 혜택 카페</h1>
-    </>
+    <S.CafeRecommendWrapper>
+      <S.CafeRecommendText>지금 계신 청파동의 텀블러 혜택 카페</S.CafeRecommendText>
+      <CafeCarousel />
+    </S.CafeRecommendWrapper>
   )
 }
 

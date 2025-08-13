@@ -15,6 +15,7 @@ export const GreetingWrapper = styled.div`
 `
 
 export const UserName = styled.h1`
+  font-family: 'Pretendard Variable';
   color: #fff;
   font-size: 1.5rem;
   font-style: normal;
@@ -49,6 +50,7 @@ export const IconBox = styled.div`
   align-items: center;
 `
 export const Label = styled.h3`
+  font-family: 'Pretendard Variable';
   color: #dafff8;
   font-size: 0.8125rem;
   font-style: normal;
@@ -60,6 +62,7 @@ export const Label = styled.h3`
 `
 
 export const Value = styled.h2`
+  font-family: 'Pretendard Variable';
   color: #fff;
   font-size: 1.08175rem;
   font-style: normal;
@@ -76,7 +79,9 @@ export const MatrixChip = styled.div`
   align-items: center;
 `
 
-export const Info = styled.img``
+export const Info = styled.img`
+  cursor: pointer;
+`
 
 export const MatrixBar = styled.div`
   display: flex;
@@ -90,10 +95,71 @@ export const MatrixContainer = styled.div`
   gap: 0.48rem;
 `
 export const MyStamp = styled.h2`
+  font-family: 'Pretendard Variable';
   margin-top: 0;
   color: #000;
   font-size: 1.25rem;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  margin: 0 0 0.62rem 1.25rem;
+`
+
+export const StampArea = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5rem;
+`
+
+export const StampCard = styled.img`
+  width: 20.91006rem;
+  height: 7.875rem;
+  flex-shrink: 0;
+  align-self: center;
+`
+
+export const CafeRecommendWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.88rem;
+  gap: 0.63rem;
+`
+
+export const CafeRecommendText = styled.h1`
+  color: #000;
+  font-family: 'Pretendard Variable';
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  padding-left: 1.25rem;
+`
+
+export const TapWrapper = styled.div`
+  width: 22.0625rem;
+  height: 2.0625rem;
+  flex-shrink: 0;
+  border-radius: 1.9375rem;
+  background: #efefef;
+  align-self: center;
+`
+
+export const TapBtn = styled.button`
+  width: 11rem;
+  height: 2.0625rem;
+  flex-shrink: 0;
+  border-radius: 1.9375rem;
+  cursor: pointer;
+  font-family: 'Pretendard Variable';
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 0.72256rem; /* 88.928% */
+  /* background-color: #fff;
+  border: 0.0625rem solid #cecece;
+  color: #000; */
+  background-color: ${({ active }) => (active ? '#fff' : '#efefef')};
+  border: ${({ active }) => (active ? '0.0625rem solid #cecece' : 'none')};
+  color: ${({ active }) => (active ? '#000' : '#767676')};
 `
