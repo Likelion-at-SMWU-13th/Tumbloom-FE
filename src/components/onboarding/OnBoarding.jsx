@@ -9,6 +9,106 @@ import dotGreen from '@/assets/icons/green-circle.svg'
 import dotGrey from '@/assets/icons/grey-circle.svg'
 import { useState } from 'react'
 
+const OnBoardingPages = [
+  {
+    img: onboarding1,
+    padding: '5.6rem 0 3.53rem 0',
+    w: '17.125rem',
+    h: '14.21456rem',
+    title: (
+      <>
+        텀블러인에 오신 <br /> 당신을 환영합니다!
+      </>
+    ),
+    desc: (
+      <>
+        텀블러인은 모든 텀블러 유저를 위한,
+        <br /> 텀블러 문화 활성화를 위한 서비스예요
+      </>
+    ),
+  },
+  {
+    img: onboarding2,
+    padding: '5.6rem 0 3rem 0',
+    w: '25.125rem',
+    h: '20.12294rem',
+    title: (
+      <>
+        우리동네 카페의 텀블러
+        <br />
+        혜택 정보를 한 눈에 확인해요
+      </>
+    ),
+    desc: (
+      <>
+        어느 카페에서 할인을 제공하는지
+        <br />
+        정보가 필요한 분들을 위해 준비했어요
+      </>
+    ),
+  },
+  {
+    img: onboarding3,
+    padding: '3rem 0 1.91rem 0',
+    w: '30.53713rem',
+    h: '20.15625rem',
+    title: (
+      <>
+        불편했던 할인 절차를
+        <br />
+        앱에서 간단하게 해결해요
+      </>
+    ),
+    desc: (
+      <>
+        키오스크에서는 불가한 텀블러 할인,
+        <br />
+        직접 주문해야 해서 번거로웠어요
+      </>
+    ),
+  },
+  {
+    img: onboarding4,
+    padding: '3rem 0 2.61rem 0',
+    w: '29.76644rem',
+    h: '20.32413rem',
+    title: (
+      <>
+        이제는 텀블러인에서
+        <br />
+        쿠폰 발급으로 혜택받아요
+      </>
+    ),
+    desc: (
+      <>
+        우리 동네 텀블러 혜택 제공 카페들의
+        <br />
+        할인 쿠폰을 자유롭게 발급할 수 있어요
+      </>
+    ),
+  },
+  {
+    img: onboarding5,
+    padding: '5.6rem 0 1.25rem 0',
+    w: '24.5625rem',
+    h: '21.5625rem',
+    title: (
+      <>
+        텀블러인과 우리동네
+        <br />
+        텀블러 문화 만들어요
+      </>
+    ),
+    desc: (
+      <>
+        일회용품 절감으로 더 나아질 우리동네,
+        <br />
+        텀블러인이 유저님과 함께 만들 미래
+      </>
+    ),
+  },
+]
+
 const Header = styled.div`
   display: flex;
   width: 24.5625rem;
@@ -18,13 +118,23 @@ const Header = styled.div`
 
 const ImgContainer = styled.div`
   display: flex;
-  border: 1px solid pink;
-  justify-content: flex-end;
-  padding: 10rem 0 3.53rem 0;
+  border: 1px solid blue;
+  padding: 0 0 3.53rem 0;
+`
+
+const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border: 1px solid yellow;
+  z-index: 1;
 `
 const OnBoardingImg = styled.img`
-  width: 17.125rem;
-  height: 14.21456rem;
   flex-shrink: 0;
   border: 1px solid pink;
 `
@@ -67,8 +177,10 @@ const DotContainer = styled.div`
 const BtnContainer = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   border: 1px solid pink;
   padding: 0 0 5.44rem 0;
+  position: relative;
 `
 
 const NextBtn = styled.button`
@@ -96,41 +208,38 @@ function OnBoarding() {
   const [page, setPage] = useState(1)
   const totalPages = 5
 
-  let onboardingImges = [onboarding1, onboarding2, onboarding3, onboarding4, onboarding5]
-  let currentImage = onboardingImges[page - 1]
+  let onb = OnBoardingPages[page - 1]
 
   return (
     <>
       <Header />
-      <ImgContainer>
-        <OnBoardingImg src={currentImage} alt='Onboarding Logo' />
+      <ImgContainer
+        style={{ justifyContent: page === 1 ? 'flex-end' : 'center', padding: onb.padding }}
+      >
+        <OnBoardingImg src={onb.img} style={{ width: onb.w, height: onb.h }} />
       </ImgContainer>
-      <TextContainer>
-        <Title>
-          텀블러인에 오신 <br />
-          당신을 환영합니다!
-        </Title>
-        <Desc>
-          텀블러인은 모든 텀블러 유저를 위한,
-          <br /> 텀블러 문화 활성화를 위한 서비스예요
-        </Desc>
-      </TextContainer>
-      <DotContainer>
-        {[0, 1, 2, 3, 4].map((i) => (
-          <img key={i} src={i === page - 1 ? dotGreen : dotGrey} />
-        ))}
-      </DotContainer>
-      <BtnContainer>
-        <NextBtn
-          onClick={() => {
-            if (page < totalPages) {
-              setPage(page + 1)
-            }
-          }}
-        >
-          {page === totalPages ? '텀블러인 시작하기' : '다음'}
-        </NextBtn>
-      </BtnContainer>
+      <ContentContainer>
+        <TextContainer>
+          <Title>{onb.title}</Title>
+          <Desc>{onb.desc}</Desc>
+        </TextContainer>
+        <DotContainer>
+          {[0, 1, 2, 3, 4].map((i) => (
+            <img key={i} src={i === page - 1 ? dotGreen : dotGrey} />
+          ))}
+        </DotContainer>
+        <BtnContainer>
+          <NextBtn
+            onClick={() => {
+              if (page < totalPages) {
+                setPage(page + 1)
+              }
+            }}
+          >
+            {page === totalPages ? '텀블러인 시작하기' : '다음'}
+          </NextBtn>
+        </BtnContainer>
+      </ContentContainer>
     </>
   )
 }
