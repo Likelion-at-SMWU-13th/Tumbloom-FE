@@ -7,8 +7,8 @@ function App() {
   return (
     <div className='phone-frame'>
       <Header title='스탬프 적립하기' />
-      <Footer />
       <Outlet />
+      <Footer />
     </div>
   )
 }

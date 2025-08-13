@@ -9,14 +9,14 @@ const Item = styled.li`
   text-align: center;
   align-items: center;
   justify-content: center;
-  border: 1px solid pink;
+  margin-bottom: 2rem;
 `
 
 const ItemBtn = styled.button`
   display: flex;
   flex-direction: column;
   text-decoration: none;
-  border: 1px solid pink;
+  border: none;
   align-items: center;
   justify-content: center;
   cursor: pointer;
