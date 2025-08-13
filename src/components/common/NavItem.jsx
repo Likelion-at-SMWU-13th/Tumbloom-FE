@@ -1,7 +1,7 @@
 import React from 'react'
 
-function NavItem(props) {
-  return <li>홈</li>
+function NavItem({ label }) {
+  return <li>{label}</li>
 }
 
 export default NavItem
