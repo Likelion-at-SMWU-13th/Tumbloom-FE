@@ -1,8 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import onboardingImg from '@/assets/images/onboarding1.svg'
+import onboarding1 from '@/assets/images/onboarding1.svg'
+import onboarding2 from '@/assets/images/onboarding2.svg'
+import onboarding3 from '@/assets/images/onboarding3.svg'
+import onboarding4 from '@/assets/images/onboarding4.svg'
+import onboarding5 from '@/assets/images/onboarding5.svg'
 import dotGreen from '@/assets/icons/green-circle.svg'
 import dotGrey from '@/assets/icons/grey-circle.svg'
+import { useState } from 'react'
 
 const Header = styled.div`
   display: flex;
@@ -88,11 +93,17 @@ const NextBtn = styled.button`
 `
 
 function OnBoarding() {
+  const [page, setPage] = useState(1)
+  const totalPages = 5
+
+  let onboardingImges = [onboarding1, onboarding2, onboarding3, onboarding4, onboarding5]
+  let currentImage = onboardingImges[page - 1]
+
   return (
     <>
       <Header />
       <ImgContainer>
-        <OnBoardingImg src={onboardingImg} alt='Onboarding Logo' />
+        <OnBoardingImg src={currentImage} alt='Onboarding Logo' />
       </ImgContainer>
       <TextContainer>
         <Title>
@@ -106,11 +117,19 @@ function OnBoarding() {
       </TextContainer>
       <DotContainer>
         {[0, 1, 2, 3, 4].map((i) => (
-          <img key={i} src={i === 0 ? dotGreen : dotGrey} />
+          <img key={i} src={i === page - 1 ? dotGreen : dotGrey} />
         ))}
       </DotContainer>
       <BtnContainer>
-        <NextBtn>다음</NextBtn>
+        <NextBtn
+          onClick={() => {
+            if (page < totalPages) {
+              setPage(page + 1)
+            }
+          }}
+        >
+          {page === totalPages ? '텀블러인 시작하기' : '다음'}
+        </NextBtn>
       </BtnContainer>
     </>
   )
