@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import mainheader_img from '../../assets/images/mainheader_bg.svg'
 import mainheader_bg from '../../assets/images/mainheader_bg.png'
+import cafeImg from '@/assets/images/cafe-img.png'
 
 export const Wrapper = styled.div`
   background-image: url(${mainheader_bg});
@@ -163,4 +164,62 @@ export const StarIcon = styled.img`
   width: 0.75rem;
   height: 0.74969rem;
   flex-shrink: 0;
+`
+
+export const CafeCarousel = styled.div`
+  margin-top: 0.16rem;
+`
+
+export const CafeCardWrapper = styled.div`
+  width: 9.875rem;
+  height: 9.25rem;
+  border-radius: 0.36725rem;
+  cursor: pointer;
+`
+
+export const CafeCardImg = styled.div`
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 9.875rem;
+  height: 5.73906rem;
+  flex-shrink: 0;
+  border-radius: 0.36725rem 0.36725rem 0 0;
+`
+
+export const BookMark = styled.img`
+  margin: 0.76rem 0 0 0.78rem;
+  cursor: pointer;
+`
+
+export const CafeCardInfo = styled.div`
+  border: 0.0737rem solid #f0f0f0;
+  border-radius: 0 0 0.36725rem 0.36725rem;
+`
+
+export const CafeName = styled.h2`
+  width: 3.64781rem;
+  height: 1.03419rem;
+  flex-shrink: 0;
+  color: #000;
+  font-family: 'Pretendard Variable';
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 0.57rem 0 0.35rem 0.89rem;
+  margin: 0;
+`
+
+export const CafeAddress = styled.h3`
+  width: 6.799rem;
+  height: 0.80438rem;
+  flex-shrink: 0;
+  color: #767676;
+  font-family: 'Pretendard Variable';
+  font-size: 0.6875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 0.84913rem; /* 123.508% */
+  padding: 0 0 0.75rem 0.89rem;
+  margin: 0;
 `
