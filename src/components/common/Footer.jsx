@@ -14,11 +14,12 @@ import scanIcon from '@/assets/icons/footer-scan-btn.svg'
 
 const FooterBox = styled.div`
   display: flex;
-  bottom: 6.3rem;
-  position: fixed;
+  left: 0;
+  bottom: 0;
+  position: absolute;
   justify-content: center;
   align-items: center;
-  width: 24.5625rem;
+  width: 100%;
   height: 5.6875rem;
   flex-shrink: 0;
   border: 1px solid #d9d9d9;
@@ -36,8 +37,6 @@ const FooterRow = styled.ul`
 
 const LeftMenu = styled.div`
   display: flex;
-  flex: 1;
-  justify-content: flex-start;
   align-items: center;
   gap: 0.5rem;
   margin-right: 7rem;
@@ -46,15 +45,12 @@ const LeftMenu = styled.div`
 const RightMenu = styled.div`
   display: flex;
   gap: 0.5rem;
-  flex: 1;
-  justify-content: flex-end;
 `
 
 const ScanItem = styled.li`
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
-  margin-bottom: 1.87rem;
+  transform: translate(-50%, -14.9%);
 `
 
 const ScanBtn = styled.img`

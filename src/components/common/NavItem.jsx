@@ -1,56 +1,14 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
-import styled from 'styled-components'
-
-const Item = styled.li`
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 2rem;
-`
-
-const ItemBtn = styled.button`
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  border: none;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  background: none;
-`
-
-const NavIcon = styled.img`
-  width: 1.5rem;
-  height: 1.5rem;
-  flex-shrink: 0;
-  aspect-ratio: 1/1;
-`
-
-const NavName = styled.span`
-  width: 2.75rem;
-  height: 0.75rem;
-  flex-shrink: 0;
-  text-align: center;
-  color: #ababab
-  font-family: 'Pretendard Variable';
-  font-size: 0.875rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-`
+import * as S from './NavItem.Styled.js'
 
 function NavItem({ label, icon, clickedIcon, active = false, onClick }) {
   return (
-    <Item>
-      <ItemBtn onClick={onClick} aria-pressed={active}>
-        <NavIcon src={active ? clickedIcon : icon} />
-        <NavName style={{ color: active ? '#000' : '#ababab' }}>{label}</NavName>
-      </ItemBtn>
-    </Item>
+    <S.Item>
+      <S.ItemBtn onClick={onClick} aria-pressed={active}>
+        <S.NavIcon src={active ? clickedIcon : icon} />
+        <S.NavName style={{ color: active ? '#000' : '#ababab' }}>{label}</S.NavName>
+      </S.ItemBtn>
+    </S.Item>
   )
 }
 
