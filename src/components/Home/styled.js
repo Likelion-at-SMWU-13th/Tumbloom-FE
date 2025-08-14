@@ -257,3 +257,65 @@ export const DotsContainer = styled.div`
   justify-content: center;
   padding: 0.75rem 0 0.75rem 0;
 `
+
+//TumblerInfo.jsx
+
+export const InfoContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 22.0625rem;
+  height: 9.0625rem;
+  flex-shrink: 0;
+  border-radius: 0.9375rem;
+  background: #fff;
+  padding-bottom: 0.13rem;
+`
+
+export const InfoTitleBox = styled.div`
+  display: flex;
+  align-items: center;
+  padding-left: 0.9rem;
+  gap: 0.5rem;
+  padding-bottom: 0.88rem;
+  padding-top: 1.31rem;
+`
+
+export const InfoTitleIcon = styled.img`
+  width: 0.9rem;
+  height: auto;
+`
+
+export const InfoTitle = styled.h2`
+  color: #ababab;
+  font-family: 'Pretendard Variable';
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+`
+
+export const InfoDescBox = styled.div`
+  padding-left: 0.9rem;
+`
+
+export const InfoDesc = styled.h2`
+  color: #000;
+  font-family: 'Pretendard Variable';
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+  padding-bottom: 0.69rem;
+`
+
+export const HighlightText = styled.span`
+  color: #25af94;
+  font-family: 'Pretendard Variable';
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+`
