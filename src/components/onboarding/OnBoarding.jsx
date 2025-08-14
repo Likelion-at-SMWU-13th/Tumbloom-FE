@@ -90,8 +90,8 @@ const OnBoardingPages = [
   {
     img: onboarding5,
     padding: '5.6rem 0 1.25rem 0',
-    w: '24.5625rem',
-    h: '21.5625rem',
+    w: '31.97806rem',
+    h: '22.18544rem',
     title: (
       <>
         텀블러인과 우리동네
@@ -113,12 +113,11 @@ const Header = styled.div`
   display: flex;
   width: 24.5625rem;
   height: 3.5rem;
-  background-color: #25af94;
+  background-color: #ffffffff;
 `
 
 const ImgContainer = styled.div`
   display: flex;
-  border: 1px solid blue;
   padding: 0 0 3.53rem 0;
 `
 
@@ -131,19 +130,17 @@ const ContentContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  border: 1px solid yellow;
   z-index: 1;
 `
 const OnBoardingImg = styled.img`
   flex-shrink: 0;
-  border: 1px solid pink;
+  filter: drop-shadow(7px 8.7px 7px rgba(0, 0, 0, 0.31));
 `
 const TextContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border: 1px solid pink;
 `
 const Title = styled.span`
   color: #000;
@@ -153,7 +150,6 @@ const Title = styled.span`
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  border: 1px solid pink;
 `
 const Desc = styled.span`
   color: #767676;
@@ -163,13 +159,11 @@ const Desc = styled.span`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  border: 1px solid pink;
   padding: 0.81rem 0 0.81rem 0;
 `
 const DotContainer = styled.div`
   display: flex;
   justify-content: center;
-  border: 1px solid pink;
   gap: 0.5rem;
   padding: 2.38rem 0 4.56rem 0;
 `
@@ -178,7 +172,6 @@ const BtnContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid pink;
   padding: 0 0 5.44rem 0;
   position: relative;
 `
@@ -216,7 +209,14 @@ function OnBoarding() {
       <ImgContainer
         style={{ justifyContent: page === 1 ? 'flex-end' : 'center', padding: onb.padding }}
       >
-        <OnBoardingImg src={onb.img} style={{ width: onb.w, height: onb.h }} />
+        <OnBoardingImg
+          src={onb.img}
+          style={{
+            width: onb.w,
+            height: onb.h,
+            filter: page === 4 ? 'drop-shadow(7px 8px 7px rgba(0, 0, 0, 0.31))' : 'none',
+          }}
+        />
       </ImgContainer>
       <ContentContainer>
         <TextContainer>

@@ -8,7 +8,6 @@ import OnBoarding from './components/onboarding/OnBoarding'
 function App() {
   return (
     <div className='phone-frame'>
-      <OnBoarding />
       <Outlet />
     </div>
   )
