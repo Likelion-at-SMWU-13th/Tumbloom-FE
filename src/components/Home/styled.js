@@ -170,6 +170,7 @@ export const CafeCarousel = styled.div`
   margin-top: 0.16rem;
   display: flex;
   justify-content: center;
+  flex-direction: column;
 `
 
 export const CafeCardWrapper = styled.div`
@@ -241,4 +242,18 @@ export const CardContainer = styled.div`
   cursor: pointer;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
   transition: all 0.2s ease;
+`
+
+export const Dot = styled.img`
+  width: 0.375rem;
+  height: 0.375rem;
+  flex-shrink: 0;
+  gap: 0.3125rem;
+`
+
+export const DotsContainer = styled.div`
+  display: flex;
+  gap: 0.3125rem;
+  justify-content: center;
+  padding: 0.75rem 0 0.75rem 0;
 `

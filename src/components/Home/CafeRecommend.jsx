@@ -2,7 +2,6 @@ import React from 'react'
 import * as S from './styled'
 import FilterTap from './FilterTap'
 import CafeCarousel from './CafeCarousel'
-import PaginationDots from './PaginationDots'
 
 const CafeRecommend = () => {
   return (
