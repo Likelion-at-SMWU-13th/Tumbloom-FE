@@ -61,7 +61,7 @@ const CafeCarousel = () => {
                 onClick={() => setActive(i)}
                 style={{
                   transform: isActive ? 'scale(1)' : 'scale(0.88)',
-                  opacity: isActive ? '1' : '0.55',
+                  opacity: isActive ? '1' : '0.34',
                   zIndex: isActive ? '2' : '1',
                 }}
               >

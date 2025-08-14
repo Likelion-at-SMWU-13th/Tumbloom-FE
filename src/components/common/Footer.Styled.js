@@ -5,12 +5,14 @@ export const FooterBox = styled.div`
   left: 0;
   bottom: 0;
   position: absolute;
+  z-index: 2;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 5.6875rem;
   flex-shrink: 0;
   border: 1px solid #d9d9d9;
+  background-color: #fff;
 `
 
 export const FooterRow = styled.ul`
