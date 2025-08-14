@@ -5,6 +5,7 @@ export const FooterBox = styled.div`
   left: 0;
   bottom: 0;
   position: absolute;
+  z-index: 2;
   justify-content: center;
   align-items: center;
   width: 100%;
