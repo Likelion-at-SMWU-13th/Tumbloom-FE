@@ -168,6 +168,8 @@ export const StarIcon = styled.img`
 
 export const CafeCarousel = styled.div`
   margin-top: 0.16rem;
+  display: flex;
+  justify-content: center;
 `
 
 export const CafeCardWrapper = styled.div`
@@ -222,4 +224,21 @@ export const CafeAddress = styled.h3`
   line-height: 0.84913rem; /* 123.508% */
   padding: 0 0 0.75rem 0.89rem;
   margin: 0;
+`
+export const CardRow = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  align-items: center;
+  justify-items: center;
+`
+
+export const CardContainer = styled.div`
+  overflow: hidden;
+  background: #fff;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+  transition: all 0.2s ease;
 `
