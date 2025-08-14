@@ -242,6 +242,7 @@ export const CardContainer = styled.div`
   cursor: pointer;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
   transition: all 0.2s ease;
+  border-radius: 0.36725rem;
 `
 
 export const Dot = styled.img`
