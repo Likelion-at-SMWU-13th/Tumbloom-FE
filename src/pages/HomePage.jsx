@@ -8,11 +8,12 @@ import Footer from '@/components/common/Footer'
 const HomePage = () => {
   const name = '텀블러91'
   const stamp_c = 8
+  const Area = '청파동'
   return (
     <>
       <HeaderArea userName={name} stamp={stamp_c} />
       <StampArea stamp={stamp_c} />
-      <CafeRecommend />
+      <CafeRecommend area={Area} />
       <Footer />
     </>
   )
