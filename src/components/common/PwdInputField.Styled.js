@@ -6,6 +6,12 @@ export const InputContainer = styled.div`
   justify-content: center;
   align-items: center;
 `
+
+export const InputField = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
 export const Label = styled.label`
   align-self: stretch;
   color: #000;
@@ -34,4 +40,11 @@ export const InputBox = styled.input`
     font-weight: 400;
     line-height: normal;
   }
+`
+
+export const EyeIcon = styled.img`
+  position: absolute;
+  right: 2.5rem;
+  transform: transLateY(60%);
+  cursor: pointer;
 `
