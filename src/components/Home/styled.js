@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import mainheader_img from '../../assets/images/mainheader_bg.svg'
 import mainheader_bg from '../../assets/images/mainheader_bg.png'
 import cafeImg from '@/assets/images/cafe-img.png'
+import AI_bg from '@/assets/images/preference-bg.svg'
 
 export const Wrapper = styled.div`
   background-image: url(${mainheader_bg});
@@ -403,4 +404,83 @@ export const CouponBtn = styled.button`
   line-height: normal;
   margin: 0 2.25rem 0 2.25rem;
   cursor: pointer;
+`
+
+//PreferenceCard.jsx
+
+export const PreferenceCard = styled.div`
+  background-image: url(${AI_bg});
+  background-repeat: no-repeat;
+  width: 22.0625rem;
+  height: 9.875rem;
+  flex-shrink: 0;
+  display: flex;
+`
+
+export const CardContent = styled.div`
+  margin: 1.4375rem 0 0 1.375rem;
+`
+
+export const CardBadge = styled.div`
+  display: flex;
+  width: 3.6875rem;
+  height: 1.125rem;
+  padding: 0.1rem 0.2rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.68963rem;
+  flex-shrink: 0;
+  border-radius: 0.125rem;
+  background: #25af94;
+  color: #fff;
+  text-align: center;
+  font-family: 'Pretendard Variable';
+  font-size: 0.625rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 0.5rem;
+`
+
+export const CardTitle = styled.h2`
+  color: #000;
+  font-family: 'Pretendard Variable';
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  margin-bottom: 0.13rem;
+`
+
+export const CardSubtitle = styled.h3`
+  color: #000;
+  font-family: 'Pretendard Variable';
+  font-size: 0.625rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+  margin-bottom: 1.25rem;
+`
+
+export const Preferencebtn = styled.button`
+  cursor: pointer;
+  display: flex;
+  width: 8rem;
+  height: 1.93106rem;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 2.06894rem;
+  background: #fff;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+  color: #000;
+  text-align: center;
+  font-family: 'Pretendard Variable';
+  font-size: 0.82756rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: none;
 `
