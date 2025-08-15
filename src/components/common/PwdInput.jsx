@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import icon from '@/assets/icons/pwd-visible.svg'
+import visibleIcon from '@/assets/icons/pwd-visible.svg'
+import invisibleIcon from '@/assets/icons/pwd-invisible.svg'
+import { useState } from 'react'
 
 const InputContainer = styled.div`
   display: flex;
@@ -44,13 +46,28 @@ const InputBox = styled.input`
   }
 `
 
+const EyeIcon = styled.img`
+  position: absolute;
+`
+
 function PwdInput({ label, placeholder, value, onChange, type = 'text' }) {
+  const [isVisible, setIsVisible] = useState(false)
+
+  const handleIconClick = () => {
+    setIsVisible(!isVisible)
+  }
+
   return (
     <InputContainer>
       <Label>{label}</Label>
       <InputField>
-        <InputBox type={type} placeholder={placeholder} value={value} onChange={onChange} />
-        <img src={icon} />
+        <InputBox
+          type={isVisible ? 'text' : 'password'}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+        />
+        <EyeIcon src={isVisible ? visibleIcon : invisibleIcon} onClick={handleIconClick} />
       </InputField>
     </InputContainer>
   )
