@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import visibleIcon from '@/assets/icons/pwd-visible.svg'
 import invisibleIcon from '@/assets/icons/pwd-invisible.svg'
-import PwdFieldInput from '../common/PwdInputField'
+import PwdInputField from '@/components/common/PwdInputField'
 
 const LoginContainer = styled.div`
   display: flex;
