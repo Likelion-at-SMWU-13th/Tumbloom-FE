@@ -56,6 +56,14 @@ function Login() {
 
   const navigate = useNavigate()
 
+  const handleEmail = (e) => {
+    setEmail(e.target.value)
+  }
+
+  const handlePassword = (e) => {
+    setPassword(e.target.value)
+  }
+
   useEffect(() => {
     setBtnColor(email.length > 0 && password.length > 0)
   }, [email, password])
@@ -74,8 +82,14 @@ function Login() {
   return (
     <LoginContainer>
       <LoginHeader>로그인</LoginHeader>
-      <Input label='이메일' placeholder='이메일 입력' value={email} onChange={() => {}} />
-      <Input label='비밀번호' placeholder='비밀번호 입력' onChange={() => {}} value={password} />
+      <Input label='이메일' placeholder='이메일 입력' value={email} onChange={handleEmail} />
+      <Input
+        label='비밀번호'
+        placeholder='비밀번호 입력'
+        onChange={handlePassword}
+        value={password}
+        type='password'
+      />
       <RegisterBtn btnName='로그인' onClick={() => {}} disabled={!btnColor} />
       <Desc>
         텀블러인 계정이 없나요?{' '}
