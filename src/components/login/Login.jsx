@@ -30,6 +30,7 @@ const Desc = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  padding: 1.38rem 0 0 0;
 `
 
 const GoToRegisterBtn = styled.span`
@@ -45,6 +46,7 @@ const GoToRegisterBtn = styled.span`
   text-decoration-thickness: auto;
   text-underline-offset: auto;
   text-underline-position: from-font;
+  cursor: pointer;
 `
 
 function Login() {
@@ -71,12 +73,12 @@ function Login() {
   const handleLogin = () => {
     if (btnColor) {
       // 로그인 로직 추가할 예정
-      navigate('/signup')
+      navigate('/')
     }
   }
 
   const goToRegister = () => {
-    navigate('/')
+    navigate('/signup')
   }
 
   return (
@@ -90,7 +92,7 @@ function Login() {
         value={password}
         type='password'
       />
-      <RegisterBtn btnName='로그인' onClick={() => {}} disabled={!btnColor} />
+      <RegisterBtn btnName='로그인' onClick={handleLogin} disabled={!btnColor} />
       <Desc>
         텀블러인 계정이 없나요?{' '}
         <GoToRegisterBtn onClick={goToRegister}>회원가입하기</GoToRegisterBtn>
