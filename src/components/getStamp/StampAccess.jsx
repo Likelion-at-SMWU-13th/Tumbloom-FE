@@ -2,6 +2,8 @@ import React from 'react'
 import CafeImg from '@/assets/images/get-stamp-cafe.png'
 import Header from '@/components/common/Header'
 import styled from 'styled-components'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Container = styled.div`
   display: flex;
@@ -108,7 +110,22 @@ const CompleteBtn = styled.button`
   cursor: pointer;
 `
 
-function StampAccess({ cafeName = '그린카페' }) {
+function StampAccess({ cafeName = '그린카페', onClick, onChange }) {
+  const [accessCode, setAccessCode] = useState()
+  const navigate = useNavigate()
+  const code = 12345
+
+  const checkAccessCode = () => {
+    if (accessCode === code) {
+      navigate('/')
+    } else {
+    }
+  }
+
+  const handleAccessCode = (e) => {
+    setAccessCode(e.target.value)
+  }
+
   return (
     <>
       <Header title='스탬프 적립하기' />
@@ -124,8 +141,8 @@ function StampAccess({ cafeName = '그린카페' }) {
         <AccessCodeBox>
           <AccessCodeHeader>직원확인코드</AccessCodeHeader>
           <InputField>
-            <CodeInput placeholder='확인코드 입력' />
-            <CompleteBtn>완료</CompleteBtn>
+            <CodeInput placeholder='확인코드 입력' onChange={handleAccessCode} />
+            <CompleteBtn onClick={checkAccessCode}>완료</CompleteBtn>
           </InputField>
         </AccessCodeBox>
       </Container>
