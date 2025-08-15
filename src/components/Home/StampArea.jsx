@@ -41,6 +41,11 @@ const StampArea = ({ stamp }) => {
             />
           ))}
         </S.Stamps>
+        {n >= 8 && (
+          <S.CouponChangeWrapper>
+            <StampComplete />
+          </S.CouponChangeWrapper>
+        )}
       </S.StampBox>
     </S.StampArea>
   )

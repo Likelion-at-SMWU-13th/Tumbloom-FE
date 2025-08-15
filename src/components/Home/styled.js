@@ -117,18 +117,32 @@ export const StampCard = styled.img`
   height: 7.875rem;
   flex-shrink: 0;
   align-self: center;
+  position: absolute;
+  inset: 0;
 `
 
 export const StampBox = styled.div`
   /* display: flex; */
-  display: inline-block;
+  /* display: inline-block; */
   margin: 0 auto;
   position: relative;
+  width: 334.56px;
+  height: 126px;
 `
 
 export const Stamps = styled.div`
-  display: flex;
+  /* display: flex; */
   justify-content: center;
+  position: absolute;
+  inset: 0;
+`
+export const CouponChangeWrapper = styled.div`
+  justify-content: center;
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  align-items: center;
+  display: flex;
 `
 
 export const CafeRecommendWrapper = styled.div`
@@ -372,4 +386,5 @@ export const CouponBtn = styled.button`
   font-weight: 700;
   line-height: normal;
   margin: 0 2.25rem 0 2.25rem;
+  cursor: pointer;
 `
