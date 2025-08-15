@@ -77,18 +77,25 @@ const CafeCarousel = () => {
   ]
 
   const [active, setActive] = useState(0)
+  const [tab, setTab] = useState(0)
 
-  const left = mod(active - 1, CafeList.length)
-  const right = mod(active + 1, CafeList.length)
+  const currentList = tab === 0 ? CafeList : CafeListAI
+
+  useEffect(() => {
+    setActive(0)
+  }, [tab])
+
+  const left = mod(active - 1, currentList.length)
+  const right = mod(active + 1, currentList.length)
   const visible = [left, active, right]
 
   return (
     <>
-      <FilterTap />
+      <FilterTap value={tab} onChange={setTab} />
       <S.CafeCarousel>
         <S.CardRow>
           {visible.map((i) => {
-            const cafe = CafeList[i]
+            const cafe = currentList[i]
             const isActive = i === active
             return (
               <S.CardContainer
@@ -110,7 +117,7 @@ const CafeCarousel = () => {
           })}
         </S.CardRow>
         <S.DotsContainer>
-          {CafeList.map((_, i) => (
+          {currentList.map((_, i) => (
             <S.Dot key={i} src={i === active ? dotGreen : dotGrey} />
           ))}
         </S.DotsContainer>
