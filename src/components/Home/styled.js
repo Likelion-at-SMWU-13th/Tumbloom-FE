@@ -119,6 +119,18 @@ export const StampCard = styled.img`
   align-self: center;
 `
 
+export const StampBox = styled.div`
+  /* display: flex; */
+  display: inline-block;
+  margin: 0 auto;
+  position: relative;
+`
+
+export const Stamps = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
 export const CafeRecommendWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -222,7 +234,7 @@ export const CafeAddress = styled.h3`
   font-size: 0.6875rem;
   font-style: normal;
   font-weight: 400;
-  line-height: 0.84913rem; /* 123.508% */
+  line-height: 0.84913rem;
   padding: 0 0 0.75rem 0.89rem;
   margin: 0;
 `
@@ -315,8 +327,49 @@ export const InfoDesc = styled.h2`
 export const HighlightText = styled.span`
   color: #25af94;
   font-family: 'Pretendard Variable';
-  /* font-size: 0.9375rem; */
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+`
+//StampComplete.jsx
+
+export const StampComplete = styled.div`
+  width: 12.3125rem;
+  height: 6rem;
+  flex-shrink: 0;
+  border-radius: 0.4375rem;
+  border: 0.0625rem solid #cecece;
+  background: #fff;
+`
+
+export const StampCompleteTitle = styled.h2`
+  color: #000;
+  text-align: center;
+  font-family: 'Pretendard Variable';
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+`
+
+export const CouponBtn = styled.button`
+  display: flex;
+  width: 7.8125rem;
+  height: 1.88575rem;
+  padding: 0.6735rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6735rem;
+  flex-shrink: 0;
+  border-radius: 2.0205rem;
+  border: 0.0674rem solid #fff;
+  background: #25af94;
+  color: #fff;
+  text-align: center;
+  font-family: 'Pretendard Variable';
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin: 0 2.25rem 0 2.25rem;
 `

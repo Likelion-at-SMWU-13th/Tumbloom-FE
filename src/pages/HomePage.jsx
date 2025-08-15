@@ -7,7 +7,7 @@ import Footer from '@/components/common/Footer'
 
 const HomePage = () => {
   const name = '텀블러91'
-  const stamp_c = 5
+  const stamp_c = 16
   return (
     <>
       <HeaderArea userName={name} stamp={stamp_c} />
