@@ -286,6 +286,11 @@ export const DotsContainer = styled.div`
   padding: 0.75rem 0 0.75rem 0;
 `
 
+export const AiRecommendContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
 //TumblerInfo.jsx
 
 export const InfoBackground = styled.div`
