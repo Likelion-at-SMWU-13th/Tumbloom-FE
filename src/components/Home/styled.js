@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import mainheader_img from '../../assets/images/mainheader_bg.svg'
 import mainheader_bg from '../../assets/images/mainheader_bg.png'
 import cafeImg from '@/assets/images/cafe-img.png'
+import AI_bg from '@/assets/images/preference-bg.svg'
 
 export const Wrapper = styled.div`
   background-image: url(${mainheader_bg});
@@ -285,7 +286,26 @@ export const DotsContainer = styled.div`
   padding: 0.75rem 0 0.75rem 0;
 `
 
+export const AiRecommendContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
 //TumblerInfo.jsx
+
+export const InfoBackground = styled.div`
+  max-width: 100%;
+  display: flex;
+  position: absolute;
+  z-index: 4;
+  width: 24.5625rem;
+  height: 53.25rem;
+  background-color: rgba(0, 20, 16, 0.75);
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+`
 
 export const InfoContainer = styled.div`
   display: flex;
@@ -297,6 +317,7 @@ export const InfoContainer = styled.div`
   border-radius: 0.9375rem;
   background: #fff;
   padding-bottom: 0.13rem;
+  z-index: 5;
 `
 
 export const InfoTitleBox = styled.div`
@@ -325,6 +346,7 @@ export const InfoTitle = styled.h2`
 
 export const InfoDescBox = styled.div`
   padding-left: 0.9rem;
+  padding-bottom: 0.7rem;
 `
 
 export const InfoDesc = styled.h2`
@@ -387,4 +409,83 @@ export const CouponBtn = styled.button`
   line-height: normal;
   margin: 0 2.25rem 0 2.25rem;
   cursor: pointer;
+`
+
+//PreferenceCard.jsx
+
+export const PreferenceCard = styled.div`
+  background-image: url(${AI_bg});
+  background-repeat: no-repeat;
+  width: 22.0625rem;
+  height: 9.875rem;
+  flex-shrink: 0;
+  display: flex;
+`
+
+export const CardContent = styled.div`
+  margin: 1.4375rem 0 0 1.375rem;
+`
+
+export const CardBadge = styled.div`
+  display: flex;
+  width: 3.6875rem;
+  height: 1.125rem;
+  padding: 0.1rem 0.2rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.68963rem;
+  flex-shrink: 0;
+  border-radius: 0.125rem;
+  background: #25af94;
+  color: #fff;
+  text-align: center;
+  font-family: 'Pretendard Variable';
+  font-size: 0.625rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 0.5rem;
+`
+
+export const CardTitle = styled.h2`
+  color: #000;
+  font-family: 'Pretendard Variable';
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  margin-bottom: 0.13rem;
+`
+
+export const CardSubtitle = styled.h3`
+  color: #000;
+  font-family: 'Pretendard Variable';
+  font-size: 0.625rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+  margin-bottom: 1.25rem;
+`
+
+export const Preferencebtn = styled.button`
+  cursor: pointer;
+  display: flex;
+  width: 8rem;
+  height: 1.93106rem;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 2.06894rem;
+  background: #fff;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+  color: #000;
+  text-align: center;
+  font-family: 'Pretendard Variable';
+  font-size: 0.82756rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: none;
 `

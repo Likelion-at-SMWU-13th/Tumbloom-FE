@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import visibleIcon from '@/assets/icons/pwd-visible.svg'
 import invisibleIcon from '@/assets/icons/pwd-invisible.svg'
-import PwdInput from '../common/pwdInput'
+import PwdFieldInput from '../common/PwdInputField'
 
 const LoginContainer = styled.div`
   display: flex;
@@ -88,7 +88,7 @@ function Login() {
     <LoginContainer>
       <LoginHeader>로그인</LoginHeader>
       <Input label='이메일' placeholder='이메일 입력' value={email} onChange={handleEmail} />
-      <PwdInput
+      <PwdInputField
         label='비밀번호'
         placeholder='비밀번호 입력'
         onChange={handlePassword}

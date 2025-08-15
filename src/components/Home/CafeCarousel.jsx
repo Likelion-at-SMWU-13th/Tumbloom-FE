@@ -6,6 +6,7 @@ import CafeCard from './CafeCard'
 import cafeImg from '@/assets/images/cafe-img.png'
 import dotGreen from '@/assets/icons/green-circle.svg'
 import dotGrey from '@/assets/icons/grey-circle.svg'
+import PreferenceCard from './PreferenceCard'
 
 const mod = (n, m) => ((n % m) + m) % m
 
@@ -77,44 +78,59 @@ const CafeCarousel = () => {
   ]
 
   const [active, setActive] = useState(0)
+  const [tab, setTab] = useState(0)
 
-  const left = mod(active - 1, CafeList.length)
-  const right = mod(active + 1, CafeList.length)
+  const currentList = tab === 0 ? CafeList : CafeListAI
+
+  const preference = false
+
+  useEffect(() => {
+    setActive(0)
+  }, [tab])
+
+  const left = mod(active - 1, currentList.length)
+  const right = mod(active + 1, currentList.length)
   const visible = [left, active, right]
 
   return (
     <>
-      <FilterTap />
-      <S.CafeCarousel>
-        <S.CardRow>
-          {visible.map((i) => {
-            const cafe = CafeList[i]
-            const isActive = i === active
-            return (
-              <S.CardContainer
-                key={i}
-                onClick={() => setActive(i)}
-                style={{
-                  transform: isActive ? 'scale(1)' : 'scale(0.88)',
-                  opacity: isActive ? '1' : '0.34',
-                  zIndex: isActive ? '2' : '1',
-                }}
-              >
-                <CafeCard
-                  cafeName={cafe.cafeName}
-                  cafeAddress={cafe.address}
-                  cafeImg={cafe.image}
-                />
-              </S.CardContainer>
-            )
-          })}
-        </S.CardRow>
-        <S.DotsContainer>
-          {CafeList.map((_, i) => (
-            <S.Dot key={i} src={i === active ? dotGreen : dotGrey} />
-          ))}
-        </S.DotsContainer>
-      </S.CafeCarousel>
+      <FilterTap value={tab} onChange={setTab} />
+      {!preference && tab === 1 ? (
+        <S.AiRecommendContainer>
+          <PreferenceCard />
+        </S.AiRecommendContainer>
+      ) : (
+        <S.CafeCarousel>
+          <S.CardRow>
+            {visible.map((i) => {
+              const cafe = currentList[i]
+              const isActive = i === active
+              return (
+                <S.CardContainer
+                  key={i}
+                  onClick={() => setActive(i)}
+                  style={{
+                    transform: isActive ? 'scale(1)' : 'scale(0.88)',
+                    opacity: isActive ? '1' : '0.34',
+                    zIndex: isActive ? '2' : '1',
+                  }}
+                >
+                  <CafeCard
+                    cafeName={cafe.cafeName}
+                    cafeAddress={cafe.address}
+                    cafeImg={cafe.image}
+                  />
+                </S.CardContainer>
+              )
+            })}
+          </S.CardRow>
+          <S.DotsContainer>
+            {currentList.map((_, i) => (
+              <S.Dot key={i} src={i === active ? dotGreen : dotGrey} />
+            ))}
+          </S.DotsContainer>
+        </S.CafeCarousel>
+      )}
     </>
   )
 }
