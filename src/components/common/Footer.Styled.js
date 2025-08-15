@@ -12,6 +12,7 @@ export const FooterBox = styled.div`
   height: 5.6875rem;
   flex-shrink: 0;
   border: 1px solid #d9d9d9;
+  background-color: #fff;
 `
 
 export const FooterRow = styled.ul`
