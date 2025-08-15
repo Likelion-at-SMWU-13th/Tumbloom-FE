@@ -38,11 +38,11 @@ const InputBox = styled.input`
   }
 `
 
-function Input({ label, placeholder }) {
+function Input({ label, placeholder, value, onChange }) {
   return (
     <InputContainer>
       <Label>{label}</Label>
-      <InputBox type='text' placeholder={placeholder}></InputBox>
+      <InputBox type='text' placeholder={placeholder} value={value} onChange={onChange}></InputBox>
     </InputContainer>
   )
 }

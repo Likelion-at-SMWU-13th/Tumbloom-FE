@@ -18,21 +18,32 @@ const Button = styled.button`
   gap: 0.625rem;
   flex-shrink: 0;
   border-radius: 1.875rem;
-  color: #25af94;
   text-align: center;
   font-family: 'Pretendard Variable';
   font-size: 1.125rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  border: 1.4px solid #25af94;
-  background: #fff;
+  background: #25af94;
+  color: #fff;
+  border: 1.4px solid #828282;
+  border: none;
+  cursor: pointer;
+
+  &:disabled {
+    color: #25af94;
+    border: 1.4px solid #25af94;
+    background: #fff;
+    pointer-events: none;
+  }
 `
 
-function RegisterBtn({ btnName }) {
+function RegisterBtn({ btnName, onClick, disabled }) {
   return (
     <BtnContainer>
-      <Button>{btnName}</Button>
+      <Button type='button' onClick={onClick} disabled={disabled}>
+        {btnName}
+      </Button>
     </BtnContainer>
   )
 }
