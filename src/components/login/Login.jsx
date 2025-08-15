@@ -5,13 +5,47 @@ import RegisterBtn from '@/components/Button/RegisterBtn'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const LoginContainer = styled.div``
+const LoginContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3.5rem 0 0 0;
+`
 
-const LoginHeader = styled.h1``
+const LoginHeader = styled.h1`
+  color: #000;
+  text-align: center;
+  font-family: 'Pretendard Variable';
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+`
 
-const Desc = styled.p``
+const Desc = styled.p`
+  color: #000;
+  font-family: 'Pretendard Variable';
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+`
 
-const GoToRegisterBtn = styled.span``
+const GoToRegisterBtn = styled.span`
+  color: #25af94;
+  font-family: 'Pretendard Variable';
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: auto;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
+`
 
 function Login() {
   const [email, setEmail] = useState('')
@@ -29,12 +63,12 @@ function Login() {
   const handleLogin = () => {
     if (btnColor) {
       // 로그인 로직 추가할 예정
-      navigate('/home')
+      navigate('/signup')
     }
   }
 
   const goToRegister = () => {
-    navigate('/home')
+    navigate('/')
   }
 
   return (
