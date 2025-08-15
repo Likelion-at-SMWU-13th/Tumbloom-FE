@@ -4,6 +4,7 @@ import Header from './components/common/Header'
 import Footer from './components/common/Footer'
 import Splash from './components/onboarding/Splash'
 import OnBoarding from './components/onboarding/OnBoarding'
+import SignUp from './components/signup/SignUp'
 
 function App() {
   return (
