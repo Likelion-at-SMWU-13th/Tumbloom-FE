@@ -287,6 +287,20 @@ export const DotsContainer = styled.div`
 
 //TumblerInfo.jsx
 
+export const InfoBackground = styled.div`
+  max-width: 100%;
+  display: flex;
+  position: absolute;
+  z-index: 4;
+  width: 24.5625rem;
+  height: 53.25rem;
+  background-color: rgba(0, 20, 16, 0.75);
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+`
+
 export const InfoContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -297,6 +311,7 @@ export const InfoContainer = styled.div`
   border-radius: 0.9375rem;
   background: #fff;
   padding-bottom: 0.13rem;
+  z-index: 5;
 `
 
 export const InfoTitleBox = styled.div`
@@ -325,6 +340,7 @@ export const InfoTitle = styled.h2`
 
 export const InfoDescBox = styled.div`
   padding-left: 0.9rem;
+  padding-bottom: 0.7rem;
 `
 
 export const InfoDesc = styled.h2`
