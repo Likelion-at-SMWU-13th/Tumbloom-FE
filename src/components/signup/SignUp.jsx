@@ -1,27 +1,9 @@
 import React, { useEffect } from 'react'
-import styled from 'styled-components'
 import RegisterBtn from '@/components/Button/RegisterBtn'
 import Input from '@/components/common/Input'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
-const SignUpContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 3.5rem 0 0 0;
-`
-
-const Header = styled.h1`
-  color: #000;
-  text-align: center;
-  font-family: 'Pretendard Variable';
-  font-size: 1.5rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-`
+import * as S from './SignUp.Styled.js'
 
 function SignUp() {
   const [nickname, setNickname] = useState('')
@@ -53,8 +35,8 @@ function SignUp() {
   }
 
   return (
-    <SignUpContainer>
-      <Header>회원가입</Header>
+    <S.SignUpContainer>
+      <S.Header>회원가입</S.Header>
       <Input
         label='닉네임'
         placeholder='닉네임 입력 (2~8자)'
@@ -69,7 +51,7 @@ function SignUp() {
         onChange={savePassword}
       />
       <RegisterBtn btnName='회원가입' disabled={!btnColor} onClick={goToLogin} />
-    </SignUpContainer>
+    </S.SignUpContainer>
   )
 }
 
