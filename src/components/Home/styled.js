@@ -315,7 +315,7 @@ export const InfoDesc = styled.h2`
 export const HighlightText = styled.span`
   color: #25af94;
   font-family: 'Pretendard Variable';
-  font-size: 0.9375rem;
+  /* font-size: 0.9375rem; */
   font-style: normal;
   font-weight: 600;
   line-height: normal;

@@ -6,13 +6,17 @@ import cup_icon from '../../assets/icons/cup_icon.svg'
 import tree_icon from '../../assets/icons/tree_icon.svg'
 import info_icon from '../../assets/icons/question_icon.svg'
 
-const MatrixBar = () => {
+const MatrixBar = ({ stamp_count }) => {
+  const s = Number(stamp_count)
+  const water = (s * 0.55).toFixed(2)
+  const tree = (s * 0.003).toFixed(3)
+
   return (
     <S.MatrixContainer>
       <S.MatrixBar>
-        <MatrixChip icon={tumbler_icon} label='텀블러 사용' value='01' unit='회' />
-        <MatrixChip icon={cup_icon} label='아낀 물' value='0.55' unit='L' />
-        <MatrixChip icon={tree_icon} label='지킨 나무' value='0.003' unit='그루' />
+        <MatrixChip icon={tumbler_icon} label='텀블러 사용' value={s} unit='회' />
+        <MatrixChip icon={cup_icon} label='아낀 물' value={water} unit='L' />
+        <MatrixChip icon={tree_icon} label='지킨 나무' value={tree} unit='그루' />
       </S.MatrixBar>
       <S.Info src={info_icon} alt='info' />
     </S.MatrixContainer>
