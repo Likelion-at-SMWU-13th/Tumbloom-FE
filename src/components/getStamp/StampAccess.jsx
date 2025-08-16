@@ -10,10 +10,43 @@ const Container = styled.div`
   flex-direction: column;
 `
 
-const BackgroundImg = styled.img``
+const TopImage = styled.div`
+  width: 24.5625rem;
+  height: 13.75rem;
+  flex-shrink: 0;
+  position: relative;
+`
+
+const BgImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+`
+
+const ImgEffect = styled.div`
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.55) 55%,
+    #fff 85%
+  );
+`
+
+const TextArea = styled.div`
+  display: flex;
+  flex-direction: column;
+  inset: 0;
+  position: absolute;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 11.56rem;
+`
 
 const Title = styled.span`
-  padding: 11.56rem 0 0.94rem 0;
+  padding-bottom: 0.94rem;
   color: #000;
   font-family: 'Pretendard Variable';
   font-size: 1.75rem;
@@ -21,7 +54,6 @@ const Title = styled.span`
   font-weight: 600;
   line-height: 130%;
   text-align: center;
-  border: 1px solid pink;
 `
 const CafeName = styled.span`
   color: #25af94;
@@ -40,7 +72,6 @@ const Desc = styled.span`
   font-style: normal;
   font-weight: 400;
   line-height: 130%;
-  border: 1px solid yellow;
 `
 const AccessCodeBox = styled.div`
   display: flex;
@@ -54,13 +85,11 @@ const AccessCodeHeader = styled.span`
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  border: 1px solid blue;
-  padding: 1.81rem 0 0.62rem 0;
+  padding: 7.63rem 0 0.62rem;
 `
 const InputField = styled.div`
   display: flex;
   justify-content: center;
-  border: 1px solid black;
   padding-left: 3.3rem;
 `
 
@@ -87,7 +116,6 @@ const CodeInput = styled.input`
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    border: 1px solid black;
   }
 
   &.error {
@@ -149,20 +177,26 @@ function StampAccess({ cafeName = '그린카페', onClick, onChange }) {
 
   const handleAccessCode = (e) => {
     setAccessCode(e.target.value)
+    if (isError) setIsError(false)
   }
 
   return (
     <>
       <Header title='스탬프 적립하기' />
       <Container>
-        <BackgroundImg src={CafeImg} />
-        <Title>
-          <CafeName>{cafeName}</CafeName> 에서 <br /> 텀블러 테이크아웃할게요
-        </Title>
-        <Desc>
-          음료 받을 때 직원에게 화면을 보여주고 <br />
-          확인코드를 받으면 스탬프를 적립해요
-        </Desc>
+        <TopImage>
+          <BgImg src={CafeImg} />
+          <ImgEffect />
+          <TextArea>
+            <Title>
+              <CafeName>{cafeName}</CafeName> 에서 <br /> 텀블러 테이크아웃할게요
+            </Title>
+            <Desc>
+              음료 받을 때 직원에게 화면을 보여주고 <br />
+              확인코드를 받으면 스탬프를 적립해요
+            </Desc>
+          </TextArea>
+        </TopImage>
         <AccessCodeBox>
           <AccessCodeHeader>직원확인코드</AccessCodeHeader>
           <InputField>
