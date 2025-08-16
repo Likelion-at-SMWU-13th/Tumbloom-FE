@@ -89,6 +89,17 @@ const CodeInput = styled.input`
     line-height: normal;
     border: 1px solid black;
   }
+
+  &.error {
+    color: #c00000;
+    font-family: Inter;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border-radius: 0.3125rem;
+    background: #ffe4e4;
+  }
 `
 const CompleteBtn = styled.button`
   width: 3.125rem;
@@ -110,15 +121,29 @@ const CompleteBtn = styled.button`
   cursor: pointer;
 `
 
+const ErrorText = styled.span`
+  color: #c00000;
+  text-align: center;
+  font-family: Inter;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 0.94rem 0 0 0;
+`
+
 function StampAccess({ cafeName = '그린카페', onClick, onChange }) {
-  const [accessCode, setAccessCode] = useState()
+  const [accessCode, setAccessCode] = useState('')
+  const [isError, setIsError] = useState(false)
   const navigate = useNavigate()
-  const code = 12345
+  const code = '12345'
 
   const checkAccessCode = () => {
     if (accessCode === code) {
+      setIsError(false)
       navigate('/')
     } else {
+      setIsError(true)
     }
   }
 
@@ -141,9 +166,15 @@ function StampAccess({ cafeName = '그린카페', onClick, onChange }) {
         <AccessCodeBox>
           <AccessCodeHeader>직원확인코드</AccessCodeHeader>
           <InputField>
-            <CodeInput placeholder='확인코드 입력' onChange={handleAccessCode} />
+            <CodeInput
+              className={isError ? 'error' : ''}
+              value={accessCode}
+              placeholder='확인코드 입력'
+              onChange={handleAccessCode}
+            />
             <CompleteBtn onClick={checkAccessCode}>완료</CompleteBtn>
           </InputField>
+          {isError && <ErrorText>올바르지 않은 확인코드입니다!</ErrorText>}
         </AccessCodeBox>
       </Container>
     </>
