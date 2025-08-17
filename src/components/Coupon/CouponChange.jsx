@@ -46,7 +46,13 @@ const CouponChange = ({ stamp }) => {
       <S.CouponList>
         {CafeCouponList.filter(({ count }) => Number(count) > 0).map(
           ({ CafeName, DiscountPrice, count }) => (
-            <CafeCoupon key={CafeName} cafeName={CafeName} price={DiscountPrice} count={count} />
+            <CafeCoupon
+              key={CafeName}
+              cafeName={CafeName}
+              price={DiscountPrice}
+              count={count}
+              active={collectStamp >= 8}
+            />
           ),
         )}
       </S.CouponList>
