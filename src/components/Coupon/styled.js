@@ -43,8 +43,14 @@ export const TapText = styled.span`
   line-height: normal;
 `
 
+export const Wrapper = styled.div`
+  overflow-y: auto;
+  height: 43.5rem;
+  /* flex: 1; */
+  /* width: 24.5625rem; */
+`
+
 export const ChangeTextBox = styled.div`
-  /* border: solid 1px #000; */
   padding: 1rem 0 1rem 1.25rem;
 `
 
