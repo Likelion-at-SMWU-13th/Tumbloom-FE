@@ -7,7 +7,7 @@ const Coupon = () => {
   return (
     <>
       <CouponHeader />
-      <CouponChange />
+      <CouponChange stamp={'16'} />
       <Footer />
     </>
   )

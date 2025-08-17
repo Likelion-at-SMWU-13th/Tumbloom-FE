@@ -3,7 +3,6 @@ import search from '@/assets/icons/search.svg'
 
 export const HeaderContainer = styled.div`
   display: flex;
-  /* grid-template-columns: 3.5rem 1fr 3.5rem; */
   width: 24.5625rem;
   height: 3.5rem;
   box-sizing: border-box;
@@ -22,7 +21,6 @@ export const CouponChangeTap = styled.div`
   justify-content: center;
   align-items: center;
   border-bottom: solid 0.1875rem #000;
-  /* border-radius: 0 0 0.625rem 0.625rem; */
   cursor: pointer;
 `
 
@@ -32,7 +30,6 @@ export const MyCouponTap = styled.div`
   height: 3.4rem;
   justify-content: center;
   align-items: center;
-  /* border-bottom: solid 0.1875rem #000; */
   cursor: pointer;
 `
 
@@ -73,6 +70,17 @@ export const SearchArea = styled.div`
   padding-bottom: 2.44rem;
 `
 
+export const NearCouponText = styled.p`
+  color: #000;
+  font-family: 'Pretendard Variable';
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+  padding: 0 0 0.405rem 1.56rem;
+`
+
 //CafeInputField.jsx
 
 export const SearchInput = styled.input`
@@ -99,6 +107,12 @@ export const SearchInputContainer = styled.div`
 export const SearchIcon = styled.img`
   position: absolute;
   left: 2.2rem;
+`
+
+export const CouponList = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 `
 
 //CafeCoupon.jsx
