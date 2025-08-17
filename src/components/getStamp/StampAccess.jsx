@@ -4,6 +4,7 @@ import Header from '@/components/common/Header'
 import styled from 'styled-components'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import GetStamp from '@/components/getStamp/GetStamp'
 
 const Container = styled.div`
   display: flex;
@@ -163,13 +164,14 @@ const ErrorText = styled.span`
 function StampAccess({ cafeName = '그린카페' }) {
   const [accessCode, setAccessCode] = useState('')
   const [isError, setIsError] = useState(false)
+  const [showStampBg, setShowStampBg] = useState(false)
   const navigate = useNavigate()
   const code = '12345'
 
   const checkAccessCode = () => {
     if (accessCode === code) {
       setIsError(false)
-      navigate('/')
+      setShowStampBg(true)
     } else {
       setIsError(true)
     }
@@ -182,6 +184,7 @@ function StampAccess({ cafeName = '그린카페' }) {
 
   return (
     <>
+      {showStampBg && <GetStamp />}
       <Header title='스탬프 적립하기' />
       <Container>
         <TopImage>

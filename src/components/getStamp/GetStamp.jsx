@@ -7,15 +7,13 @@ const Wrapper = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  border: 1px solid blue;
   align-items: center;
   z-index: 1000;
   position: fixed;
 `
 
 const BgImg = styled.img`
-  border: 1px solid blue;
-  opacity: 0.8;
+  opacity: 0.96;
   inset: 0;
 `
 
@@ -24,7 +22,6 @@ const ContentBox = styled.div`
   flex-direction: column;
   padding-top: 15.97rem;
   align-items: center;
-  border: 1px solid green;
   position: absolute;
 `
 
@@ -33,13 +30,10 @@ const ImgContainer = styled.div`
   position: relative;
 `
 
-const Img = styled.img`
-  border: 1px solid pink;
-`
+const Img = styled.img``
 
 const Text = styled.span`
   top: 10.81rem;
-  border: 1px solid blue;
   position: absolute;
   color: #fff;
   text-align: center;
@@ -55,7 +49,6 @@ const BtnContainer = styled.div`
   gap: 0.8rem;
   padding-top: 2.6rem;
   padding-bottom: 20rem;
-  border: 1px solid yellow;
 `
 
 const GoHomeBtn = styled.button`
