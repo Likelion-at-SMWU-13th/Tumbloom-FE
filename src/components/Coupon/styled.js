@@ -20,7 +20,7 @@ export const CouponChangeTap = styled.div`
   height: 3.4rem;
   justify-content: center;
   align-items: center;
-  border-bottom: solid 0.1875rem #000;
+  /* border-bottom: solid 0.1875rem #000; */
   cursor: pointer;
 `
 
@@ -150,7 +150,7 @@ export const CouponLeftWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   overflow: hidden;
   position: relative;
 `

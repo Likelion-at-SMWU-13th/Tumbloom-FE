@@ -20,15 +20,23 @@ const CouponChange = ({ stamp }) => {
 
   const collectStamp = Number(stamp)
   const avaliableCoupon = Math.floor(collectStamp / 8)
+  const moreCoupon = 8 - collectStamp
 
   return (
     <S.Wrapper>
       <S.SearchArea>
         <S.ChangeTextBox>
-          <S.CurrentChangeText>
-            지금까지 스탬프를 <S.HighlightText>{collectStamp}개</S.HighlightText> 모았어요 <br />{' '}
-            이제 쿠폰 <S.HighlightText>{avaliableCoupon}장</S.HighlightText>으로 교환할 수 있어요
-          </S.CurrentChangeText>
+          {collectStamp >= 8 ? (
+            <S.CurrentChangeText>
+              지금까지 스탬프를 <S.HighlightText>{collectStamp}개</S.HighlightText> 모았어요 <br />{' '}
+              이제 쿠폰 <S.HighlightText>{avaliableCoupon}장</S.HighlightText>으로 교환할 수 있어요
+            </S.CurrentChangeText>
+          ) : (
+            <S.CurrentChangeText>
+              지금까지 스탬프를 <S.HighlightText>{collectStamp}개</S.HighlightText> 모았어요 <br />{' '}
+              쿠폰 교환까지 <S.HighlightText>{moreCoupon}개</S.HighlightText> 남았어요
+            </S.CurrentChangeText>
+          )}
         </S.ChangeTextBox>
         <CafeInputField />
       </S.SearchArea>
