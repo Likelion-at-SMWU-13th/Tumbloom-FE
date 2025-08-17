@@ -101,3 +101,33 @@ export const SearchIcon = styled.img`
   position: absolute;
   left: 2.2rem;
 `
+
+//CafeCoupon.jsx
+
+export const CouponLeftWrapper = styled.div`
+  width: 15.7944rem;
+  height: 6.75rem;
+  flex-shrink: 0;
+  border-radius: 0.625rem;
+  /* border: solid 1px #000; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+`
+
+export const CouponEdge = styled.div`
+  background-color: #25af94;
+  height: 6.75rem;
+  width: 0.56rem;
+  border-radius: 0.625rem 0 0 0.625rem;
+`
+
+export const CouponContentBox = styled.div`
+  /* width: 15.2305rem; */
+  /* width: 15.293rem; */
+  width: 15.75rem;
+  height: 5.625rem;
+  flex-shrink: 0;
+  border-right: dashed 2px #979797;
+`

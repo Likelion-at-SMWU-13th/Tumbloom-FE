@@ -2,6 +2,7 @@ import React from 'react'
 import * as S from './styled'
 import { InputBox } from '../common/Input.Styled'
 import CafeInputField from './CafeInputField'
+import CafeCoupon from './CafeCoupon'
 
 const CouponChange = () => {
   return (
@@ -15,7 +16,9 @@ const CouponChange = () => {
         </S.ChangeTextBox>
         <CafeInputField />
       </S.SearchArea>
-      <div></div>
+      <div>
+        <CafeCoupon cafeName={'그린카페'} price={'1000'} count={'2000'} />
+      </div>
     </div>
   )
 }
