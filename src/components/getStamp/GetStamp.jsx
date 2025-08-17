@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import stampImg from '@/assets/images/get-stamp.svg'
 import backgroundImg from '@/assets/images/stamp-effect-bg.png'
+import { useNavigate } from 'react-router-dom'
 
 const Wrapper = styled.div`
   height: 100%;
@@ -94,7 +95,17 @@ const GoCouponBtn = styled.button`
   cursor: pointer;
 `
 
-function GetStamp(props) {
+function GetStamp() {
+  const navigate = useNavigate()
+
+  const goToHome = () => {
+    navigate(`/`)
+  }
+
+  const goToCoupon = () => {
+    navigate(`/`)
+  }
+
   return (
     <Wrapper>
       <BgImg src={backgroundImg} />
@@ -104,8 +115,8 @@ function GetStamp(props) {
         </ImgContainer>
         <Text>스탬프 적립 완료!</Text>
         <BtnContainer>
-          <GoHomeBtn>홈화면</GoHomeBtn>
-          <GoCouponBtn>쿠폰</GoCouponBtn>
+          <GoHomeBtn onClick={goToHome}>홈화면</GoHomeBtn>
+          <GoCouponBtn onClick={goToCoupon}>쿠폰</GoCouponBtn>
         </BtnContainer>
       </ContentBox>
     </Wrapper>
