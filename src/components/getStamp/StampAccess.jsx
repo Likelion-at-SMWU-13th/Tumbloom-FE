@@ -160,7 +160,7 @@ const ErrorText = styled.span`
   padding: 0.94rem 0 0 0;
 `
 
-function StampAccess({ cafeName = '그린카페', onClick, onChange }) {
+function StampAccess({ cafeName = '그린카페' }) {
   const [accessCode, setAccessCode] = useState('')
   const [isError, setIsError] = useState(false)
   const navigate = useNavigate()

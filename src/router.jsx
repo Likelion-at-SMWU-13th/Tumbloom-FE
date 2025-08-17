@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage'
 import SignUp from './components/signup/SignUp'
 import Login from './components/login/Login'
 import StampAccess from './components/getStamp/StampAccess'
+import GetStamp from './components/getStamp/GetStamp'
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: '/stamp',
         element: <StampAccess />,
+      },
+      {
+        path: '/getstamp',
+        element: <GetStamp />,
       },
     ],
   },
