@@ -51,7 +51,7 @@ export const ChangeTextBox = styled.div`
   padding: 1rem 0 1rem 1.25rem;
 `
 
-export const ChangeText = styled.p`
+export const CurrentChangeText = styled.p`
   color: #000;
   font-family: 'Pretendard Variable';
   font-size: 1.25rem;
@@ -64,7 +64,6 @@ export const ChangeText = styled.p`
 export const HighlightText = styled.span`
   color: #25af94;
   font-family: 'Pretendard Variable';
-  font-size: 1.25rem;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -104,6 +103,24 @@ export const SearchIcon = styled.img`
 
 //CafeCoupon.jsx
 
+export const CouponWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0.405rem 0;
+`
+
+export const StampBg = styled.img`
+  display: flex;
+  position: absolute;
+  left: 10.4rem;
+  transform: translateY(-28%);
+  width: 6.26769rem;
+  height: 6.26769rem;
+  flex-shrink: 0;
+  opacity: 0.06;
+`
+
 export const CouponLeftWrapper = styled.div`
   width: 15.7944rem;
   height: 6.75rem;
@@ -114,6 +131,8 @@ export const CouponLeftWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  position: relative;
 `
 
 export const CouponEdge = styled.div`
@@ -123,11 +142,87 @@ export const CouponEdge = styled.div`
   border-radius: 0.625rem 0 0 0.625rem;
 `
 
-export const CouponContentBox = styled.div`
-  /* width: 15.2305rem; */
-  /* width: 15.293rem; */
-  width: 15.75rem;
+export const CouponLeftContent = styled.div`
+  display: flex;
+  width: 14.7405rem;
   height: 5.625rem;
   flex-shrink: 0;
-  border-right: dashed 2px #979797;
+  flex-direction: column;
+  /* justify-content: center; */
+`
+
+export const CafeName = styled.span`
+  color: #000;
+  font-family: 'Pretendard Variable';
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+  padding: 0.3rem 0 0 1.38rem;
+`
+
+export const CafeDiscount = styled.span`
+  color: #000;
+  font-family: 'Pretendard Variable';
+  font-size: 1.75rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  padding: 0 0 0 1.38rem;
+  margin-top: -0.3rem;
+`
+
+export const CafeCouponCount = styled.span`
+  color: #979797;
+  font-family: 'Pretendard Variable';
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+  text-align: end;
+  padding: 0.5rem 0.5rem 0 0;
+`
+
+export const DotLine = styled.img`
+  padding-left: 0.49rem;
+`
+
+export const CouponRightWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 6.33038rem;
+  height: 6.75rem;
+  flex-shrink: 0;
+  border-radius: 0.625rem;
+  background: #f6fcfb;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 2;
+`
+
+export const CouponRightContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: cneter;
+  align-items: center;
+`
+
+export const ChangeIcon = styled.img`
+  width: 2.25638rem;
+  height: 2.25638rem;
+  flex-shrink: 0;
+`
+
+export const ChangeText = styled.p`
+  color: #000;
+  font-family: 'Pretendard Variable';
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: -0.3rem 0 0 0;
 `

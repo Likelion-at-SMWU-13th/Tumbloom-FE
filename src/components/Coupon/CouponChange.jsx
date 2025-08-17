@@ -9,15 +9,15 @@ const CouponChange = () => {
     <div>
       <S.SearchArea style={{ border: 'solid 1px #000' }}>
         <S.ChangeTextBox>
-          <S.ChangeText>
+          <S.CurrentChangeText>
             지금까지 스탬프를 <S.HighlightText>8개</S.HighlightText> 모았어요 <br /> 이제 쿠폰{' '}
             <S.HighlightText>1장</S.HighlightText>으로 교환할 수 있어요
-          </S.ChangeText>
+          </S.CurrentChangeText>
         </S.ChangeTextBox>
         <CafeInputField />
       </S.SearchArea>
-      <div>
-        <CafeCoupon cafeName={'그린카페'} price={'1000'} count={'2000'} />
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <CafeCoupon cafeName={'그린카페'} price={'1000'} count={'20'} />
       </div>
     </div>
   )
