@@ -172,6 +172,7 @@ function StampAccess({ cafeName = '그린카페' }) {
     if (accessCode === code) {
       setIsError(false)
       setShowStampBg(true)
+      // 백엔드에 스탬프 적립 POST
     } else {
       setIsError(true)
     }
@@ -199,6 +200,7 @@ function StampAccess({ cafeName = '그린카페' }) {
               확인코드를 받으면 스탬프를 적립해요
             </Desc>
           </TextArea>
+          g
         </TopImage>
         <AccessCodeBox>
           <AccessCodeHeader>직원확인코드</AccessCodeHeader>
