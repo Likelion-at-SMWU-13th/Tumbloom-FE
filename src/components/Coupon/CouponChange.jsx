@@ -16,6 +16,7 @@ const CouponChange = () => {
         </S.ChangeTextBox>
         <CafeInputField />
       </S.SearchArea>
+      <p>지금 근처 청파동 카페 쿠폰</p>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <CafeCoupon cafeName={'그린카페'} price={'1000'} count={'20'} />
       </div>
