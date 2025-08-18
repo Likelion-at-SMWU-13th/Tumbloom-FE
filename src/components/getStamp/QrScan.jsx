@@ -1,37 +1,84 @@
-import React from 'react'
-import { QrReader } from 'react-qr-reader'
+import React, { useEffect, useRef } from 'react'
+import QrScanner from 'qr-scanner'
 import styled from 'styled-components'
-import { useState } from 'react'
+import workerUrl from 'qr-scanner/qr-scanner-worker.min.js?url'
+import closeIcon from '@/assets/icons/close.svg'
 
-const QrBox = styled.div`
-  width: 15rem;
-  height: 15rem;
-  border: 1px solid black;
+const VideoArea = styled.div`
+  display: flex;
+  flex-direction: column;
   position: relative;
-  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+`
+const Video = styled.video`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `
 
-function QrScan() {
-  navigator.mediaDevices.enumerateDevices().then((devices) => {
-    const videoCameras = devices.filter((d) => d.kind === 'videoinput')
+const SquareBoxArea = styled.div`
+  position: absolute;
+  width: 14.9375rem;
+  height: 14.9375rem;
+  border-radius: 1.875rem;
+  border: 8px solid #25af94;
+  box-shadow: 0 0 0 9999px rgba(6, 52, 40, 0.5);
+`
 
-    const realCameras = videoCameras.filter((cam) => !cam.label.includes('OV01C10'))
+const QrGuideText = styled.div`
+  position: absolute;
+  color: #fff;
+  text-align: center;
+  font-family: 'Pretendard Variable';
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  top: 68%;
+  z-index: 2;
+`
 
-    console.log(realCameras)
-  })
+const CloseBtn = styled.button`
+  background: transparent;
+  border: none;
+  position: absolute;
+  flex-shrink: 0;
+  z-index: 3;
+  top: 3%;
+  right: 10%;
+`
+
+QrScanner.WORKER_PATH = workerUrl
+
+function QrScan(props) {
+  const qrVideo = useRef(null)
+
+  useEffect(() => {
+    const scanner = new QrScanner(qrVideo.current, (result) => {
+      console.log(result)
+    })
+    scanner.start()
+
+    return () => scanner.stop()
+  }, [])
 
   return (
-    <div>
-      <div>QR 스캔하기</div>
-      <QrBox>
-        <QrReader
-          constraints={{ facingMode: 'environment' }}
-          onResult={() => {}}
-          containerStyle={{ width: '100%', height: '100%', position: 'absolute', inset: 0 }}
-          videoStyle={{ width: '100%', height: '100%', objectFit: 'cover' }}
-        />
-      </QrBox>
-    </div>
+    <>
+      <VideoArea>
+        <CloseBtn>
+          <img src={closeIcon} />
+        </CloseBtn>
+        <Video ref={qrVideo} playsInline muted autoPlay />
+        <SquareBoxArea />
+        <QrGuideText>
+          카페 키오스크에 부착돼있는
+          <br /> QR코드를 스캔해주세요
+        </QrGuideText>
+      </VideoArea>
+    </>
   )
 }
 
