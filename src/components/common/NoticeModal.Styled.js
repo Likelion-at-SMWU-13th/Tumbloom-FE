@@ -23,6 +23,7 @@ export const ModalWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  z-index: 5;
 `
 
 export const ModalImage = styled.img`
