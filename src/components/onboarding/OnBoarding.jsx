@@ -2,19 +2,17 @@ import React from 'react'
 import styled from 'styled-components'
 import onboarding1 from '@/assets/images/onboarding1.svg'
 import onboarding2 from '@/assets/images/onboarding2.svg'
-import onboarding3 from '@/assets/images/onboarding3.svg'
-import onboarding4 from '@/assets/images/onboarding4.svg'
-import onboarding5 from '@/assets/images/onboarding5.svg'
+import onboarding3 from '@/assets/images/onboarding3.png'
+import onboarding4 from '@/assets/images/onboarding4.png'
+import onboarding5 from '@/assets/images/onboarding5.png'
 import dotGreen from '@/assets/icons/green-circle.svg'
 import dotGrey from '@/assets/icons/grey-circle.svg'
+import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
 const OnBoardingPages = [
   {
     img: onboarding1,
-    padding: '5.6rem 0 3.53rem 0',
-    w: '17.125rem',
-    h: '14.21456rem',
     title: (
       <>
         텀블러인에 오신 <br /> 당신을 환영합니다!
@@ -29,9 +27,6 @@ const OnBoardingPages = [
   },
   {
     img: onboarding2,
-    padding: '5.6rem 0 3rem 0',
-    w: '25.125rem',
-    h: '20.12294rem',
     title: (
       <>
         우리동네 카페의 텀블러
@@ -49,9 +44,6 @@ const OnBoardingPages = [
   },
   {
     img: onboarding3,
-    padding: '3rem 0 1.91rem 0',
-    w: '30.53713rem',
-    h: '20.15625rem',
     title: (
       <>
         불편했던 할인 절차를
@@ -69,9 +61,6 @@ const OnBoardingPages = [
   },
   {
     img: onboarding4,
-    padding: '3rem 0 2.61rem 0',
-    w: '29.76644rem',
-    h: '20.32413rem',
     title: (
       <>
         이제는 텀블러인에서
@@ -89,9 +78,6 @@ const OnBoardingPages = [
   },
   {
     img: onboarding5,
-    padding: '5.6rem 0 1.25rem 0',
-    w: '31.97806rem',
-    h: '22.18544rem',
     title: (
       <>
         텀블러인과 우리동네
@@ -134,7 +120,6 @@ const ContentContainer = styled.div`
 `
 const OnBoardingImg = styled.img`
   flex-shrink: 0;
-  filter: drop-shadow(7px 8.7px 7px rgba(0, 0, 0, 0.31));
 `
 const TextContainer = styled.div`
   display: flex;
@@ -195,6 +180,7 @@ const NextBtn = styled.button`
   border-radius: 1.875rem;
   background: #25af94;
   border: none;
+  cursor: pointer;
 `
 
 function OnBoarding() {
@@ -202,6 +188,7 @@ function OnBoarding() {
   const totalPages = 5
 
   let onb = OnBoardingPages[page - 1]
+  const navigate = useNavigate()
 
   return (
     <>
@@ -209,14 +196,7 @@ function OnBoarding() {
       <ImgContainer
         style={{ justifyContent: page === 1 ? 'flex-end' : 'center', padding: onb.padding }}
       >
-        <OnBoardingImg
-          src={onb.img}
-          style={{
-            width: onb.w,
-            height: onb.h,
-            filter: page === 4 ? 'drop-shadow(7px 8px 7px rgba(0, 0, 0, 0.31))' : 'none',
-          }}
-        />
+        <OnBoardingImg src={onb.img} />
       </ImgContainer>
       <ContentContainer>
         <TextContainer>
@@ -233,6 +213,8 @@ function OnBoarding() {
             onClick={() => {
               if (page < totalPages) {
                 setPage(page + 1)
+              } else {
+                navigate('/login')
               }
             }}
           >
