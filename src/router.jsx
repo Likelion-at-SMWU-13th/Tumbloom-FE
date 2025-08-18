@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
 import App from './App'
 import HomePage from './pages/HomePage'
+import OnBoarding from './components/onboarding/OnBoarding'
 import SignUp from './components/signup/SignUp'
 import Login from './components/login/Login'
 import StampAccess from './components/getStamp/StampAccess'
@@ -15,24 +16,28 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <HomePage />,
+        element: <OnBoarding />,
       },
-      {
-        path: '/login',
-        element: <Login />,
-      },
-      {
-        path: '/signup',
-        element: <SignUp />,
-      },
-      {
-        path: '/coupon',
-        element: <Coupon />,
-      },
-      {
-        path: '/qr',
-        element: <QrScan />,
-      },
+      // {
+      //   path: '/onb',
+      //   element: <OnBoarding />,
+      // },
+      // {
+      //   path: '/login',
+      //   element: <Login />,
+      // },
+      // {
+      //   path: '/signup',
+      //   element: <SignUp />,
+      // },
+      // {
+      //   path: '/coupon',
+      //   element: <Coupon />,
+      // },
+      // {
+      //   path: '/qr',
+      //   element: <QrScan />,
+      // },
     ],
   },
 ])
