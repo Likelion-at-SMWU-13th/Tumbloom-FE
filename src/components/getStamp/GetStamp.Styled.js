@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-  height: 100%;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
   z-index: 1000;
+  align-items: center;
   position: fixed;
 `
 
@@ -40,6 +41,7 @@ export const Text = styled.span`
   font-weight: 600;
   line-height: normal;
   padding-top: 16.01rem;
+  width: 100%;
 `
 export const BtnContainer = styled.div`
   display: flex;

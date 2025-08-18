@@ -5,6 +5,7 @@ import SignUp from './components/signup/SignUp'
 import Login from './components/login/Login'
 import StampAccess from './components/getStamp/StampAccess'
 import GetStamp from './components/getStamp/GetStamp'
+import QrScan from './components/getStamp/QrScan'
 import Coupon from './pages/Coupon'
 
 const router = createBrowserRouter([
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: '/coupon',
         element: <Coupon />,
+      },
+      {
+        path: '/qr',
+        element: <QrScan />,
       },
     ],
   },

@@ -45,7 +45,6 @@ function StampAccess({ cafeName = '그린카페' }) {
               확인코드를 받으면 스탬프를 적립해요
             </S.Desc>
           </S.TextArea>
-          g
         </S.TopImage>
         <S.AccessCodeBox>
           <S.AccessCodeHeader>직원확인코드</S.AccessCodeHeader>
