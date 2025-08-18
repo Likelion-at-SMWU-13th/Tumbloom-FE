@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
 import App from './App'
+import Splash from './components/onboarding/Splash'
 import HomePage from './pages/HomePage'
 import OnBoarding from './components/onboarding/OnBoarding'
 import SignUp from './components/signup/SignUp'
@@ -8,6 +9,7 @@ import StampAccess from './components/getStamp/StampAccess'
 import GetStamp from './components/getStamp/GetStamp'
 import QrScan from './components/getStamp/QrScan'
 import Coupon from './pages/Coupon'
+import Stamp from './components/getStamp/StampAccess'
 
 const router = createBrowserRouter([
   {
@@ -16,6 +18,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
+        element: <Splash />,
+      },
+      {
+        path: '/home',
         element: <HomePage />,
       },
       {
@@ -33,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: '/coupon',
         element: <Coupon />,
+      },
+      {
+        path: '/stamp',
+        element: <Stamp />,
       },
       {
         path: '/qr',
