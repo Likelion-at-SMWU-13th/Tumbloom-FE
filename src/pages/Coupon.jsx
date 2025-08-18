@@ -10,7 +10,7 @@ const Coupon = () => {
   return (
     <>
       <CouponHeader tab={tab} onChangeTab={setTab} />
-      {tab === 'exchange' ? <CouponChange stamp={'15'} /> : <MyCoupon />}
+      {tab === 'exchange' ? <CouponChange stamp={'15'} /> : <MyCoupon coupon={5} />}
 
       <Footer />
     </>

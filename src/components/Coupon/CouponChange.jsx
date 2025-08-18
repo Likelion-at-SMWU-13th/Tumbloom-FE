@@ -6,16 +6,16 @@ import CafeCoupon from './CafeCoupon'
 
 const CouponChange = ({ stamp }) => {
   const CafeCouponList = [
-    { CafeName: '너드커피', DiscountPrice: '1000', count: '10' },
-    { CafeName: '을의커피', DiscountPrice: '1500', count: '10' },
-    { CafeName: '청파로움', DiscountPrice: '500', count: '20' },
-    { CafeName: '청파맨션', DiscountPrice: '1000', count: '18' },
-    { CafeName: '킷테', DiscountPrice: '500', count: '5' },
-    { CafeName: '와플하우스', DiscountPrice: '1000', count: '20' },
-    { CafeName: '마돈나커피', DiscountPrice: '1500', count: '3' },
-    { CafeName: '쥬케로', DiscountPrice: '1000', count: '20' },
-    { CafeName: '카페나리나무', DiscountPrice: '1300', count: '5' },
-    { CafeName: '레드우드', DiscountPrice: '1000', count: '20' },
+    { CafeName: '너드커피', DiscountPrice: '1000', count: 10 },
+    { CafeName: '을의커피', DiscountPrice: '1500', count: 10 },
+    { CafeName: '청파로움', DiscountPrice: '500', count: 20 },
+    { CafeName: '청파맨션', DiscountPrice: '1000', count: 18 },
+    { CafeName: '킷테', DiscountPrice: '500', count: 5 },
+    { CafeName: '와플하우스', DiscountPrice: '1000', count: 20 },
+    { CafeName: '마돈나커피', DiscountPrice: '1500', count: 3 },
+    { CafeName: '쥬케로', DiscountPrice: '1000', count: 20 },
+    { CafeName: '카페나리나무', DiscountPrice: '1300', count: 5 },
+    { CafeName: '레드우드', DiscountPrice: '1000', count: 20 },
   ]
 
   const collectStamp = Number(stamp)
@@ -51,6 +51,7 @@ const CouponChange = ({ stamp }) => {
               cafeName={CafeName}
               price={DiscountPrice}
               count={count}
+              type={'exchange'}
               active={collectStamp >= 8}
             />
           ),
