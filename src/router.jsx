@@ -5,6 +5,7 @@ import SignUp from './components/signup/SignUp'
 import Login from './components/login/Login'
 import StampAccess from './components/getStamp/StampAccess'
 import GetStamp from './components/getStamp/GetStamp'
+import Coupon from './pages/Coupon'
 
 const router = createBrowserRouter([
   {
@@ -24,12 +25,8 @@ const router = createBrowserRouter([
         element: <SignUp />,
       },
       {
-        path: '/stamp',
-        element: <StampAccess />,
-      },
-      {
-        path: '/getstamp',
-        element: <GetStamp />,
+        path: '/coupon',
+        element: <Coupon />,
       },
     ],
   },

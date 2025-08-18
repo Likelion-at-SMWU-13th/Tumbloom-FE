@@ -94,7 +94,7 @@ const CafeCarousel = () => {
 
   return (
     <>
-      <FilterTap value={tab} onChange={setTab} />
+      <FilterTap value={tab} onChangeTab={setTab} />
       {!preference && tab === 1 ? (
         <S.AiRecommendContainer>
           <PreferenceCard />
