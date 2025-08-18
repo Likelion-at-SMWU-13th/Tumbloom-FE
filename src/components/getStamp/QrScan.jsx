@@ -12,6 +12,14 @@ const QrBox = styled.div`
 `
 
 function QrScan() {
+  navigator.mediaDevices.enumerateDevices().then((devices) => {
+    const videoCameras = devices.filter((d) => d.kind === 'videoinput')
+
+    const realCameras = videoCameras.filter((cam) => !cam.label.includes('OV01C10'))
+
+    console.log(realCameras)
+  })
+
   return (
     <div>
       <div>QR 스캔하기</div>
