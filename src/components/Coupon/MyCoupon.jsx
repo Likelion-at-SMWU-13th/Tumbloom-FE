@@ -24,9 +24,32 @@ const MyCoupon = ({ coupon }) => {
           사용가능 쿠폰 <span style={{ fontWeight: '600' }}>{coupon}개</span>
         </S.AvailableCouponText>
       </S.AvailableCouponBox>
-      <div>
-        <CafeCoupon cafeName={'그린카페'} price={'1000'} count={'1'} active={true} />
-      </div>
+      <S.CouponList>
+        {AvailableCouponList.length ? (
+          AvailableCouponList.map((item, i) => (
+            <CafeCoupon
+              key={i}
+              cafeName={item.CafeName}
+              price={item.DiscountPrice}
+              active={true}
+              type={'use'}
+              expiryDate={item.expiryDate}
+            />
+          ))
+        ) : (
+          <div style={{ marginTop: '12.25rem' }}>
+            <NoData
+              message={
+                <>
+                  아직 사용 가능한
+                  <br />
+                  쿠폰이 없습니다
+                </>
+              }
+            />
+          </div>
+        )}
+      </S.CouponList>
     </S.MyCouponWrapper>
   )
 }

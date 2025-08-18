@@ -244,7 +244,7 @@ export const ChangeText = styled.p`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  margin: -0.3rem 0 0 0;
+  margin: 0 0 0 0;
 `
 
 //MyCoupon.jsx
@@ -253,8 +253,10 @@ export const MyCouponWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 1.88rem;
-  padding-top: 1.87rem;
+  gap: 1.4rem;
+  padding-top: 1.4rem;
+  overflow-y: auto;
+  height: 42rem;
 `
 
 export const AvailableCouponBox = styled.div`
@@ -262,7 +264,6 @@ export const AvailableCouponBox = styled.div`
   padding: 0.625rem 0.9375rem;
   justify-content: center;
   align-items: center;
-  gap: 0.625rem;
   border-radius: 18.75rem;
   background: #deeeeb;
 `
