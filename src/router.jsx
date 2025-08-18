@@ -16,28 +16,28 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
+        element: <HomePage />,
+      },
+      {
+        path: '/onb',
         element: <OnBoarding />,
       },
-      // {
-      //   path: '/onb',
-      //   element: <OnBoarding />,
-      // },
-      // {
-      //   path: '/login',
-      //   element: <Login />,
-      // },
-      // {
-      //   path: '/signup',
-      //   element: <SignUp />,
-      // },
-      // {
-      //   path: '/coupon',
-      //   element: <Coupon />,
-      // },
-      // {
-      //   path: '/qr',
-      //   element: <QrScan />,
-      // },
+      {
+        path: '/login',
+        element: <Login />,
+      },
+      {
+        path: '/signup',
+        element: <SignUp />,
+      },
+      {
+        path: '/coupon',
+        element: <Coupon />,
+      },
+      {
+        path: '/qr',
+        element: <QrScan />,
+      },
     ],
   },
 ])

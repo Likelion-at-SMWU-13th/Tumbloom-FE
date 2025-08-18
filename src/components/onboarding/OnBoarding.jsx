@@ -7,6 +7,7 @@ import onboarding4 from '@/assets/images/onboarding4.png'
 import onboarding5 from '@/assets/images/onboarding5.png'
 import dotGreen from '@/assets/icons/green-circle.svg'
 import dotGrey from '@/assets/icons/grey-circle.svg'
+import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
 const OnBoardingPages = [
@@ -179,6 +180,7 @@ const NextBtn = styled.button`
   border-radius: 1.875rem;
   background: #25af94;
   border: none;
+  cursor: pointer;
 `
 
 function OnBoarding() {
@@ -186,6 +188,7 @@ function OnBoarding() {
   const totalPages = 5
 
   let onb = OnBoardingPages[page - 1]
+  const navigate = useNavigate()
 
   return (
     <>
@@ -210,6 +213,8 @@ function OnBoarding() {
             onClick={() => {
               if (page < totalPages) {
                 setPage(page + 1)
+              } else {
+                navigate('/login')
               }
             }}
           >
