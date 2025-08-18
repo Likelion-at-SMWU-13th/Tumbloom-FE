@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   align-items: center;
   z-index: 1000;
   align-items: center;
+  position: fixed;
 `
 
 export const BgImg = styled.img`
