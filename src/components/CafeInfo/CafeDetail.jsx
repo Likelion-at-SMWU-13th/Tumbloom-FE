@@ -5,6 +5,7 @@ import scrabOn from '@/assets/icons/clicked-bookmark.svg'
 import scrabOff from '@/assets/icons/bookmark.svg'
 import cafeDetail from '@/assets/images/cafe-detail.svg'
 import CafeInfoBox from './CafeInfoBox'
+import NoData from '../common/NoData'
 
 const CafeHeaderWrapper = styled.div`
   display: flex;
@@ -91,6 +92,13 @@ const MenuTap = styled.span`
   padding: 1.25rem 0 0.69rem 0;
 `
 
+const InfoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24.35rem;
+`
+
 const StampBtn = styled.button`
   color: #fff;
   font-family: 'Pretendard Variable';
@@ -113,6 +121,7 @@ const StampBtn = styled.button`
 const BtnContainer = styled.div`
   display: flex;
   justify-content: center;
+  padding-bottom: 2.44rem;
 `
 
 function CafeDetail() {
@@ -132,7 +141,17 @@ function CafeDetail() {
         <InfoTap>기본정보</InfoTap>
         <MenuTap>메뉴</MenuTap>
       </FilterTap>
-      <CafeInfoBox />
+      <InfoWrapper>
+        <NoData
+          message={
+            <>
+              해당 카페의 등록된
+              <br />
+              메뉴정보가 없습니다
+            </>
+          }
+        />
+      </InfoWrapper>
       <BtnContainer>
         <StampBtn>스탬프 적립하기</StampBtn>
       </BtnContainer>
