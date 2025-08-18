@@ -3,6 +3,7 @@ import QrScanner from 'qr-scanner'
 import styled from 'styled-components'
 import workerUrl from 'qr-scanner/qr-scanner-worker.min.js?url'
 import closeIcon from '@/assets/icons/close.svg'
+import { useNavigate } from 'react-router-dom'
 
 const VideoArea = styled.div`
   display: flex;
@@ -49,12 +50,14 @@ const CloseBtn = styled.button`
   z-index: 3;
   top: 3%;
   right: 10%;
+  cursor: pointer;
 `
 
 QrScanner.WORKER_PATH = workerUrl
 
-function QrScan(props) {
+function QrScan() {
   const qrVideo = useRef(null)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const scanner = new QrScanner(qrVideo.current, (result) => {
@@ -65,9 +68,13 @@ function QrScan(props) {
     return () => scanner.stop()
   }, [])
 
+  const goToHome = () => {
+    navigate('/')
+  }
+
   return (
     <>
-      <VideoArea>
+      <VideoArea onClick={goToHome}>
         <CloseBtn>
           <img src={closeIcon} />
         </CloseBtn>
