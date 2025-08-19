@@ -67,11 +67,11 @@ const FilterTap = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  cursor: pointer;
 `
 
 const InfoTap = styled.span`
   width: 10.5625rem;
-  color: #000;
   text-align: center;
   font-family: 'Pretendard Variable';
   font-size: 1rem;
@@ -80,11 +80,11 @@ const InfoTap = styled.span`
   line-height: normal;
   border-bottom: 1.5px solid black;
   padding: 1.25rem 0 0.69rem 0;
+  color: #d9d9d9;
 `
 
 const MenuTap = styled.span`
   width: 10.5625rem;
-  color: #000;
   text-align: center;
   font-family: 'Pretendard Variable';
   font-size: 1rem;
@@ -93,6 +93,7 @@ const MenuTap = styled.span`
   line-height: normal;
   border-bottom: 1.5px solid black;
   padding: 1.25rem 0 0.69rem 0;
+  color: #d9d9d9;
 `
 
 const InfoWrapper = styled.div`
@@ -120,6 +121,7 @@ const StampBtn = styled.button`
   border-radius: 24.98356rem;
   background: #25af94;
   border: none;
+  cursor: pointer;
 `
 const BtnContainer = styled.div`
   display: flex;
@@ -129,6 +131,7 @@ const BtnContainer = styled.div`
 
 function CafeDetail() {
   const [active, setActive] = useState(false)
+  const [tap, setTap] = useState(false)
 
   return (
     <div>
@@ -146,11 +149,27 @@ function CafeDetail() {
         <CafeImg />
       </CafeHeaderWrapper>
       <FilterTap>
-        <InfoTap>기본정보</InfoTap>
-        <MenuTap>메뉴</MenuTap>
+        <InfoTap
+          onClick={() => setTap(true)}
+          style={{
+            color: tap ? '#000' : '#d9d9d9',
+            borderBottom: tap ? '1.5px solid #000' : '1.5px solid #d9d9d9',
+          }}
+        >
+          기본정보
+        </InfoTap>
+        <MenuTap
+          onClick={() => setTap(false)}
+          style={{
+            color: !tap ? '#000' : '#d9d9d9',
+            borderBottom: !tap ? '1.5px solid #000' : '1.5px solid #d9d9d9',
+          }}
+        >
+          메뉴
+        </MenuTap>
       </FilterTap>
       <InfoWrapper>
-        <MenuBox />
+        {tap ? <CafeInfoBox /> : <MenuBox />}
         {/* <NoData
           message={
             <>

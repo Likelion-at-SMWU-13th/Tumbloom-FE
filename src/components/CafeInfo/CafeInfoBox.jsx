@@ -51,7 +51,7 @@ const InfoDetail = styled.span`
   padding-top: 0.31rem;
 `
 
-function CafeInfoBox(props) {
+function CafeInfoBox() {
   return (
     <>
       <InfoBox>
