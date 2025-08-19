@@ -2,13 +2,13 @@ import React from 'react'
 import * as S from './styled'
 import close from '@/assets/icons/close-gray.svg'
 
-const LevelModal = () => {
+const LevelModal = ({ onChangeInfo }) => {
   return (
     <S.LevelModalBackground>
       <S.LevelModalWrapper>
         <S.HeaderRow>
           <S.LevelTitle>텀블러인 등급</S.LevelTitle>
-          <S.Close src={close} />
+          <S.Close src={close} onClick={() => onChangeInfo(false)} />
         </S.HeaderRow>
         <S.InfoBox>
           <S.LevelBox>

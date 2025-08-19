@@ -3,14 +3,14 @@ import * as S from './styled'
 import question from '@/assets/icons/question-green.svg'
 import lv1 from '@/assets/images/lv1-profile.svg'
 
-const ProfileContent = () => {
+const ProfileContent = ({ onChangeInfo }) => {
   return (
     <S.ProfileContentBox>
       <S.ProfileImg src={lv1} />
       <S.ProfileName>닉네임91</S.ProfileName>
       <S.ProfileLevelBox>
         <S.ProfileLevel>Lv.1 텀블러 뉴비</S.ProfileLevel>
-        <S.QuestionIcon src={question} />
+        <S.QuestionIcon src={question} onClick={() => onChangeInfo(true)} />
       </S.ProfileLevelBox>
       <div>
         <S.StateBarContainer>

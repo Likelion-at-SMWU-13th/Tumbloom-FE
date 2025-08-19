@@ -299,7 +299,10 @@ export const LevelModalWrapper = styled.div`
 `
 
 export const HeaderRow = styled.div`
-  display: flex;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  width: 100%;
 `
 
 export const InfoBox = styled.div`
@@ -315,14 +318,18 @@ export const LevelTitle = styled.p`
   font-weight: 600;
   line-height: normal;
   margin: 0;
-  display: inline;
+  text-align: center;
+  grid-column: 2 / 3;
 `
 
 export const Close = styled.img`
-  position: absolute;
-  right: 3rem;
-  top: 22.7rem;
+  grid-column: 3 / 4;
+  width: 0.82188rem;
+  height: 0.82188rem;
+  flex-shrink: 0;
   cursor: pointer;
+  justify-self: end;
+  padding-right: 1.3rem;
 `
 
 export const LevelBox = styled.div`
