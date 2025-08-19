@@ -11,6 +11,7 @@ import QrScan from './components/getStamp/QrScan'
 import Coupon from './pages/Coupon'
 import Stamp from './components/getStamp/StampAccess'
 import CafeDetail from './components/CafeInfo/CafeDetail'
+import CouponDetailPage from './pages/CouponDetailPage'
 
 const router = createBrowserRouter([
   {
@@ -21,38 +22,43 @@ const router = createBrowserRouter([
         path: '/',
         element: <CafeDetail />,
       },
-      // {
-      //   path: '/home',
-      //   element: <HomePage />,
-      // },
-      // {
-      //   path: '/onb',
-      //   element: <OnBoarding />,
-      // },
-      // {
-      //   path: '/login',
-      //   element: <Login />,
-      // },
-      // {
-      //   path: '/signup',
-      //   element: <SignUp />,
-      // },
-      // {
-      //   path: '/coupon',
-      //   element: <Coupon />,
-      // },
-      // {
-      //   path: '/stamp',
-      //   element: <Stamp />,
-      // },
-      // {
-      //   path: '/qr',
-      //   element: <QrScan />,
-      // },
-      // {
-      //   path: '/detail',
-      //   element: <CafeDetail />,
-      // },
+
+      {
+        path: '/home',
+        element: <HomePage />,
+      },
+      {
+        path: '/onb',
+        element: <OnBoarding />,
+      },
+      {
+        path: '/login',
+        element: <Login />,
+      },
+      {
+        path: '/signup',
+        element: <SignUp />,
+      },
+      {
+        path: '/coupon',
+        element: <Coupon />,
+      },
+      {
+        path: '/stamp',
+        element: <Stamp />,
+      },
+      {
+        path: '/qr',
+        element: <QrScan />,
+      },
+      {
+        path: '/detail',
+        element: <CafeDetail />,
+      },
+      {
+        path: '/couponDetail',
+        element: <CouponDetailPage />,
+      },
     ],
   },
 ])
