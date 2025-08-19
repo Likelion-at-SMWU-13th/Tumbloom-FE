@@ -7,6 +7,34 @@ export const ProfileContentBox = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 4rem;
+  position: relative;
+`
+
+export const ProfileShareBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 1.8rem;
+  right: 2rem;
+  gap: 0.31rem;
+  cursor: pointer;
+`
+
+export const Share = styled.img`
+  width: 1.875rem;
+  height: 1.875rem;
+  flex-shrink: 0;
+`
+
+export const ShareText = styled.span`
+  color: #979797;
+  font-family: Inter;
+  font-size: 0.625rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 `
 
 export const ProfileImg = styled.img`
@@ -49,6 +77,7 @@ export const ProfileLevel = styled.span`
 
 export const QuestionIcon = styled.img`
   padding-left: 0.25rem;
+  cursor: pointer;
 `
 
 export const LevelTextContainer = styled.div`
@@ -106,8 +135,9 @@ export const CurrentStateBar = styled.div`
 export const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.69rem;
+  gap: 1.5rem;
   align-items: center;
+  padding-top: 1rem;
 `
 
 export const CurrentCountBox = styled.div`
@@ -240,6 +270,7 @@ export const Box = styled.div`
   align-items: center;
   padding-top: 1.38rem;
   box-sizing: border-box;
+  cursor: pointer;
 `
 
 export const BoxTitle = styled.p`
@@ -263,4 +294,109 @@ export const BoxValue = styled.p`
   font-weight: 600;
   line-height: normal;
   margin: 0;
+`
+
+//LevelModal.jsx
+
+export const LevelModalBackground = styled.div`
+  max-width: 100%;
+  display: flex;
+  position: absolute;
+  z-index: 4;
+  width: 24.5625rem;
+  background-color: rgba(0, 20, 16, 0.75);
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+`
+
+export const LevelModalWrapper = styled.div`
+  width: 22.0625rem;
+  height: 15.375rem;
+  flex-shrink: 0;
+  border-radius: 0.9375rem;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  box-sizing: border-box;
+  padding-top: 1rem;
+  border: solid 1px #000;
+`
+
+export const HeaderRow = styled.div`
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  width: 100%;
+`
+
+export const InfoBox = styled.div`
+  display: flex;
+  position: relative;
+`
+
+export const LevelTitle = styled.p`
+  color: #ababab;
+  font-family: 'Pretendard Variable';
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  text-align: center;
+  grid-column: 2 / 3;
+`
+
+export const Close = styled.img`
+  grid-column: 3 / 4;
+  width: 0.82188rem;
+  height: 0.82188rem;
+  flex-shrink: 0;
+  cursor: pointer;
+  justify-self: end;
+  padding-right: 1.3rem;
+`
+
+export const LevelBox = styled.div`
+  height: 9.75rem;
+  width: 3rem;
+  padding-right: 1.5rem;
+`
+
+export const Level = styled.p`
+  font-family: 'Pretendard Variable';
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2rem;
+  margin: 0;
+`
+
+export const LevelNameBox = styled.div`
+  padding-right: 2.5rem;
+`
+
+export const LevelName = styled.p`
+  color: #000;
+  font-family: 'Pretendard Variable';
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2rem;
+  margin: 0;
+`
+
+export const LevelCount = styled.p`
+  color: #9bc0b9;
+  text-align: center;
+  font-family: 'Pretendard Variable';
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 2rem;
+  margin: 0;
+  text-align: end;
 `
