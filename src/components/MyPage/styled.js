@@ -106,8 +106,9 @@ export const CurrentStateBar = styled.div`
 export const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.69rem;
+  gap: 2rem;
   align-items: center;
+  padding-top: 1rem;
 `
 
 export const CurrentCountBox = styled.div`
@@ -240,6 +241,7 @@ export const Box = styled.div`
   align-items: center;
   padding-top: 1.38rem;
   box-sizing: border-box;
+  cursor: pointer;
 `
 
 export const BoxTitle = styled.p`
