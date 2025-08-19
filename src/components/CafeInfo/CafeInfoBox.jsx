@@ -58,6 +58,7 @@ const InfoDetail = styled.span`
   font-weight: 400;
   line-height: normal;
   padding-top: 0.31rem;
+  white-space: pre-line;
 `
 
 const days = [
@@ -80,7 +81,7 @@ const CafeInfoList = {
     sat: '09:00 - 15:00',
     sun: '09:00 - 15:00',
   },
-  location: '서울시 용산구 청파로47 78 제1호 내제1층호 4호선 숙대입구역 10번 출구에서 572m',
+  location: '서울시 용산구 청파로47 78 제1호 내제1층호\n4호선 숙대입구역 10번 출구에서 572m',
   number: '02-222-222',
 }
 

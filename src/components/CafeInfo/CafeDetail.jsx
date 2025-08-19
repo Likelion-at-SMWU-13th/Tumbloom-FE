@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { use } from 'react'
 import Header from '@/components/common/Header'
 import styled from 'styled-components'
 import scrabOn from '@/assets/icons/clicked-bookmark.svg'
@@ -9,6 +9,7 @@ import NoData from '../common/NoData'
 import MenuBox from './MenuBox'
 import { useState } from 'react'
 import { MenuList } from '@/components/CafeInfo/menu.data'
+import { useNavigate } from 'react-router-dom'
 
 const CafeHeaderWrapper = styled.div`
   display: flex;
@@ -133,16 +134,11 @@ const BtnContainer = styled.div`
 function CafeDetail() {
   const [active, setActive] = useState(false)
   const [tap, setTap] = useState(false)
-  const [isMenu, setIsMenu] = useState(false)
+  const navigate = useNavigate()
 
-  //   const clickMenuTap = () => {
-  //     setTap(false)
-  //     if (MenuList.length) {
-  //       setIsMenu(false)
-  //     } else {
-  //       setIsMenu(true)
-  //     }
-  //   }
+  const goToStamp = () => {
+    navigate(`/stamp`)
+  }
 
   return (
     <div>
@@ -180,20 +176,6 @@ function CafeDetail() {
         </MenuTap>
       </FilterTap>
       <InfoWrapper>
-        {/* {tap ? (<CafeInfoBox />) : 
-        ( MenuList && MenuList.length > 0 ? 
-+    ( <MenuBox />)
-+    : (
-          <NoData
-            message={
-              <>
-                해당 카페의 등록된
-                <br />
-                메뉴정보가 없습니다
-              </>
-            }
-          />
-        ))} */}
         {tap ? (
           <CafeInfoBox />
         ) : MenuList && MenuList.length > 0 ? (
@@ -211,7 +193,7 @@ function CafeDetail() {
         )}
       </InfoWrapper>
       <BtnContainer>
-        <StampBtn>스탬프 적립하기</StampBtn>
+        <StampBtn onClick={goToStamp}>스탬프 적립하기</StampBtn>
       </BtnContainer>
     </div>
   )
