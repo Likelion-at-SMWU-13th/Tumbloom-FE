@@ -7,7 +7,7 @@ import Footer from '@/components/common/Footer'
 
 const HomePage = () => {
   const name = '텀블러91'
-  const stamp_c = 8
+  const stamp_c = 4
   const Area = '청파동'
   return (
     <>
