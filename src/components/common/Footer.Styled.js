@@ -4,6 +4,7 @@ export const FooterBox = styled.div`
   display: flex;
   bottom: 0;
   position: fixed;
+  max-width: 393px;
   margin: 0 auto;
   z-index: 2;
   justify-content: center;
