@@ -10,6 +10,7 @@ import GetStamp from './components/getStamp/GetStamp'
 import QrScan from './components/getStamp/QrScan'
 import Coupon from './pages/Coupon'
 import Stamp from './components/getStamp/StampAccess'
+import CafeDetail from './components/CafeInfo/CafeDetail'
 import CouponDetailPage from './pages/CouponDetailPage'
 import MyPage from './pages/MyPage'
 
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
         path: '/',
         element: <Splash />,
       },
+
       {
         path: '/home',
         element: <HomePage />,
@@ -49,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: '/qr',
         element: <QrScan />,
+      },
+      {
+        path: '/detail',
+        element: <CafeDetail />,
       },
       {
         path: '/couponDetail',

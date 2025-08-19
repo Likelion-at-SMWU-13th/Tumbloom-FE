@@ -1,0 +1,67 @@
+import React from 'react'
+import styled from 'styled-components'
+import line from '@/assets/icons/menu-line.svg'
+import { MenuList } from '@/components/CafeInfo/menu.data'
+
+const MenuWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.5rem;
+  height: 100%;
+  padding-top: 1.25rem;
+  box-sizing: border-box;
+`
+
+const MenuRow = styled.div`
+  display: grid;
+  grid-template-columns: 8.5rem 3.9rem 3.9rem;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-left: 1.56rem;
+  box-sizing: border-box;
+  padding-right: 4.94rem;
+`
+
+const MenuName = styled.span`
+  color: #000;
+  font-family: 'Pretendard Variable';
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+`
+
+const Line = styled.img`
+  width: 4.375rem;
+  height: 0.0625rem;
+`
+
+const MenuPrice = styled.span`
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 0.4rem;
+  color: #000;
+  font-family: 'Pretendard Variable';
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+`
+
+function MenuBox() {
+  return (
+    <MenuWrapper>
+      {MenuList.map((item, i) => (
+        <MenuRow key={i}>
+          <MenuName>{item.name}</MenuName>
+          <Line src={line} />
+          <MenuPrice>{item.price}원</MenuPrice>
+        </MenuRow>
+      ))}
+    </MenuWrapper>
+  )
+}
+
+export default MenuBox
