@@ -49,6 +49,7 @@ export const ProfileLevel = styled.span`
 
 export const QuestionIcon = styled.img`
   padding-left: 0.25rem;
+  cursor: pointer;
 `
 
 export const LevelTextContainer = styled.div`
@@ -106,7 +107,7 @@ export const CurrentStateBar = styled.div`
 export const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
   align-items: center;
   padding-top: 1rem;
 `
@@ -265,4 +266,74 @@ export const BoxValue = styled.p`
   font-weight: 600;
   line-height: normal;
   margin: 0;
+`
+
+//LevelModal.jsx
+
+export const LevelModalWrapper = styled.div`
+  width: 22.0625rem;
+  height: 15.375rem;
+  flex-shrink: 0;
+  border-radius: 0.9375rem;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+export const InfoBox = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
+export const LevelTitle = styled.p`
+  color: #ababab;
+  font-family: 'Pretendard Variable';
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  padding-bottom: 1.56rem;
+`
+
+export const LevelBox = styled.div`
+  height: 9.75rem;
+  width: 3rem;
+  padding-right: 1.5rem;
+`
+
+export const Level = styled.p`
+  font-family: 'Pretendard Variable';
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2rem;
+  margin: 0;
+`
+
+export const LevelNameBox = styled.div`
+  padding-right: 2.5rem;
+`
+
+export const LevelName = styled.p`
+  color: #000;
+  font-family: 'Pretendard Variable';
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2rem;
+  margin: 0;
+`
+
+export const LevelCount = styled.p`
+  color: #9bc0b9;
+  text-align: center;
+  font-family: 'Pretendard Variable';
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 2rem;
+  margin: 0;
+  text-align: end;
 `
