@@ -6,6 +6,8 @@ import scrabOff from '@/assets/icons/bookmark.svg'
 import cafeDetail from '@/assets/images/cafe-detail.svg'
 import CafeInfoBox from './CafeInfoBox'
 import NoData from '../common/NoData'
+import MenuBox from './MenuBox'
+import { useState } from 'react'
 
 const CafeHeaderWrapper = styled.div`
   display: flex;
@@ -50,6 +52,7 @@ const ScrabState = styled.img`
   height: 1.5625rem;
   flex-shrink: 0;
   aspect-ratio: 1/1;
+  cursor: pointer;
 `
 
 const CafeImg = styled.img`
@@ -125,6 +128,8 @@ const BtnContainer = styled.div`
 `
 
 function CafeDetail() {
+  const [active, setActive] = useState(false)
+
   return (
     <div>
       <Header title='카페 상세정보' />
@@ -132,7 +137,10 @@ function CafeDetail() {
         <CafeHeader>
           <CafeName>너드커피</CafeName>
           <Scrab>
-            <ScrabState src={scrabOff} />
+            <ScrabState
+              onClick={() => setActive((prev) => !prev)}
+              src={active ? scrabOn : scrabOff}
+            />
           </Scrab>
         </CafeHeader>
         <CafeImg />
@@ -142,7 +150,8 @@ function CafeDetail() {
         <MenuTap>메뉴</MenuTap>
       </FilterTap>
       <InfoWrapper>
-        <NoData
+        <MenuBox />
+        {/* <NoData
           message={
             <>
               해당 카페의 등록된
@@ -150,7 +159,7 @@ function CafeDetail() {
               메뉴정보가 없습니다
             </>
           }
-        />
+        /> */}
       </InfoWrapper>
       <BtnContainer>
         <StampBtn>스탬프 적립하기</StampBtn>

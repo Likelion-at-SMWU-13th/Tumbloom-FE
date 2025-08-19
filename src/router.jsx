@@ -19,40 +19,40 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Splash />,
-      },
-      {
-        path: '/home',
-        element: <HomePage />,
-      },
-      {
-        path: '/onb',
-        element: <OnBoarding />,
-      },
-      {
-        path: '/login',
-        element: <Login />,
-      },
-      {
-        path: '/signup',
-        element: <SignUp />,
-      },
-      {
-        path: '/coupon',
-        element: <Coupon />,
-      },
-      {
-        path: '/stamp',
-        element: <Stamp />,
-      },
-      {
-        path: '/qr',
-        element: <QrScan />,
-      },
-      {
-        path: '/detail',
         element: <CafeDetail />,
       },
+      // {
+      //   path: '/home',
+      //   element: <HomePage />,
+      // },
+      // {
+      //   path: '/onb',
+      //   element: <OnBoarding />,
+      // },
+      // {
+      //   path: '/login',
+      //   element: <Login />,
+      // },
+      // {
+      //   path: '/signup',
+      //   element: <SignUp />,
+      // },
+      // {
+      //   path: '/coupon',
+      //   element: <Coupon />,
+      // },
+      // {
+      //   path: '/stamp',
+      //   element: <Stamp />,
+      // },
+      // {
+      //   path: '/qr',
+      //   element: <QrScan />,
+      // },
+      // {
+      //   path: '/detail',
+      //   element: <CafeDetail />,
+      // },
     ],
   },
 ])
