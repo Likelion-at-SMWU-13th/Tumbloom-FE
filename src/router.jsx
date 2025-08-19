@@ -11,6 +11,7 @@ import QrScan from './components/getStamp/QrScan'
 import Coupon from './pages/Coupon'
 import Stamp from './components/getStamp/StampAccess'
 import CouponDetailPage from './pages/CouponDetailPage'
+import MyPage from './pages/MyPage'
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: '/couponDetail',
         element: <CouponDetailPage />,
+      },
+      {
+        path: '/mypage',
+        element: <MyPage />,
       },
     ],
   },

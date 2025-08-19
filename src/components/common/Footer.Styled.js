@@ -2,9 +2,10 @@ import styled from 'styled-components'
 
 export const FooterBox = styled.div`
   display: flex;
-  left: 0;
   bottom: 0;
-  position: absolute;
+  position: fixed;
+  max-width: 393px;
+  margin: 0 auto;
   z-index: 2;
   justify-content: center;
   align-items: center;
