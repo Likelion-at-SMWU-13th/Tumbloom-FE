@@ -60,7 +60,7 @@ const CafeImg = styled.img`
   height: 11.125rem;
   flex-shrink: 0;
   border-radius: 0.3125rem;
-  background: url{cafeDetail} lightgray 50% / cover no-repeat;
+  background: url(${cafeDetail}) lightgray 50% / cover no-repeat;
 `
 
 const FilterTap = styled.div`
@@ -108,7 +108,7 @@ const StampBtn = styled.button`
   font-family: 'Pretendard Variable';
   font-size: 1.375rem;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   line-height: normal;
   display: flex;
   width: 22.0625rem;

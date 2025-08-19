@@ -7,11 +7,11 @@ import styled from 'styled-components'
 const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
+  width: 22.1875rem;
   padding-left: 1.25rem;
 `
 
 const InfoName = styled.span`
-  border: 1px solid black;
   color: #ababab;
   font-family: 'Pretendard Variable';
   font-size: 0.9375rem;
@@ -41,6 +41,15 @@ const Num = styled.div`
   padding-bottom: 1.19rem;
 `
 
+const TimeRow = styled.div`
+  display: flex;
+  gap: 0.2rem;
+`
+
+const Day = styled.div``
+
+const Hour = styled.div``
+
 const InfoDetail = styled.span`
   color: #000;
   font-family: 'Pretendard Variable';
@@ -51,6 +60,30 @@ const InfoDetail = styled.span`
   padding-top: 0.31rem;
 `
 
+const days = [
+  { key: 'mon', label: '월' },
+  { key: 'tue', label: '화' },
+  { key: 'wed', label: '수' },
+  { key: 'thu', label: '목' },
+  { key: 'fri', label: '금' },
+  { key: 'sat', label: '토' },
+  { key: 'sun', label: '일' },
+]
+
+const CafeInfoList = {
+  time: {
+    mon: '09:00 - 15:00',
+    tue: '09:00 - 15:00',
+    wed: '09:00 - 15:00',
+    thu: '09:00 - 15:00',
+    fri: '09:00 - 15:00',
+    sat: '09:00 - 15:00',
+    sun: '09:00 - 15:00',
+  },
+  location: '서울시 용산구 청파로47 78 제1호 내제1층호4호선 숙대입구역 10번 출구에서 572m',
+  number: '02-222-222',
+}
+
 function CafeInfoBox() {
   return (
     <>
@@ -60,13 +93,7 @@ function CafeInfoBox() {
             <img src={locIcon} />
             위치
           </InfoName>
-          <InfoDetail>
-            월 09:00 - 15:00
-            <br /> 화 09:00 - 15:00 <br />수 09:00 - 15:00 <br />목 09:00 - 15:00 <br />금 09:00 -
-            15:00
-            <br /> 토 09:00 - 15:00
-            <br />일 09:00 - 15:00
-          </InfoDetail>
+          <InfoDetail>{CafeInfoList.location}</InfoDetail>
         </Location>
         <Time>
           <InfoName>
@@ -74,9 +101,12 @@ function CafeInfoBox() {
             영업시간
           </InfoName>
           <InfoDetail>
-            서울시 용산구 청파로47 78 제1호 내제1층호
-            <br />
-            4호선 숙대입구역 10번 출구에서 572m
+            {days.map((d) => (
+              <TimeRow key={d.key}>
+                <Day>{d.label}</Day>
+                <Hour>{CafeInfoList.time[d.key]}</Hour>
+              </TimeRow>
+            ))}
           </InfoDetail>
         </Time>
         <Num>
@@ -84,7 +114,7 @@ function CafeInfoBox() {
             <img src={numIcon} />
             연락처
           </InfoName>
-          <InfoDetail>02-222-222</InfoDetail>
+          <InfoDetail>{CafeInfoList.number}</InfoDetail>
         </Num>
       </InfoBox>
     </>

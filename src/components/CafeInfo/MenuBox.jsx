@@ -6,7 +6,7 @@ const MenuWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 0.3rem;
+  gap: 0.5rem;
   height: 100%;
   padding-top: 1.25rem;
   box-sizing: border-box;
@@ -51,14 +51,14 @@ const MenuPrice = styled.span`
 
 function MenuBox() {
   const MenuList = [
-    { name: '아메리카노', price: '4500원' },
-    { name: '카페라떼', price: '4500원' },
-    { name: '바닐라라떼', price: '4500원' },
-    { name: '녹차라떼', price: '4500원' },
-    { name: '연유라떼', price: '4500원' },
-    { name: '카페모카', price: '4500원' },
-    { name: '콜드브루', price: '4500원' },
-    { name: '바닐라크림콜드브루', price: '4500원' },
+    { name: '아메리카노', price: 4500 },
+    { name: '카페라떼', price: 4500 },
+    { name: '바닐라라떼', price: 4500 },
+    { name: '녹차라떼', price: 4500 },
+    { name: '연유라떼', price: 4500 },
+    { name: '카페모카', price: 4500 },
+    { name: '콜드브루', price: 4500 },
+    { name: '바닐라크림콜드브루', price: 4500 },
   ]
 
   return (
@@ -67,7 +67,7 @@ function MenuBox() {
         <MenuRow key={i}>
           <MenuName>{item.name}</MenuName>
           <Line src={line} />
-          <MenuPrice>{item.price}</MenuPrice>
+          <MenuPrice>{item.price}원</MenuPrice>
         </MenuRow>
       ))}
     </MenuWrapper>
