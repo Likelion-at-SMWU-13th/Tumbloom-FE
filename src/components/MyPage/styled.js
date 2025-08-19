@@ -7,6 +7,34 @@ export const ProfileContentBox = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 4rem;
+  position: relative;
+`
+
+export const ProfileShareBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 1.8rem;
+  right: 2rem;
+  gap: 0.31rem;
+  cursor: pointer;
+`
+
+export const Share = styled.img`
+  width: 1.875rem;
+  height: 1.875rem;
+  flex-shrink: 0;
+`
+
+export const ShareText = styled.span`
+  color: #979797;
+  font-family: Inter;
+  font-size: 0.625rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 `
 
 export const ProfileImg = styled.img`

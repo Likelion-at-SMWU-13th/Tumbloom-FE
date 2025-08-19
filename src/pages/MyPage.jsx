@@ -6,9 +6,12 @@ import LevelModal from '@/components/MyPage/LevelModal'
 
 const MyPage = () => {
   const [info, setInfo] = useState(false)
+
+  const stamp = 5
+
   return (
     <div style={{ backgroundColor: '#F6FCFB' }}>
-      <ProfileContent onChangeInfo={setInfo} />
+      <ProfileContent onChangeInfo={setInfo} stamp={stamp} />
       <ProfileInfo />
       <Footer />
       {info && <LevelModal onChangeInfo={setInfo} />}
