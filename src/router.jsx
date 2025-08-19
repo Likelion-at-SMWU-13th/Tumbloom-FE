@@ -13,6 +13,7 @@ import Stamp from './components/getStamp/StampAccess'
 import CafeDetail from './components/CafeInfo/CafeDetail'
 import CouponDetailPage from './pages/CouponDetailPage'
 import MyPage from './pages/MyPage'
+import Preference from './pages/Preference'
 
 const router = createBrowserRouter([
   {
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
       {
         path: '/mypage',
         element: <MyPage />,
+      },
+      {
+        path: '/preference',
+        element: <Preference />,
       },
     ],
   },
