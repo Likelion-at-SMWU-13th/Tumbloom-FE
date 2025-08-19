@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import visibleIcon from '@/assets/icons/pwd-visible.svg'
 import invisibleIcon from '@/assets/icons/pwd-invisible.svg'
 import PwdInputField from '@/components/common/PwdInputField'
+import axios from 'axios'
 
 const LoginContainer = styled.div`
   display: flex;
@@ -80,6 +81,33 @@ function Login() {
     }
   }
 
+  const onLoginHandler = async () => {
+    try {
+      const response = await axios.post(
+        `https://tumbloom.store/api/auth/login`,
+        { email, password },
+        { headers: { 'Content-Type': 'application/json' } },
+      )
+
+      console.log('login response.data =', response.data)
+
+      const accessToken = response.data?.accessToken ?? response.data?.data?.accessToken
+      const refreshToken = response.data?.refreshToken ?? response.data?.data?.refreshToken
+      if (!accessToken) {
+        throw new Error('로그인 토큰이 없습니다.')
+      }
+
+      localStorage.setItem('accessToken', accessToken)
+      localStorage.setItem('refreshToken', refreshToken)
+
+      setEmail('')
+      setPassword('')
+      handleLogin()
+    } catch (error) {
+      console.log(error.response.data.message)
+    }
+  }
+
   const goToRegister = () => {
     navigate('/signup')
   }
@@ -96,7 +124,7 @@ function Login() {
           value={password}
           type='password'
         />
-        <RegisterBtn btnName='로그인' onClick={handleLogin} disabled={!btnColor} />
+        <RegisterBtn btnName='로그인' onClick={onLoginHandler} disabled={!btnColor} />
         <Desc>
           텀블러인 계정이 없나요?{' '}
           <GoToRegisterBtn onClick={goToRegister}>회원가입하기</GoToRegisterBtn>

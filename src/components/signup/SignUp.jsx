@@ -4,6 +4,7 @@ import Input from '@/components/common/Input'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as S from './SignUp.Styled.js'
+import axios from 'axios'
 
 function SignUp() {
   const [nickname, setNickname] = useState('')
@@ -11,6 +12,26 @@ function SignUp() {
   const [password, setPassword] = useState('')
   const [btnColor, setBtnColor] = useState(false)
   const navigate = useNavigate()
+
+  const handleSignUp = async () => {
+    try {
+      const response = await axios.post(
+        `https://tumbloom.store/api/auth/signup`,
+        {
+          email,
+          nickname,
+          password,
+        },
+        { headers: { 'Content-Type': 'application/json' } },
+      )
+
+      console.log('회원가입 성공:', response.data)
+      localStorage.setItem('accessToken', response.data.accessToken)
+      goToLogin()
+    } catch (error) {
+      console.error('회원가입 실패:', error)
+    }
+  }
 
   const saveNickname = (e) => {
     setNickname(e.target.value)
@@ -50,7 +71,7 @@ function SignUp() {
         value={password}
         onChange={savePassword}
       />
-      <RegisterBtn btnName='회원가입' disabled={!btnColor} onClick={goToLogin} />
+      <RegisterBtn btnName='회원가입' disabled={!btnColor} onClick={handleSignUp} />
     </S.SignUpContainer>
   )
 }
