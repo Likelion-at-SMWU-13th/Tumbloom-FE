@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import line from '@/assets/icons/menu-line.svg'
+import { MenuList } from '@/components/CafeInfo/menu.data'
 
 const MenuWrapper = styled.div`
   display: flex;
@@ -50,17 +51,6 @@ const MenuPrice = styled.span`
 `
 
 function MenuBox() {
-  const MenuList = [
-    { name: '아메리카노', price: 4500 },
-    { name: '카페라떼', price: 4500 },
-    { name: '바닐라라떼', price: 4500 },
-    { name: '녹차라떼', price: 4500 },
-    { name: '연유라떼', price: 4500 },
-    { name: '카페모카', price: 4500 },
-    { name: '콜드브루', price: 4500 },
-    { name: '바닐라크림콜드브루', price: 4500 },
-  ]
-
   return (
     <MenuWrapper>
       {MenuList.map((item, i) => (

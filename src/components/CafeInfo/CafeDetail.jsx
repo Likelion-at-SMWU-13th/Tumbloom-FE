@@ -8,6 +8,7 @@ import CafeInfoBox from './CafeInfoBox'
 import NoData from '../common/NoData'
 import MenuBox from './MenuBox'
 import { useState } from 'react'
+import { MenuList } from '@/components/CafeInfo/menu.data'
 
 const CafeHeaderWrapper = styled.div`
   display: flex;
@@ -132,6 +133,16 @@ const BtnContainer = styled.div`
 function CafeDetail() {
   const [active, setActive] = useState(false)
   const [tap, setTap] = useState(false)
+  const [isMenu, setIsMenu] = useState(false)
+
+  //   const clickMenuTap = () => {
+  //     setTap(false)
+  //     if (MenuList.length) {
+  //       setIsMenu(false)
+  //     } else {
+  //       setIsMenu(true)
+  //     }
+  //   }
 
   return (
     <div>
@@ -159,7 +170,7 @@ function CafeDetail() {
           기본정보
         </InfoTap>
         <MenuTap
-          onClick={() => setTap(false)}
+          onClick={() => setTap(!tap)}
           style={{
             color: !tap ? '#000' : '#d9d9d9',
             borderBottom: !tap ? '1.5px solid #000' : '1.5px solid #d9d9d9',
@@ -169,16 +180,35 @@ function CafeDetail() {
         </MenuTap>
       </FilterTap>
       <InfoWrapper>
-        {tap ? <CafeInfoBox /> : <MenuBox />}
-        {/* <NoData
-          message={
-            <>
-              해당 카페의 등록된
-              <br />
-              메뉴정보가 없습니다
-            </>
-          }
-        /> */}
+        {/* {tap ? (<CafeInfoBox />) : 
+        ( MenuList && MenuList.length > 0 ? 
++    ( <MenuBox />)
++    : (
+          <NoData
+            message={
+              <>
+                해당 카페의 등록된
+                <br />
+                메뉴정보가 없습니다
+              </>
+            }
+          />
+        ))} */}
+        {tap ? (
+          <CafeInfoBox />
+        ) : MenuList && MenuList.length > 0 ? (
+          <MenuBox />
+        ) : (
+          <NoData
+            message={
+              <>
+                해당 카페의 등록된
+                <br />
+                메뉴정보가 없습니다
+              </>
+            }
+          />
+        )}
       </InfoWrapper>
       <BtnContainer>
         <StampBtn>스탬프 적립하기</StampBtn>
