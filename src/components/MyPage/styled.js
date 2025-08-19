@@ -270,6 +270,19 @@ export const BoxValue = styled.p`
 
 //LevelModal.jsx
 
+export const LevelModalBackground = styled.div`
+  max-width: 100%;
+  display: flex;
+  position: absolute;
+  z-index: 4;
+  width: 24.5625rem;
+  background-color: rgba(0, 20, 16, 0.75);
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+`
+
 export const LevelModalWrapper = styled.div`
   width: 22.0625rem;
   height: 15.375rem;
@@ -279,11 +292,19 @@ export const LevelModalWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 0.8rem;
+  box-sizing: border-box;
+  padding-top: 1rem;
+  border: solid 1px #000;
+`
+
+export const HeaderRow = styled.div`
+  display: flex;
 `
 
 export const InfoBox = styled.div`
   display: flex;
-  flex-direction: row;
+  position: relative;
 `
 
 export const LevelTitle = styled.p`
@@ -294,7 +315,14 @@ export const LevelTitle = styled.p`
   font-weight: 600;
   line-height: normal;
   margin: 0;
-  padding-bottom: 1.56rem;
+  display: inline;
+`
+
+export const Close = styled.img`
+  position: absolute;
+  right: 3rem;
+  top: 22.7rem;
+  cursor: pointer;
 `
 
 export const LevelBox = styled.div`

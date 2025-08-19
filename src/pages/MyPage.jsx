@@ -7,9 +7,8 @@ import LevelModal from '@/components/MyPage/LevelModal'
 const MyPage = () => {
   return (
     <div style={{ backgroundColor: '#F6FCFB' }}>
-      {/* <ProfileContent />
-      <ProfileInfo /> */}
-      <LevelModal />
+      <ProfileContent />
+      <ProfileInfo />
       <Footer />
     </div>
   )
