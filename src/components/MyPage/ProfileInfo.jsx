@@ -5,18 +5,18 @@ import arrow from '@/assets/icons/right-arrow.svg'
 import check from '@/assets/icons/check-green.svg'
 import MyPageBox from './MyPageBox'
 
-const ProfileInfo = () => {
+const ProfileInfo = ({ stamp, usedCoupon, availableCoupon, favoriteCafe }) => {
   return (
     <S.ContentContainer>
       <S.CurrentCountBox>
         <S.TumblerCount>
           <S.Title>누적 텀블러 사용 횟수</S.Title>
-          <S.Value>01회</S.Value>
+          <S.Value>{stamp}회</S.Value>
         </S.TumblerCount>
         <S.Line src={dotLine} />
         <S.CouponCount>
           <S.Title>누적 쿠폰 발급 횟수</S.Title>
-          <S.Value>00회</S.Value>
+          <S.Value>{usedCoupon}회</S.Value>
         </S.CouponCount>
       </S.CurrentCountBox>
       <S.CafePreferenceBox>
@@ -40,8 +40,8 @@ const ProfileInfo = () => {
         </S.PreferenceValueBox>
       </S.CafePreferenceBox>
       <S.CouponCafeBox>
-        <MyPageBox type={'coupon'} title={'사용가능 쿠폰'} value={1} />
-        <MyPageBox type={'bookmark'} title={'즐겨찾는 카페'} value={2} />
+        <MyPageBox type={'coupon'} title={'사용가능 쿠폰'} value={availableCoupon} />
+        <MyPageBox type={'bookmark'} title={'즐겨찾는 카페'} value={favoriteCafe} />
       </S.CouponCafeBox>
     </S.ContentContainer>
   )
