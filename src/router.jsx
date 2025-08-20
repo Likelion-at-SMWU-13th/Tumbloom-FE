@@ -18,6 +18,7 @@ import CafeList from '@/components/CafeList/CafeList'
 import FavoriteCafe from './pages/FavoriteCafe'
 import Map from '@/components/Map/Map'
 import ProfileShare from './pages/ProfileShare'
+import KakaoMap from './components/Map/KakaoMap'
 
 const router = createBrowserRouter([
   {
@@ -84,6 +85,10 @@ const router = createBrowserRouter([
       {
         path: '/map',
         element: <Map />,
+      },
+      {
+        path: '/kakaomap',
+        element: <KakaoMap />,
       },
     ],
   },

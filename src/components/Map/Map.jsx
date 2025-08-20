@@ -12,12 +12,19 @@ import mapIcon from '@/assets/icons/my-loc.svg'
 import listIcon from '@/assets/icons/list.svg'
 import styled from 'styled-components'
 import Sprout from '@/components/Map/CafeSprout'
+import KakaoMap from './KakaoMap'
 import { useState } from 'react'
+
+const MapContainer = styled.div`
+  position: relative;
+`
 
 const Wrapper = styled.div`
   display: flex;
+  inset: 0;
   flex-direction: column;
   padding-top: 3rem;
+  position: absolute;
 `
 
 const HeaderBtns = styled.div`
@@ -44,6 +51,8 @@ const MyLocBtn = styled.button`
   background-color: transparent;
   border-radius: 10rem;
   border: none;
+  background-color: #fff;
+  cursor: pointer;
 `
 
 const ListBtn = styled.button`
@@ -58,6 +67,7 @@ const ListBtn = styled.button`
   border: none;
   cursor: pointer;
   background-color: transparent;
+  background-color: #fff;
 `
 
 const ListBtnIcon = styled.img`
@@ -79,39 +89,42 @@ function Map() {
   const select = (key) => setActive(key)
 
   return (
-    <Wrapper>
-      <SearchBox />
-      <HeaderBtns>
-        <MapBtn
-          img={active === 'ai' ? sparkOn : sparkOff}
-          name='AI 내취향 추천'
-          onClick={() => select('ai')}
-          isActive={active === 'ai'}
-        />
-        <MapBtn
-          img={active === 'coupon' ? couponOn : couponOff}
-          name='쿠폰 보유'
-          onClick={() => select('coupon')}
-          isActive={active === 'coupon'}
-        />
-        <MapBtn
-          img={active === 'hot' ? hotOn : hotOff}
-          name='인기'
-          onClick={() => select('hot')}
-          isActive={active === 'hot'}
-        />
-      </HeaderBtns>
-      <FooterBtns>
-        <MyLocBtn>
-          <img src={mapIcon} />
-        </MyLocBtn>
-        <ListBtn>
-          <ListBtnIcon src={listIcon} />
-          <ListBtnName>목록보기</ListBtnName>
-        </ListBtn>
-      </FooterBtns>
-      <Footer />
-    </Wrapper>
+    <MapContainer>
+      <KakaoMap />
+      <Wrapper>
+        <SearchBox />
+        <HeaderBtns>
+          <MapBtn
+            img={active === 'ai' ? sparkOn : sparkOff}
+            name='AI 내취향 추천'
+            onClick={() => select('ai')}
+            isActive={active === 'ai'}
+          />
+          <MapBtn
+            img={active === 'coupon' ? couponOn : couponOff}
+            name='쿠폰 보유'
+            onClick={() => select('coupon')}
+            isActive={active === 'coupon'}
+          />
+          <MapBtn
+            img={active === 'hot' ? hotOn : hotOff}
+            name='인기'
+            onClick={() => select('hot')}
+            isActive={active === 'hot'}
+          />
+        </HeaderBtns>
+        <FooterBtns>
+          <MyLocBtn>
+            <img src={mapIcon} />
+          </MyLocBtn>
+          <ListBtn>
+            <ListBtnIcon src={listIcon} />
+            <ListBtnName>목록보기</ListBtnName>
+          </ListBtn>
+        </FooterBtns>
+        <Footer />
+      </Wrapper>
+    </MapContainer>
   )
 }
 
