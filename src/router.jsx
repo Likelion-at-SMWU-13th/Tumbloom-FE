@@ -13,7 +13,6 @@ import Stamp from './components/getStamp/StampAccess'
 import CafeDetail from './components/CafeInfo/CafeDetail'
 import CouponDetailPage from './pages/CouponDetailPage'
 import MyPage from './pages/MyPage'
-import CafeListCard from './components/common/CafeListCard'
 import CafeList from '@/components/CafeList/CafeList'
 
 const router = createBrowserRouter([
@@ -23,49 +22,53 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <CafeList />,
+        element: <Splash />,
       },
 
-      // {
-      //   path: '/home',
-      //   element: <HomePage />,
-      // },
-      // {
-      //   path: '/onb',
-      //   element: <OnBoarding />,
-      // },
-      // {
-      //   path: '/login',
-      //   element: <Login />,
-      // },
-      // {
-      //   path: '/signup',
-      //   element: <SignUp />,
-      // },
-      // {
-      //   path: '/coupon',
-      //   element: <Coupon />,
-      // },
-      // {
-      //   path: '/stamp',
-      //   element: <Stamp />,
-      // },
-      // {
-      //   path: '/qr',
-      //   element: <QrScan />,
-      // },
-      // {
-      //   path: '/detail',
-      //   element: <CafeDetail />,
-      // },
-      // {
-      //   path: '/couponDetail',
-      //   element: <CouponDetailPage />,
-      // },
-      // {
-      //   path: '/mypage',
-      //   element: <MyPage />,
-      // },
+      {
+        path: '/home',
+        element: <HomePage />,
+      },
+      {
+        path: '/onb',
+        element: <OnBoarding />,
+      },
+      {
+        path: '/login',
+        element: <Login />,
+      },
+      {
+        path: '/signup',
+        element: <SignUp />,
+      },
+      {
+        path: '/coupon',
+        element: <Coupon />,
+      },
+      {
+        path: '/stamp',
+        element: <Stamp />,
+      },
+      {
+        path: '/qr',
+        element: <QrScan />,
+      },
+      {
+        path: '/detail',
+        element: <CafeDetail />,
+      },
+      {
+        path: '/couponDetail',
+        element: <CouponDetailPage />,
+      },
+      {
+        path: '/mypage',
+        element: <MyPage />,
+      },
+      {
+        path: '/cafelist',
+        element: <CafeList />,
+      },
     ],
   },
 ])
