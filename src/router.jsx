@@ -15,6 +15,7 @@ import CouponDetailPage from './pages/CouponDetailPage'
 import MyPage from './pages/MyPage'
 import Preference from './pages/Preference'
 import CafeList from '@/components/CafeList/CafeList'
+import FavoriteCafe from './pages/FavoriteCafe'
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
       {
         path: '/mypage',
         element: <MyPage />,
+      },
+      {
+        path: '/favoriteCafe',
+        element: <FavoriteCafe />,
       },
     ],
   },
