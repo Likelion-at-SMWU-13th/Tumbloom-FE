@@ -5,6 +5,7 @@ import lv2_img from '@/assets/images/lv2-profile.svg'
 import lv3_img from '@/assets/images/lv3-profile.svg'
 import lv4_img from '@/assets/images/lv4-profile.svg'
 import lv5_img from '@/assets/images/lv5-profile.svg'
+import Tumberin from '@/assets/images/tumberin-text.svg'
 
 import MatrixChip from '../Home/MatrixChip'
 import tumbler_icon from '../../assets/icons/tumbler_icon.svg'
@@ -38,6 +39,7 @@ const ProfileCard = ({ stamp, userName }) => {
 
   return (
     <S.ProfileCardWrapper>
+      <S.TumberIn src={Tumberin} />
       <S.ProfileInfoBox>
         {userLevel === 1 && <S.ProfileImg src={lv1_img} />}
         {userLevel === 2 && <S.ProfileImg src={lv2_img} />}

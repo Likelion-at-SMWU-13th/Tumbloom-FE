@@ -9,6 +9,16 @@ export const ProfileCardWrapper = styled.div`
   box-shadow: 0 0 2.1px 0 rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
+  position: relative;
+`
+
+export const TumberIn = styled.img`
+  width: 13rem;
+  height: auto;
+  position: absolute;
+  left: 0.3rem;
+  top: 1.5rem;
+  transform: translateY(-50%);
 `
 
 export const ProfileInfoBox = styled.div`
@@ -22,6 +32,7 @@ export const ProfileImg = styled.img`
   width: 7.1875rem;
   height: 7.1875rem;
   flex-shrink: 0;
+  z-index: 1;
 `
 
 export const NickName = styled.p`
@@ -61,4 +72,35 @@ export const MatrixContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   gap: 3rem;
+`
+
+//ProfileShareBox.jsx
+
+export const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #d9d9d9;
+  padding-top: 7.5rem;
+  flex-direction: column;
+`
+
+export const ImgBtn = styled.button`
+  width: 9.9375rem;
+  height: 2.9375rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 24.98356rem;
+  background: #25af94;
+  border: none;
+  color: #fff;
+  font-family: 'Pretendard Variable';
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-top: 4.5rem;
+  cursor: pointer;
 `
