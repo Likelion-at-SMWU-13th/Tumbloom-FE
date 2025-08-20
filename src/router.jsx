@@ -14,6 +14,7 @@ import CafeDetail from './components/CafeInfo/CafeDetail'
 import CouponDetailPage from './pages/CouponDetailPage'
 import MyPage from './pages/MyPage'
 import CafeListCard from './components/common/CafeListCard'
+import CafeList from '@/components/CafeList/CafeList'
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <CafeListCard />,
+        element: <CafeList />,
       },
 
       // {

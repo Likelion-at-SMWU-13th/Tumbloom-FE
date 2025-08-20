@@ -8,20 +8,22 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  border: 1px solid black;
+  margin: 0;
 `
 
 const LeftCard = styled.div`
   display: flex;
   flex-direction: column;
   min-width: 0;
-  border: 1px solid black;
+  padding-top: 1.38rem;
+  padding-bottom: 1.38rem;
 `
 
 const RightCard = styled.div`
+  padding-top: 1.38rem;
+  padding-bottom: 1.38rem;
   display: flex;
   align-items: center;
-  border: 1px solid black;
 `
 
 const StampBtn = styled.button`
@@ -51,7 +53,6 @@ const CafeName = styled.span`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  padding-top: 0.38rem;
   padding-bottom: 0.31rem;
   padding-right: 8.37rem;
 `
@@ -111,19 +112,15 @@ const CafeImg = styled.img`
   border-radius: 0.3125rem;
 `
 
-function CafeListCard() {
-  const cafeName = '너드커피'
-  const location = '서울시 용산구 청파동2가'
-  const time = '09:00-15:00'
-
+function CafeListCard({ name, loc, time }) {
   return (
     <Container>
       <LeftCard>
-        <CafeName>{cafeName}</CafeName>
+        <CafeName>{name}</CafeName>
         <InfoBox>
           <LocBox>
             <LocImg src={locImg} />
-            <Loc>{location}</Loc>
+            <Loc>{loc}</Loc>
           </LocBox>
           <TimeBox>
             <LocImg src={timeImg} />
