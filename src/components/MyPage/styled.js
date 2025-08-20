@@ -56,13 +56,12 @@ export const ProfileName = styled.p`
 `
 
 export const ProfileLevelBox = styled.div`
-  width: 8.5rem;
-  height: 2.1rem;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   border-radius: 15.64569rem;
   background: #deeeeb;
+  padding: 0.52rem 0.78rem;
 `
 
 export const ProfileLevel = styled.span`
@@ -82,7 +81,7 @@ export const QuestionIcon = styled.img`
 
 export const LevelTextContainer = styled.div`
   display: flex;
-  gap: 5.7rem;
+  gap: 5.3rem;
 `
 
 export const LevelState = styled.span`
@@ -103,6 +102,7 @@ export const NextLevel = styled.span`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  width: 8rem;
 `
 
 export const StateBarContainer = styled.div`
@@ -171,7 +171,7 @@ export const CouponCafeBox = styled.div`
 
 export const Title = styled.span`
   color: #898a8d;
-  text-align: center;
+  text-align: start;
   font-family: 'Pretendard Variable';
   font-size: 0.9375rem;
   font-style: normal;
@@ -179,6 +179,7 @@ export const Title = styled.span`
   line-height: normal;
   margin: 0;
   padding-left: 1.56rem;
+  width: 9rem;
 `
 
 export const TumblerCount = styled.div`
@@ -188,7 +189,7 @@ export const TumblerCount = styled.div`
   width: 22.0625rem;
   height: 3.37rem;
   align-items: center;
-  gap: 8.2rem;
+  gap: 7rem;
 `
 
 export const CouponCount = styled.div`
@@ -197,7 +198,7 @@ export const CouponCount = styled.div`
   width: 22.0625rem;
   height: 3.37rem;
   align-items: center;
-  gap: 9.01rem;
+  gap: 7rem;
 `
 
 export const Value = styled.p`
@@ -208,6 +209,8 @@ export const Value = styled.p`
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  text-align: end;
+  width: 3rem;
 `
 
 export const Line = styled.img`
@@ -234,13 +237,14 @@ export const Arrow = styled.img`
   height: 1.3125rem;
   flex-shrink: 0;
   padding-top: 0.15rem;
+  margin-left: -4rem;
 `
 
 export const PreferenceValueBox = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding-left: 5.75rem;
+  padding-left: 5rem;
 `
 
 export const Check = styled.img`
@@ -308,7 +312,6 @@ export const LevelModalBackground = styled.div`
   inset: 0;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
 `
 
 export const LevelModalWrapper = styled.div`
