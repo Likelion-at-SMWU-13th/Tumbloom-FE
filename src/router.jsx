@@ -16,6 +16,7 @@ import MyPage from './pages/MyPage'
 import Preference from './pages/Preference'
 import CafeList from '@/components/CafeList/CafeList'
 import FavoriteCafe from './pages/FavoriteCafe'
+import ProfileShare from './pages/ProfileShare'
 
 const router = createBrowserRouter([
   {
@@ -70,6 +71,14 @@ const router = createBrowserRouter([
       {
         path: '/favoriteCafe',
         element: <FavoriteCafe />,
+      },
+      {
+        path: '/profileShare',
+        element: <ProfileShare />,
+      },
+      {
+        path: '/preference',
+        element: <Preference />,
       },
     ],
   },
