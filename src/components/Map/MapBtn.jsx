@@ -9,9 +9,9 @@ const Btn = styled.button`
   gap: 0.4375rem;
   flex-shrink: 0;
   border-radius: 18.75rem;
-  background: #fff;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
   border: none;
+  cursor: pointer;
 `
 
 const BtnImg = styled.img`
@@ -28,11 +28,16 @@ const BtnText = styled.span`
   line-height: normal;
 `
 
-function MapBtn({ img, name }) {
+function MapBtn({ img, name, onClick, isActive }) {
   return (
-    <Btn>
+    <Btn
+      onClick={onClick}
+      style={{
+        backgroundColor: isActive ? '#25AF94' : '#fff',
+      }}
+    >
       <BtnImg src={img} />
-      <BtnText>{name}</BtnText>
+      <BtnText style={{ color: isActive ? '#fff' : '#000' }}>{name}</BtnText>
     </Btn>
   )
 }
