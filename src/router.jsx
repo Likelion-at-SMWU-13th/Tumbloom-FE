@@ -76,6 +76,10 @@ const router = createBrowserRouter([
         path: '/profileShare',
         element: <ProfileShare />,
       },
+      {
+        path: '/preference',
+        element: <Preference />,
+      },
     ],
   },
 ])

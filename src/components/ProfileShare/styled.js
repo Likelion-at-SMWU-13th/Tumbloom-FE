@@ -1,8 +1,10 @@
 import styled from 'styled-components'
 
 export const ProfileCardWrapper = styled.div`
-  width: 22.0625rem;
-  height: 26rem;
+  /* width: 22.0625rem; */
+  width: 353px;
+  height: 416px;
+  /* height: 26rem; */
   flex-shrink: 0;
   border-radius: 0.625rem;
   background: #164239;
