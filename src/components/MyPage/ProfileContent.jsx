@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import * as S from './styled'
 import StateBar from './StateBar'
 import question from '@/assets/icons/question-green.svg'
@@ -10,6 +11,8 @@ import lv5_img from '@/assets/images/lv5-profile.svg'
 import share from '@/assets/icons/profile-share.svg'
 
 const ProfileContent = ({ onChangeInfo, stamp, level }) => {
+  const navigate = useNavigate()
+
   const currentLevelName = (level) => {
     if (level === 1) return 'Lv.1 텀블러 뉴비'
     else if (level === 2) return 'Lv.2 텀블러 입문자'
@@ -23,7 +26,7 @@ const ProfileContent = ({ onChangeInfo, stamp, level }) => {
   return (
     <S.ProfileContentBox>
       <S.ProfileShareBox>
-        <S.Share src={share} />
+        <S.Share src={share} onClick={() => navigate('/profileShare')} />
         <S.ShareText>프로필 공유</S.ShareText>
       </S.ProfileShareBox>
       {level === 1 && <S.ProfileImg src={lv1_img} />}
