@@ -16,6 +16,7 @@ import MyPage from './pages/MyPage'
 import Preference from './pages/Preference'
 import CafeList from '@/components/CafeList/CafeList'
 import FavoriteCafe from './pages/FavoriteCafe'
+import Map from '@/components/Map/Map'
 
 const router = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
       {
         path: '/favoriteCafe',
         element: <FavoriteCafe />,
+      },
+      {
+        path: '/map',
+        element: <Map />,
       },
     ],
   },
