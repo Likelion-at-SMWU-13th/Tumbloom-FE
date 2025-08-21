@@ -4,7 +4,7 @@ import stamp_card from '../../assets/images/stampcard_img.svg'
 import StampComplete from './StampComplete'
 import Stamp from '@/assets/images/stamp_img.svg'
 
-const StampArea = ({ stamp }) => {
+const StampArea = ({ stamp, exchangeable }) => {
   const n = Math.max(0, Math.floor(Number(stamp) || 0))
   const count = n === 0 ? 0 : ((n - 1) % 8) + 1
 
@@ -41,7 +41,7 @@ const StampArea = ({ stamp }) => {
             />
           ))}
         </S.Stamps>
-        {n >= 8 && (
+        {exchangeable && (
           <S.CouponChangeWrapper>
             <StampComplete />
           </S.CouponChangeWrapper>

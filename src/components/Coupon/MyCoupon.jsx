@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import CafeCoupon from './CafeCoupon'
 import * as S from './styled'
 import NoData from '../common/NoData'
 
 const MyCoupon = ({ coupon }) => {
+  const [availableCouponList, setAvailableCouponList] = useState([])
+
+  useEffect(() => {
+    const token = localStorage.getItem('accessToken')
+
+    axios
+      .get('https://tumbloom.store/api/coupons/my', {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        console.log(res.data)
+        setAvailableCouponList(res.data.data.items)
+      })
+  })
+
   const AvailableCouponList = [
     { CafeName: '너드커피', DiscountPrice: '1000', count: '10', expiryDate: '2025.12.01' },
     { CafeName: '을의커피', DiscountPrice: '1500', count: '10', expiryDate: '2025.12.01' },
@@ -21,19 +37,21 @@ const MyCoupon = ({ coupon }) => {
     <S.MyCouponWrapper>
       <S.AvailableCouponBox>
         <S.AvailableCouponText>
-          사용가능 쿠폰 <span style={{ fontWeight: '600' }}>{coupon}개</span>
+          사용가능 쿠폰 <span style={{ fontWeight: '600' }}>{availableCouponList.length}개</span>
         </S.AvailableCouponText>
       </S.AvailableCouponBox>
       <S.CouponList>
-        {AvailableCouponList.length ? (
-          AvailableCouponList.map((item, i) => (
+        {availableCouponList.length ? (
+          availableCouponList.map((item, i) => (
             <CafeCoupon
+              id={item.couponId}
               key={i}
-              cafeName={item.CafeName}
-              price={item.DiscountPrice}
+              cafeName={item.cafeName}
+              price={'1000'}
               active={true}
               type={'use'}
-              expiryDate={item.expiryDate}
+              expiryDate={item.expiredDate}
+              onClickExchange={{}}
             />
           ))
         ) : (
