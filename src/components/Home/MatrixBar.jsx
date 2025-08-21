@@ -7,19 +7,19 @@ import tree_icon from '../../assets/icons/tree_icon.svg'
 import info_icon from '../../assets/icons/question_icon.svg'
 import TumblerInfo from './TumblerInfo'
 
-const MatrixBar = ({ stamp_count }) => {
-  const s = Number(stamp_count)
-  const water = (s * 0.55).toFixed(2)
-  const tree = (s * 0.003).toFixed(3)
+const MatrixBar = ({ tumblerCount, savedWater, savedTree }) => {
+  // const s = Number(stamp_count)
+  // const water = (s * 0.55).toFixed(2)
+  // const tree = (s * 0.003).toFixed(3)
 
   const [openInfo, setOpenInfo] = useState(false)
 
   return (
     <S.MatrixContainer>
       <S.MatrixBar>
-        <MatrixChip icon={tumbler_icon} label='텀블러 사용' value={s} unit='회' />
-        <MatrixChip icon={cup_icon} label='아낀 물' value={water} unit='L' />
-        <MatrixChip icon={tree_icon} label='지킨 나무' value={tree} unit='그루' />
+        <MatrixChip icon={tumbler_icon} label='텀블러 사용' value={tumblerCount} />
+        <MatrixChip icon={cup_icon} label='아낀 물' value={savedWater} />
+        <MatrixChip icon={tree_icon} label='지킨 나무' value={savedTree} />
       </S.MatrixBar>
       <S.Info src={info_icon} alt='info' onClick={() => setOpenInfo(true)} />
       <TumblerInfo open={openInfo} onClose={() => setOpenInfo(false)} />

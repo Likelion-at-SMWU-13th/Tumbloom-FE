@@ -52,9 +52,9 @@ const ProfileCard = ({ stamp, userName }) => {
         </S.LevelContainer>
       </S.ProfileInfoBox>
       <S.MatrixContainer>
-        <MatrixChip icon={tumbler_icon} label='텀블러 사용' value={s} unit='회' />
-        <MatrixChip icon={cup_icon} label='아낀 물' value={water} unit='L' />
-        <MatrixChip icon={tree_icon} label='지킨 나무' value={tree} unit='그루' />
+        <MatrixChip icon={tumbler_icon} label='텀블러 사용' value={s} />
+        <MatrixChip icon={cup_icon} label='아낀 물' value={water} />
+        <MatrixChip icon={tree_icon} label='지킨 나무' value={tree} />
       </S.MatrixContainer>
     </S.ProfileCardWrapper>
   )
