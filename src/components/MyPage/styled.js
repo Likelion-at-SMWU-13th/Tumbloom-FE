@@ -252,7 +252,7 @@ export const PreferenceValueBox = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding-left: 5rem;
+  padding-left: 4rem;
 `
 
 export const Check = styled.img`

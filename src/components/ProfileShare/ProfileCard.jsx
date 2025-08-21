@@ -13,14 +13,6 @@ import cup_icon from '../../assets/icons/cup_icon.svg'
 import tree_icon from '../../assets/icons/tree_icon.svg'
 
 const ProfileCard = ({ userName, tumblerCount, savedWater, savedTree, level }) => {
-  const levelCalculate = (stamp) => {
-    if (stamp <= 4) return 1
-    else if (stamp >= 5 && stamp <= 10) return 2
-    else if (stamp >= 11 && stamp <= 20) return 3
-    else if (stamp >= 21 && stamp <= 40) return 4
-    else if (stamp >= 41) return 5
-  }
-
   const currentLevelName = (level) => {
     if (level === 1) return 'Lv.1 텀블러 뉴비'
     else if (level === 2) return 'Lv.2 텀블러 입문자'
@@ -28,8 +20,6 @@ const ProfileCard = ({ userName, tumblerCount, savedWater, savedTree, level }) =
     else if (level === 4) return 'Lv.4 텀블러 고수'
     else if (level === 5) return 'Lv.5 텀블러 히어로'
   }
-
-  const userLevel = levelCalculate(tumblerCount)
 
   const userLevelName = currentLevelName(level)
 

@@ -14,6 +14,25 @@ const ProfileInfo = ({
   topPreferences,
 }) => {
   const navigate = useNavigate()
+
+  const preferenceLabels = {
+    EMOTIONAL_ATMOSPHERE: '감성/분위기',
+    STUDY_WORKSPACE: '공부/작업공간',
+    CHAT_MEETING: '수다/모임',
+    HOT_PLACE: 'HOT플레이스',
+    EVENT: '이벤트/행사',
+    SPECIALTY: '고급/스페셜티',
+    DESSERT: '디저트/케익',
+    DECAF: '디카페인',
+    SEASON_MENU: '빙수/계절메뉴',
+    BRUNCH: '브런치/식사',
+    FRANCHISE: '브랜드/프랜차이즈',
+    PET_FRIENDLY: '반려동물 가능',
+    OUTDOOR_TERRACE: '야외/테라스',
+    ECO_LOCA: '친환경/로컬',
+    UNIQUE_THEME: '이색테마/메뉴',
+  }
+
   return (
     <S.ContentContainer>
       <S.CurrentCountBox>
@@ -34,12 +53,12 @@ const ProfileInfo = ({
         </S.PreferenceBox>
         <S.PreferenceValueBox>
           {topPreferences.length > 0 ? (
-            topPreferences.map((i, item) => {
-              ;<S.TextBox key={i}>
+            topPreferences.map((item, i) => (
+              <S.TextBox key={i}>
                 <S.Check src={check} />
-                <S.PreferenceValue>{item}</S.PreferenceValue>
+                <S.PreferenceValue>{preferenceLabels[item]}</S.PreferenceValue>
               </S.TextBox>
-            })
+            ))
           ) : (
             <S.TextBox>
               <S.NoPreference>선택된 취향이 없어요</S.NoPreference>
