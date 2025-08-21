@@ -5,9 +5,11 @@ import cafeListLine from '@/assets/images/cafe-list-line.svg'
 import * as S from '@/components/CafeList/CafeList.Styled'
 import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function CafeList() {
   const [cafes, setCafes] = useState([])
+  const navigate = useNavigate()
   const location = useLocation()
 
   const { lat, lng } = location.state || {}
@@ -42,9 +44,13 @@ function CafeList() {
     if (lat && lng) nearCafeList(lat, lng)
   }, [lat, lng])
 
+  const goToMap = () => {
+    navigate(`/map`)
+  }
+
   return (
     <>
-      <Header title='카페 목록보기' />
+      <Header title='카페 목록보기' onLeftClick={goToMap} />
       <S.ScrollArea>
         <S.Wrapper>
           {cafes.map((c) => (

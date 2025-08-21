@@ -140,9 +140,13 @@ function CafeDetail() {
     navigate(`/stamp`)
   }
 
+  const goToMap = () => {
+    navigate(`/map`)
+  }
+
   return (
     <div>
-      <Header title='카페 상세정보' />
+      <Header title='카페 상세정보' onLeftClick={goToMap} />
       <CafeHeaderWrapper>
         <CafeHeader>
           <CafeName>너드커피</CafeName>
