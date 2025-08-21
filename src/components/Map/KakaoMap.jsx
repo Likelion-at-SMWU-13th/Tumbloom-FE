@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Map, MapMarker, CustomOverlayMap } from 'react-kakao-maps-sdk'
 import sprout from '@/assets/icons/dark-green-sprout.svg'
+import favSprout from '@/assets/icons/light-green-sprout.svg'
 import myLoc from '@/assets/icons/current-loc.svg'
 import { useState } from 'react'
 import { useEffect } from 'react'
@@ -115,6 +116,7 @@ function KakaoMap({ center, isMarker, filter }) {
         name: c.cafeName,
         lat: c.latitude,
         lng: c.longitude,
+        fav: c.favorite,
       })),
     )
   }
@@ -157,7 +159,11 @@ function KakaoMap({ center, isMarker, filter }) {
         {cafes.map((c) => (
           <CustomOverlayMap key={c.id} position={{ lat: c.lat, lng: c.lng }} yAnchor={1}>
             <div style={{ transform: 'translate(-50%,-100%)', textAlign: 'center' }}>
-              <img src={sprout} alt='sprout' style={{ width: 50, height: 50 }} />
+              <img
+                src={c.fav ? favSprout : sprout}
+                alt='sprout'
+                style={{ width: 50, height: 50 }}
+              />
               <div
                 style={{
                   padding: '2px 6px',
