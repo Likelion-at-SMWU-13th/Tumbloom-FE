@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import QrScanner from 'qr-scanner'
 import styled from 'styled-components'
-import workerUrl from 'qr-scanner/qr-scanner-worker.min.js?url'
+// import workerUrl from 'qr-scanner/qr-scanner-worker.min.js?url'
 import closeIcon from '@/assets/icons/close.svg'
 import { useNavigate } from 'react-router-dom'
 
@@ -53,7 +53,7 @@ const CloseBtn = styled.button`
   cursor: pointer;
 `
 
-QrScanner.WORKER_PATH = workerUrl
+// QrScanner.WORKER_PATH = workerUrl
 
 function QrScan() {
   const qrVideo = useRef(null)
