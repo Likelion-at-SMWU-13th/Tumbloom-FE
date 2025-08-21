@@ -28,6 +28,9 @@ const HomePage = () => {
         setSavedTree(res.data.data.welcomeStatus.savedTree)
         setCurrentCount(res.data.data.stampStatus.currentCount)
       })
+      .catch((err) => {
+        console.log(err)
+      })
   }, [])
 
   return (
