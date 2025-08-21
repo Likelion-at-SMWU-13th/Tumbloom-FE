@@ -27,69 +27,69 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Splash />,
-      },
-
-      {
-        path: '/home',
-        element: <HomePage />,
-      },
-      {
-        path: '/onb',
-        element: <OnBoarding />,
-      },
-      {
-        path: '/login',
-        element: <Login />,
-      },
-      {
-        path: '/signup',
-        element: <SignUp />,
-      },
-      {
-        path: '/coupon',
-        element: <Coupon />,
-      },
-      {
-        path: '/stamp',
-        element: <Stamp />,
-      },
-      {
-        path: '/qr',
-        element: <QrScan />,
-      },
-      {
-        path: '/detail',
-        element: <CafeDetail />,
-      },
-      {
-        path: '/couponDetail',
-        element: <CouponDetailPage />,
-      },
-      {
-        path: '/mypage',
-        element: <MyPage />,
-      },
-      {
-        path: '/favoriteCafe',
-        element: <FavoriteCafe />,
-      },
-      {
-        path: '/profileShare',
-        element: <ProfileShare />,
-      },
-      {
-        path: '/preference',
-        element: <Preference />,
-      },
-      {
-        path: '/map',
         element: <Map />,
       },
-      {
-        path: '/kakaomap',
-        element: <KakaoMap />,
-      },
+
+      // {
+      //   path: '/home',
+      //   element: <HomePage />,
+      // },
+      // {
+      //   path: '/onb',
+      //   element: <OnBoarding />,
+      // },
+      // {
+      //   path: '/login',
+      //   element: <Login />,
+      // },
+      // {
+      //   path: '/signup',
+      //   element: <SignUp />,
+      // },
+      // {
+      //   path: '/coupon',
+      //   element: <Coupon />,
+      // },
+      // {
+      //   path: '/stamp',
+      //   element: <Stamp />,
+      // },
+      // {
+      //   path: '/qr',
+      //   element: <QrScan />,
+      // },
+      // {
+      //   path: '/detail',
+      //   element: <CafeDetail />,
+      // },
+      // {
+      //   path: '/couponDetail',
+      //   element: <CouponDetailPage />,
+      // },
+      // {
+      //   path: '/mypage',
+      //   element: <MyPage />,
+      // },
+      // {
+      //   path: '/favoriteCafe',
+      //   element: <FavoriteCafe />,
+      // },
+      // {
+      //   path: '/profileShare',
+      //   element: <ProfileShare />,
+      // },
+      // {
+      //   path: '/preference',
+      //   element: <Preference />,
+      // },
+      // {
+      //   path: '/map',
+      //   element: <Map />,
+      // },
+      // {
+      //   path: '/kakaomap',
+      //   element: <KakaoMap />,
+      // },
     ],
   },
 ])

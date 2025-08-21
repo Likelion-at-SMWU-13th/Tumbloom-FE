@@ -14,6 +14,7 @@ import styled from 'styled-components'
 import Sprout from '@/components/Map/CafeSprout'
 import KakaoMap from './KakaoMap'
 import { useState } from 'react'
+import { useEffect } from 'react'
 
 const MapContainer = styled.div`
   position: relative;
@@ -25,6 +26,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   padding-top: 3rem;
   position: absolute;
+  z-index: 1;
 `
 
 const HeaderBtns = styled.div`
@@ -41,6 +43,8 @@ const FooterBtns = styled.div`
   justify-content: center;
   gap: 13rem;
   transform: translateY(40rem);
+  margin-top: auto;
+  padding-bottom: 1rem;
 `
 
 const MyLocBtn = styled.button`
@@ -85,12 +89,27 @@ const ListBtnName = styled.span`
 `
 
 function Map() {
+  useEffect(() => {
+    console.log('origin:', window.location.origin)
+    console.log('kakao loaded?:', !!window.kakao?.maps)
+  }, [])
   const [active, setActive] = useState('')
   const select = (key) => setActive(key)
+  const [center, setCenter] = useState({ lat: 33.450701, lng: 126.570667 })
+  const [isMarker, setIsMarker] = useState(false)
+
+  const showMyLoc = () => {
+    navigator.geolocation.watchPosition((pos) => {
+      const lat = pos.coords.latitude
+      const lng = pos.coords.longitude
+      setCenter({ lat, lng })
+      setIsMarker(true)
+    })
+  }
 
   return (
     <MapContainer>
-      <KakaoMap />
+      <KakaoMap center={center} isMarker={isMarker} />
       <Wrapper>
         <SearchBox />
         <HeaderBtns>
@@ -114,7 +133,7 @@ function Map() {
           />
         </HeaderBtns>
         <FooterBtns>
-          <MyLocBtn>
+          <MyLocBtn onClick={showMyLoc}>
             <img src={mapIcon} />
           </MyLocBtn>
           <ListBtn>
