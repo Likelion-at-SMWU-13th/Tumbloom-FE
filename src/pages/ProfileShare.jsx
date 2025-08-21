@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Header from '@/components/common/Header'
-import ProfileCard from '@/components/ProfileShare/ProfileCard'
 import ProfileShareBox from '@/components/ProfileShare/ProfileShareBox'
 
 const ProfileShare = () => {

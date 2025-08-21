@@ -12,16 +12,6 @@ const StateBar = ({ level, stepsLeft, tumblerCount }) => {
 
   const stateBarWidth = widthCalculate(tumblerCount, level)
 
-  const nextLevelCount = (level) => {
-    if (level === 1) return 2
-    else if (level === 2) return 3
-    else if (level === 3) return 4
-    else if (level === 4) return 5
-    else if (level === 5) return null
-  }
-
-  const nextLevel = nextLevelCount(level)
-
   return (
     <div>
       <S.StateBarContainer>
