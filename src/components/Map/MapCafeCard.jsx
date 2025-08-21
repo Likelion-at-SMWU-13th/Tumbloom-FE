@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import locImg from '@/assets/icons/cafe-info-loc.svg'
 import timeImg from '@/assets/icons/cafe-info-time.svg'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import scrabOn from '@/assets/icons/clicked-bookmark.svg'
 import scrabOff from '@/assets/icons/bookmark.svg'
 
@@ -142,13 +142,43 @@ const CafeImg = styled.img`
   object-fit: cover;
 `
 
-function MapCafeCard({ name, loc, time, image }) {
+function MapCafeCard({ cafeId }) {
   const [active, setActive] = useState(false)
+  const [cafe, setCafe] = useState(null)
+
+  const cafeInfo = async (cafeId) => {
+    if (!cafeId) return
+    const at = localStorage.getItem('accessToken')
+    if (!at || at === 'undefined') {
+      console.log('로컬스토리지에 accessToken 없음')
+      return
+    }
+    const res = await fetch(`https://tumbloom.store/api/cafes/${cafeId}`, {
+      headers: { Authorization: `Bearer ${at}` },
+    })
+
+    const json = await res.json()
+    const info = json.data
+
+    setCafe({
+      id: info.id,
+      cName: info.cafeName,
+      address: info.address,
+      t: info.businessHours,
+      img: info.imageUrl,
+    })
+  }
+
+  useEffect(() => {
+    cafeInfo(cafeId)
+  }, [cafeId])
+
+  if (!cafe) return null
 
   return (
     <Container>
       <TopContent>
-        <CafeName>{name}</CafeName>
+        <CafeName>{cafe.cName}</CafeName>
         <Scrab>
           <ScrabState
             onClick={() => setActive((prev) => !prev)}
@@ -157,18 +187,18 @@ function MapCafeCard({ name, loc, time, image }) {
         </Scrab>
       </TopContent>
       <LeftCard>
-        <CafeImg src={image} />
+        <CafeImg src={cafe.img} />
       </LeftCard>
       <RightCard>
         <StampBtn>스탬프 적립</StampBtn>
         <InfoBox>
           <LocBox>
             <LocImg src={locImg} />
-            <Loc>{loc}</Loc>
+            <Loc>{cafe.address}</Loc>
           </LocBox>
           <TimeBox>
             <LocImg src={timeImg} />
-            <Time>{time}</Time>
+            <Time>{cafe.t}</Time>
           </TimeBox>
         </InfoBox>
       </RightCard>

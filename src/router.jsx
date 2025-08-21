@@ -18,6 +18,7 @@ import CafeList from '@/components/CafeList/CafeList'
 import FavoriteCafe from './pages/FavoriteCafe'
 import Map from '@/components/Map/Map'
 import ProfileShare from './pages/ProfileShare'
+import MapCafeCard from './components/Map/MapCafeCard'
 
 const router = createBrowserRouter([
   {
@@ -87,6 +88,10 @@ const router = createBrowserRouter([
       {
         path: '/cafelist',
         element: <CafeList />,
+      },
+      {
+        path: '/mapCafeCard',
+        element: <MapCafeCard cafeId={5} />,
       },
     ],
   },
