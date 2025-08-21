@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import * as S from './styled'
 import stamp from '@/assets/images/stamp_img.svg'
 
-const CouponUse = ({ onUseClick, active }) => {
+const CouponUse = ({ onUseClick, active, cafeName, expiredDate, price }) => {
   return (
     <S.Wrapper>
       <S.CafeImage
@@ -10,12 +10,12 @@ const CouponUse = ({ onUseClick, active }) => {
         style={{ filter: active ? 'none' : 'grayscale(100%)' }}
       />
       <S.TextContainer>
-        <S.CafeName>그린카페</S.CafeName>
-        <S.DiscountPrice>1000원</S.DiscountPrice>
+        <S.CafeName>{cafeName}</S.CafeName>
+        <S.DiscountPrice>{price}</S.DiscountPrice>
       </S.TextContainer>
       <S.ExpiryDateContainer>
         <S.ExpiryDate style={{ fontSize: '0.9375rem' }}>유효기간</S.ExpiryDate>
-        <S.ExpiryDate>2025.12.01</S.ExpiryDate>
+        <S.ExpiryDate>{expiredDate}</S.ExpiryDate>
       </S.ExpiryDateContainer>
       <S.Button
         onClick={active ? onUseClick : undefined}

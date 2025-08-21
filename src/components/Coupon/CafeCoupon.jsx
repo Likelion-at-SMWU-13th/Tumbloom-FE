@@ -1,12 +1,23 @@
 import React from 'react'
 import * as S from './styled'
+import { useNavigate } from 'react-router-dom'
 import dotLine from '@/assets/images/dot-line.svg'
 import change from '@/assets/icons/change.svg'
 import stamp from '@/assets/images/stamp_img.svg'
 import changeGray from '@/assets/icons/change-gray.svg'
 import useIcon from '@/assets/icons/coupon-use.svg'
 
-const CafeCoupon = ({ cafeName, price, count = 0, active, type, expiryDate = '' }) => {
+const CafeCoupon = ({
+  id = 0,
+  cafeName,
+  price,
+  count = 0,
+  active,
+  type,
+  expiryDate = '',
+  onClickExchange,
+}) => {
+  const navigate = useNavigate()
   const isExchange = type === 'exchange'
   return (
     <S.CouponWrapper>
@@ -27,7 +38,13 @@ const CafeCoupon = ({ cafeName, price, count = 0, active, type, expiryDate = '' 
         <S.DotLine src={dotLine} />
       </S.CouponLeftWrapper>
       <S.CouponRightWrapper style={{ cursor: active ? 'pointer' : 'default' }}>
-        <S.CouponRightContent>
+        <S.CouponRightContent
+          onClick={() => {
+            if (!active) return
+            if (isExchange) onClickExchange(id)
+            else navigate('/couponDetail', { state: { couponId: id } })
+          }}
+        >
           <S.ChangeIcon src={isExchange ? (active ? change : changeGray) : useIcon} />
           <S.ChangeText style={{ color: active ? '#000' : '#BCC6C4' }}>
             {isExchange ? '교환하기' : '사용하기'}
