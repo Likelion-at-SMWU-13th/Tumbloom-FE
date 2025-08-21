@@ -12,11 +12,7 @@ import tumbler_icon from '../../assets/icons/tumbler_icon.svg'
 import cup_icon from '../../assets/icons/cup_icon.svg'
 import tree_icon from '../../assets/icons/tree_icon.svg'
 
-const ProfileCard = ({ stamp, userName }) => {
-  const s = Number(stamp)
-  const water = (s * 0.55).toFixed(2)
-  const tree = (s * 0.003).toFixed(3)
-
+const ProfileCard = ({ userName, tumblerCount, savedWater, savedTree, level }) => {
   const levelCalculate = (stamp) => {
     if (stamp <= 4) return 1
     else if (stamp >= 5 && stamp <= 10) return 2
@@ -33,28 +29,28 @@ const ProfileCard = ({ stamp, userName }) => {
     else if (level === 5) return 'Lv.5 텀블러 히어로'
   }
 
-  const userLevel = levelCalculate(stamp)
+  const userLevel = levelCalculate(tumblerCount)
 
-  const userLevelName = currentLevelName(userLevel)
+  const userLevelName = currentLevelName(level)
 
   return (
     <S.ProfileCardWrapper>
       <S.TumberIn src={Tumberin} />
       <S.ProfileInfoBox>
-        {userLevel === 1 && <S.ProfileImg src={lv1_img} />}
-        {userLevel === 2 && <S.ProfileImg src={lv2_img} />}
-        {userLevel === 3 && <S.ProfileImg src={lv3_img} />}
-        {userLevel === 4 && <S.ProfileImg src={lv4_img} />}
-        {userLevel === 5 && <S.ProfileImg src={lv5_img} />}
+        {level === 1 && <S.ProfileImg src={lv1_img} />}
+        {level === 2 && <S.ProfileImg src={lv2_img} />}
+        {level === 3 && <S.ProfileImg src={lv3_img} />}
+        {level === 4 && <S.ProfileImg src={lv4_img} />}
+        {level === 5 && <S.ProfileImg src={lv5_img} />}
         <S.NickName>{userName}</S.NickName>
         <S.LevelContainer>
           <S.LevelName>{userLevelName}</S.LevelName>
         </S.LevelContainer>
       </S.ProfileInfoBox>
       <S.MatrixContainer>
-        <MatrixChip icon={tumbler_icon} label='텀블러 사용' value={s} />
-        <MatrixChip icon={cup_icon} label='아낀 물' value={water} />
-        <MatrixChip icon={tree_icon} label='지킨 나무' value={tree} />
+        <MatrixChip icon={tumbler_icon} label='텀블러 사용' value={tumblerCount} />
+        <MatrixChip icon={cup_icon} label='아낀 물' value={savedWater} />
+        <MatrixChip icon={tree_icon} label='지킨 나무' value={savedTree} />
       </S.MatrixContainer>
     </S.ProfileCardWrapper>
   )

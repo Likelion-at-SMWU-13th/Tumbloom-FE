@@ -10,7 +10,7 @@ const MyPage = () => {
   const [info, setInfo] = useState(false)
 
   const [userName, setUserName] = useState('')
-  const [level, setLevel] = useState('')
+  const [level, setLevel] = useState(0)
   const [tumblerCount, setTumblerCount] = useState(0)
   const [issuedCoupons, setIssuedCoupons] = useState(0)
   const [availableCoupons, setAvailableCoupons] = useState(0)
@@ -35,7 +35,10 @@ const MyPage = () => {
         setTopPreferences(res.data.data.topPreferences)
         setStepsLeft(res.data.data.stepsLeft)
       })
-  })
+      .catch((err) => {
+        console.log(err)
+      })
+  }, [])
 
   const stamp = 10
   const usedCoupon = 2
