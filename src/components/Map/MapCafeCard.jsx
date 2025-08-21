@@ -2,6 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import locImg from '@/assets/icons/cafe-info-loc.svg'
 import timeImg from '@/assets/icons/cafe-info-time.svg'
+import { useState } from 'react'
+import scrabOn from '@/assets/icons/clicked-bookmark.svg'
+import scrabOff from '@/assets/icons/bookmark.svg'
 
 const Container = styled.div`
   display: flex;
@@ -63,6 +66,26 @@ const CafeName = styled.span`
   padding-right: 8.37rem;
 `
 
+const Scrab = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.5625rem;
+  height: 1.5625rem;
+  flex-shrink: 0;
+  aspect-ratio: 1/1;
+  border: none;
+  background-color: transparent;
+`
+
+const ScrabState = styled.img`
+  width: 1.5625rem;
+  height: 1.5625rem;
+  flex-shrink: 0;
+  aspect-ratio: 1/1;
+  cursor: pointer;
+`
+
 const Loc = styled.span`
   color: #000;
   font-family: 'Pretendard Variable';
@@ -120,10 +143,18 @@ const CafeImg = styled.img`
 `
 
 function MapCafeCard({ name, loc, time, image }) {
+  const [active, setActive] = useState(false)
+
   return (
     <Container>
       <TopContent>
         <CafeName>{name}</CafeName>
+        <Scrab>
+          <ScrabState
+            onClick={() => setActive((prev) => !prev)}
+            src={active ? scrabOn : scrabOff}
+          />
+        </Scrab>
       </TopContent>
       <LeftCard>
         <CafeImg src={image} />
