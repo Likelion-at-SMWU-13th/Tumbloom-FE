@@ -4,7 +4,7 @@ import CafeCoupon from './CafeCoupon'
 import * as S from './styled'
 import NoData from '../common/NoData'
 
-const MyCoupon = ({ coupon }) => {
+const MyCoupon = () => {
   const [availableCouponList, setAvailableCouponList] = useState([])
 
   useEffect(() => {

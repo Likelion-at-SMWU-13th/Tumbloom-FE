@@ -219,12 +219,20 @@ export const Line = styled.img`
 
 export const PreferenceValue = styled.span`
   color: #005c4a;
-  font-family: Inter;
   font-family: 'Pretendard Variable';
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   padding-left: 0.37rem;
+`
+
+export const NoPreference = styled.span`
+  color: #005c4a;
+  font-family: 'Pretendard Variable';
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-left: -1rem;
 `
 
 export const PreferenceBox = styled.div`

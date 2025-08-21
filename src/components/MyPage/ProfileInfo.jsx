@@ -33,18 +33,18 @@ const ProfileInfo = ({
           <S.Arrow src={arrow} />
         </S.PreferenceBox>
         <S.PreferenceValueBox>
-          <S.TextBox>
-            <S.Check src={check} />
-            <S.PreferenceValue>감성/분위기</S.PreferenceValue>
-          </S.TextBox>
-          <S.TextBox>
-            <S.Check src={check} />
-            <S.PreferenceValue>고급/스페셜티</S.PreferenceValue>
-          </S.TextBox>
-          <S.TextBox>
-            <S.Check src={check} />
-            <S.PreferenceValue>디저트 맛집</S.PreferenceValue>
-          </S.TextBox>
+          {topPreferences.length > 0 ? (
+            topPreferences.map((i, item) => {
+              ;<S.TextBox key={i}>
+                <S.Check src={check} />
+                <S.PreferenceValue>{item}</S.PreferenceValue>
+              </S.TextBox>
+            })
+          ) : (
+            <S.TextBox>
+              <S.NoPreference>선택된 취향이 없어요</S.NoPreference>
+            </S.TextBox>
+          )}
         </S.PreferenceValueBox>
       </S.CafePreferenceBox>
       <S.CouponCafeBox>
@@ -52,7 +52,7 @@ const ProfileInfo = ({
           type={'coupon'}
           title={'사용가능 쿠폰'}
           value={availableCoupons}
-          onClick={() => navigate('/coupon')}
+          onClick={() => navigate('/coupon', { state: { tab: 'myCoupon' } })}
         />
         <MyPageBox
           type={'bookmark'}
