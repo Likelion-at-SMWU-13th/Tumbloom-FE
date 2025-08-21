@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Map, MapMarker, CustomOverlayMap } from 'react-kakao-maps-sdk'
 import sprout from '@/assets/icons/dark-green-sprout.svg'
 import favSprout from '@/assets/icons/light-green-sprout.svg'
+import sproutOff from '@/assets/icons/gray-sprout.svg'
 import myLoc from '@/assets/icons/current-loc.svg'
 import { useState } from 'react'
 import { useEffect } from 'react'
@@ -17,6 +18,7 @@ const MapWrapper = styled.div`
 
 function KakaoMap({ center, isMarker, filter }) {
   const [cafes, setCafes] = useState([])
+  const [selectedCafe, setSelectedCafe] = useState(null)
 
   const nearbyCafes = async (lat, lng) => {
     const at = localStorage.getItem('accessToken')
@@ -40,6 +42,7 @@ function KakaoMap({ center, isMarker, filter }) {
         name: c.cafeName,
         lat: c.latitude,
         lng: c.longitude,
+        fav: c.favorite,
       })),
     )
   }
@@ -65,6 +68,7 @@ function KakaoMap({ center, isMarker, filter }) {
         name: c.cafeName,
         lat: c.latitude,
         lng: c.longitude,
+        fav: c.favorite,
       })),
     )
   }
@@ -90,6 +94,7 @@ function KakaoMap({ center, isMarker, filter }) {
         name: c.cafeName,
         lat: c.latitude,
         lng: c.longitude,
+        fav: c.favorite,
       })),
     )
   }
@@ -122,6 +127,8 @@ function KakaoMap({ center, isMarker, filter }) {
   }
 
   useEffect(() => {
+    setSelectedCafe(null)
+
     if (localStorage.getItem('accessToken') === 'undefined') {
       localStorage.removeItem('accessToken')
     }
@@ -144,6 +151,10 @@ function KakaoMap({ center, isMarker, filter }) {
     })()
   }, [filter, center?.lat, center?.lng])
 
+  useEffect(() => {
+    console.log('selectedCafe changed:', selectedCafe)
+  }, [selectedCafe])
+
   return (
     <MapWrapper>
       <Map center={center} level={2} style={{ width: '100%', height: '100%' }}>
@@ -156,26 +167,54 @@ function KakaoMap({ center, isMarker, filter }) {
             position={center}
           ></MapMarker>
         )}
-        {cafes.map((c) => (
-          <CustomOverlayMap key={c.id} position={{ lat: c.lat, lng: c.lng }} yAnchor={1}>
-            <div style={{ transform: 'translate(-50%,-100%)', textAlign: 'center' }}>
-              <img
-                src={c.fav ? favSprout : sprout}
-                alt='sprout'
-                style={{ width: 50, height: 50 }}
-              />
+        {cafes.map((c) => {
+          const isSelected = Number(selectedCafe) === Number(c.id)
+          const isAnySelected = selectedCafe !== null
+
+          const imgSrc = isAnySelected
+            ? isSelected
+              ? c.fav
+                ? favSprout
+                : sprout
+              : sproutOff
+            : c.fav
+              ? favSprout
+              : sprout
+
+          const fontColor = isAnySelected ? (isSelected ? '#000000' : '#5F5F5F') : '#000000'
+
+          return (
+            <CustomOverlayMap key={c.id} position={{ lat: c.lat, lng: c.lng }} yAnchor={1}>
               <div
+                onClick={() => {
+                  setSelectedCafe(c.id)
+                  console.log('clicked cafe id:', c.id)
+                }}
                 style={{
-                  padding: '2px 6px',
-                  fontSize: 15,
-                  fontFamily: 'Cafe24Decoshadow',
+                  transform: 'translate(-50%,-100%)',
+                  textAlign: 'center',
+                  transition: 'transform 120ms ease',
                 }}
               >
-                {c.name}
+                <img
+                  src={imgSrc}
+                  alt='sprout'
+                  style={{ width: isSelected ? 64 : 40, height: isSelected ? 64 : 50 }}
+                />
+                <div
+                  style={{
+                    padding: '2px 6px',
+                    fontSize: isSelected ? 13 : 11,
+                    fontFamily: 'Cafe24Decoshadow',
+                    color: fontColor,
+                  }}
+                >
+                  {c.name}
+                </div>
               </div>
-            </div>
-          </CustomOverlayMap>
-        ))}
+            </CustomOverlayMap>
+          )
+        })}
       </Map>
     </MapWrapper>
   )
