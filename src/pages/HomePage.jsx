@@ -12,6 +12,7 @@ const HomePage = () => {
   const [savedWater, setSavedWater] = useState('')
   const [savedTree, setSavedTree] = useState('')
   const [currentCount, setCurrentCount] = useState(0)
+  const [exchangeable, setExchangeable] = useState(false)
 
   useEffect(() => {
     const token = localStorage.getItem('accessToken')
@@ -27,6 +28,7 @@ const HomePage = () => {
         setSavedWater(res.data.data.welcomeStatus.savedWater)
         setSavedTree(res.data.data.welcomeStatus.savedTree)
         setCurrentCount(res.data.data.stampStatus.currentCount)
+        setExchangeable(res.data.data.stampStatus.exchangeable)
       })
       .catch((err) => {
         console.log(err)
@@ -41,7 +43,7 @@ const HomePage = () => {
         savedWater={savedWater}
         savedTree={savedTree}
       />
-      <StampArea stamp={currentCount} />
+      <StampArea stamp={currentCount} exchangeable={exchangeable} />
       <CafeRecommend />
       <Footer />
     </>

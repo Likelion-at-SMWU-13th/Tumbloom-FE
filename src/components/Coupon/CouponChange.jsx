@@ -10,6 +10,26 @@ const CouponChange = () => {
   const [currentCount, setCurrentCount] = useState(0)
   const [availableCoupon, setAvailableCoupon] = useState(0)
 
+  const exchangeCoupon = (id) => {
+    const token = localStorage.getItem('accessToken')
+
+    axios
+      .post(
+        `https://tumbloom.store/api/cafes/${id}/coupons`,
+        {},
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      )
+      .then((res) => {
+        console.log(res)
+        alert('쿠폰 교환이 완료되었습니다')
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
   useEffect(() => {
     const token = localStorage.getItem('accessToken')
 
@@ -86,12 +106,14 @@ const CouponChange = () => {
           .filter(({ remainingQuantity }) => Number(remainingQuantity) > 0)
           .map(({ cafeId, cafeName, remainingQuantity }) => (
             <CafeCoupon
+              id={cafeId}
               key={cafeId}
               cafeName={cafeName}
               price={'1000'}
               count={remainingQuantity}
               type={'exchange'}
               active={currentCount >= 8}
+              onClickExchange={exchangeCoupon}
             />
           ))}
       </S.CouponList>
