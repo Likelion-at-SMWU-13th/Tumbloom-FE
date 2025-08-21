@@ -15,6 +15,8 @@ import Sprout from '@/components/Map/CafeSprout'
 import KakaoMap from './KakaoMap'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const MapContainer = styled.div`
   position: relative;
@@ -89,14 +91,16 @@ const ListBtnName = styled.span`
 `
 
 function Map() {
-  useEffect(() => {
-    console.log('origin:', window.location.origin)
-    console.log('kakao loaded?:', !!window.kakao?.maps)
-  }, [])
+  const navigate = useNavigate()
   const [active, setActive] = useState('')
   const select = (key) => setActive(key)
   const [center, setCenter] = useState({ lat: 33.450701, lng: 126.570667 })
   const [isMarker, setIsMarker] = useState(false)
+
+  useEffect(() => {
+    console.log('origin:', window.location.origin)
+    console.log('kakao loaded?:', !!window.kakao?.maps)
+  }, [])
 
   const showMyLoc = () => {
     navigator.geolocation.watchPosition((pos) => {
@@ -107,9 +111,13 @@ function Map() {
     })
   }
 
+  const goCafeList = () => {
+    navigate('/cafelist', { state: { lat: center.lat, lng: center.lng } })
+  }
+
   return (
     <MapContainer>
-      <KakaoMap center={center} isMarker={isMarker} />
+      <KakaoMap center={center} isMarker={isMarker} filter={active} />
       <Wrapper>
         <SearchBox />
         <HeaderBtns>
@@ -136,7 +144,7 @@ function Map() {
           <MyLocBtn onClick={showMyLoc}>
             <img src={mapIcon} />
           </MyLocBtn>
-          <ListBtn>
+          <ListBtn onClick={goCafeList}>
             <ListBtnIcon src={listIcon} />
             <ListBtnName>목록보기</ListBtnName>
           </ListBtn>

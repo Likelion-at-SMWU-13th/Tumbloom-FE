@@ -3,26 +3,52 @@ import Header from '../common/Header'
 import CafeListCard from '../common/CafeListCard'
 import cafeListLine from '@/assets/images/cafe-list-line.svg'
 import * as S from '@/components/CafeList/CafeList.Styled'
+import { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 
 function CafeList() {
-  const CafeList = [
-    { cafeName: '너드커피', location: '서울시 용산구 청파동2가', time: '09:00-15:00' },
-    { cafeName: '너드커피', location: '서울시 용산구 청파동2가', time: '09:00-15:00' },
-    { cafeName: '너드커피', location: '서울시 용산구 청파동2가', time: '09:00-15:00' },
-    { cafeName: '너드커피', location: '서울시 용산구 청파동2가', time: '09:00-15:00' },
-    { cafeName: '너드커피', location: '서울시 용산구 청파동2가', time: '09:00-15:00' },
-    { cafeName: '너드커피', location: '서울시 용산구 청파동2가', time: '09:00-15:00' },
-    { cafeName: '너드커피', location: '서울시 용산구 청파동2가', time: '09:00-15:00' },
-    { cafeName: '너드커피', location: '서울시 용산구 청파동2가', time: '09:00-15:00' },
-  ]
+  const [cafes, setCafes] = useState([])
+  const location = useLocation()
+
+  const { lat, lng } = location.state || {}
+
+  const nearCafeList = async (lat, lng) => {
+    const at = localStorage.getItem('accessToken')
+    if (!at || at === 'undefined') {
+      console.log('로컬스토리지에 accessToken 없음')
+      return
+    }
+    const res = await fetch(`https://tumbloom.store/api/cafes/nearby/top?lat=${lat}&lng=${lng}`, {
+      headers: { Authorization: `Bearer ${at}` },
+    })
+    const json = await res.json().catch(() => ({}))
+    if (!res.ok || !Array.isArray(json?.data)) {
+      console.log('coupon error', res.status, json)
+      setCafes([])
+      return
+    }
+    setCafes(
+      json.data.map((c) => ({
+        id: c.id,
+        cName: c.cafeName,
+        address: c.address,
+        t: c.businessHours,
+        img: c.imageUrl,
+      })),
+    )
+  }
+
+  useEffect(() => {
+    if (lat && lng) nearCafeList(lat, lng)
+  }, [lat, lng])
+
   return (
     <>
       <Header title='카페 목록보기' />
       <S.ScrollArea>
-        {' '}
         <S.Wrapper>
-          {CafeList.map((item, i) => (
-            <CafeListCard key={i} name={item.cafeName} loc={item.location} time={item.time} />
+          {cafes.map((c) => (
+            <CafeListCard key={c.id} name={c.cName} loc={c.address} time={c.t} image={c.img} />
           ))}
         </S.Wrapper>
       </S.ScrollArea>

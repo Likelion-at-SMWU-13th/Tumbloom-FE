@@ -5,7 +5,7 @@ import locImg from '@/assets/icons/cafe-info-loc.svg'
 import timeImg from '@/assets/icons/cafe-info-time.svg'
 import * as S from '@/components/common/CafeListCard.Styled'
 
-function CafeListCard({ name, loc, time }) {
+function CafeListCard({ name, loc, time, image }) {
   return (
     <S.Container>
       <S.LeftCard>
@@ -23,7 +23,7 @@ function CafeListCard({ name, loc, time }) {
         <S.StampBtn>스탬프 적립</S.StampBtn>
       </S.LeftCard>
       <S.RightCard>
-        <S.CafeImg src={cafeListImg} />
+        <S.CafeImg src={image} />
       </S.RightCard>
     </S.Container>
   )
