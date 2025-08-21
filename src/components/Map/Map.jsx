@@ -16,6 +16,7 @@ import KakaoMap from './KakaoMap'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const MapContainer = styled.div`
   position: relative;
@@ -90,6 +91,7 @@ const ListBtnName = styled.span`
 `
 
 function Map() {
+  const navigate = useNavigate()
   const [active, setActive] = useState('')
   const select = (key) => setActive(key)
   const [center, setCenter] = useState({ lat: 33.450701, lng: 126.570667 })
@@ -107,6 +109,10 @@ function Map() {
       setCenter({ lat, lng })
       setIsMarker(true)
     })
+  }
+
+  const goCafeList = () => {
+    navigate('/cafelist', { state: { lat: center.lat, lng: center.lng } })
   }
 
   return (
@@ -138,7 +144,7 @@ function Map() {
           <MyLocBtn onClick={showMyLoc}>
             <img src={mapIcon} />
           </MyLocBtn>
-          <ListBtn>
+          <ListBtn onClick={goCafeList}>
             <ListBtnIcon src={listIcon} />
             <ListBtnName>목록보기</ListBtnName>
           </ListBtn>
