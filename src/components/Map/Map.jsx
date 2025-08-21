@@ -17,6 +17,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import MapCafeCard from './MapCafeCard'
 
 const MapContainer = styled.div`
   position: relative;
@@ -96,6 +97,7 @@ function Map() {
   const select = (key) => setActive(key)
   const [center, setCenter] = useState({ lat: 33.450701, lng: 126.570667 })
   const [isMarker, setIsMarker] = useState(false)
+  const [selectedCafeId, setSelectedCafeId] = useState()
 
   useEffect(() => {
     console.log('origin:', window.location.origin)
@@ -117,7 +119,12 @@ function Map() {
 
   return (
     <MapContainer>
-      <KakaoMap center={center} isMarker={isMarker} filter={active} />
+      <KakaoMap
+        center={center}
+        isMarker={isMarker}
+        filter={active}
+        onSelectCafe={setSelectedCafeId}
+      />
       <Wrapper>
         <SearchBox />
         <HeaderBtns>
@@ -149,6 +156,7 @@ function Map() {
             <ListBtnName>목록보기</ListBtnName>
           </ListBtn>
         </FooterBtns>
+        <MapCafeCard cafeId={selectedCafeId} />
         <Footer />
       </Wrapper>
     </MapContainer>

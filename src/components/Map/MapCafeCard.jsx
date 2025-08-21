@@ -8,50 +8,65 @@ import scrabOff from '@/assets/icons/bookmark.svg'
 
 const Container = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   margin: 0;
+  width: 24.5625rem;
+  height: 12.125rem;
+  flex-shrink: 0;
+  border-radius: 0.9375rem 0.9375rem 0 0;
+  background: #fff;
+  box-shadow: 0 -10px 17.6px 0 rgba(0, 0, 0, 0.25);
+  transform: translateY(17.4rem);
 `
 
 const TopContent = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 0;
+  gap: 3.7rem;
+  padding-top: 0.8rem;
+`
+
+const ContentBox = styled.div`
+  display: flex;
+  flex-direction: row;
 `
 
 const LeftCard = styled.div`
   display: flex;
   flex-direction: column;
   min-width: 0;
-  padding-top: 1.38rem;
+  padding-top: 0.75rem;
   padding-bottom: 1.38rem;
 `
 
 const RightCard = styled.div`
-  padding-top: 1.38rem;
+  padding-top: 0.75rem;
   padding-bottom: 1.38rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  padding-left: 1.25rem;
 `
 
 const StampBtn = styled.button`
-  width: 5.7rem;
-  height: 1.95rem;
+  width: 7.94rem;
+  height: 2.19rem;
   display: inline-flex;
-  padding: 0.44213rem 0.71844rem;
+  padding: 0.5rem 0.8125rem;
   justify-content: center;
   align-items: center;
-  gap: 0.55269rem;
+  gap: 0.625rem;
   border-radius: 16.57981rem;
   border: 1px solid #25af94;
-  color: #25af94;
+  color: #fff;
   font-family: 'Pretendard Variable';
-  font-size: 0.86419rem;
+  font-size: 0.9rem;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  background-color: transparent;
+  background-color: #25af94;
   align-self: flex-start;
 `
 
@@ -91,7 +106,7 @@ const Loc = styled.span`
   font-family: 'Pretendard Variable';
   font-size: 0.875rem;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: normal;
 `
 
@@ -100,7 +115,7 @@ const Time = styled.span`
   font-family: 'Pretendard Variable';
   font-size: 0.875rem;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: normal;
 `
 
@@ -108,6 +123,7 @@ const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
   padding-bottom: 0.38rem;
+  padding-top: 0.69rem;
 `
 
 const LocBox = styled.div`
@@ -186,22 +202,24 @@ function MapCafeCard({ cafeId }) {
           />
         </Scrab>
       </TopContent>
-      <LeftCard>
-        <CafeImg src={cafe.img} />
-      </LeftCard>
-      <RightCard>
-        <StampBtn>스탬프 적립</StampBtn>
-        <InfoBox>
-          <LocBox>
-            <LocImg src={locImg} />
-            <Loc>{cafe.address}</Loc>
-          </LocBox>
-          <TimeBox>
-            <LocImg src={timeImg} />
-            <Time>{cafe.t}</Time>
-          </TimeBox>
-        </InfoBox>
-      </RightCard>
+      <ContentBox>
+        <LeftCard>
+          <CafeImg src={cafe.img} />
+        </LeftCard>
+        <RightCard>
+          <StampBtn>스탬프 적립하기</StampBtn>
+          <InfoBox>
+            <LocBox>
+              <LocImg src={locImg} />
+              <Loc>{cafe.address}</Loc>
+            </LocBox>
+            <TimeBox>
+              <LocImg src={timeImg} />
+              <Time>{cafe.t}</Time>
+            </TimeBox>
+          </InfoBox>
+        </RightCard>
+      </ContentBox>
     </Container>
   )
 }

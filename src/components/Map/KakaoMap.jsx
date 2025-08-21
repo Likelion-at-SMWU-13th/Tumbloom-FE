@@ -16,7 +16,7 @@ const MapWrapper = styled.div`
   z-index: 0;
 `
 
-function KakaoMap({ center, isMarker, filter }) {
+function KakaoMap({ center, isMarker, filter, onSelectCafe }) {
   const [cafes, setCafes] = useState([])
   const [selectedCafe, setSelectedCafe] = useState(null)
 
@@ -189,6 +189,7 @@ function KakaoMap({ center, isMarker, filter }) {
                 onClick={() => {
                   setSelectedCafe(c.id)
                   console.log('clicked cafe id:', c.id)
+                  onSelectCafe && onSelectCafe(c.id)
                 }}
                 style={{
                   transform: 'translate(-50%,-100%)',
