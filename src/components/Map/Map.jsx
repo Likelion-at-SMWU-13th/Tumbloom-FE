@@ -111,7 +111,7 @@ function Map() {
 
   return (
     <MapContainer>
-      <KakaoMap center={center} isMarker={isMarker} />
+      <KakaoMap center={center} isMarker={isMarker} filter={active} />
       <Wrapper>
         <SearchBox />
         <HeaderBtns>

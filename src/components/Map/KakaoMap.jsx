@@ -14,7 +14,7 @@ const MapWrapper = styled.div`
   z-index: 0;
 `
 
-function KakaoMap({ center, isMarker }) {
+function KakaoMap({ center, isMarker, filter }) {
   const [cafes, setCafes] = useState([])
 
   const nearbyCafes = async (lat, lng) => {
@@ -43,12 +43,104 @@ function KakaoMap({ center, isMarker }) {
     )
   }
 
+  const popularCafes = async () => {
+    const at = localStorage.getItem('accessToken')
+    if (!at || at === 'undefined') {
+      console.log('로컬스토리지에 accessToken 없음')
+      return
+    }
+    const res = await fetch(`https://tumbloom.store/api/cafes/filtered/popular`, {
+      headers: { Authorization: `Bearer ${at}` },
+    })
+    const json = await res.json().catch(() => ({}))
+    if (!res.ok || !Array.isArray(json?.data)) {
+      console.log('popular error', res.status, json)
+      setCafes([])
+      return
+    }
+    setCafes(
+      json.data.map((c) => ({
+        id: c.id,
+        name: c.cafeName,
+        lat: c.latitude,
+        lng: c.longitude,
+      })),
+    )
+  }
+
+  const myCouponCafes = async () => {
+    const at = localStorage.getItem('accessToken')
+    if (!at || at === 'undefined') {
+      console.log('로컬스토리지에 accessToken 없음')
+      return
+    }
+    const res = await fetch(`https://tumbloom.store/api/cafes/filtered/coupon`, {
+      headers: { Authorization: `Bearer ${at}` },
+    })
+    const json = await res.json().catch(() => ({}))
+    if (!res.ok || !Array.isArray(json?.data)) {
+      console.log('coupon error', res.status, json)
+      setCafes([])
+      return
+    }
+    setCafes(
+      json.data.map((c) => ({
+        id: c.id,
+        name: c.cafeName,
+        lat: c.latitude,
+        lng: c.longitude,
+      })),
+    )
+  }
+
+  const aiRecCafes = async () => {
+    const at = localStorage.getItem('accessToken')
+    if (!at || at === 'undefined') {
+      console.log('로컬스토리지에 accessToken 없음')
+      return
+    }
+    const res = await fetch(`https://tumbloom.store/api/cafes/filtered/ai`, {
+      headers: { Authorization: `Bearer ${at}` },
+    })
+    const json = await res.json().catch(() => ({}))
+    if (!res.ok || !Array.isArray(json?.data)) {
+      console.log('popular error', res.status, json)
+      setCafes([])
+      return
+    }
+
+    setCafes(
+      json.data.map((c) => ({
+        id: c.id,
+        name: c.cafeName,
+        lat: c.latitude,
+        lng: c.longitude,
+      })),
+    )
+  }
+
   useEffect(() => {
     if (localStorage.getItem('accessToken') === 'undefined') {
       localStorage.removeItem('accessToken')
     }
-    if (center) nearbyCafes(center.lat, center.lng)
-  }, [center])
+    ;(async () => {
+      switch (filter) {
+        case 'hot':
+          await popularCafes()
+          break
+        case 'coupon':
+          await myCouponCafes()
+          break
+        case 'ai':
+          await aiRecCafes()
+          break
+        default:
+          if (center?.lat && center?.lng) {
+            await nearbyCafes(center.lat, center.lng)
+          }
+      }
+    })()
+  }, [filter, center?.lat, center?.lng])
 
   return (
     <MapWrapper>
