@@ -8,7 +8,6 @@ import CafeCoupon from './CafeCoupon'
 const CouponChange = () => {
   const [couponList, setCouponList] = useState([])
   const [currentCount, setCurrentCount] = useState(0)
-  const [availableCoupon, setAvailableCoupon] = useState(0)
 
   const exchangeCoupon = (id) => {
     const token = localStorage.getItem('accessToken')
@@ -55,23 +54,7 @@ const CouponChange = () => {
       })
       .then((res) => {
         console.log(res.data)
-        setCurrentCount(res.data.data.stampStatus.currentCount)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }, [])
-
-  useEffect(() => {
-    const token = localStorage.getItem('accessToken')
-
-    axios
-      .get('https://tumbloom.store/api/users/me/mypage', {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((res) => {
-        console.log(res.data)
-        setAvailableCoupon(res.data.data.availableCoupons)
+        setCurrentCount(res.data.data.stampStatus.validStampCnt)
       })
       .catch((err) => {
         console.log(err)
@@ -79,6 +62,7 @@ const CouponChange = () => {
   }, [])
 
   const moreCoupon = 8 - currentCount
+  const availableCoupon = Math.floor(currentCount / 8)
 
   return (
     <S.Wrapper>

@@ -27,7 +27,7 @@ const HomePage = () => {
         setTumblerCount(res.data.data.welcomeStatus.tumblerCount)
         setSavedWater(res.data.data.welcomeStatus.savedWater)
         setSavedTree(res.data.data.welcomeStatus.savedTree)
-        setCurrentCount(res.data.data.stampStatus.currentCount)
+        setCurrentCount(res.data.data.stampStatus.validStampCnt)
         setExchangeable(res.data.data.stampStatus.exchangeable)
       })
       .catch((err) => {
