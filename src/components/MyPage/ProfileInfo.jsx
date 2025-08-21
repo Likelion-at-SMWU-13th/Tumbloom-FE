@@ -27,7 +27,7 @@ const ProfileInfo = ({
           <S.Value>{issuedCoupons}회</S.Value>
         </S.CouponCount>
       </S.CurrentCountBox>
-      <S.CafePreferenceBox>
+      <S.CafePreferenceBox onClick={() => navigate('/preference')}>
         <S.PreferenceBox>
           <S.Title>내 카페 취향</S.Title>
           <S.Arrow src={arrow} />
