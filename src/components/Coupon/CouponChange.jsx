@@ -98,9 +98,7 @@ const CouponChange = () => {
         </S.ChangeTextBox>
         <CafeInputField />
       </S.SearchArea>
-      <S.NearCouponText>
-        지금 근처 <S.HighlightText>청파동</S.HighlightText> 카페 쿠폰
-      </S.NearCouponText>
+      <S.NearCouponText>지금 내 주변 카페 쿠폰</S.NearCouponText>
       <S.CouponList>
         {couponList
           .filter(({ remainingQuantity }) => Number(remainingQuantity) > 0)
