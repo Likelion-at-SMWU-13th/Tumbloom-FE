@@ -2,7 +2,7 @@ import React from 'react'
 import * as S from './styled'
 import MatrixBar from './MatrixBar'
 
-const HeaderArea = ({ userName, stamp }) => {
+const HeaderArea = ({ userName, tumblerCount, savedWater, savedTree }) => {
   return (
     <S.Wrapper>
       <S.GreetingWrapper>
@@ -10,7 +10,7 @@ const HeaderArea = ({ userName, stamp }) => {
         <S.WelcomeText>오늘도 반가워요!</S.WelcomeText>
       </S.GreetingWrapper>
       <div>
-        <MatrixBar stamp_count={stamp} />
+        <MatrixBar tumblerCount={tumblerCount} savedWater={savedWater} savedTree={savedTree} />
       </div>
     </S.Wrapper>
   )
