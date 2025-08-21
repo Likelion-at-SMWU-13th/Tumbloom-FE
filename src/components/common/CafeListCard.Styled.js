@@ -106,4 +106,5 @@ export const CafeImg = styled.img`
   height: 6.8125rem;
   flex-shrink: 0;
   border-radius: 0.3125rem;
+  object-fit: cover;
 `

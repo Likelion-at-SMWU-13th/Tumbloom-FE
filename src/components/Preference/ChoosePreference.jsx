@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 import * as S from './styled'
 import Button from './Button'
 import NoticeModal from '../common/NoticeModal'
@@ -35,8 +36,6 @@ import unique from '@/assets/icons/unique.svg'
 import unique_green from '@/assets/icons/unique-green.svg'
 
 const ChoosePreference = () => {
-  const [active, setActive] = useState(false)
-
   const PURPOSE = [
     { key: 'atmosphere', title: '감성/분위기', off: atmosphere, on: atmosphere_green },
     { key: 'study', title: '공부/작업공간', off: study, on: study_green },
@@ -61,6 +60,30 @@ const ChoosePreference = () => {
     { key: 'unique', title: '이색테마/메뉴', off: unique, on: unique_green },
   ]
 
+  const PURPOSE_ENUM = {
+    atmosphere: 'EMOTIONAL_ATMOSPHERE',
+    study: 'STUDY_WORKSPACE',
+    meet: 'CHAT_MEETING',
+    hot: 'HOT_PLACE',
+    event: 'EVENT',
+  }
+
+  const MENU_ENUM = {
+    specialTea: 'SPECIALTY',
+    cake: 'DESSERT',
+    decaf: 'DECAF',
+    seasonMenu: 'SEASON_MENU',
+    brunch: 'BRUNCH',
+  }
+
+  const ETC_ENUM = {
+    brand: 'FRANCHISE',
+    animal: 'PET_FRIENDLY',
+    sun: 'OUTDOOR_TERRACE',
+    eco: 'ECO_LOCAL',
+    unique: 'UNIQUE_THEME',
+  }
+
   const [selected, setSelected] = useState([])
 
   const toggle = (key) =>
@@ -73,6 +96,34 @@ const ChoosePreference = () => {
   const [openModal, setOpenModal] = useState(false)
 
   const navigate = useNavigate()
+
+  const handleSave = () => {
+    const token = localStorage.getItem('accessToken')
+
+    const visitPurposes = selected.filter((k) => PURPOSE_ENUM[k]).map((k) => PURPOSE_ENUM[k])
+
+    const preferredMenus = selected.filter((k) => MENU_ENUM[k]).map((k) => MENU_ENUM[k])
+
+    const extraOptions = selected.filter((k) => ETC_ENUM[k]).map((k) => ETC_ENUM[k])
+
+    const body = { visitPurposes, preferredMenus, extraOptions }
+
+    axios
+      .put('https://tumbloom.store/api/users/me/preferences', body, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      })
+      .then((res) => {
+        console.log(res.data)
+        setOpenModal(true)
+      })
+      .catch((err) => {
+        console.error(err)
+        alert(err?.response?.data?.message ?? '저장에 실패했어요')
+      })
+  }
 
   return (
     <>
@@ -134,7 +185,7 @@ const ChoosePreference = () => {
           </S.BtnContainer>
         </S.CategoryBox>
         <S.SaveBtnContainer>
-          <S.SaveBtn onClick={() => setOpenModal(true)}>저장하기</S.SaveBtn>
+          <S.SaveBtn onClick={handleSave}>저장하기</S.SaveBtn>
         </S.SaveBtnContainer>
       </S.Wrapper>
       {openModal && (
@@ -144,7 +195,7 @@ const ChoosePreference = () => {
           subTitle={'홈에서 AI에게 카페 추천을 받을 수 있어요'}
           btnLeft={'취향수정 '}
           btnRight={'홈으로 가기'}
-          onChangeBtnLeft={setOpenModal}
+          onChangeBtnLeft={() => setOpenModal(false)}
           onChangeBtnRight={() => navigate('/home')}
           open
         />

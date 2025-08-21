@@ -4,7 +4,7 @@ import { saveAs } from 'file-saver'
 import ProfileCard from './ProfileCard'
 import * as S from './styled'
 
-const ProfileShareBox = ({ stamp, userName }) => {
+const ProfileShareBox = ({ userName, tumblerCount, savedWater, savedTree, level }) => {
   const cardRef = useRef(null)
 
   const handleDownload = async () => {
@@ -41,7 +41,13 @@ const ProfileShareBox = ({ stamp, userName }) => {
   return (
     <S.Wrapper>
       <div ref={cardRef}>
-        <ProfileCard stamp={stamp} userName={userName} />
+        <ProfileCard
+          userName={userName}
+          tumblerCount={tumblerCount}
+          savedWater={savedWater}
+          savedTree={savedTree}
+          level={level}
+        />
       </div>
       <S.ImgBtn onClick={handleDownload}>이미지 다운받기</S.ImgBtn>
     </S.Wrapper>

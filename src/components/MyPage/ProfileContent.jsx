@@ -10,10 +10,10 @@ import lv4_img from '@/assets/images/lv4-profile.svg'
 import lv5_img from '@/assets/images/lv5-profile.svg'
 import share from '@/assets/icons/profile-share.svg'
 
-const ProfileContent = ({ onChangeInfo, stamp, level }) => {
+const ProfileContent = ({ onChangeInfo, nickName, level, stepsLeft, tumblerCount }) => {
   const navigate = useNavigate()
 
-  const currentLevelName = (level) => {
+  const currentLevel = (level) => {
     if (level === 1) return 'Lv.1 텀블러 뉴비'
     else if (level === 2) return 'Lv.2 텀블러 입문자'
     else if (level === 3) return 'Lv.3 텀블러 러버'
@@ -21,7 +21,7 @@ const ProfileContent = ({ onChangeInfo, stamp, level }) => {
     else if (level === 5) return 'Lv.5 텀블러 히어로'
   }
 
-  const currentLevel = currentLevelName(level)
+  const levelName = currentLevel(level)
 
   return (
     <S.ProfileContentBox>
@@ -34,13 +34,13 @@ const ProfileContent = ({ onChangeInfo, stamp, level }) => {
       {level === 3 && <S.ProfileImg src={lv3_img} />}
       {level === 4 && <S.ProfileImg src={lv4_img} />}
       {level === 5 && <S.ProfileImg src={lv5_img} />}
-      <S.ProfileName>닉네임91</S.ProfileName>
+      <S.ProfileName>{nickName}</S.ProfileName>
       <S.ProfileLevelBox>
-        <S.ProfileLevel>{currentLevel}</S.ProfileLevel>
+        <S.ProfileLevel>{levelName}</S.ProfileLevel>
         <S.QuestionIcon src={question} onClick={() => onChangeInfo(true)} />
       </S.ProfileLevelBox>
       <div>
-        <StateBar stamp={stamp} level={level} />
+        <StateBar level={level} stepsLeft={stepsLeft} tumblerCount={tumblerCount} />
       </div>
     </S.ProfileContentBox>
   )

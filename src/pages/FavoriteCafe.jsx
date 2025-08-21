@@ -1,5 +1,4 @@
 import React from 'react'
-import CafeListCard from '@/components/common/CafeListCard'
 import Header from '@/components/common/Header'
 import FavoriteCafeList from '@/components/FavoriteCafeList/FavoriteCafeList'
 

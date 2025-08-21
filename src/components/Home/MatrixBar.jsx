@@ -8,10 +8,6 @@ import info_icon from '../../assets/icons/question_icon.svg'
 import TumblerInfo from './TumblerInfo'
 
 const MatrixBar = ({ tumblerCount, savedWater, savedTree }) => {
-  // const s = Number(stamp_count)
-  // const water = (s * 0.55).toFixed(2)
-  // const tree = (s * 0.003).toFixed(3)
-
   const [openInfo, setOpenInfo] = useState(false)
 
   return (
