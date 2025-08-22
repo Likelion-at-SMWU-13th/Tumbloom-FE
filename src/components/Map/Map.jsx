@@ -17,6 +17,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import MapCafeCard from './MapCafeCard'
 
 const MapContainer = styled.div`
   position: relative;
@@ -44,10 +45,14 @@ const FooterBtns = styled.div`
   flex-direction: row;
   justify-content: center;
   gap: 13rem;
-  transform: translateY(40rem);
-  margin-top: auto;
+  margin-top: 45rem;
   padding-bottom: 1rem;
+  z-index: 10;
 `
+
+const hasCardStyle = {
+  marginTop: `35rem`,
+}
 
 const MyLocBtn = styled.button`
   width: 2.625rem;
@@ -93,9 +98,11 @@ const ListBtnName = styled.span`
 function Map() {
   const navigate = useNavigate()
   const [active, setActive] = useState('')
+  const [map, setMap] = useState(null)
   const select = (key) => setActive(key)
-  const [center, setCenter] = useState({ lat: 33.450701, lng: 126.570667 })
+  const [center, setCenter] = useState({ lat: 37.5665, lng: 126.978 })
   const [isMarker, setIsMarker] = useState(false)
+  const [selectedCafeId, setSelectedCafeId] = useState(null)
 
   useEffect(() => {
     console.log('origin:', window.location.origin)
@@ -103,11 +110,13 @@ function Map() {
   }, [])
 
   const showMyLoc = () => {
-    navigator.geolocation.watchPosition((pos) => {
+    if (!map) return
+    navigator.geolocation.getCurrentPosition((pos) => {
       const lat = pos.coords.latitude
       const lng = pos.coords.longitude
       setCenter({ lat, lng })
       setIsMarker(true)
+      map.panTo(new window.kakao.maps.LatLng(lat, lng))
     })
   }
 
@@ -117,7 +126,13 @@ function Map() {
 
   return (
     <MapContainer>
-      <KakaoMap center={center} isMarker={isMarker} filter={active} />
+      <KakaoMap
+        center={center}
+        isMarker={isMarker}
+        filter={active}
+        onSelectCafe={setSelectedCafeId}
+        onCreateMap={setMap}
+      />
       <Wrapper>
         <SearchBox />
         <HeaderBtns>
@@ -140,7 +155,7 @@ function Map() {
             isActive={active === 'hot'}
           />
         </HeaderBtns>
-        <FooterBtns>
+        <FooterBtns style={selectedCafeId ? hasCardStyle : undefined}>
           <MyLocBtn onClick={showMyLoc}>
             <img src={mapIcon} />
           </MyLocBtn>
@@ -149,6 +164,7 @@ function Map() {
             <ListBtnName>목록보기</ListBtnName>
           </ListBtn>
         </FooterBtns>
+        {selectedCafeId && <MapCafeCard cafeId={selectedCafeId} />}
         <Footer />
       </Wrapper>
     </MapContainer>
