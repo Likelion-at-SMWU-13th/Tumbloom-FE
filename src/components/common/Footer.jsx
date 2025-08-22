@@ -11,9 +11,19 @@ import mypageIcon from '@/assets/icons/footer-mypage.svg'
 import mypageClickedIcon from '@/assets/icons/footer-clicked-mypage.svg'
 import scanIcon from '@/assets/icons/footer-scan-btn.svg'
 import * as S from './Footer.Styled.js'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 function Footer() {
-  const [currentPath, setCurrentPath] = useState('home')
+  const navigate = useNavigate()
+  const { pathname } = useLocation()
+
+  const currentPath = {
+    home: `/home`,
+    map: `/map`,
+    scan: `/qr`,
+    coupon: `/coupon`,
+    mypage: `/mypage`,
+  }
 
   return (
     <S.FooterBox>
@@ -23,15 +33,15 @@ function Footer() {
             label='홈'
             icon={homeIcon}
             clickedIcon={homeClickedIcon}
-            active={currentPath === 'home'}
-            onClick={() => setCurrentPath('home')}
+            active={pathname === currentPath.home}
+            onClick={() => navigate(currentPath.home)}
           />
           <NavItem
             label='지도'
             icon={mapIcon}
             clickedIcon={mapClickedIcon}
-            active={currentPath === 'map'}
-            onClick={() => setCurrentPath('map')}
+            active={pathname === currentPath.map}
+            onClick={() => navigate(currentPath.map)}
           />
         </S.LeftMenu>
         <S.RightMenu>
@@ -39,20 +49,20 @@ function Footer() {
             label='쿠폰'
             icon={couponIcon}
             clickedIcon={couponClickedIcon}
-            active={currentPath === 'coupon'}
-            onClick={() => setCurrentPath('coupon')}
+            active={pathname === currentPath.coupon}
+            onClick={() => navigate(currentPath.coupon)}
           />
           <NavItem
             label='내정보'
             icon={mypageIcon}
             clickedIcon={mypageClickedIcon}
-            active={currentPath === 'mypage'}
-            onClick={() => setCurrentPath('mypage')}
+            active={pathname === currentPath.mypage}
+            onClick={() => navigate(currentPath.mypage)}
           />
         </S.RightMenu>
 
         <S.ScanItem>
-          <S.ScanBtn src={scanIcon} />
+          <S.ScanBtn src={scanIcon} onClick={() => navigate(currentPath.scan)} />
         </S.ScanItem>
       </S.FooterRow>
     </S.FooterBox>
