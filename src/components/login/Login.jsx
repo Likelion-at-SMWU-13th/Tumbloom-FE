@@ -53,12 +53,22 @@ const GoToRegisterBtn = styled.span`
   cursor: pointer;
 `
 
+const LoginErrorText = styled.span`
+  color: #f54d4dff;
+  text-align: center;
+  font-family: Inter;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 0.94rem 0 0 0;
+`
+
 function Login() {
   const [email, setEmail] = useState('')
-
   const [password, setPassword] = useState('')
-
   const [btnColor, setBtnColor] = useState(false)
+  const [error, setError] = useState('')
 
   const navigate = useNavigate()
 
@@ -77,12 +87,14 @@ function Login() {
   const handleLogin = () => {
     if (btnColor) {
       // 로그인 로직 추가할 예정
-      navigate('/')
+
+      navigate('/home')
     }
   }
 
   const onLoginHandler = async () => {
     try {
+      setError('')
       const response = await axios.post(
         `https://tumbloom.store/api/auth/login`,
         { email, password },
@@ -104,7 +116,14 @@ function Login() {
       setPassword('')
       handleLogin()
     } catch (error) {
-      console.log(error.response.data.message)
+      const status = error.response?.status
+      if (status === 404) {
+        setError('등록되지 않은 이메일입니다.')
+      } else if (status === 401) {
+        setError('비밀번호가 일치하지 않습니다.')
+      } else {
+        setError('로그인에 실패했습니다. 다시 시도하세요')
+      }
     }
   }
 
@@ -129,8 +148,10 @@ function Login() {
           텀블러인 계정이 없나요?{' '}
           <GoToRegisterBtn onClick={goToRegister}>회원가입하기</GoToRegisterBtn>
         </Desc>
+        {error && <LoginErrorText>{error}</LoginErrorText>}
       </LoginContainer>
     </>
   )
 }
+
 export default Login
