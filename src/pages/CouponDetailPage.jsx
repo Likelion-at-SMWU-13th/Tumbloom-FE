@@ -13,6 +13,7 @@ const CouponDetailPage = () => {
   const [cafeName, setCafeName] = useState('')
   const [expiredDate, setExpiredDate] = useState('')
   const [price, setPrice] = useState('')
+  const [cafeImg, setCafeImg] = useState('')
 
   const { state } = useLocation()
   const couponId = state?.couponId
@@ -26,9 +27,10 @@ const CouponDetailPage = () => {
       })
       .then((res) => {
         console.log(res.data)
-        setCafeName(res.data.data.cafeName)
-        setExpiredDate(res.data.data.expiredDate)
-        setPrice(res.data.data.content)
+        setCafeName(res.data.cafeName)
+        setExpiredDate(res.data.expiredDate)
+        setPrice(res.data.content)
+        setCafeImg(res.data.imageUrl)
       })
       .catch((err) => {
         console.log(err)
@@ -60,7 +62,7 @@ const CouponDetailPage = () => {
         btnRight={'확인'}
         onChangeBtnLeft={() => setOpenUseModal(false)}
         onChangeBtnRight={() => {
-          couponUse
+          couponUse()
           setActiveCoupon(false)
           setOpenUseModal(false)
         }}
@@ -76,6 +78,7 @@ const CouponDetailPage = () => {
         cafeName={cafeName}
         expiredDate={expiredDate}
         price={price}
+        cafeImg={cafeImg}
       />
     </>
   )

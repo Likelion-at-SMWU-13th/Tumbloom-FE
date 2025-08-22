@@ -14,6 +14,7 @@ export const CafeImage = styled.img`
   flex-shrink: 0;
   border-radius: 9.375rem;
   margin-top: 4.25rem;
+  object-fit: cover;
 `
 
 export const TextContainer = styled.div`
