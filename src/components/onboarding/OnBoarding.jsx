@@ -9,6 +9,7 @@ import dotGreen from '@/assets/icons/green-circle.svg'
 import dotGrey from '@/assets/icons/grey-circle.svg'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 
 const OnBoardingPages = [
   {
@@ -95,16 +96,28 @@ const OnBoardingPages = [
   },
 ]
 
-const Header = styled.div`
+const Wrapper = styled.div`
+  position: relative;
+  width: 100%;
+  max-width: 24.5625rem;
+  margin: 0 auto;
+  min-height: 100dvh;
   display: flex;
-  width: 24.5625rem;
-  height: 3.5rem;
-  background-color: #ffffffff;
+  flex-direction: column;
+`
+const Slide = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
 `
 
 const ImgContainer = styled.div`
   display: flex;
-  padding: 0 0 3.53rem 0;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0 1.5rem 0;
 `
 
 const ContentContainer = styled.div`
@@ -112,7 +125,6 @@ const ContentContainer = styled.div`
   flex-direction: column;
   left: 0;
   bottom: 0;
-  position: absolute;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -150,14 +162,13 @@ const DotContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 0.5rem;
-  padding: 2.38rem 0 4.56rem 0;
+  padding: 2.38rem 0 3rem 0;
 `
 
 const BtnContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 0 5.44rem 0;
   position: relative;
 `
 
@@ -192,36 +203,47 @@ function OnBoarding() {
 
   return (
     <>
-      <Header />
-      <ImgContainer
-        style={{ justifyContent: page === 1 ? 'flex-end' : 'center', padding: onb.padding }}
-      >
-        <OnBoardingImg src={onb.img} />
-      </ImgContainer>
-      <ContentContainer>
-        <TextContainer>
-          <Title>{onb.title}</Title>
-          <Desc>{onb.desc}</Desc>
-        </TextContainer>
-        <DotContainer>
-          {[0, 1, 2, 3, 4].map((i) => (
-            <img key={i} src={i === page - 1 ? dotGreen : dotGrey} />
-          ))}
-        </DotContainer>
-        <BtnContainer>
-          <NextBtn
-            onClick={() => {
-              if (page < totalPages) {
-                setPage(page + 1)
-              } else {
-                navigate('/login')
-              }
-            }}
+      <Wrapper>
+        <AnimatePresence mode='wait'>
+          <Slide
+            key={page}
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -30 }}
+            transition={{ duration: 0.2 }}
           >
-            {page === totalPages ? '텀블러인 시작하기' : '다음'}
-          </NextBtn>
-        </BtnContainer>
-      </ContentContainer>
+            <ImgContainer
+              style={{ justifyContent: page === 1 ? 'flex-end' : 'center', padding: onb.padding }}
+            >
+              <OnBoardingImg src={onb.img} />
+            </ImgContainer>
+            <ContentContainer>
+              <TextContainer>
+                <Title>{onb.title}</Title>
+                <Desc>{onb.desc}</Desc>
+              </TextContainer>
+              <DotContainer>
+                {[0, 1, 2, 3, 4].map((i) => (
+                  <img key={i} src={i === page - 1 ? dotGreen : dotGrey} />
+                ))}
+              </DotContainer>
+              <BtnContainer>
+                <NextBtn
+                  onClick={() => {
+                    if (page < totalPages) {
+                      setPage(page + 1)
+                    } else {
+                      navigate('/login')
+                    }
+                  }}
+                >
+                  {page === totalPages ? '텀블러인 시작하기' : '다음'}
+                </NextBtn>
+              </BtnContainer>
+            </ContentContainer>
+          </Slide>
+        </AnimatePresence>
+      </Wrapper>
     </>
   )
 }
