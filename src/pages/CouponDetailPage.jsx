@@ -13,6 +13,7 @@ const CouponDetailPage = () => {
   const [cafeName, setCafeName] = useState('')
   const [expiredDate, setExpiredDate] = useState('')
   const [price, setPrice] = useState('')
+  const [cafeImg, setCafeImg] = useState(null)
 
   const { state } = useLocation()
   const couponId = state?.couponId
@@ -26,14 +27,30 @@ const CouponDetailPage = () => {
       })
       .then((res) => {
         console.log(res.data)
-        setCafeName(res.data.data.cafeName)
-        setExpiredDate(res.data.data.expiredDate)
-        setPrice(res.data.data.content)
+        setCafeName(res.data.cafeName)
+        setExpiredDate(res.data.expiredDate)
+        setPrice(res.data.content)
+        setCafeImg(res.data.imageUrl)
       })
       .catch((err) => {
         console.log(err)
       })
   })
+
+  const couponUse = () => {
+    const token = localStorage.getItem('accessToken')
+
+    axios
+      .delete(`https://tumbloom.store/api/coupons/my/${couponId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        console.log(res.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
 
   return (
     <>
@@ -45,6 +62,7 @@ const CouponDetailPage = () => {
         btnRight={'확인'}
         onChangeBtnLeft={() => setOpenUseModal(false)}
         onChangeBtnRight={() => {
+          couponUse()
           setActiveCoupon(false)
           setOpenUseModal(false)
         }}
@@ -60,6 +78,7 @@ const CouponDetailPage = () => {
         cafeName={cafeName}
         expiredDate={expiredDate}
         price={price}
+        cafeImg={cafeImg}
       />
     </>
   )

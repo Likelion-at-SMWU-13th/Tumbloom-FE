@@ -2,13 +2,10 @@ import React, { useState } from 'react'
 import * as S from './styled'
 import stamp from '@/assets/images/stamp_img.svg'
 
-const CouponUse = ({ onUseClick, active, cafeName, expiredDate, price }) => {
+const CouponUse = ({ onUseClick, active, cafeName, expiredDate, price, cafeImg }) => {
   return (
     <S.Wrapper>
-      <S.CafeImage
-        src='https://i.pinimg.com/736x/38/48/e2/3848e28098dd9fe20f4430b1eb2d3c5e.jpg'
-        style={{ filter: active ? 'none' : 'grayscale(100%)' }}
-      />
+      <S.CafeImage src={cafeImg} style={{ filter: active ? 'none' : 'grayscale(100%)' }} />
       <S.TextContainer>
         <S.CafeName>{cafeName}</S.CafeName>
         <S.DiscountPrice>{price}</S.DiscountPrice>
