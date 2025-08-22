@@ -6,6 +6,7 @@ import NoData from '../common/NoData'
 
 const MyCoupon = () => {
   const [availableCouponList, setAvailableCouponList] = useState([])
+  const [usableCount, setUsableCount] = useState(0)
 
   useEffect(() => {
     const token = localStorage.getItem('accessToken')
@@ -16,7 +17,8 @@ const MyCoupon = () => {
       })
       .then((res) => {
         console.log(res.data)
-        setAvailableCouponList(res.data.data.items)
+        setAvailableCouponList(res.data.items)
+        setUsableCount(res.data.usableCount)
       })
   }, [])
 
@@ -24,7 +26,7 @@ const MyCoupon = () => {
     <S.MyCouponWrapper>
       <S.AvailableCouponBox>
         <S.AvailableCouponText>
-          사용가능 쿠폰 <span style={{ fontWeight: '600' }}>{availableCouponList.length}개</span>
+          사용가능 쿠폰 <span style={{ fontWeight: '600' }}>{usableCount}개</span>
         </S.AvailableCouponText>
       </S.AvailableCouponBox>
       <S.CouponList>

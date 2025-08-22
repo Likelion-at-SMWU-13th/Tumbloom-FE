@@ -6,6 +6,8 @@ import CafeInputField from './CafeInputField'
 import CafeCoupon from './CafeCoupon'
 
 const CouponChange = () => {
+  const lat = 37
+  const lng = 126
   const [couponList, setCouponList] = useState([])
   const [currentCount, setCurrentCount] = useState(0)
 
@@ -34,11 +36,12 @@ const CouponChange = () => {
 
     axios
       .get('https://tumbloom.store/api/coupons', {
+        params: { lat, lng },
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
         console.log(res.data)
-        setCouponList(res.data.data)
+        setCouponList(res.data)
       })
       .catch((err) => {
         console.log(err)
@@ -85,14 +88,14 @@ const CouponChange = () => {
       <S.NearCouponText>지금 내 주변 카페 쿠폰</S.NearCouponText>
       <S.CouponList>
         {couponList
-          .filter(({ remainingQuantity }) => Number(remainingQuantity) > 0)
-          .map(({ cafeId, cafeName, remainingQuantity }) => (
+          .filter(({ availableCount }) => Number(availableCount) > 0)
+          .map(({ cafeId, cafeName, availableCount, discountPrice }) => (
             <CafeCoupon
               id={cafeId}
               key={cafeId}
               cafeName={cafeName}
-              price={'1000'}
-              count={remainingQuantity}
+              price={discountPrice}
+              count={availableCount}
               type={'exchange'}
               active={currentCount >= 8}
               onClickExchange={exchangeCoupon}
