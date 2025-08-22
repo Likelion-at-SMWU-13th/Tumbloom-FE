@@ -16,7 +16,7 @@ const MyCoupon = () => {
       })
       .then((res) => {
         console.log(res.data)
-        setAvailableCouponList(res.data.data.items)
+        setAvailableCouponList(res.data.items)
       })
   }, [])
 

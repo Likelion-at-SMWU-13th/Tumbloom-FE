@@ -60,6 +60,7 @@ const CouponDetailPage = () => {
         btnRight={'확인'}
         onChangeBtnLeft={() => setOpenUseModal(false)}
         onChangeBtnRight={() => {
+          couponUse
           setActiveCoupon(false)
           setOpenUseModal(false)
         }}
