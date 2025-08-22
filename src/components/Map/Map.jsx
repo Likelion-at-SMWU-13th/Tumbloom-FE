@@ -21,6 +21,7 @@ import MapCafeCard from './MapCafeCard'
 
 const MapContainer = styled.div`
   position: relative;
+  height: 100dvh;
 `
 
 const Wrapper = styled.div`
@@ -30,6 +31,7 @@ const Wrapper = styled.div`
   padding-top: 3rem;
   position: absolute;
   z-index: 1;
+  padding-bottom: 5.6875rem;
 `
 
 const HeaderBtns = styled.div`
