@@ -35,6 +35,21 @@ const CouponDetailPage = () => {
       })
   })
 
+  const couponUse = () => {
+    const token = localStorage.getItem('accessToken')
+
+    axios
+      .delete(`https://tumbloom.store/api/coupons/my/${couponId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        console.log(res.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
   return (
     <>
       <NoticeModal
