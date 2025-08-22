@@ -13,7 +13,7 @@ const CouponDetailPage = () => {
   const [cafeName, setCafeName] = useState('')
   const [expiredDate, setExpiredDate] = useState('')
   const [price, setPrice] = useState('')
-  const [cafeImg, setCafeImg] = useState('')
+  const [cafeImg, setCafeImg] = useState(null)
 
   const { state } = useLocation()
   const couponId = state?.couponId
