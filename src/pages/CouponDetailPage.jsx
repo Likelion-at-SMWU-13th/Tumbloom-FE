@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import NoticeModal from '@/components/common/NoticeModal'
 import Header from '@/components/common/Header'
 import CouponUse from '@/components/CouponUse/CouponUse'
 
 const CouponDetailPage = () => {
+  const navigate = useNavigate()
   const [openUseModal, setOpenUseModal] = useState(false)
   const [activeCoupon, setActiveCoupon] = useState(true)
 
@@ -49,7 +50,10 @@ const CouponDetailPage = () => {
         }}
         open={openUseModal}
       />
-      <Header title={'쿠폰 사용하기'} />
+      <Header
+        title={'쿠폰 사용하기'}
+        onLeftClick={() => navigate('/coupon', { state: { tab: 'myCoupon' } })}
+      />
       <CouponUse
         onUseClick={() => setOpenUseModal(true)}
         active={activeCoupon}

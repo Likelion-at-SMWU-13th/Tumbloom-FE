@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Header from '@/components/common/Header'
 import ProfileShareBox from '@/components/ProfileShare/ProfileShareBox'
 
 const ProfileShare = () => {
+  const navigate = useNavigate()
+
   const [userName, setuserName] = useState('')
   const [tumblerCount, setTumblerCount] = useState('')
   const [savedWater, setSavedWater] = useState('')
@@ -46,7 +49,7 @@ const ProfileShare = () => {
 
   return (
     <div>
-      <Header title={'프로필 공유'} />
+      <Header title={'프로필 공유'} onLeftClick={() => navigate(-1)} />
       <ProfileShareBox
         userName={userName}
         tumblerCount={tumblerCount}
