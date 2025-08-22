@@ -55,7 +55,6 @@ const GoToRegisterBtn = styled.span`
 
 const LoginErrorText = styled.span`
   color: #f54d4dff;
-  text-align: center;
   font-family: Inter;
   font-size: 0.9375rem;
   font-style: normal;
@@ -118,11 +117,11 @@ function Login() {
     } catch (error) {
       const status = error.response?.status
       if (status === 404) {
-        setError('등록되지 않은 이메일입니다.')
+        setError('등록되지 않은 이메일입니다')
       } else if (status === 401) {
-        setError('비밀번호가 일치하지 않습니다.')
+        setError('비밀번호가 일치하지 않습니다')
       } else {
-        setError('로그인에 실패했습니다. 다시 시도하세요')
+        setError('로그인에 실패했습니다')
       }
     }
   }
@@ -143,12 +142,12 @@ function Login() {
           value={password}
           type='password'
         />
+        {error && <LoginErrorText>{error}</LoginErrorText>}
         <RegisterBtn btnName='로그인' onClick={onLoginHandler} disabled={!btnColor} />
         <Desc>
           텀블러인 계정이 없나요?{' '}
           <GoToRegisterBtn onClick={goToRegister}>회원가입하기</GoToRegisterBtn>
         </Desc>
-        {error && <LoginErrorText>{error}</LoginErrorText>}
       </LoginContainer>
     </>
   )
