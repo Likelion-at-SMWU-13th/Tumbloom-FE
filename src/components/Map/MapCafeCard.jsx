@@ -7,6 +7,8 @@ import scrabOn from '@/assets/icons/clicked-bookmark.svg'
 import scrabOff from '@/assets/icons/bookmark.svg'
 
 const Container = styled.div`
+  position: fixed;
+  bottom: calc(5.6875rem + 3.5rem);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,14 +19,16 @@ const Container = styled.div`
   border-radius: 0.9375rem 0.9375rem 0 0;
   background: #fff;
   box-shadow: 0 -10px 17.6px 0 rgba(0, 0, 0, 0.25);
-  transform: translateY(17.4rem);
+  transform: translateY(3.5rem);
+  z-index: 100%;
+  transition: all 0.3s ease;
 `
 
 const TopContent = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  gap: 3.7rem;
+  justify-content: space-between;
+  width: 21.74rem;
   padding-top: 0.8rem;
 `
 
@@ -78,7 +82,6 @@ const CafeName = styled.span`
   font-weight: 700;
   line-height: normal;
   padding-bottom: 0.31rem;
-  padding-right: 8.37rem;
 `
 
 const Scrab = styled.button`

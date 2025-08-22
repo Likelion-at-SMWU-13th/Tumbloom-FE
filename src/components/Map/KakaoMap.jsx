@@ -9,14 +9,14 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 
 const MapWrapper = styled.div`
-  width: 50rem;
-  height: 80rem;
+  width: 100%;
+  height: 100dvh;
   position: absolute;
   inset: 0;
   z-index: 0;
 `
 
-function KakaoMap({ center, isMarker, filter, onSelectCafe }) {
+function KakaoMap({ center, isMarker, filter, onSelectCafe, onCreateMap }) {
   const [cafes, setCafes] = useState([])
   const [selectedCafe, setSelectedCafe] = useState(null)
 
@@ -127,7 +127,7 @@ function KakaoMap({ center, isMarker, filter, onSelectCafe }) {
   }
 
   useEffect(() => {
-    setSelectedCafe(null)
+    onSelectCafe && onSelectCafe(null)
 
     if (localStorage.getItem('accessToken') === 'undefined') {
       localStorage.removeItem('accessToken')
@@ -157,7 +157,16 @@ function KakaoMap({ center, isMarker, filter, onSelectCafe }) {
 
   return (
     <MapWrapper>
-      <Map center={center} level={2} style={{ width: '100%', height: '100%' }}>
+      <Map
+        center={center}
+        level={2}
+        style={{ width: '100%', height: '100%' }}
+        onCreate={(map) => onCreateMap && onCreateMap(map)}
+        onClick={() => {
+          setSelectedCafe(null)
+          onSelectCafe && onSelectCafe(null)
+        }}
+      >
         {isMarker && (
           <MapMarker
             image={{
