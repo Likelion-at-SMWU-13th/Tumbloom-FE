@@ -18,20 +18,7 @@ const MyCoupon = () => {
         console.log(res.data)
         setAvailableCouponList(res.data.data.items)
       })
-  })
-
-  const AvailableCouponList = [
-    { CafeName: '너드커피', DiscountPrice: '1000', count: '10', expiryDate: '2025.12.01' },
-    { CafeName: '을의커피', DiscountPrice: '1500', count: '10', expiryDate: '2025.12.01' },
-    { CafeName: '청파로움', DiscountPrice: '500', count: '20', expiryDate: '2025.12.01' },
-    { CafeName: '청파맨션', DiscountPrice: '1000', count: '18', expiryDate: '2025.12.01' },
-    { CafeName: '킷테', DiscountPrice: '500', count: '5', expiryDate: '2025.12.01' },
-    { CafeName: '와플하우스', DiscountPrice: '1000', count: '20', expiryDate: '2025.12.01' },
-    { CafeName: '마돈나커피', DiscountPrice: '1500', count: '3', expiryDate: '2025.12.01' },
-    { CafeName: '쥬케로', DiscountPrice: '1000', count: '20', expiryDate: '2025.12.01' },
-    { CafeName: '카페나리나무', DiscountPrice: '1300', count: '5', expiryDate: '2025.12.01' },
-    { CafeName: '레드우드', DiscountPrice: '1000', count: '20', expiryDate: '2025.12.01' },
-  ]
+  }, [])
 
   return (
     <S.MyCouponWrapper>
