@@ -5,6 +5,7 @@ import timeImg from '@/assets/icons/cafe-info-time.svg'
 import { useState, useEffect } from 'react'
 import scrabOn from '@/assets/icons/clicked-bookmark.svg'
 import scrabOff from '@/assets/icons/bookmark.svg'
+import { useNavigate } from 'react-router-dom'
 
 const Container = styled.div`
   position: fixed;
@@ -35,6 +36,7 @@ const TopContent = styled.div`
 const ContentBox = styled.div`
   display: flex;
   flex-direction: row;
+  padding-right: 1.2rem;
 `
 
 const LeftCard = styled.div`
@@ -72,6 +74,7 @@ const StampBtn = styled.button`
   line-height: normal;
   background-color: #25af94;
   align-self: flex-start;
+  cursor: pointer;
 `
 
 const CafeName = styled.span`
@@ -82,6 +85,7 @@ const CafeName = styled.span`
   font-weight: 700;
   line-height: normal;
   padding-bottom: 0.31rem;
+  cursor: pointer;
 `
 
 const Scrab = styled.button`
@@ -111,6 +115,10 @@ const Loc = styled.span`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  width: 9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `
 
 const Time = styled.span`
@@ -120,6 +128,10 @@ const Time = styled.span`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  width: 9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `
 
 const InfoBox = styled.div`
@@ -164,6 +176,15 @@ const CafeImg = styled.img`
 function MapCafeCard({ cafeId }) {
   const [active, setActive] = useState(false)
   const [cafe, setCafe] = useState(null)
+  const navigate = useNavigate()
+
+  const goToDetail = () => {
+    navigate('/detail', { state: { cafeId: cafeId } })
+  }
+
+  const goToGetStamp = () => {
+    navigate('/stamp', { state: { cafeName: cafe.cName, cafeImg: cafe.img } })
+  }
 
   const cafeInfo = async (cafeId) => {
     if (!cafeId) return
@@ -197,7 +218,7 @@ function MapCafeCard({ cafeId }) {
   return (
     <Container>
       <TopContent>
-        <CafeName>{cafe.cName}</CafeName>
+        <CafeName onClick={goToDetail}>{cafe.cName}</CafeName>
         <Scrab>
           <ScrabState
             onClick={() => setActive((prev) => !prev)}
@@ -210,7 +231,7 @@ function MapCafeCard({ cafeId }) {
           <CafeImg src={cafe.img} />
         </LeftCard>
         <RightCard>
-          <StampBtn>스탬프 적립하기</StampBtn>
+          <StampBtn onClick={goToGetStamp}>스탬프 적립하기</StampBtn>
           <InfoBox>
             <LocBox>
               <LocImg src={locImg} />
