@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react'
+import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import * as S from './styled'
 import FilterTap from './FilterTap'
@@ -11,94 +12,66 @@ import PreferenceCard from './PreferenceCard'
 const mod = (n, m) => ((n % m) + m) % m
 
 const CafeCarousel = () => {
-  const CafeList = [
-    {
-      image: cafeImg,
-      cafeName: '모모카페',
-      address: '서울 용산구 청파동2가',
-      bookmark: true,
-    },
-    {
-      image: 'https://i.pinimg.com/736x/88/e6/52/88e652d26358fdff316db07ac08d13f3.jpg',
-      cafeName: '청파맨션',
-      address: '서울 용산구 청파동1가',
-      bookmark: false,
-    },
-    {
-      image: 'https://i.pinimg.com/1200x/60/0c/47/600c47609169e67f27934307a2c0c994.jpg',
-      cafeName: '을의커피',
-      address: '서울 용산구 청파동4가',
-      bookmark: false,
-    },
-    {
-      image: 'https://i.pinimg.com/736x/70/30/07/7030076830ff36ba81861cc77d3f1503.jpg',
-      cafeName: '청파로움',
-      address: '서울 용산구 청파동5가',
-      bookmark: false,
-    },
-    {
-      image: 'https://i.pinimg.com/736x/dc/60/45/dc6045915b8af252220f17127f8d6666.jpg',
-      cafeName: '쥬케로',
-      address: '서울 용산구 청파동3가',
-      bookmark: false,
-    },
-  ]
+  const token = localStorage.getItem('accessToken')
+  const [cafeRecommendList, setCafeRecommendList] = useState([])
+  const [cafeAIList, setCafeAIList] = useState([])
+  const lat = 37
+  const lng = 126
 
-  const CafeListAI = [
-    {
-      image: cafeImg,
-      cafeName: '카페1',
-      address: '서울 용산구 남영동1가',
-      bookmark: true,
-    },
-    {
-      image: 'https://i.pinimg.com/736x/88/e6/52/88e652d26358fdff316db07ac08d13f3.jpg',
-      cafeName: '카페2',
-      address: '서울 용산구 남영동2가',
-      bookmark: false,
-    },
-    {
-      image: 'https://i.pinimg.com/1200x/60/0c/47/600c47609169e67f27934307a2c0c994.jpg',
-      cafeName: '카페3',
-      address: '서울 용산구 남영동3가',
-      bookmark: false,
-    },
-    {
-      image: 'https://i.pinimg.com/736x/70/30/07/7030076830ff36ba81861cc77d3f1503.jpg',
-      cafeName: '카페4',
-      address: '서울 용산구 남영동4가',
-      bookmark: false,
-    },
-    {
-      image: 'https://i.pinimg.com/736x/dc/60/45/dc6045915b8af252220f17127f8d6666.jpg',
-      cafeName: '카페5',
-      address: '서울 용산구 남영동5가',
-      bookmark: false,
-    },
-  ]
+  useEffect(() => {
+    axios
+      .get('https://tumbloom.store/api/cafes/nearby/top', {
+        params: { lat, lng },
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        console.log(res.data)
+        setCafeRecommendList(res.data.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }, [])
+
+  useEffect(() => {
+    axios
+      .get('https://tumbloom.store/api/users/me/cafe-recommendations', {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        console.log(res.data)
+        setCafeAIList(res.data.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }, [])
 
   const [active, setActive] = useState(0)
   const [tab, setTab] = useState(0)
 
-  const currentList = tab === 0 ? CafeList : CafeListAI
-
-  const preference = false
+  const currentList = tab === 0 ? cafeRecommendList : cafeAIList
 
   useEffect(() => {
     setActive(0)
   }, [tab])
 
-  const left = mod(active - 1, currentList.length)
-  const right = mod(active + 1, currentList.length)
-  const visible = [left, active, right]
+  const len = currentList.length
+  const left = len ? mod(active - 1, len) : 0
+  const right = len ? mod(active + 1, len) : 0
+  const visible = len ? [left, active % len, right] : []
 
   return (
     <>
       <FilterTap value={tab} onChangeTab={setTab} />
-      {!preference && tab === 1 ? (
+      {cafeAIList.length === 0 && tab === 1 ? (
         <S.AiRecommendContainer>
           <PreferenceCard />
         </S.AiRecommendContainer>
+      ) : len === 0 ? (
+        <div style={{ padding: 16, textAlign: 'center', color: '#999' }}>
+          주변 카페를 불러오는 중…
+        </div>
       ) : (
         <S.CafeCarousel>
           <S.CardRow>
@@ -118,7 +91,8 @@ const CafeCarousel = () => {
                   <CafeCard
                     cafeName={cafe.cafeName}
                     cafeAddress={cafe.address}
-                    cafeImg={cafe.image}
+                    cafeImg={cafe.imageUrl}
+                    favorite={cafe.favorite}
                   />
                 </S.CardContainer>
               )

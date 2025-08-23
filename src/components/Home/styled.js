@@ -227,7 +227,7 @@ export const CafeCardInfo = styled.div`
 `
 
 export const CafeName = styled.h2`
-  width: 3.64781rem;
+  width: 8.5rem;
   height: 1.03419rem;
   flex-shrink: 0;
   color: #000;
@@ -238,10 +238,13 @@ export const CafeName = styled.h2`
   line-height: normal;
   padding: 0.57rem 0 0.35rem 0.89rem;
   margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `
 
 export const CafeAddress = styled.h3`
-  width: 6.799rem;
+  width: 8.5rem;
   height: 0.80438rem;
   flex-shrink: 0;
   color: #767676;
@@ -252,6 +255,9 @@ export const CafeAddress = styled.h3`
   line-height: 0.84913rem;
   padding: 0 0 0.75rem 0.89rem;
   margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `
 export const CardRow = styled.div`
   display: grid;
