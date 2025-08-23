@@ -33,8 +33,6 @@ const CouponChange = () => {
   }
 
   const exchangeCoupon = (id) => {
-    const token = localStorage.getItem('accessToken')
-
     axios
       .post(
         `https://tumbloom.store/api/cafes/${id}/coupons`,
@@ -72,26 +70,7 @@ const CouponChange = () => {
     fetchCoupon('')
   }, [])
 
-  //   useEffect(() => {
-  //     const token = localStorage.getItem('accessToken')
-
-  //     axios
-  //       .get('https://tumbloom.store/api/coupons', {
-  //         params: { lat, lng },
-  //         headers: { Authorization: `Bearer ${token}` },
-  //       })
-  //       .then((res) => {
-  //         console.log(res.data)
-  //         setCouponList(res.data)
-  //       })
-  //       .catch((err) => {
-  //         console.log(err)
-  //       })
-  //   }, [])
-
   useEffect(() => {
-    const token = localStorage.getItem('accessToken')
-
     axios
       .get('https://tumbloom.store/api/users/me/home', {
         headers: { Authorization: `Bearer ${token}` },
