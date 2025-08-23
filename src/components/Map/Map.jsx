@@ -21,7 +21,6 @@ import MapCafeCard from './MapCafeCard'
 
 const MapContainer = styled.div`
   position: relative;
-  height: 100dvh;
 `
 
 const Wrapper = styled.div`
@@ -105,6 +104,7 @@ function Map() {
   const [center, setCenter] = useState({ lat: 37.5665, lng: 126.978 })
   const [isMarker, setIsMarker] = useState(false)
   const [selectedCafeId, setSelectedCafeId] = useState(null)
+  const [state, setState] = useState(null)
 
   useEffect(() => {
     console.log('origin:', window.location.origin)
@@ -167,7 +167,8 @@ function Map() {
           </ListBtn>
         </FooterBtns>
         {selectedCafeId && <MapCafeCard cafeId={selectedCafeId} />}
-        <Footer />
+        <MapCafeCard cafeId={5} />
+        {/* <Footer /> */}
       </Wrapper>
     </MapContainer>
   )
