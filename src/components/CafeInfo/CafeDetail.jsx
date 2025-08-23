@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 import Header from '@/components/common/Header'
 import styled from 'styled-components'
 import scrabOn from '@/assets/icons/clicked-bookmark.svg'
@@ -157,6 +158,25 @@ function CafeDetail() {
     getCafeInfo()
   }, [])
 
+  const handleFav = (id, isFav) => {
+    const at = localStorage.getItem('accessToken')
+    if (!at || at === 'undefined') {
+      console.error('no token')
+      return
+    }
+    setCafe((prev) => (prev ? { ...prev, favorite: !isFav } : prev))
+
+    const headers = { Authorization: `Bearer ${at}` }
+    const req = isFav
+      ? axios.delete(`https://tumbloom.store/api/favorites/${id}`, { headers })
+      : axios.post(`https://tumbloom.store/api/favorites/${id}`, {}, { headers })
+
+    req.catch((err) => {
+      console.error(err)
+      setCafe((prev) => (prev ? { ...prev, favorite: isFav } : prev))
+    })
+  }
+
   if (!cafe) return null
 
   const goToPrev = () => {
@@ -175,8 +195,8 @@ function CafeDetail() {
           <CafeName>{cafe.cafeName}</CafeName>
           <Scrab>
             <ScrabState
-              onClick={() => setActive((prev) => !prev)}
-              src={active ? scrabOn : scrabOff}
+              onClick={() => handleFav(cafe.id, !!cafe.favorite)}
+              src={cafe.favorite ? scrabOn : scrabOff}
             />
           </Scrab>
         </CafeHeader>
