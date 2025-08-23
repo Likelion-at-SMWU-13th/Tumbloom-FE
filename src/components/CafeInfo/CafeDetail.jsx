@@ -137,6 +137,8 @@ function CafeDetail() {
   const [tap, setTap] = useState(false)
   const navigate = useNavigate()
   const [cafe, setCafe] = useState(null)
+  const { state } = useLocation()
+  const cafeId = state?.cafeId
   const hasMenu = Array.isArray(cafe?.menuList) && cafe.menuList.length > 0
 
   useEffect(() => {
