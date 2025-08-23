@@ -112,7 +112,7 @@ export const SearchInputContainer = styled.div`
 
 export const SearchIcon = styled.img`
   position: absolute;
-  left: 2.2rem;
+  left: 1.8rem;
 `
 
 export const CouponList = styled.div`
