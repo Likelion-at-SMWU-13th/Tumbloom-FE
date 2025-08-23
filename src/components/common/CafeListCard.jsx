@@ -4,8 +4,13 @@ import cafeListImg from '@/assets/images/cafe-list.svg'
 import locImg from '@/assets/icons/cafe-info-loc.svg'
 import timeImg from '@/assets/icons/cafe-info-time.svg'
 import * as S from '@/components/common/CafeListCard.Styled'
+import { useNavigate } from 'react-router-dom'
 
 function CafeListCard({ name, loc, time, image }) {
+  const navigate = useNavigate()
+  const goToGetStamp = () => {
+    navigate(`/stamp`, { state: { cafeName: name } })
+  }
   return (
     <S.Container>
       <S.LeftCard>
@@ -20,7 +25,7 @@ function CafeListCard({ name, loc, time, image }) {
             <S.Time>{time}</S.Time>
           </S.TimeBox>
         </S.InfoBox>
-        <S.StampBtn>스탬프 적립</S.StampBtn>
+        <S.StampBtn onClick={goToGetStamp}>스탬프 적립</S.StampBtn>
       </S.LeftCard>
       <S.RightCard>
         <S.CafeImg src={image} />
