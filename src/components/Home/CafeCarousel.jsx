@@ -92,6 +92,7 @@ const CafeCarousel = () => {
                     cafeName={cafe.cafeName}
                     cafeAddress={cafe.address}
                     cafeImg={cafe.imageUrl}
+                    favorite={cafe.favorite}
                   />
                 </S.CardContainer>
               )
