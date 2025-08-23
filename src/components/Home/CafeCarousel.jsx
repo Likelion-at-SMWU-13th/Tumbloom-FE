@@ -18,6 +18,20 @@ const CafeCarousel = () => {
   const lat = 37
   const lng = 126
 
+  const toggleFavorite = (id, isFav) => {
+    setCurrentList((prev) => prev.map((c) => (c.id === id ? { ...c, favorite: !isFav } : c)))
+
+    const headers = { Authorization: `Bearer ${token}` }
+    const req = isFav
+      ? axios.delete(`https://tumbloom.store/api/favorites/${id}`, { headers })
+      : axios.post(`https://tumbloom.store/api/favorites/${id}`, {}, { headers })
+
+    req.catch((err) => {
+      console.error(err)
+      setCurrentList((prev) => prev.map((c) => (c.id === id ? { ...c, favorite: isFav } : c)))
+    })
+  }
+
   useEffect(() => {
     axios
       .get('https://tumbloom.store/api/cafes/nearby/top', {
@@ -51,6 +65,7 @@ const CafeCarousel = () => {
   const [tab, setTab] = useState(0)
 
   const currentList = tab === 0 ? cafeRecommendList : cafeAIList
+  const setCurrentList = tab === 0 ? setCafeRecommendList : setCafeAIList
 
   useEffect(() => {
     setActive(0)
@@ -89,10 +104,12 @@ const CafeCarousel = () => {
                   }}
                 >
                   <CafeCard
+                    id={cafe.id}
                     cafeName={cafe.cafeName}
                     cafeAddress={cafe.address}
                     cafeImg={cafe.imageUrl}
                     favorite={cafe.favorite}
+                    onToggleFavorite={toggleFavorite}
                   />
                 </S.CardContainer>
               )

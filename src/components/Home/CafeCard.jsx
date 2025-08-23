@@ -3,14 +3,17 @@ import * as S from './styled'
 import bookmark from '@/assets/icons/bookmark.svg'
 import clicked_bookmark from '@/assets/icons/clicked-bookmark.svg'
 
-const CafeCard = ({ cafeName, cafeAddress, cafeImg, favorite }) => {
-  const [active, setActive] = useState(false)
+const CafeCard = ({ id, cafeName, cafeAddress, cafeImg, favorite, onToggleFavorite }) => {
+  // const [active, setActive] = useState(false)
 
   return (
     <S.CafeCardWrapper>
       <S.CafeCardImg style={{ backgroundImage: `url(${cafeImg})` }}>
         <S.BookMark
-          onClick={() => setActive((prev) => !prev)}
+          onClick={(e) => {
+            e.stopPropagation()
+            onToggleFavorite?.(id, favorite)
+          }}
           src={favorite ? clicked_bookmark : bookmark}
         />
       </S.CafeCardImg>
