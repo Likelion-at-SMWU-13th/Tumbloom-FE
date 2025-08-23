@@ -4,6 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  gap: 1.2rem;
   margin: 0;
 `
 
@@ -13,6 +14,7 @@ export const LeftCard = styled.div`
   min-width: 0;
   padding-top: 1.38rem;
   padding-bottom: 1.38rem;
+  flex: 1;
 `
 
 export const RightCard = styled.div`
@@ -40,6 +42,7 @@ export const StampBtn = styled.button`
   line-height: normal;
   background-color: transparent;
   align-self: flex-start;
+  cursor: pointer;
 `
 
 export const CafeName = styled.span`
@@ -50,7 +53,10 @@ export const CafeName = styled.span`
   font-weight: 700;
   line-height: normal;
   padding-bottom: 0.31rem;
-  padding-right: 8.37rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 11rem;
 `
 
 export const Loc = styled.span`
@@ -60,6 +66,10 @@ export const Loc = styled.span`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  width: 9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `
 
 export const Time = styled.span`
@@ -69,6 +79,11 @@ export const Time = styled.span`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  width: 7rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transform: translateY(-0.09rem);
 `
 
 export const InfoBox = styled.div`
