@@ -6,6 +6,7 @@ export const Container = styled.div`
   justify-content: center;
   gap: 1.2rem;
   margin: 0;
+  cursor: pointer;
 `
 
 export const LeftCard = styled.div`
