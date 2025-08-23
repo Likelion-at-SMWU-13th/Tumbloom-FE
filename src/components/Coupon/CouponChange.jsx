@@ -4,16 +4,35 @@ import * as S from './styled'
 import { InputBox } from '../common/Input.Styled'
 import CafeInputField from './CafeInputField'
 import CafeCoupon from './CafeCoupon'
+import NoData from '../common/NoData'
 
 const CouponChange = () => {
   const lat = 37
   const lng = 126
   const [couponList, setCouponList] = useState([])
   const [currentCount, setCurrentCount] = useState(0)
+  const [query, setQuery] = useState('')
+  const [searched, setSearched] = useState(false)
+  const [submittedQuery, setSubmittedQuery] = useState('')
+
+  const token = localStorage.getItem('accessToken')
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      const kw = query.trim()
+      if (kw) {
+        setSearched(true)
+        fetchCoupon(kw)
+        setSubmittedQuery(kw)
+      } else {
+        setSearched(false)
+        setSubmittedQuery('')
+        fetchCoupon('')
+      }
+    }
+  }
 
   const exchangeCoupon = (id) => {
-    const token = localStorage.getItem('accessToken')
-
     axios
       .post(
         `https://tumbloom.store/api/cafes/${id}/coupons`,
@@ -31,12 +50,11 @@ const CouponChange = () => {
       })
   }
 
-  useEffect(() => {
-    const token = localStorage.getItem('accessToken')
-
-    axios
+  const fetchCoupon = (keyword = '') => {
+    const params = { lat, lng, ...(keyword.trim() && { cafeName: keyword.trim() }) }
+    return axios
       .get('https://tumbloom.store/api/coupons', {
-        params: { lat, lng },
+        params,
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -46,11 +64,13 @@ const CouponChange = () => {
       .catch((err) => {
         console.log(err)
       })
+  }
+
+  useEffect(() => {
+    fetchCoupon('')
   }, [])
 
   useEffect(() => {
-    const token = localStorage.getItem('accessToken')
-
     axios
       .get('https://tumbloom.store/api/users/me/home', {
         headers: { Authorization: `Bearer ${token}` },
@@ -83,25 +103,65 @@ const CouponChange = () => {
             </S.CurrentChangeText>
           )}
         </S.ChangeTextBox>
-        <CafeInputField />
+        <CafeInputField
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={handleKeyDown}
+        />
       </S.SearchArea>
-      <S.NearCouponText>지금 내 주변 카페 쿠폰</S.NearCouponText>
-      <S.CouponList>
-        {couponList
-          .filter(({ availableCount }) => Number(availableCount) > 0)
-          .map(({ cafeId, cafeName, availableCount, discountPrice }) => (
-            <CafeCoupon
-              id={cafeId}
-              key={cafeId}
-              cafeName={cafeName}
-              price={discountPrice}
-              count={availableCount}
-              type={'exchange'}
-              active={currentCount >= 8}
-              onClickExchange={exchangeCoupon}
+      <S.NearCouponText>
+        {searched && submittedQuery ? (
+          <>
+            <S.HighlightText>{submittedQuery}</S.HighlightText> 쿠폰 검색결과
+          </>
+        ) : (
+          '지금 내 주변 카페 쿠폰'
+        )}
+      </S.NearCouponText>
+      {couponList.length === 0 ? (
+        searched ? (
+          <div style={{ marginTop: '12.25rem' }}>
+            <NoData
+              message={
+                <>
+                  검색어와 일치하는
+                  <br />
+                  쿠폰이 없습니다
+                </>
+              }
             />
-          ))}
-      </S.CouponList>
+          </div>
+        ) : (
+          <div style={{ marginTop: '12.25rem' }}>
+            <NoData
+              message={
+                <>
+                  주변 카페
+                  <br />
+                  쿠폰이 없습니다
+                </>
+              }
+            />
+          </div>
+        )
+      ) : (
+        <S.CouponList>
+          {couponList
+            .filter(({ availableCount }) => Number(availableCount) > 0)
+            .map(({ cafeId, cafeName, availableCount, discountPrice }) => (
+              <CafeCoupon
+                id={cafeId}
+                key={cafeId}
+                cafeName={cafeName}
+                price={discountPrice}
+                count={availableCount}
+                type={'exchange'}
+                active={currentCount >= 8}
+                onClickExchange={exchangeCoupon}
+              />
+            ))}
+        </S.CouponList>
+      )}
     </S.Wrapper>
   )
 }
