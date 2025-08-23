@@ -52,8 +52,6 @@ const CafeCarousel = () => {
 
   const currentList = tab === 0 ? cafeRecommendList : cafeAIList
 
-  const preference = false
-
   useEffect(() => {
     setActive(0)
   }, [tab])
@@ -66,7 +64,7 @@ const CafeCarousel = () => {
   return (
     <>
       <FilterTap value={tab} onChangeTab={setTab} />
-      {!preference && tab === 1 ? (
+      {cafeAIList.length === 0 && tab === 1 ? (
         <S.AiRecommendContainer>
           <PreferenceCard />
         </S.AiRecommendContainer>
