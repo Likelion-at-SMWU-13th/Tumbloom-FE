@@ -69,7 +69,7 @@ const CafeCarousel = () => {
           <PreferenceCard />
         </S.AiRecommendContainer>
       ) : len === 0 ? (
-        <div style={{ padding: 16, textAlign: 'center', color: '#999' }}>
+        <div style={{ paddingTop: '5rem', textAlign: 'center', color: '#999' }}>
           주변 카페를 불러오는 중…
         </div>
       ) : (
