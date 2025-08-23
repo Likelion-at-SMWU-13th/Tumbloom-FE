@@ -4,8 +4,6 @@ import bookmark from '@/assets/icons/bookmark.svg'
 import clicked_bookmark from '@/assets/icons/clicked-bookmark.svg'
 
 const CafeCard = ({ id, cafeName, cafeAddress, cafeImg, favorite, onToggleFavorite }) => {
-  // const [active, setActive] = useState(false)
-
   return (
     <S.CafeCardWrapper>
       <S.CafeCardImg style={{ backgroundImage: `url(${cafeImg})` }}>

@@ -12,6 +12,7 @@ import PreferenceCard from './PreferenceCard'
 const mod = (n, m) => ((n % m) + m) % m
 
 const CafeCarousel = () => {
+  const navigate = useNavigate()
   const token = localStorage.getItem('accessToken')
   const [cafeRecommendList, setCafeRecommendList] = useState([])
   const [cafeAIList, setCafeAIList] = useState([])
@@ -96,7 +97,9 @@ const CafeCarousel = () => {
               return (
                 <S.CardContainer
                   key={i}
-                  onClick={() => setActive(i)}
+                  onClick={() =>
+                    isActive ? navigate('/detail', { state: { cafeId: cafe.id } }) : setActive(i)
+                  }
                   style={{
                     transform: isActive ? 'scale(1)' : 'scale(0.88)',
                     opacity: isActive ? '1' : '0.34',
