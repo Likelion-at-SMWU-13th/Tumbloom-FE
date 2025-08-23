@@ -20,7 +20,7 @@ function CafeList() {
       console.log('로컬스토리지에 accessToken 없음')
       return
     }
-    const res = await fetch(`https://tumbloom.store/api/cafes/nearby/top?lat=${lat}&lng=${lng}`, {
+    const res = await fetch(`https://tumbloom.store/api/cafes/nearby?lat=${lat}&lng=${lng}`, {
       headers: { Authorization: `Bearer ${at}` },
     })
     const json = await res.json().catch(() => ({}))
