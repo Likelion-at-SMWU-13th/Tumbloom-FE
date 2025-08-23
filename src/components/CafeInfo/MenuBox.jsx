@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import line from '@/assets/icons/menu-line.svg'
-import { MenuList } from '@/components/CafeInfo/menu.data'
 
 const MenuWrapper = styled.div`
   display: flex;
@@ -50,14 +49,16 @@ const MenuPrice = styled.span`
   line-height: normal;
 `
 
-function MenuBox() {
+function MenuBox({ cafe }) {
+  const items = Array.isArray(cafe?.menuList) ? cafe.menuList : []
+  if (!items.length) return null
   return (
     <MenuWrapper>
-      {MenuList.map((item, i) => (
-        <MenuRow key={i}>
-          <MenuName>{item.name}</MenuName>
+      {items.map((m, i) => (
+        <MenuRow key={m.id ?? `${m.menuName}-${m.price}-${i}`}>
+          <MenuName>{m.menuName}</MenuName>
           <Line src={line} />
-          <MenuPrice>{item.price}원</MenuPrice>
+          <MenuPrice>{m.price.toLocaleString()}원</MenuPrice>
         </MenuRow>
       ))}
     </MenuWrapper>
