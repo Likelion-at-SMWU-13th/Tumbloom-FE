@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom'
 function CafeListCard({ name, loc, time, image }) {
   const navigate = useNavigate()
   const goToGetStamp = () => {
-    navigate(`/stamp`, { state: { cafeName: name } })
+    navigate(`/stamp`, { state: { cafeName: name, cafeImg: image } })
   }
   return (
     <S.Container>
