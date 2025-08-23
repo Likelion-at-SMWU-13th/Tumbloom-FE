@@ -132,6 +132,7 @@ const Time = styled.span`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  padding-left: 0.08rem;
 `
 
 const InfoBox = styled.div`
@@ -238,8 +239,8 @@ function MapCafeCard({ cafeId }) {
               <Loc>{cafe.address}</Loc>
             </LocBox>
             <TimeBox>
-              <LocImg src={timeImg} />
-              <Time>{cafe.t}</Time>
+              <TimeImg src={timeImg} />
+              <Time>{cafe.t.substr(2, 13)}</Time>
             </TimeBox>
           </InfoBox>
         </RightCard>

@@ -85,6 +85,7 @@ export const Time = styled.span`
   text-overflow: ellipsis;
   white-space: nowrap;
   transform: translateY(-0.09rem);
+  padding-left: 0.08rem;
 `
 
 export const InfoBox = styled.div`
