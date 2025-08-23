@@ -30,7 +30,7 @@ const FavoriteCafeList = () => {
             key={item.id}
             name={item.cafeName}
             loc={item.address}
-            time={item.businessHours}
+            time={item.businessHours.substr(2, 13)}
             image={item.imageUrl}
           />
         ))}

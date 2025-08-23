@@ -34,7 +34,7 @@ function CafeList() {
         id: c.id,
         cName: c.cafeName,
         address: c.address,
-        t: c.businessHours,
+        t: c.businessHours.substr(2, 13),
         img: c.imageUrl,
       })),
     )
