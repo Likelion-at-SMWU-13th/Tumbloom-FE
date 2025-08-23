@@ -134,7 +134,7 @@ const BtnContainer = styled.div`
 
 function CafeDetail() {
   const [active, setActive] = useState(false)
-  const [tap, setTap] = useState(false)
+  const [tap, setTap] = useState(true)
   const navigate = useNavigate()
   const [cafe, setCafe] = useState(null)
   const { state } = useLocation()
@@ -193,7 +193,7 @@ function CafeDetail() {
           기본정보
         </InfoTap>
         <MenuTap
-          onClick={() => setTap(!tap)}
+          onClick={() => setTap(false)}
           style={{
             color: !tap ? '#000' : '#d9d9d9',
             borderBottom: !tap ? '1.5px solid #000' : '1.5px solid #d9d9d9',
