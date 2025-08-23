@@ -164,7 +164,7 @@ function CafeDetail() {
   }
 
   const goToStamp = () => {
-    navigate(`/stamp`)
+    navigate(`/stamp`, { state: { cafeName: cafe.cafeName, cafeImg: cafe.imageUrl } })
   }
 
   return (
