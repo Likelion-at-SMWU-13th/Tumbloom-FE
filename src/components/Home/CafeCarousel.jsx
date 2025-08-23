@@ -12,11 +12,26 @@ import PreferenceCard from './PreferenceCard'
 const mod = (n, m) => ((n % m) + m) % m
 
 const CafeCarousel = () => {
+  const navigate = useNavigate()
   const token = localStorage.getItem('accessToken')
   const [cafeRecommendList, setCafeRecommendList] = useState([])
   const [cafeAIList, setCafeAIList] = useState([])
   const lat = 37
   const lng = 126
+
+  const toggleFavorite = (id, isFav) => {
+    setCurrentList((prev) => prev.map((c) => (c.id === id ? { ...c, favorite: !isFav } : c)))
+
+    const headers = { Authorization: `Bearer ${token}` }
+    const req = isFav
+      ? axios.delete(`https://tumbloom.store/api/favorites/${id}`, { headers })
+      : axios.post(`https://tumbloom.store/api/favorites/${id}`, {}, { headers })
+
+    req.catch((err) => {
+      console.error(err)
+      setCurrentList((prev) => prev.map((c) => (c.id === id ? { ...c, favorite: isFav } : c)))
+    })
+  }
 
   useEffect(() => {
     axios
@@ -51,6 +66,7 @@ const CafeCarousel = () => {
   const [tab, setTab] = useState(0)
 
   const currentList = tab === 0 ? cafeRecommendList : cafeAIList
+  const setCurrentList = tab === 0 ? setCafeRecommendList : setCafeAIList
 
   useEffect(() => {
     setActive(0)
@@ -69,7 +85,7 @@ const CafeCarousel = () => {
           <PreferenceCard />
         </S.AiRecommendContainer>
       ) : len === 0 ? (
-        <div style={{ padding: 16, textAlign: 'center', color: '#999' }}>
+        <div style={{ paddingTop: '5rem', textAlign: 'center', color: '#999' }}>
           주변 카페를 불러오는 중…
         </div>
       ) : (
@@ -81,7 +97,9 @@ const CafeCarousel = () => {
               return (
                 <S.CardContainer
                   key={i}
-                  onClick={() => setActive(i)}
+                  onClick={() =>
+                    isActive ? navigate('/detail', { state: { cafeId: cafe.id } }) : setActive(i)
+                  }
                   style={{
                     transform: isActive ? 'scale(1)' : 'scale(0.88)',
                     opacity: isActive ? '1' : '0.34',
@@ -89,10 +107,12 @@ const CafeCarousel = () => {
                   }}
                 >
                   <CafeCard
+                    id={cafe.id}
                     cafeName={cafe.cafeName}
                     cafeAddress={cafe.address}
                     cafeImg={cafe.imageUrl}
                     favorite={cafe.favorite}
+                    onToggleFavorite={toggleFavorite}
                   />
                 </S.CardContainer>
               )
