@@ -1,4 +1,4 @@
-import React, { use } from 'react'
+import React from 'react'
 import Header from '@/components/common/Header'
 import styled from 'styled-components'
 import scrabOn from '@/assets/icons/clicked-bookmark.svg'
@@ -7,9 +7,8 @@ import cafeDetail from '@/assets/images/cafe-detail.svg'
 import CafeInfoBox from './CafeInfoBox'
 import NoData from '../common/NoData'
 import MenuBox from './MenuBox'
-import { useState } from 'react'
-import { MenuList } from '@/components/CafeInfo/menu.data'
-import { useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 const CafeHeaderWrapper = styled.div`
   display: flex;
@@ -24,7 +23,6 @@ const CafeHeader = styled.div`
   flex-direction: row;
   align-items: center;
   padding: 1.56rem 1.25rem 0.94rem 1.25rem;
-  gap: 14rem;
   box-sizing: border-box;
 `
 
@@ -35,6 +33,10 @@ const CafeName = styled.span`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  width: 22rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `
 
 const Scrab = styled.button`
@@ -62,7 +64,6 @@ const CafeImg = styled.img`
   height: 11.125rem;
   flex-shrink: 0;
   border-radius: 0.3125rem;
-  background: url(${cafeDetail}) lightgray 50% / cover no-repeat;
 `
 
 const FilterTap = styled.div`
@@ -135,21 +136,43 @@ function CafeDetail() {
   const [active, setActive] = useState(false)
   const [tap, setTap] = useState(false)
   const navigate = useNavigate()
+  const [cafe, setCafe] = useState(null)
+  const { state } = useLocation()
+  const cafeId = state?.cafeId
+  const hasMenu = Array.isArray(cafe?.menuList) && cafe.menuList.length > 0
 
-  const goToStamp = () => {
-    navigate(`/stamp`)
+  useEffect(() => {
+    const getCafeInfo = async () => {
+      const at = localStorage.getItem('accessToken')
+      const res = await fetch(`https://tumbloom.store/api/cafes/${cafeId}`, {
+        headers: at ? { Authorization: `Bearer ${at}` } : {},
+      })
+      const json = await res.json().catch(() => ({}))
+      if (res.ok && json?.data) {
+        setCafe(json.data)
+      } else {
+        setCafe(null)
+      }
+    }
+    getCafeInfo()
+  }, [])
+
+  if (!cafe) return null
+
+  const goToPrev = () => {
+    navigate(-1)
   }
 
-  const goToMap = () => {
-    navigate(`/map`)
+  const goToStamp = () => {
+    navigate(`/stamp`, { state: { cafeName: cafe.cafeName, cafeImg: cafe.imageUrl } })
   }
 
   return (
     <div>
-      <Header title='카페 상세정보' onLeftClick={goToMap} />
+      <Header title='카페 상세정보' onLeftClick={goToPrev} />
       <CafeHeaderWrapper>
         <CafeHeader>
-          <CafeName>너드커피</CafeName>
+          <CafeName>{cafe.cafeName}</CafeName>
           <Scrab>
             <ScrabState
               onClick={() => setActive((prev) => !prev)}
@@ -157,7 +180,7 @@ function CafeDetail() {
             />
           </Scrab>
         </CafeHeader>
-        <CafeImg />
+        <CafeImg src={cafe.imageUrl} />
       </CafeHeaderWrapper>
       <FilterTap>
         <InfoTap
@@ -181,9 +204,9 @@ function CafeDetail() {
       </FilterTap>
       <InfoWrapper>
         {tap ? (
-          <CafeInfoBox />
-        ) : MenuList && MenuList.length > 0 ? (
-          <MenuBox />
+          <CafeInfoBox cafe={cafe} />
+        ) : hasMenu ? (
+          <MenuBox cafe={cafe} />
         ) : (
           <NoData
             message={

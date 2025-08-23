@@ -4,7 +4,7 @@ export const ScrollArea = styled.div`
   display: flex;
   width: 24.5625rem;
   flex-direction: column;
-  height: 48rem;
+  height: 55rem;
   background: #fff;
   padding-top: 0.3rem;
 `
