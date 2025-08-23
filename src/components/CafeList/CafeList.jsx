@@ -54,7 +54,7 @@ function CafeList() {
       <S.ScrollArea>
         <S.Wrapper>
           {cafes.map((c) => (
-            <CafeListCard key={c.id} name={c.cName} loc={c.address} time={c.t} image={c.img} />
+            <CafeListCard id={c.id} name={c.cName} loc={c.address} time={c.t} image={c.img} />
           ))}
         </S.Wrapper>
       </S.ScrollArea>

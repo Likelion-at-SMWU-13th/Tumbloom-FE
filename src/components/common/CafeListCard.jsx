@@ -6,13 +6,18 @@ import timeImg from '@/assets/icons/cafe-info-time.svg'
 import * as S from '@/components/common/CafeListCard.Styled'
 import { useNavigate } from 'react-router-dom'
 
-function CafeListCard({ name, loc, time, image }) {
+function CafeListCard({ id, name, loc, time, image }) {
   const navigate = useNavigate()
+
+  const goToDetail = () => {
+    navigate(`/detail/`, { state: { cafeId: id } })
+  }
+
   const goToGetStamp = () => {
     navigate(`/stamp`, { state: { cafeName: name, cafeImg: image } })
   }
   return (
-    <S.Container>
+    <S.Container onClick={goToDetail}>
       <S.LeftCard>
         <S.CafeName>{name}</S.CafeName>
         <S.InfoBox>
