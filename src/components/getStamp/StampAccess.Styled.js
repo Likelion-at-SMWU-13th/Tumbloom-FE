@@ -39,7 +39,7 @@ export const TextArea = styled.div`
   position: absolute;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 11.56rem;
+  padding-top: 13rem;
 `
 
 export const Title = styled.span`
@@ -69,10 +69,12 @@ export const Desc = styled.span`
   font-style: normal;
   font-weight: 400;
   line-height: 130%;
+  padding-top: 0.3rem;
 `
 export const AccessCodeBox = styled.div`
   display: flex;
   flex-direction: column;
+  padding-top: 3rem;
 `
 export const AccessCodeHeader = styled.span`
   color: #000;
@@ -82,7 +84,7 @@ export const AccessCodeHeader = styled.span`
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  padding: 7.63rem 0 0.62rem;
+  padding: 7.63rem 0 1.5rem;
 `
 export const InputField = styled.div`
   display: flex;

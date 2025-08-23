@@ -1,5 +1,4 @@
 import React from 'react'
-import CafeImg from '@/assets/images/get-stamp-cafe.png'
 import Header from '@/components/common/Header'
 import { useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
@@ -12,6 +11,7 @@ function StampAccess() {
   const [showStampBg, setShowStampBg] = useState(false)
   const location = useLocation()
   const cafeName = location.state?.cafeName || ''
+  const cafeImg = location.state?.cafeImg || ''
   const navigate = useNavigate()
   const code = '12345'
 
@@ -30,17 +30,17 @@ function StampAccess() {
     if (isError) setIsError(false)
   }
 
-  const goToQr = () => {
+  const goToPrev = () => {
     navigate(-1)
   }
 
   return (
     <>
       {showStampBg && <GetStamp />}
-      <Header title='스탬프 적립하기' onLeftClick={goToQr} />
+      <Header title='스탬프 적립하기' onLeftClick={goToPrev} />
       <S.Container>
         <S.TopImage>
-          <S.BgImg src={CafeImg} />
+          <S.BgImg src={cafeImg} />
           <S.ImgEffect />
           <S.TextArea>
             <S.Title>
