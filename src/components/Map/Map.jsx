@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import SearchBox from '@/components/Map/SearchBox'
 import MapBtn from './MapBtn'
 import Footer from '../common/Footer'
@@ -21,6 +21,7 @@ import MapCafeCard from './MapCafeCard'
 
 const MapContainer = styled.div`
   position: relative;
+  width: 100%;
 `
 
 const Wrapper = styled.div`
@@ -29,7 +30,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   padding-top: 3rem;
   position: absolute;
-  z-index: 1;
   padding-bottom: 5.6875rem;
 `
 
@@ -46,7 +46,7 @@ const FooterBtns = styled.div`
   flex-direction: row;
   justify-content: center;
   gap: 13rem;
-  margin-top: 45rem;
+  transform: translateY(43rem);
   padding-bottom: 1rem;
   z-index: 10;
 `
@@ -105,13 +105,15 @@ function Map() {
   const [isMarker, setIsMarker] = useState(false)
   const [selectedCafeId, setSelectedCafeId] = useState(null)
   const [state, setState] = useState(null)
+  const [keyword, setKeyword] = useState('')
+  const handleSearch = (q) => setKeyword(q)
 
   useEffect(() => {
     console.log('origin:', window.location.origin)
     console.log('kakao loaded?:', !!window.kakao?.maps)
   }, [])
 
-  const showMyLoc = () => {
+  const showMyLoc = useCallback(() => {
     if (!map) return
     navigator.geolocation.getCurrentPosition((pos) => {
       const lat = pos.coords.latitude
@@ -120,57 +122,63 @@ function Map() {
       setIsMarker(true)
       map.panTo(new window.kakao.maps.LatLng(lat, lng))
     })
-  }
+  }, [map])
+
+  useEffect(() => {
+    showMyLoc()
+  }, [showMyLoc])
 
   const goCafeList = () => {
     navigate('/cafelist', { state: { lat: center.lat, lng: center.lng } })
   }
 
   return (
-    <MapContainer>
-      <KakaoMap
-        center={center}
-        isMarker={isMarker}
-        filter={active}
-        onSelectCafe={setSelectedCafeId}
-        onCreateMap={setMap}
-      />
-      <Wrapper>
-        <SearchBox />
-        <HeaderBtns>
-          <MapBtn
-            img={active === 'ai' ? sparkOn : sparkOff}
-            name='AI 내취향 추천'
-            onClick={() => select('ai')}
-            isActive={active === 'ai'}
-          />
-          <MapBtn
-            img={active === 'coupon' ? couponOn : couponOff}
-            name='쿠폰 보유'
-            onClick={() => select('coupon')}
-            isActive={active === 'coupon'}
-          />
-          <MapBtn
-            img={active === 'hot' ? hotOn : hotOff}
-            name='인기'
-            onClick={() => select('hot')}
-            isActive={active === 'hot'}
-          />
-        </HeaderBtns>
-        <FooterBtns style={selectedCafeId ? hasCardStyle : undefined}>
-          <MyLocBtn onClick={showMyLoc}>
-            <img src={mapIcon} />
-          </MyLocBtn>
-          <ListBtn onClick={goCafeList}>
-            <ListBtnIcon src={listIcon} />
-            <ListBtnName>목록보기</ListBtnName>
-          </ListBtn>
-        </FooterBtns>
-        {selectedCafeId && <MapCafeCard cafeId={selectedCafeId} />}
-        <MapCafeCard cafeId={5} />
-        {/* <Footer /> */}
-      </Wrapper>
-    </MapContainer>
+    <>
+      <MapContainer>
+        <KakaoMap
+          center={center}
+          isMarker={isMarker}
+          filter={active}
+          onSelectCafe={setSelectedCafeId}
+          onCreateMap={setMap}
+          searchKeyword={keyword}
+        />
+        <Wrapper>
+          <SearchBox onSearch={handleSearch} />
+          <HeaderBtns>
+            <MapBtn
+              img={active === 'ai' ? sparkOn : sparkOff}
+              name='AI 내취향 추천'
+              onClick={() => select('ai')}
+              isActive={active === 'ai'}
+            />
+            <MapBtn
+              img={active === 'coupon' ? couponOn : couponOff}
+              name='쿠폰 보유'
+              onClick={() => select('coupon')}
+              isActive={active === 'coupon'}
+            />
+            <MapBtn
+              img={active === 'hot' ? hotOn : hotOff}
+              name='인기'
+              onClick={() => select('hot')}
+              isActive={active === 'hot'}
+            />
+          </HeaderBtns>
+          <FooterBtns style={selectedCafeId ? hasCardStyle : undefined}>
+            <MyLocBtn onClick={showMyLoc}>
+              <img src={mapIcon} />
+            </MyLocBtn>
+            <ListBtn onClick={goCafeList}>
+              <ListBtnIcon src={listIcon} />
+              <ListBtnName>목록보기</ListBtnName>
+            </ListBtn>
+          </FooterBtns>
+          {selectedCafeId && <MapCafeCard cafeId={selectedCafeId} />}
+        </Wrapper>
+      </MapContainer>
+      <Footer />
+    </>
   )
 }
 
