@@ -27,4 +27,5 @@ export const Wrapper = styled.div`
 export const CafeListImg = styled.img`
   width: 22.1875rem;
   height: 0.0625rem;
+  object-fit: cover;
 `
