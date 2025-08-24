@@ -6,6 +6,7 @@ import Header from '@/components/common/Header'
 import CouponUse from '@/components/CouponUse/CouponUse'
 
 const CouponDetailPage = () => {
+  const baseURL = import.meta.env.VITE_API_BASE_URL
   const navigate = useNavigate()
   const [openUseModal, setOpenUseModal] = useState(false)
   const [activeCoupon, setActiveCoupon] = useState(true)
@@ -22,7 +23,7 @@ const CouponDetailPage = () => {
     const token = localStorage.getItem('accessToken')
 
     axios
-      .get(`https://tumbloom.store/api/coupons/my/${couponId}`, {
+      .get(`${baseURL}api/coupons/my/${couponId}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -41,7 +42,7 @@ const CouponDetailPage = () => {
     const token = localStorage.getItem('accessToken')
 
     axios
-      .delete(`https://tumbloom.store/api/coupons/my/${couponId}`, {
+      .delete(`${baseURL}api/coupons/my/${couponId}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
