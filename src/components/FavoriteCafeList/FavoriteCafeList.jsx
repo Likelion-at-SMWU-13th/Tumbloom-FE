@@ -27,6 +27,7 @@ const FavoriteCafeList = () => {
       <S.Wrapper>
         {favoriteCafeList.map((item, i) => (
           <CafeListCard
+            id={item.id}
             key={item.id}
             name={item.cafeName}
             loc={item.address}
