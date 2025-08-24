@@ -65,6 +65,7 @@ const CafeImg = styled.img`
   height: 11.125rem;
   flex-shrink: 0;
   border-radius: 0.3125rem;
+  object-fit: cover;
 `
 
 const FilterTap = styled.div`
