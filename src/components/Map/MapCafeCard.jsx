@@ -202,11 +202,11 @@ function MapCafeCard({ cafeId }) {
   }
 
   const goToDetail = () => {
-    navigate('/detail', { state: { cafeId: cafeId } })
+    navigate(`/detail/${cafeId}`)
   }
 
   const goToGetStamp = () => {
-    navigate('/stamp', { state: { cafeName: cafe.cName, cafeImg: cafe.img } })
+    navigate(`/stamp/${cafeId}`)
   }
 
   const cafeInfo = async (cafeId) => {
