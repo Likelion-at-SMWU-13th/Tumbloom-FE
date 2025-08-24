@@ -69,7 +69,7 @@ function QrScan() {
   }, [])
 
   const goToHome = () => {
-    navigate('/')
+    navigate('/home')
   }
 
   return (
