@@ -29,7 +29,7 @@ const ProfileInfo = ({
     FRANCHISE: '브랜드/프랜차이즈',
     PET_FRIENDLY: '반려동물 가능',
     OUTDOOR_TERRACE: '야외/테라스',
-    ECO_LOCA: '친환경/로컬',
+    ECO_LOCAL: '친환경/로컬',
     UNIQUE_THEME: '이색테마/메뉴',
   }
 
