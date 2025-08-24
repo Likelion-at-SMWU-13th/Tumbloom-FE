@@ -134,6 +134,7 @@ const BtnContainer = styled.div`
 `
 
 function CafeDetail() {
+  const baseURL = import.meta.env.VITE_API_BASE_URL
   const [tap, setTap] = useState(true)
   const navigate = useNavigate()
   const [cafe, setCafe] = useState(null)
@@ -144,7 +145,7 @@ function CafeDetail() {
   useEffect(() => {
     const getCafeInfo = async () => {
       const at = localStorage.getItem('accessToken')
-      const res = await fetch(`https://tumbloom.store/api/cafes/${cafeId}`, {
+      const res = await fetch(`${baseURL}api/cafes/${cafeId}`, {
         headers: at ? { Authorization: `Bearer ${at}` } : {},
       })
       const json = await res.json().catch(() => ({}))
@@ -167,8 +168,8 @@ function CafeDetail() {
 
     const headers = { Authorization: `Bearer ${at}` }
     const req = isFav
-      ? axios.delete(`https://tumbloom.store/api/favorites/${id}`, { headers })
-      : axios.post(`https://tumbloom.store/api/favorites/${id}`, {}, { headers })
+      ? axios.delete(`${baseURL}api/favorites/${id}`, { headers })
+      : axios.post(`${baseURL}api/favorites/${id}`, {}, { headers })
 
     req.catch((err) => {
       console.error(err)

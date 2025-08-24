@@ -8,6 +8,7 @@ import { useLocation } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
 function CafeList() {
+  const baseURL = import.meta.env.VITE_API_BASE_URL
   const [cafes, setCafes] = useState([])
   const navigate = useNavigate()
   const location = useLocation()
@@ -20,7 +21,7 @@ function CafeList() {
       console.log('로컬스토리지에 accessToken 없음')
       return
     }
-    const res = await fetch(`https://tumbloom.store/api/cafes/nearby?lat=${lat}&lng=${lng}`, {
+    const res = await fetch(`${baseURL}api/cafes/nearby?lat=${lat}&lng=${lng}`, {
       headers: { Authorization: `Bearer ${at}` },
     })
     const json = await res.json().catch(() => ({}))

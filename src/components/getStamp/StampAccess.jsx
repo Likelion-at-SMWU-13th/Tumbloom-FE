@@ -7,6 +7,7 @@ import GetStamp from '@/components/getStamp/GetStamp'
 import * as S from '@/components/getStamp/StampAccess.Styled'
 
 function StampAccess() {
+  const baseURL = import.meta.env.VITE_API_BASE_URL
   const [accessCode, setAccessCode] = useState('')
   const [isError, setIsError] = useState(false)
   const [showStampBg, setShowStampBg] = useState(false)
@@ -30,7 +31,7 @@ function StampAccess() {
 
     axios
       .post(
-        `https://tumbloom.store/api/cafes/${cafeId}/verification-code/verify`,
+        `${baseURL}api/cafes/${cafeId}/verification-code/verify`,
         { code: accessCode },
         { headers: { Authorization: `Bearer ${at}` } },
       )

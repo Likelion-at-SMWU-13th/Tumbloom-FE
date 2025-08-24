@@ -36,6 +36,7 @@ import unique from '@/assets/icons/unique.svg'
 import unique_green from '@/assets/icons/unique-green.svg'
 
 const ChoosePreference = () => {
+  const baseURL = import.meta.env.VITE_API_BASE_URL
   const PURPOSE = [
     { key: 'atmosphere', title: '감성/분위기', off: atmosphere, on: atmosphere_green },
     { key: 'study', title: '공부/작업공간', off: study, on: study_green },
@@ -109,7 +110,7 @@ const ChoosePreference = () => {
     const body = { visitPurposes, preferredMenus, extraOptions }
 
     axios
-      .put('https://tumbloom.store/api/users/me/preferences', body, {
+      .put(`${baseURL}api/users/me/preferences`, body, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',

@@ -6,6 +6,7 @@ import ProfileInfo from '@/components/MyPage/ProfileInfo'
 import LevelModal from '@/components/MyPage/LevelModal'
 
 const MyPage = () => {
+  const baseURL = import.meta.env.VITE_API_BASE_URL
   const [info, setInfo] = useState(false)
 
   const [userName, setUserName] = useState('')
@@ -21,7 +22,7 @@ const MyPage = () => {
     const token = localStorage.getItem('accessToken')
 
     axios
-      .get('https://tumbloom.store/api/users/me/mypage', {
+      .get(`${baseURL}api/users/me/mypage`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {

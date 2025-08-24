@@ -7,6 +7,7 @@ import * as S from './SignUp.Styled.js'
 import axios from 'axios'
 
 function SignUp() {
+  const baseURL = import.meta.env.VITE_API_BASE_URL
   const [nickname, setNickname] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -16,7 +17,7 @@ function SignUp() {
   const handleSignUp = async () => {
     try {
       const response = await axios.post(
-        `https://tumbloom.store/api/auth/signup`,
+        `${baseURL}api/auth/signup`,
         {
           email,
           nickname,

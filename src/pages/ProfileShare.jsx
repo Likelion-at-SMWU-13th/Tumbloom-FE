@@ -5,6 +5,7 @@ import Header from '@/components/common/Header'
 import ProfileShareBox from '@/components/ProfileShare/ProfileShareBox'
 
 const ProfileShare = () => {
+  const baseURL = import.meta.env.VITE_API_BASE_URL
   const navigate = useNavigate()
 
   const [userName, setuserName] = useState('')
@@ -17,7 +18,7 @@ const ProfileShare = () => {
     const token = localStorage.getItem('accessToken')
 
     axios
-      .get('https://tumbloom.store/api/users/me/home', {
+      .get(`${baseURL}api/users/me/home`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -36,7 +37,7 @@ const ProfileShare = () => {
     const token = localStorage.getItem('accessToken')
 
     axios
-      .get('https://tumbloom.store/api/users/me/mypage', {
+      .get(`${baseURL}api/users/me/mypage`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
