@@ -24,6 +24,7 @@ const Container = styled.div`
   transform: translateY(3.5rem);
   z-index: 100%;
   transition: all 0.3s ease;
+  cursor: pointer;
 `
 
 const TopContent = styled.div`
@@ -238,9 +239,9 @@ function MapCafeCard({ cafeId }) {
   if (!cafe) return null
 
   return (
-    <Container>
+    <Container onClick={goToDetail}>
       <TopContent>
-        <CafeName onClick={goToDetail}>{cafe.cName}</CafeName>
+        <CafeName>{cafe.cName}</CafeName>
         <Scrab>
           <ScrabState
             onClick={() => handleFav(cafe.id, !!cafe.favorite)}
@@ -253,7 +254,14 @@ function MapCafeCard({ cafeId }) {
           <CafeImg src={cafe.img} />
         </LeftCard>
         <RightCard>
-          <StampBtn onClick={goToGetStamp}>스탬프 적립하기</StampBtn>
+          <StampBtn
+            onClick={(e) => {
+              e.stopPropagation()
+              goToGetStamp()
+            }}
+          >
+            스탬프 적립하기
+          </StampBtn>
           <InfoBox>
             <LocBox>
               <LocImg src={locImg} />
