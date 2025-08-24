@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 import Header from '@/components/common/Header'
 import { useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
@@ -10,19 +11,50 @@ function StampAccess() {
   const [isError, setIsError] = useState(false)
   const [showStampBg, setShowStampBg] = useState(false)
   const location = useLocation()
+  const cafeId = location.state?.cafeId ?? null
   const cafeName = location.state?.cafeName || ''
   const cafeImg = location.state?.cafeImg || ''
   const navigate = useNavigate()
-  const code = '12345'
 
-  const checkAccessCode = () => {
-    if (accessCode === code) {
-      setIsError(false)
-      setShowStampBg(true)
-      // 백엔드에 스탬프 적립 POST
-    } else {
+  const handleCompleteBtn = () => {
+    if (!cafeId || !accessCode) {
       setIsError(true)
+      return
     }
+
+    const at = localStorage.getItem('accessToken')
+    if (!at || at === 'undefined') {
+      setIsError(true)
+      return
+    }
+
+    axios
+      .post(
+        `https://tumbloom.store/api/cafes/${cafeId}/verification-code/verify`,
+        { code: accessCode },
+        { headers: { Authorization: `Bearer ${at}` } },
+      )
+      .then(({ data }) => {
+        if (data?.data?.valid === true) {
+          setIsError(false)
+          setShowStampBg(true)
+        } else {
+          setIsError(true)
+        }
+      })
+      .catch((err) => {
+        const status = err.response?.status
+        const msg = err.response?.data?.message
+
+        if (status === 400) {
+          console.error(msg)
+        } else if (status === 404) {
+          console.error(msg)
+        } else {
+          console.error('기타 오류', { status, msg })
+        }
+        setIsError(true)
+      })
   }
 
   const handleAccessCode = (e) => {
@@ -61,7 +93,7 @@ function StampAccess() {
               placeholder='확인코드 입력'
               onChange={handleAccessCode}
             />
-            <S.CompleteBtn onClick={checkAccessCode}>완료</S.CompleteBtn>
+            <S.CompleteBtn onClick={handleCompleteBtn}>완료</S.CompleteBtn>
           </S.InputField>
           {isError && <S.ErrorText>올바르지 않은 확인코드입니다!</S.ErrorText>}
         </S.AccessCodeBox>
@@ -69,5 +101,4 @@ function StampAccess() {
     </>
   )
 }
-
 export default StampAccess
