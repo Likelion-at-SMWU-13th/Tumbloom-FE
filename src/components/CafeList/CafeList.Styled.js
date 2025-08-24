@@ -4,9 +4,9 @@ export const ScrollArea = styled.div`
   display: flex;
   width: 24.5625rem;
   flex-direction: column;
-  height: 55rem;
+  /* height: 55rem; */
   background: #fff;
-  padding-top: 0.3rem;
+  padding-top: 3.5rem;
 `
 
 export const Wrapper = styled.div`
@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
   border-top: 1px solid #d9d9d9;
   flex: 1;
   min-height: 0;
-  overflow-y: auto;
+  /* overflow-y: auto; */
   & > *:not(:first-child) {
     border-top: 1px solid #d9d9d9;
   }

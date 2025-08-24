@@ -2,15 +2,16 @@ import styled from 'styled-components'
 
 export const FooterBox = styled.div`
   display: flex;
-  left: 0;
+  left: 50%;
   right: 0;
   bottom: 0;
   bottom: 0;
-  position: absolute;
+  position: fixed;
   z-index: 2;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 24.5625rem;
+  transform: translateX(-50%);
   height: 5.6875rem;
   flex-shrink: 0;
   border: 1px solid #d9d9d9;

@@ -110,7 +110,8 @@ export const MyStamp = styled.h2`
 export const StampArea = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 0.5rem;
+  /* margin-top: 0.5rem; */
+  padding-top: 2.5rem;
 `
 
 export const StampCard = styled.img`
@@ -149,7 +150,7 @@ export const CouponChangeWrapper = styled.div`
 export const CafeRecommendWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 1.88rem;
+  padding-top: 2.5rem;
   gap: 0.63rem;
 `
 
