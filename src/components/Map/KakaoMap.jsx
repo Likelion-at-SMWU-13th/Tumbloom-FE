@@ -138,7 +138,7 @@ function KakaoMap({ center, isMarker, filter, onSelectCafe, onCreateMap, searchK
     })
     const json = await res.json().catch(() => ({}))
     if (!res.ok || !Array.isArray(json?.data)) {
-      console.log('popular error', res.status, json)
+      console.log('search error', res.status, json)
       setCafes([])
       return
     }
@@ -157,11 +157,15 @@ function KakaoMap({ center, isMarker, filter, onSelectCafe, onCreateMap, searchK
     if (searchKeyword && searchKeyword.trim()) {
       searchCafes(searchKeyword)
     }
-    onSelectCafe && onSelectCafe(null)
+  }, [searchKeyword])
 
+  useEffect(() => {
     if (localStorage.getItem('accessToken') === 'undefined') {
       localStorage.removeItem('accessToken')
     }
+    if (searchKeyword) return
+    setSelectedCafe(null)
+    onSelectCafe?.(null)
     ;(async () => {
       switch (filter) {
         case 'hot':
@@ -180,10 +184,6 @@ function KakaoMap({ center, isMarker, filter, onSelectCafe, onCreateMap, searchK
       }
     })()
   }, [searchKeyword, filter, center?.lat, center?.lng])
-
-  useEffect(() => {
-    console.log('selectedCafe changed:', selectedCafe)
-  }, [selectedCafe])
 
   return (
     <MapWrapper>

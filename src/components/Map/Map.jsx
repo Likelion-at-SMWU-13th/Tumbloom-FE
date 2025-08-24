@@ -22,23 +22,32 @@ import MapCafeCard from './MapCafeCard'
 const MapContainer = styled.div`
   position: relative;
   width: 100%;
+  height: 100dvh;
+  overflow: hidden;
 `
 
 const Wrapper = styled.div`
-  display: flex;
   inset: 0;
   flex-direction: column;
   padding-top: 3rem;
   position: absolute;
   padding-bottom: 5.6875rem;
+  border: 1px solid blue;
+  pointer-events: auto;
 `
 
 const HeaderBtns = styled.div`
   display: flex;
   flex-direction: row;
+  position: fixed;
   justify-content: center;
   gap: 0.6rem;
-  padding-top: 0.88rem;
+  margin-top: 4rem;
+  border: 1px solid blue;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  pointer-events: auto;
 `
 
 const FooterBtns = styled.div`
@@ -49,6 +58,10 @@ const FooterBtns = styled.div`
   transform: translateY(43rem);
   padding-bottom: 1rem;
   z-index: 10;
+  border: 1px solid blue;
+  left: 50%;
+  z-index: 1000;
+  transform: translateY(80%);
 `
 
 const hasCardStyle = {
@@ -65,6 +78,7 @@ const MyLocBtn = styled.button`
   border: none;
   background-color: #fff;
   cursor: pointer;
+  pointer-events: auto;
 `
 
 const ListBtn = styled.button`
@@ -80,6 +94,7 @@ const ListBtn = styled.button`
   cursor: pointer;
   background-color: transparent;
   background-color: #fff;
+  pointer-events: auto;
 `
 
 const ListBtnIcon = styled.img`
@@ -100,13 +115,27 @@ function Map() {
   const navigate = useNavigate()
   const [active, setActive] = useState('')
   const [map, setMap] = useState(null)
-  const select = (key) => setActive(key)
   const [center, setCenter] = useState({ lat: 37.5665, lng: 126.978 })
   const [isMarker, setIsMarker] = useState(false)
   const [selectedCafeId, setSelectedCafeId] = useState(null)
   const [state, setState] = useState(null)
   const [keyword, setKeyword] = useState('')
-  const handleSearch = (q) => setKeyword(q)
+
+  const select = (key) => {
+    setActive(key)
+    setKeyword('')
+    setSelectedCafeId(null)
+  }
+
+  const handleSearch = (q) => {
+    setKeyword(q)
+    setActive('')
+    setSelectedCafeId(null)
+  }
+
+  const handleMapBtns = () => {
+    setActive('')
+  }
 
   useEffect(() => {
     console.log('origin:', window.location.origin)
@@ -144,7 +173,7 @@ function Map() {
           searchKeyword={keyword}
         />
         <Wrapper>
-          <SearchBox onSearch={handleSearch} />
+          <SearchBox onSearch={handleSearch} onClick={handleMapBtns} txt={keyword} />
           <HeaderBtns>
             <MapBtn
               img={active === 'ai' ? sparkOn : sparkOff}
