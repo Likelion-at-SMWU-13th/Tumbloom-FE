@@ -134,7 +134,6 @@ const BtnContainer = styled.div`
 `
 
 function CafeDetail() {
-  const [active, setActive] = useState(false)
   const [tap, setTap] = useState(true)
   const navigate = useNavigate()
   const [cafe, setCafe] = useState(null)
@@ -184,7 +183,9 @@ function CafeDetail() {
   }
 
   const goToStamp = () => {
-    navigate(`/stamp`, { state: { cafeName: cafe.cafeName, cafeImg: cafe.imageUrl } })
+    navigate(`/stamp`, {
+      state: { cafeId: cafe.id, cafeName: cafe.cafeName, cafeImg: cafe.imageUrl },
+    })
   }
 
   return (
