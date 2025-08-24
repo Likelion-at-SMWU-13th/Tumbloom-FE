@@ -17,6 +17,7 @@ const MapWrapper = styled.div`
 `
 
 function KakaoMap({ center, isMarker, filter, onSelectCafe, onCreateMap, searchKeyword }) {
+  const baseURL = import.meta.env.VITE_API_BASE_URL
   const [cafes, setCafes] = useState([])
   const [selectedCafe, setSelectedCafe] = useState(null)
 
@@ -26,7 +27,7 @@ function KakaoMap({ center, isMarker, filter, onSelectCafe, onCreateMap, searchK
       console.log('로컬스토리지에 accessToken 없음')
       return
     }
-    const res = await fetch(`https://tumbloom.store/api/cafes/nearby?lat=${lat}&lng=${lng}`, {
+    const res = await fetch(`${baseURL}api/cafes/nearby?lat=${lat}&lng=${lng}`, {
       headers: { Authorization: `Bearer ${at}` },
     })
     const json = await res.json().catch(() => ({}))
@@ -53,7 +54,7 @@ function KakaoMap({ center, isMarker, filter, onSelectCafe, onCreateMap, searchK
       console.log('로컬스토리지에 accessToken 없음')
       return
     }
-    const res = await fetch(`https://tumbloom.store/api/cafes/filtered/popular`, {
+    const res = await fetch(`${baseURL}api/cafes/filtered/popular`, {
       headers: { Authorization: `Bearer ${at}` },
     })
     const json = await res.json().catch(() => ({}))
@@ -79,7 +80,7 @@ function KakaoMap({ center, isMarker, filter, onSelectCafe, onCreateMap, searchK
       console.log('로컬스토리지에 accessToken 없음')
       return
     }
-    const res = await fetch(`https://tumbloom.store/api/cafes/filtered/coupon`, {
+    const res = await fetch(`${baseURL}api/cafes/filtered/coupon`, {
       headers: { Authorization: `Bearer ${at}` },
     })
     const json = await res.json().catch(() => ({}))
@@ -105,7 +106,7 @@ function KakaoMap({ center, isMarker, filter, onSelectCafe, onCreateMap, searchK
       console.log('로컬스토리지에 accessToken 없음')
       return
     }
-    const res = await fetch(`https://tumbloom.store/api/cafes/filtered/ai`, {
+    const res = await fetch(`${baseURL}api/cafes/filtered/ai`, {
       headers: { Authorization: `Bearer ${at}` },
     })
     const json = await res.json().catch(() => ({}))
@@ -132,7 +133,7 @@ function KakaoMap({ center, isMarker, filter, onSelectCafe, onCreateMap, searchK
       console.log('로컬스토리지에 accessToken 없음')
       return
     }
-    const res = await fetch(`https://tumbloom.store/api/cafes?keyword=${keyword}`, {
+    const res = await fetch(`${baseURL}api/cafes?keyword=${keyword}`, {
       headers: { Authorization: `Bearer ${at}` },
     })
     const json = await res.json().catch(() => ({}))

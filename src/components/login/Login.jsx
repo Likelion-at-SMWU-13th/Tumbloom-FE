@@ -64,6 +64,7 @@ const LoginErrorText = styled.span`
 `
 
 function Login() {
+  const baseURL = import.meta.env.VITE_API_BASE_URL
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [btnColor, setBtnColor] = useState(false)
@@ -95,7 +96,7 @@ function Login() {
     try {
       setError('')
       const response = await axios.post(
-        `https://tumbloom.store/api/auth/login`,
+        `${baseURL}api/auth/login`,
         { email, password },
         { headers: { 'Content-Type': 'application/json' } },
       )

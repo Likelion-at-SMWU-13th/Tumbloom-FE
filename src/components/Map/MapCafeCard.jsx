@@ -177,6 +177,7 @@ const CafeImg = styled.img`
 `
 
 function MapCafeCard({ cafeId }) {
+  const baseURL = import.meta.env.VITE_API_BASE_URL
   const [active, setActive] = useState(false)
   const [cafe, setCafe] = useState(null)
   const navigate = useNavigate()
@@ -191,8 +192,8 @@ function MapCafeCard({ cafeId }) {
 
     const headers = { Authorization: `Bearer ${at}` }
     const req = isFav
-      ? axios.delete(`https://tumbloom.store/api/favorites/${id}`, { headers })
-      : axios.post(`https://tumbloom.store/api/favorites/${id}`, {}, { headers })
+      ? axios.delete(`${baseURL}api/favorites/${id}`, { headers })
+      : axios.post(`${baseURL}api/favorites/${id}`, {}, { headers })
 
     req.catch((err) => {
       console.error(err)
@@ -215,7 +216,7 @@ function MapCafeCard({ cafeId }) {
       console.log('로컬스토리지에 accessToken 없음')
       return
     }
-    const res = await fetch(`https://tumbloom.store/api/cafes/${cafeId}`, {
+    const res = await fetch(`${baseURL}api/cafes/${cafeId}`, {
       headers: { Authorization: `Bearer ${at}` },
     })
 

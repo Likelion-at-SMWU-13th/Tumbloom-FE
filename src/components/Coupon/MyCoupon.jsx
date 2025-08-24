@@ -5,6 +5,7 @@ import * as S from './styled'
 import NoData from '../common/NoData'
 
 const MyCoupon = () => {
+  const baseURL = import.meta.env.VITE_API_BASE_URL
   const [availableCouponList, setAvailableCouponList] = useState([])
   const [usableCount, setUsableCount] = useState(0)
 
@@ -12,7 +13,7 @@ const MyCoupon = () => {
     const token = localStorage.getItem('accessToken')
 
     axios
-      .get('https://tumbloom.store/api/coupons/my', {
+      .get(`${baseURL}api/coupons/my`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {

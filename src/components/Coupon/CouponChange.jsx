@@ -7,6 +7,7 @@ import CafeCoupon from './CafeCoupon'
 import NoData from '../common/NoData'
 
 const CouponChange = () => {
+  const baseURL = import.meta.env.VITE_API_BASE_URL
   const lat = 37
   const lng = 126
   const [couponList, setCouponList] = useState([])
@@ -35,7 +36,7 @@ const CouponChange = () => {
   const exchangeCoupon = (id) => {
     axios
       .post(
-        `https://tumbloom.store/api/cafes/${id}/coupons`,
+        `${baseURL}api/cafes/${id}/coupons`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -53,7 +54,7 @@ const CouponChange = () => {
   const fetchCoupon = (keyword = '') => {
     const params = { lat, lng, ...(keyword.trim() && { cafeName: keyword.trim() }) }
     return axios
-      .get('https://tumbloom.store/api/coupons', {
+      .get(`${baseURL}api/coupons`, {
         params,
         headers: { Authorization: `Bearer ${token}` },
       })
@@ -72,7 +73,7 @@ const CouponChange = () => {
 
   useEffect(() => {
     axios
-      .get('https://tumbloom.store/api/users/me/home', {
+      .get(`${baseURL}api/users/me/home`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
