@@ -1,4 +1,5 @@
 import React from 'react'
+import { useEffect } from 'react'
 import stampImg from '@/assets/images/get-stamp.svg'
 import backgroundImg from '@/assets/images/stamp-effect-bg.png'
 import { useNavigate } from 'react-router-dom'
@@ -8,11 +9,11 @@ function GetStamp() {
   const navigate = useNavigate()
 
   const goToHome = () => {
-    navigate(`/`)
+    navigate(`/home`)
   }
 
   const goToCoupon = () => {
-    navigate(`/`)
+    navigate(`/coupon`)
   }
 
   return (
