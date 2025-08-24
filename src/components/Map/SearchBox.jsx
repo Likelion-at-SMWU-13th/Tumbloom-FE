@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import search from '@/assets/icons/search.svg'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const SearchInput = styled.input`
   display: flex;
@@ -44,13 +44,18 @@ const SearchIcon = styled.img`
   left: 2.2rem;
 `
 
-const SearchBox = ({ onSearch }) => {
+const SearchBox = ({ onSearch, onClick, txt }) => {
   const [text, setText] = useState('')
+
+  useEffect(() => {
+    setText(txt ?? '')
+  }, [txt])
 
   const handleEnterBtn = (e) => {
     if (e.key === 'Enter') {
-      const k = text.trim()
-      if (k) onSearch(k)
+      if (text) {
+        onSearch(text)
+      }
     }
   }
   return (
@@ -62,6 +67,7 @@ const SearchBox = ({ onSearch }) => {
         onKeyDown={handleEnterBtn}
         type='text'
         placeholder='카페명 또는 지역 검색'
+        onClick={onClick}
       />
     </SearchInputContainer>
   )
