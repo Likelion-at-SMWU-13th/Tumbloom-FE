@@ -12,6 +12,7 @@ import PreferenceCard from './PreferenceCard'
 const mod = (n, m) => ((n % m) + m) % m
 
 const CafeCarousel = () => {
+  const baseURL = import.meta.env.VITE_API_BASE_URL
   const navigate = useNavigate()
   const token = localStorage.getItem('accessToken')
   const [cafeRecommendList, setCafeRecommendList] = useState([])
@@ -24,8 +25,8 @@ const CafeCarousel = () => {
 
     const headers = { Authorization: `Bearer ${token}` }
     const req = isFav
-      ? axios.delete(`https://tumbloom.store/api/favorites/${id}`, { headers })
-      : axios.post(`https://tumbloom.store/api/favorites/${id}`, {}, { headers })
+      ? axios.delete(`${baseURL}api/favorites/${id}`, { headers })
+      : axios.post(`${baseURL}api/favorites/${id}`, {}, { headers })
 
     req.catch((err) => {
       console.error(err)
@@ -35,7 +36,7 @@ const CafeCarousel = () => {
 
   useEffect(() => {
     axios
-      .get('https://tumbloom.store/api/cafes/nearby/top', {
+      .get(`${baseURL}api/cafes/nearby/top`, {
         params: { lat, lng },
         headers: { Authorization: `Bearer ${token}` },
       })
@@ -50,7 +51,7 @@ const CafeCarousel = () => {
 
   useEffect(() => {
     axios
-      .get('https://tumbloom.store/api/users/me/cafe-recommendations', {
+      .get(`${baseURL}api/users/me/cafe-recommendations`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {

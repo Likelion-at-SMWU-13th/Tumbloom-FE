@@ -6,6 +6,7 @@ import CafeRecommend from '@/components/Home/CafeRecommend'
 import Footer from '@/components/common/Footer'
 
 const HomePage = () => {
+  const baseURL = import.meta.env.VITE_API_BASE_URL
   const [userName, setuserName] = useState('')
   const [tumblerCount, setTumblerCount] = useState('')
   const [savedWater, setSavedWater] = useState('')
@@ -17,7 +18,7 @@ const HomePage = () => {
     const token = localStorage.getItem('accessToken')
 
     axios
-      .get('https://tumbloom.store/api/users/me/home', {
+      .get(`${baseURL}api/users/me/home`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
