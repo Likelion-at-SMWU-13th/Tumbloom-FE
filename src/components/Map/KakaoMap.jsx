@@ -189,7 +189,7 @@ function KakaoMap({ center, isMarker, filter, onSelectCafe, onCreateMap, searchK
     <MapWrapper>
       <Map
         center={center}
-        level={2}
+        level={3}
         style={{ width: '100%', height: '100%' }}
         onCreate={(map) => onCreateMap && onCreateMap(map)}
         onClick={() => {
@@ -223,7 +223,12 @@ function KakaoMap({ center, isMarker, filter, onSelectCafe, onCreateMap, searchK
           const fontColor = isAnySelected ? (isSelected ? '#000000' : '#5F5F5F') : '#000000'
 
           return (
-            <CustomOverlayMap key={c.id} position={{ lat: c.lat, lng: c.lng }} yAnchor={1}>
+            <CustomOverlayMap
+              key={c.id}
+              position={{ lat: c.lat, lng: c.lng }}
+              yAnchor={0.8}
+              xAnchor={0.5}
+            >
               <div
                 onClick={() => {
                   setSelectedCafe(c.id)
@@ -231,26 +236,19 @@ function KakaoMap({ center, isMarker, filter, onSelectCafe, onCreateMap, searchK
                   onSelectCafe && onSelectCafe(c.id)
                 }}
                 style={{
-                  transform: 'translate(-50%,-100%)',
                   textAlign: 'center',
                   transition: 'transform 120ms ease',
+                  position: 'relative',
                 }}
               >
                 <img
                   src={imgSrc}
                   alt='sprout'
-                  style={{ width: isSelected ? 64 : 40, height: isSelected ? 64 : 50 }}
-                />
-                <div
                   style={{
-                    padding: '2px 6px',
-                    fontSize: isSelected ? 13 : 11,
-                    fontFamily: 'Cafe24Decoshadow',
-                    color: fontColor,
+                    width: isSelected ? 64 : 40,
+                    height: isSelected ? 64 : 50,
                   }}
-                >
-                  {c.name}
-                </div>
+                />
               </div>
             </CustomOverlayMap>
           )
