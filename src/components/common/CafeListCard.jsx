@@ -10,11 +10,11 @@ function CafeListCard({ id, name, loc, time, image }) {
   const navigate = useNavigate()
 
   const goToDetail = () => {
-    navigate(`/detail/`, { state: { cafeId: id } })
+    navigate(`/detail/${id}`)
   }
 
   const goToGetStamp = () => {
-    navigate(`/stamp`, { state: { cafeName: name, cafeImg: image } })
+    navigate(`/stamp/${id}`)
   }
   return (
     <S.Container onClick={goToDetail}>

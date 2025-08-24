@@ -9,7 +9,7 @@ import CafeInfoBox from './CafeInfoBox'
 import NoData from '../common/NoData'
 import MenuBox from './MenuBox'
 import { useState, useEffect } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const CafeHeaderWrapper = styled.div`
   display: flex;
@@ -139,8 +139,11 @@ function CafeDetail() {
   const [tap, setTap] = useState(true)
   const navigate = useNavigate()
   const [cafe, setCafe] = useState(null)
-  const { state } = useLocation()
-  const cafeId = state?.cafeId
+  // const { state } = useLocation()
+  // const cafeId = state?.cafeId
+  const params = useParams()
+  const id = params.cafeId
+  const cafeId = id ?? null
   const hasMenu = Array.isArray(cafe?.menuList) && cafe.menuList.length > 0
 
   useEffect(() => {
@@ -185,9 +188,7 @@ function CafeDetail() {
   }
 
   const goToStamp = () => {
-    navigate(`/stamp`, {
-      state: { cafeId: cafe.id, cafeName: cafe.cafeName, cafeImg: cafe.imageUrl },
-    })
+    navigate(`/stamp${cafeId}`)
   }
 
   return (

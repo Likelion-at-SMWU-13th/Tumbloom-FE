@@ -49,7 +49,7 @@ const router = createBrowserRouter([
         element: <Coupon />,
       },
       {
-        path: '/stamp',
+        path: '/stamp/:cafeId',
         element: <Stamp />,
       },
       {
@@ -57,7 +57,7 @@ const router = createBrowserRouter([
         element: <QrScan />,
       },
       {
-        path: '/detail',
+        path: '/detail/:cafeId',
         element: <CafeDetail />,
       },
       {

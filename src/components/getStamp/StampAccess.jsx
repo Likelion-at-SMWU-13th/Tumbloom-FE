@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import axios from 'axios'
 import Header from '@/components/common/Header'
 import { useState } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation, useParams } from 'react-router-dom'
 import GetStamp from '@/components/getStamp/GetStamp'
 import * as S from '@/components/getStamp/StampAccess.Styled'
 
@@ -11,10 +11,15 @@ function StampAccess() {
   const [accessCode, setAccessCode] = useState('')
   const [isError, setIsError] = useState(false)
   const [showStampBg, setShowStampBg] = useState(false)
-  const location = useLocation()
-  const cafeId = location.state?.cafeId ?? null
-  const cafeName = location.state?.cafeName || ''
-  const cafeImg = location.state?.cafeImg || ''
+  const params = useParams()
+  const id = params.cafeId
+  const cafeId = id ?? null
+  const [cafeImg, setCafeImg] = useState('')
+  const [cafeName, setCafeName] = useState('')
+  // const location = useLocation()
+  // const cafeId = location.state?.cafeId ?? null
+  // const cafeName = location.state?.cafeName || ''
+  // const cafeImg = location.state?.cafeImg || ''
   const navigate = useNavigate()
 
   const handleCompleteBtn = () => {
@@ -66,6 +71,23 @@ function StampAccess() {
   const goToPrev = () => {
     navigate(-1)
   }
+
+  useEffect(() => {
+    const at = localStorage.getItem('accessToken')
+    if (!at || at === 'undefined') {
+      setIsError(true)
+      return
+    }
+
+    axios
+      .get(`${baseURL}api/cafes/${cafeId}`, {
+        headers: { Authorization: `Bearer ${at}` },
+      })
+      .then((res) => {
+        setCafeImg(res.data.data.imageUrl)
+        setCafeName(res.data.data.cafeName)
+      })
+  })
 
   return (
     <>

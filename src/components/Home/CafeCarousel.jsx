@@ -98,9 +98,7 @@ const CafeCarousel = () => {
               return (
                 <S.CardContainer
                   key={i}
-                  onClick={() =>
-                    isActive ? navigate('/detail', { state: { cafeId: cafe.id } }) : setActive(i)
-                  }
+                  onClick={() => (isActive ? navigate(`/detail/${cafe.id}`) : setActive(i))}
                   style={{
                     transform: isActive ? 'scale(1)' : 'scale(0.88)',
                     opacity: isActive ? '1' : '0.34',
