@@ -11,6 +11,7 @@ export const HeaderBox = styled.div`
   z-index: 1000;
   padding-top: 0;
   flex-shrink: 0;
+  background-color: #fff;
 `
 
 export const LeftArea = styled.div`
