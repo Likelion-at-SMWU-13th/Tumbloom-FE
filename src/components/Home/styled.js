@@ -104,14 +104,14 @@ export const MyStamp = styled.h2`
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  margin: 0 0 0.62rem 1.25rem;
+  margin: 0 0 1rem 1.25rem;
 `
 
 export const StampArea = styled.div`
   display: flex;
   flex-direction: column;
   /* margin-top: 0.5rem; */
-  padding-top: 2.5rem;
+  padding-top: 2rem;
 `
 
 export const StampCard = styled.img`
@@ -151,7 +151,7 @@ export const CafeRecommendWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding-top: 2.5rem;
-  gap: 0.63rem;
+  gap: 1rem;
 `
 
 export const CafeRecommendText = styled.h1`
@@ -195,7 +195,7 @@ export const StarIcon = styled.img`
 `
 
 export const CafeCarousel = styled.div`
-  margin-top: 0.16rem;
+  margin-top: 0.5rem;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -290,7 +290,7 @@ export const DotsContainer = styled.div`
   display: flex;
   gap: 0.3125rem;
   justify-content: center;
-  padding: 0.75rem 0 0.75rem 0;
+  padding: 1rem 0 0.75rem 0;
 `
 
 export const AiRecommendContainer = styled.div`

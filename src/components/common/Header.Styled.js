@@ -8,7 +8,7 @@ export const HeaderBox = styled.div`
   box-sizing: border-box;
   position: fixed;
   top: 0;
-  z-index: 1000;
+  z-index: 10;
   padding-top: 0;
   flex-shrink: 0;
   background-color: #fff;

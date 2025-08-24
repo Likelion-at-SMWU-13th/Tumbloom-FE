@@ -4,9 +4,8 @@ export const ModalBackground = styled.div`
   max-width: 100%;
   display: flex;
   position: absolute;
-  z-index: 4;
+  z-index: 11;
   width: 24.5625rem;
-
   background-color: rgba(0, 20, 16, 0.75);
   inset: 0;
   align-items: center;
