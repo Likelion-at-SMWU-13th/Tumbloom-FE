@@ -16,7 +16,7 @@ const MapWrapper = styled.div`
   z-index: 0;
 `
 
-function KakaoMap({ center, isMarker, filter, onSelectCafe, onCreateMap }) {
+function KakaoMap({ center, isMarker, filter, onSelectCafe, onCreateMap, searchKeyword }) {
   const [cafes, setCafes] = useState([])
   const [selectedCafe, setSelectedCafe] = useState(null)
 
@@ -126,7 +126,36 @@ function KakaoMap({ center, isMarker, filter, onSelectCafe, onCreateMap }) {
     )
   }
 
+  const searchCafes = async (keyword) => {
+    const at = localStorage.getItem('accessToken')
+    if (!at || at === 'undefined') {
+      console.log('로컬스토리지에 accessToken 없음')
+      return
+    }
+    const res = await fetch(`https://tumbloom.store/api/cafes?keyword=${keyword}`, {
+      headers: { Authorization: `Bearer ${at}` },
+    })
+    const json = await res.json().catch(() => ({}))
+    if (!res.ok || !Array.isArray(json?.data)) {
+      console.log('popular error', res.status, json)
+      setCafes([])
+      return
+    }
+    setCafes(
+      json.data.map((c) => ({
+        id: c.id,
+        name: c.cafeName,
+        lat: c.latitude,
+        lng: c.longitude,
+        fav: c.favorite,
+      })),
+    )
+  }
+
   useEffect(() => {
+    if (searchKeyword && searchKeyword.trim()) {
+      searchCafes(searchKeyword)
+    }
     onSelectCafe && onSelectCafe(null)
 
     if (localStorage.getItem('accessToken') === 'undefined') {
@@ -149,7 +178,7 @@ function KakaoMap({ center, isMarker, filter, onSelectCafe, onCreateMap }) {
           }
       }
     })()
-  }, [filter, center?.lat, center?.lng])
+  }, [searchKeyword, filter, center?.lat, center?.lng])
 
   useEffect(() => {
     console.log('selectedCafe changed:', selectedCafe)
