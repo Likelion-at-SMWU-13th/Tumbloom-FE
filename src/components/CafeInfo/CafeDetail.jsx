@@ -188,7 +188,7 @@ function CafeDetail() {
   }
 
   const goToStamp = () => {
-    navigate(`/stamp${cafeId}`)
+    navigate(`/stamp/${cafeId}`)
   }
 
   return (
