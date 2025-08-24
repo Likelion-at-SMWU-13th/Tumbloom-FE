@@ -21,10 +21,7 @@ import MapCafeCard from './MapCafeCard'
 
 const MapContainer = styled.div`
   position: relative;
-  display: flex;
   width: 100%;
-  height: 100dvh;
-  overflow: hidden;
 `
 
 const Wrapper = styled.div`
@@ -39,10 +36,9 @@ const Wrapper = styled.div`
 const HeaderBtns = styled.div`
   display: flex;
   flex-direction: row;
-  position: fixed;
   justify-content: center;
   gap: 0.6rem;
-  padding-top: 2rem;
+  padding-top: 0.88rem;
 `
 
 const FooterBtns = styled.div`
