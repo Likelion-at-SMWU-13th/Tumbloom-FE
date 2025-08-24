@@ -6,11 +6,13 @@ export const HeaderBox = styled.div`
   width: 24.5625rem;
   height: 3.5rem;
   box-sizing: border-box;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 1000;
   padding-top: 0;
   flex-shrink: 0;
+  background-color: #fff;
+  border-bottom: 1px solid #d9d9d9;
 `
 
 export const LeftArea = styled.div`

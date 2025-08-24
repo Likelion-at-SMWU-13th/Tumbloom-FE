@@ -35,7 +35,7 @@ const HomePage = () => {
   }, [])
 
   return (
-    <>
+    <div style={{ paddingBottom: '6.5rem' }}>
       <HeaderArea
         userName={userName}
         tumblerCount={tumblerCount}
@@ -45,7 +45,7 @@ const HomePage = () => {
       <StampArea stamp={currentCount} exchangeable={exchangeable} />
       <CafeRecommend />
       <Footer />
-    </>
+    </div>
   )
 }
 

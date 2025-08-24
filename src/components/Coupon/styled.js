@@ -6,12 +6,13 @@ export const HeaderContainer = styled.div`
   width: 24.5625rem;
   height: 3.5rem;
   box-sizing: border-box;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 1000;
   padding-top: 0;
   flex-shrink: 0;
   border-bottom: solid 0.0625rem #d9d9d9;
+  background-color: #fff;
 `
 
 export const CouponChangeTap = styled.div`
@@ -44,10 +45,12 @@ export const TapText = styled.span`
 `
 
 export const Wrapper = styled.div`
-  overflow-y: auto;
-  height: 43.5rem;
+  /* overflow-y: auto; */
+  /* height: 43.5rem; */
   /* flex: 1; */
   /* width: 24.5625rem; */
+  padding-top: 3.5rem;
+  padding-bottom: 6rem;
 `
 
 export const ChangeTextBox = styled.div`
@@ -254,9 +257,10 @@ export const MyCouponWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 1.4rem;
-  padding-top: 1.4rem;
   overflow-y: auto;
-  height: 42rem;
+  /* height: 42rem; */
+  padding-top: 3.5rem;
+  padding-bottom: 6rem;
 `
 
 export const AvailableCouponBox = styled.div`
@@ -266,6 +270,7 @@ export const AvailableCouponBox = styled.div`
   align-items: center;
   border-radius: 18.75rem;
   background: #deeeeb;
+  margin-top: 1.94rem;
 `
 
 export const AvailableCouponText = styled.p`
