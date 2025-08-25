@@ -59,6 +59,9 @@ export default React.memo(function Qrcode(props) {
     navigate('/home')
   }
   const [qrError, setQrError] = useState(false)
+  const videoRef = useRef(null)
+  const scannerRef = useRef(null)
+  const handledRef = useRef(false)
 
   const isUrl = (text) => {
     const urlRegex = /(https?:\/\/[^\s]+)/g
@@ -78,35 +81,41 @@ export default React.memo(function Qrcode(props) {
   const QrOptions = {
     preferredCamera: 'environment',
     maxScansPerSecond: 5,
+    highlightScanRegion: false,
+    highlightCodeOutline: false,
     // highlightScanRegionStyle: {
     //   border: '2px solid rgba(0,0,0,0.2)',
     //   borderRadius: '12px',
     // },
   }
-  const videoRef = useRef(null)
 
   useEffect(() => {
+    let mounted = true
+    handledRef.current = false
+
     QrScanner.hasCamera().then((hasCamera) => {
+      if (!mounted) return
       if (!hasCamera) {
         setQrError(true)
+        return
       }
-      if (hasCamera) {
-        const videoElem = videoRef.current
-        if (videoElem) {
-          const qrScanner = new QrScanner(
-            videoElem,
-            (result) => {
-              console.log('result : ', result)
-              handleScan(result)
-            },
-            QrOptions,
-          )
-          qrScanner.start().catch((e) => setQrError(true))
 
-          return () => qrScanner.destroy()
-        }
-      }
+      const videoElem = videoRef.current
+      if (!videoElem) return
+
+      const qrScanner = new QrScanner(videoElem, handleScan, QrOptions)
+      scannerRef.current = qrScanner
+
+      qrScanner.start().catch(() => mounted && setQrError(true))
     })
+    return () => {
+      mounted = false
+      if (scannerRef.current) {
+        scannerRef.current.stop().catch(() => {})
+        scannerRef.current.destroy()
+        scannerRef.current = null
+      }
+    }
   }, [])
 
   return (
