@@ -10,7 +10,6 @@ import { useNavigate } from 'react-router-dom'
 function CafeList() {
   const baseURL = import.meta.env.VITE_API_BASE_URL
   const [cafes, setCafes] = useState([])
-  const navigate = useNavigate()
   const location = useLocation()
 
   const { lat, lng } = location.state || {}
@@ -45,13 +44,9 @@ function CafeList() {
     if (lat && lng) nearCafeList(lat, lng)
   }, [lat, lng])
 
-  const goToMap = () => {
-    navigate(`/map`)
-  }
-
   return (
     <>
-      <Header title='카페 목록보기' onLeftClick={goToMap} />
+      <Header title='카페 목록보기' />
       <S.ScrollArea>
         <S.Wrapper>
           {cafes.map((c) => (

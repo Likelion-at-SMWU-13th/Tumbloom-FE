@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import QrScanner from 'qr-scanner'
 import styled from 'styled-components'
-import { useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import closeIcon from '@/assets/icons/close.svg'
 
 const VideoArea = styled.div`
@@ -64,6 +64,7 @@ const Video = styled.video`
 
 export default React.memo(function Qrcode(props) {
   const navigate = useNavigate()
+
   const goToHome = () => {
     navigate('/home')
   }
@@ -128,8 +129,8 @@ export default React.memo(function Qrcode(props) {
       {}
       {!qrError && (
         <VideoArea>
-          <CloseBtn onClick={goToHome}>
-            <img src={closeIcon} />
+          <CloseBtn>
+            <img src={closeIcon} onClick={goToHome} />
           </CloseBtn>
           <Video ref={videoRef} playsInline muted autoPlay />
           <SquareBoxArea />

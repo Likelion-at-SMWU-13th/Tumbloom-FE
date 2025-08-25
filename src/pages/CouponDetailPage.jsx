@@ -69,10 +69,7 @@ const CouponDetailPage = () => {
         }}
         open={openUseModal}
       />
-      <Header
-        title={'쿠폰 사용하기'}
-        onLeftClick={() => navigate('/coupon', { state: { tab: 'myCoupon' } })}
-      />
+      <Header title={'쿠폰 사용하기'} />
       <CouponUse
         onUseClick={() => setOpenUseModal(true)}
         active={activeCoupon}

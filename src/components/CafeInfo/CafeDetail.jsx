@@ -183,17 +183,13 @@ function CafeDetail() {
 
   if (!cafe) return null
 
-  const goToPrev = () => {
-    navigate(-1)
-  }
-
   const goToStamp = () => {
     navigate(`/stamp/${cafeId}`)
   }
 
   return (
     <div>
-      <Header title='카페 상세정보' onLeftClick={goToPrev} />
+      <Header title='카페 상세정보' />
       <CafeHeaderWrapper>
         <CafeHeader>
           <CafeName>{cafe.cafeName}</CafeName>
