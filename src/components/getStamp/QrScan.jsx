@@ -81,11 +81,11 @@ export default React.memo(function Qrcode(props) {
     if (data) {
       try {
         const url = new URL(data.data)
-        const cafeId = url.searchParams.get('cafeId')
-        console.log('Cafe ID:', cafeId)
+        const pathParts = url.pathname.split('/')
+        const cafeId = pathParts[pathParts.length - 1]
 
         if (cafeId) {
-          navigate(`/stamp`)
+          navigate(`/stamp/${cafeId}`)
         } else {
           console.warn('QR에 cafeId 없음:', data.data)
         }
