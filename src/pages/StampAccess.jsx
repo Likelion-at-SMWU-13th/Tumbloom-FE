@@ -16,10 +16,6 @@ function StampAccess() {
   const cafeId = id ?? null
   const [cafeImg, setCafeImg] = useState('')
   const [cafeName, setCafeName] = useState('')
-  // const location = useLocation()
-  // const cafeId = location.state?.cafeId ?? null
-  // const cafeName = location.state?.cafeName || ''
-  // const cafeImg = location.state?.cafeImg || ''
 
   const handleCompleteBtn = () => {
     if (!cafeId || !accessCode) {
