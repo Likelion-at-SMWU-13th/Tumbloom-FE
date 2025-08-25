@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import axios from 'axios'
 import Header from '@/components/common/Header'
 import { useState } from 'react'
-import { useNavigate, useLocation, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import GetStamp from '@/components/getStamp/GetStamp'
 import * as S from '@/components/getStamp/StampAccess.Styled'
 
@@ -20,7 +20,6 @@ function StampAccess() {
   // const cafeId = location.state?.cafeId ?? null
   // const cafeName = location.state?.cafeName || ''
   // const cafeImg = location.state?.cafeImg || ''
-  const navigate = useNavigate()
 
   const handleCompleteBtn = () => {
     if (!cafeId || !accessCode) {
@@ -68,10 +67,6 @@ function StampAccess() {
     if (isError) setIsError(false)
   }
 
-  const goToPrev = () => {
-    navigate(-1)
-  }
-
   useEffect(() => {
     const at = localStorage.getItem('accessToken')
     if (!at || at === 'undefined') {
@@ -92,7 +87,7 @@ function StampAccess() {
   return (
     <>
       {showStampBg && <GetStamp />}
-      <Header title='스탬프 적립하기' onLeftClick={goToPrev} />
+      <Header title='스탬프 적립하기' />
       <S.Container>
         <S.TopImage>
           <S.BgImg src={cafeImg} />

@@ -50,7 +50,7 @@ const ProfileShare = () => {
 
   return (
     <div>
-      <Header title={'프로필 공유'} onLeftClick={() => navigate(-1)} />
+      <Header title={'프로필 공유'} />
       <ProfileShareBox
         userName={userName}
         tumblerCount={tumblerCount}
