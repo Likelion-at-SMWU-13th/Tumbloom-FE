@@ -81,105 +81,32 @@
 ├─ jsconfig.json
 ├─ package-lock.json
 ├─ package.json
-├─ src
+├─ src/
 │  ├─ App.css
 │  ├─ App.jsx
-│  ├─ assets
-│  │  ├─ icons
-│  │  └─ images
-│  ├─ components
-│  │  ├─ Button
-│  │  │  ├─ RegisterBtn.Styled.js
-│  │  │  └─ RegisterBtn.jsx
-│  │  ├─ CafeInfo
-│  │  │  ├─ CafeInfoBox.jsx
-│  │  │  └─ MenuBox.jsx
-│  │  ├─ CafeList
-│  │  │  └─ CafeList.Styled.js
-│  │  ├─ Coupon
-│  │  │  ├─ CafeCoupon.jsx
-│  │  │  ├─ CafeInputField.jsx
-│  │  │  ├─ CouponChange.jsx
-│  │  │  ├─ CouponHeader.jsx
-│  │  │  ├─ CouponPrev.jsx
-│  │  │  ├─ MyCoupon.jsx
-│  │  │  └─ styled.js
-│  │  ├─ CouponUse
-│  │  │  ├─ CouponUse.jsx
-│  │  │  └─ styled.js
-│  │  ├─ FavoriteCafeList
-│  │  │  ├─ FavoriteCafeList.jsx
-│  │  │  └─ styled.js
-│  │  ├─ Home
-│  │  │  ├─ CafeCard.jsx
-│  │  │  ├─ CafeCarousel.jsx
-│  │  │  ├─ CafeRecommend.jsx
-│  │  │  ├─ FilterTap.jsx
-│  │  │  ├─ HeaderArea.jsx
-│  │  │  ├─ MatrixBar.jsx
-│  │  │  ├─ MatrixChip.jsx
-│  │  │  ├─ PreferenceCard.jsx
-│  │  │  ├─ StampArea.jsx
-│  │  │  ├─ StampComplete.jsx
-│  │  │  ├─ TapBtn.jsx
-│  │  │  ├─ TumblerInfo.jsx
-│  │  │  └─ styled.js
-│  │  ├─ Map
-│  │  │  ├─ KakaoMap.jsx
-│  │  │  ├─ MapBtn.jsx
-│  │  │  ├─ MapCafeCard.jsx
-│  │  │  └─ SearchBox.jsx
-│  │  ├─ MyPage
-│  │  │  ├─ LevelModal.jsx
-│  │  │  ├─ MyPageBox.jsx
-│  │  │  ├─ ProfileContent.jsx
-│  │  │  ├─ ProfileInfo.jsx
-│  │  │  ├─ StateBar.jsx
-│  │  │  └─ styled.js
-│  │  ├─ Preference
-│  │  │  ├─ Button.jsx
-│  │  │  ├─ ChoosePreference.jsx
-│  │  │  └─ styled.js
-│  │  ├─ ProfileShare
-│  │  │  ├─ ProfileCard.jsx
-│  │  │  ├─ ProfileShareBox.jsx
-│  │  │  └─ styled.js
-│  │  ├─ common
-│  │  │  ├─ CafeListCard.Styled.js
-│  │  │  ├─ CafeListCard.jsx
-│  │  │  ├─ Footer.Styled.js
-│  │  │  ├─ Footer.jsx
-│  │  │  ├─ Header.Styled.js
-│  │  │  ├─ Header.jsx
-│  │  │  ├─ Input.Styled.js
-│  │  │  ├─ Input.jsx
-│  │  │  ├─ NavItem.Styled.js
-│  │  │  ├─ NavItem.jsx
-│  │  │  ├─ NoData.Styled.js
-│  │  │  ├─ NoData.jsx
-│  │  │  ├─ NoticeModal.Styled.js
-│  │  │  ├─ NoticeModal.jsx
-│  │  │  ├─ PwdInputField.Styled.js
-│  │  │  └─ PwdInputField.jsx
-│  │  ├─ getStamp
-│  │  │  ├─ GetStamp.Styled.js
-│  │  │  └─ StampAccess.Styled.js
-│  │  ├─ onboarding
-│  │  │  └─ Splash.Styled.js
-│  │  └─ signup
-│  │     └─ SignUp.Styled.js
-│  ├─ font
-│  │  └─ woff2
-│  │     └─ PretendardVariable.woff2
+│  ├─ assets/
+│  │  ├─ icons/...
+│  │  └─ images/...
+│  ├─ components/
+│  │  ├─ Button/...
+│  │  ├─ CafeList/
+│  │  ├─ Coupon/
+│  │  ├─ Home/
+│  │  ├─ Map/
+│  │  ├─ MyPage/
+│  │  ├─ Preference/
+│  │  ├─ common/
+│  │  ├─ getStamp/
+│  │  ├─ onboarding/
+│  │  └─ signup/
+│  │  └─ ...
 │  ├─ index.css
 │  ├─ main.jsx
 │  ├─ pages
 │  │  ├─ CafeDetail.jsx
 │  │  ├─ CafeList.jsx
 │  │  ├─ Coupon.jsx
-│  │  ├─ CouponDetailPage.jsx
 │  │  ├─ FavoriteCafe.jsx
-│  │  ├─ GetStamp.jsx
 │  │  ├─ HomePage.jsx
 │  │  ├─ Login.jsx
 │  │  ├─ Map.jsx
@@ -191,6 +118,7 @@
 │  │  ├─ SignUp.jsx
 │  │  ├─ Splash.jsx
 │  │  └─ StampAccess.jsx
+│  │  └─ ...
 │  └─ router.jsx
 ├─ vercel.json
 └─ vite.config.js
