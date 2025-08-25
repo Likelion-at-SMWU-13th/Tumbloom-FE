@@ -245,7 +245,10 @@ function MapCafeCard({ cafeId }) {
         <CafeName>{cafe.cName}</CafeName>
         <Scrab>
           <ScrabState
-            onClick={() => handleFav(cafe.id, !!cafe.favorite)}
+            onClick={(e) => {
+              e.stopPropagation()
+              handleFav(cafe.id, !!cafe.favorite)
+            }}
             src={cafe.favorite ? scrabOn : scrabOff}
           />
         </Scrab>
