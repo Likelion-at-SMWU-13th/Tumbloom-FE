@@ -298,6 +298,13 @@ export const AiRecommendContainer = styled.div`
   justify-content: center;
 `
 
+export const LoadingText = styled.div`
+  padding-top: 5rem;
+  text-align: center;
+  color: #999;
+  font-family: 'Pretendard Variable';
+`
+
 //TumblerInfo.jsx
 
 export const InfoBackground = styled.div`

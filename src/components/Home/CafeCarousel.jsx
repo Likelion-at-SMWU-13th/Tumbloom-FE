@@ -86,9 +86,7 @@ const CafeCarousel = () => {
           <PreferenceCard />
         </S.AiRecommendContainer>
       ) : len === 0 ? (
-        <div style={{ paddingTop: '5rem', textAlign: 'center', color: '#999' }}>
-          주변 카페를 불러오는 중…
-        </div>
+        <S.LoadingText>주변 카페를 불러오는 중…</S.LoadingText>
       ) : (
         <S.CafeCarousel>
           <S.CardRow>
