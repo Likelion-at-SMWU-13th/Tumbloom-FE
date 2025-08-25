@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import NoticeModal from '@/components/common/NoticeModal'
 import Header from '@/components/common/Header'
@@ -16,8 +16,9 @@ const CouponDetailPage = () => {
   const [price, setPrice] = useState('')
   const [cafeImg, setCafeImg] = useState(null)
 
-  const { state } = useLocation()
-  const couponId = state?.couponId
+  const params = useParams()
+  const id = params.couponId
+  const couponId = id ?? null
 
   useEffect(() => {
     const token = localStorage.getItem('accessToken')

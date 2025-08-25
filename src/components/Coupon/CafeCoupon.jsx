@@ -42,7 +42,7 @@ const CafeCoupon = ({
           onClick={() => {
             if (!active) return
             if (isExchange) onClickExchange(id)
-            else navigate('/couponDetail', { state: { couponId: id } })
+            else navigate(`/couponDetail/${id}`)
           }}
         >
           <S.ChangeIcon src={isExchange ? (active ? change : changeGray) : useIcon} />

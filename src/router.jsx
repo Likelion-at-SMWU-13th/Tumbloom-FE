@@ -61,7 +61,7 @@ const router = createBrowserRouter([
         element: <CafeDetail />,
       },
       {
-        path: '/couponDetail',
+        path: '/couponDetail/:couponId',
         element: <CouponDetailPage />,
       },
       {
