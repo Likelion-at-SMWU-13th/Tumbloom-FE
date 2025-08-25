@@ -9,7 +9,7 @@ const VideoArea = styled.div`
   flex-direction: column;
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 100dvh;
   align-items: center;
   justify-content: center;
   background: #000;
@@ -20,9 +20,9 @@ const SquareBoxArea = styled.div`
   width: 14.9375rem;
   height: 14.9375rem;
   border-radius: 1.875rem;
-  border: 2px solid rgba(255, 255, 255, 0.35);
-  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.45);
   pointer-events: none;
+  border: 8px solid #25af94;
+  box-shadow: 0 0 0 9999px rgba(6, 52, 40, 0.5);
 `
 
 const QrGuideText = styled.div`
@@ -78,11 +78,10 @@ export default React.memo(function Qrcode(props) {
   const QrOptions = {
     preferredCamera: 'environment',
     maxScansPerSecond: 5,
-    highlightScanRegion: true,
-    highlightScanRegionStyle: {
-      border: '2px solid rgba(0,0,0,0.2)',
-      borderRadius: '12px',
-    },
+    // highlightScanRegionStyle: {
+    //   border: '2px solid rgba(0,0,0,0.2)',
+    //   borderRadius: '12px',
+    // },
   }
   const videoRef = useRef(null)
 
