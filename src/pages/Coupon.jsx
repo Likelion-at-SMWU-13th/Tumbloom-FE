@@ -12,7 +12,7 @@ const Coupon = () => {
   return (
     <>
       <CouponHeader tab={tab} onChangeTab={setTab} />
-      {tab === 'exchange' ? <CouponChange /> : <MyCoupon />}
+      {tab === 'exchange' ? <CouponChange onChangeTab={setTab} /> : <MyCoupon />}
 
       <Footer />
     </>

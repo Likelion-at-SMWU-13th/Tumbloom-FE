@@ -6,7 +6,7 @@ import CafeInputField from './CafeInputField'
 import CafeCoupon from './CafeCoupon'
 import NoData from '../common/NoData'
 
-const CouponChange = () => {
+const CouponChange = ({ onChangeTab }) => {
   const baseURL = import.meta.env.VITE_API_BASE_URL
   const lat = 37
   const lng = 126
@@ -45,6 +45,7 @@ const CouponChange = () => {
       .then((res) => {
         console.log(res)
         alert('쿠폰 교환이 완료되었습니다')
+        onChangeTab('myCoupon')
       })
       .catch((err) => {
         console.log(err)
