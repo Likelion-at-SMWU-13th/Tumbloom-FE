@@ -32,7 +32,7 @@ const QrGuideText = styled.div`
   text-align: center;
   font-family: 'Pretendard Variable';
   font-size: 1.25rem;
-  transform: translateY(3rem);
+  transform: translateY(2rem);
   font-weight: 600;
   top: 68%;
   z-index: 2;
