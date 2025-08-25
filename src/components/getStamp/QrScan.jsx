@@ -79,22 +79,14 @@ export default React.memo(function Qrcode(props) {
 
   const handleScan = (data) => {
     if (data) {
-      try {
-        const url = new URL(data.data)
-        const pathParts = url.pathname.split('/')
-        const cafeId = pathParts[pathParts.length - 1]
-
-        if (cafeId) {
-          navigate(`/stamp/${cafeId}`)
-        } else {
-          console.warn('QR에 cafeId 없음:', data.data)
-        }
-      } catch (err) {
-        console.error('잘못된 QR 데이터:', data.data)
+      const url = data.data
+      if (isUrl(url)) {
+        window.open(url, '_blank')
+      } else {
+        window.open(`https://${url}`, '_blank')
       }
     }
   }
-
   const QrOptions = {
     preferredCamera: 'environment',
     maxScansPerSecond: 5,
