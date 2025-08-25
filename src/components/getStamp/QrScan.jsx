@@ -79,10 +79,18 @@ export default React.memo(function Qrcode(props) {
 
   const handleScan = (data) => {
     if (data) {
-      if (isUrl(data.data)) {
-        window.open(data.data)
-      } else {
-        window.open(`http://${data.data}`)
+      try {
+        const url = new URL(data.data)
+        const cafeId = url.searchParams.get('cafeId')
+        console.log('Cafe ID:', cafeId)
+
+        if (cafeId) {
+          navigate(`/stamp`)
+        } else {
+          console.warn('QR에 cafeId 없음:', data.data)
+        }
+      } catch (err) {
+        console.error('잘못된 QR 데이터:', data.data)
       }
     }
   }
