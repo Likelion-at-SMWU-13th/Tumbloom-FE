@@ -89,11 +89,39 @@ export default React.memo(function Qrcode(props) {
     }
   }
 
+  const stopCameraTracks = () => {
+    const stream = videoRef.current?.srcObject
+    if (stream && typeof stream.getTracks === 'function') {
+      stream.getTracks().forEach((t) => t.stop())
+    }
+  }
+
+  const disposeScanner = () => {
+    const scanner = scannerRef.current
+    try {
+      scanner?.stop?.() // v1.x는 동기 함수 → catch 필요 없음
+      scanner?.destroy?.()
+    } catch (_) {}
+    scannerRef.current = null
+    stopCameraTracks()
+  }
+
+  // const handleClose = () => {
+  //   scannerRef.current?.stop().catch(() => {})
+  //   scannerRef.current?.destroy()
+  //   videoRef.current?.srcObject?.getTracks?.().forEach((t) => t.stop())
+  //   navigate(-1)
+  // }
+
   const handleClose = () => {
+<<<<<<< HEAD
     console.log(scannerRef)
     scannerRef.current?.stop().catch(() => {})
     scannerRef.current?.destroy()
     videoRef.current?.srcObject?.getTracks?.().forEach((t) => t.stop())
+=======
+    disposeScanner()
+>>>>>>> 600efd944b92a809ccde3c1123c89dccb19bc887
     navigate(-1)
   }
 
@@ -121,15 +149,25 @@ export default React.memo(function Qrcode(props) {
       const qrScanner = new QrScanner(videoElem, handleScan, QrOptions)
       scannerRef.current = qrScanner
 
-      qrScanner.start().catch(() => mounted && setQrError(true))
+      try {
+        qrScanner.start()
+      } catch {
+        if (mounted) setQrError(true)
+      }
+
+      // qrScanner.start().catch(() => mounted && setQrError(true))
     })
+    // return () => {
+    //   mounted = false
+    //   if (scannerRef.current) {
+    //     scannerRef.current.stop().catch(() => {})
+    //     scannerRef.current.destroy()
+    //     scannerRef.current = null
+    //   }
+    // }
     return () => {
       mounted = false
-      if (scannerRef.current) {
-        scannerRef.current.stop().catch(() => {})
-        scannerRef.current.destroy()
-        scannerRef.current = null
-      }
+      disposeScanner() // 브라우저 '이전' 시에도 안전하게 정리
     }
   }, [])
 
