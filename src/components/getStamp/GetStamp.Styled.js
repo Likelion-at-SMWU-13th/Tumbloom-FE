@@ -6,10 +6,19 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 1000;
-  align-items: center;
+  z-index: 10;
   position: fixed;
   overflow: hidden;
+  max-width: 100%;
+  z-index: 11;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24.5625rem;
+  max-width: 100vw;
+  align-items: center;
+  justify-content: center;
 `
 
 export const BgImg = styled.img`
