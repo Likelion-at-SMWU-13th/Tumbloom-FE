@@ -31,6 +31,7 @@ const Wrapper = styled.div`
   padding-top: 3rem;
   position: absolute;
   padding-bottom: 5.6875rem;
+  align-items: center;
 `
 
 const HeaderBtns = styled.div`
@@ -46,15 +47,10 @@ const FooterBtns = styled.div`
   flex-direction: row;
   justify-content: center;
   gap: 13rem;
-  transform: translateY(43rem);
   padding-bottom: 1rem;
   z-index: 10;
+  position: fixed;
 `
-
-const hasCardStyle = {
-  marginTop: `35rem`,
-}
-
 const MyLocBtn = styled.button`
   width: 2.625rem;
   height: 2.625rem;
@@ -179,7 +175,7 @@ function Map() {
               isActive={active === 'hot'}
             />
           </HeaderBtns>
-          <FooterBtns style={selectedCafeId ? hasCardStyle : undefined}>
+          <FooterBtns style={{ bottom: selectedCafeId ? '18.125rem' : '6rem' }}>
             <MyLocBtn onClick={showMyLoc}>
               <img src={mapIcon} />
             </MyLocBtn>
