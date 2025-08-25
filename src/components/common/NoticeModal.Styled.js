@@ -3,13 +3,19 @@ import styled from 'styled-components'
 export const ModalBackground = styled.div`
   max-width: 100%;
   display: flex;
-  position: absolute;
+  position: fixed;
   z-index: 11;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 24.5625rem;
+  max-width: 100vw;
   background-color: rgba(0, 20, 16, 0.75);
-  inset: 0;
+  /* inset: 0; */
   align-items: center;
   justify-content: center;
+  height: 100dvh;
 `
 
 export const ModalWrapper = styled.div`

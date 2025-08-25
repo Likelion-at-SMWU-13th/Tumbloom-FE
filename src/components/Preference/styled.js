@@ -96,6 +96,7 @@ export const SaveBtnContainer = styled.div`
   display: flex;
   justify-content: end;
   padding-top: 3rem;
+  padding-bottom: 1rem;
 `
 
 export const SaveBtn = styled.button`
