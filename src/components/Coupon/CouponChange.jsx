@@ -8,8 +8,8 @@ import NoData from '../common/NoData'
 
 const CouponChange = ({ onChangeTab }) => {
   const baseURL = import.meta.env.VITE_API_BASE_URL
-  const lat = 37
-  const lng = 126
+  const lat = localStorage.getItem('lat')
+  const lng = localStorage.getItem('lng')
   const [couponList, setCouponList] = useState([])
   const [currentCount, setCurrentCount] = useState(0)
   const [query, setQuery] = useState('')
