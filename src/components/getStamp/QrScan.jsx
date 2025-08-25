@@ -114,14 +114,7 @@ export default React.memo(function Qrcode(props) {
   // }
 
   const handleClose = () => {
-<<<<<<< HEAD
-    console.log(scannerRef)
-    scannerRef.current?.stop().catch(() => {})
-    scannerRef.current?.destroy()
-    videoRef.current?.srcObject?.getTracks?.().forEach((t) => t.stop())
-=======
     disposeScanner()
->>>>>>> 600efd944b92a809ccde3c1123c89dccb19bc887
     navigate(-1)
   }
 
