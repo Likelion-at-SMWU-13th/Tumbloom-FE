@@ -182,7 +182,7 @@ export const CafeName = styled.span`
   font-weight: 400;
   line-height: normal;
   margin: 0;
-  padding: 0.3rem 0 0 1.38rem;
+  padding: 0.3rem 0 0.5rem 1.38rem;
 `
 
 export const CafeDiscount = styled.span`
@@ -206,7 +206,7 @@ export const CafeCouponCount = styled.span`
   line-height: normal;
   margin: 0;
   text-align: end;
-  padding: 0.5rem 0.5rem 0 0;
+  padding: 0.8rem 0.5rem 0 0;
 `
 
 export const DotLine = styled.img`
