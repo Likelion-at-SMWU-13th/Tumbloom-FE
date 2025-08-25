@@ -104,13 +104,11 @@ function Login() {
       console.log('login response.data =', response.data)
 
       const accessToken = response.data?.accessToken ?? response.data?.data?.accessToken
-      const refreshToken = response.data?.refreshToken ?? response.data?.data?.refreshToken
       if (!accessToken) {
         throw new Error('로그인 토큰이 없습니다.')
       }
 
       localStorage.setItem('accessToken', accessToken)
-      localStorage.setItem('refreshToken', refreshToken)
 
       setEmail('')
       setPassword('')
