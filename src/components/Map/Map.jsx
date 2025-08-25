@@ -129,6 +129,10 @@ function Map() {
       const lat = pos.coords.latitude
       const lng = pos.coords.longitude
       setCenter({ lat, lng })
+      localStorage.removeItem('lat')
+      localStorage.removeItem('lng')
+      localStorage.setItem('lat', lat.toFixed(6))
+      localStorage.setItem('lng', lng.toFixed(6))
       setIsMarker(true)
       map.panTo(new window.kakao.maps.LatLng(lat, lng))
     })

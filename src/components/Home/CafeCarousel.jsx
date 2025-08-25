@@ -17,8 +17,8 @@ const CafeCarousel = () => {
   const token = localStorage.getItem('accessToken')
   const [cafeRecommendList, setCafeRecommendList] = useState([])
   const [cafeAIList, setCafeAIList] = useState([])
-  const lat = 37
-  const lng = 126
+  const lat = localStorage.getItem('lat')
+  const lng = localStorage.getItem('lng')
 
   const toggleFavorite = (id, isFav) => {
     setCurrentList((prev) => prev.map((c) => (c.id === id ? { ...c, favorite: !isFav } : c)))
