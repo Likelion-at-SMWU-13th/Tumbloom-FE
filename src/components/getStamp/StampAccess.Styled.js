@@ -9,7 +9,7 @@ export const Container = styled.div`
 
 export const TopImage = styled.div`
   width: 24.5625rem;
-  height: 13.75rem;
+  height: 15rem;
   flex-shrink: 0;
   position: relative;
 `
@@ -23,6 +23,7 @@ export const BgImg = styled.img`
 
 export const ImgEffect = styled.div`
   position: absolute;
+  transform: translateY(1.5rem);
   inset: 0;
   background: linear-gradient(
     180deg,
@@ -39,7 +40,7 @@ export const TextArea = styled.div`
   position: absolute;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 13rem;
+  padding-top: 14.8rem;
 `
 
 export const Title = styled.span`
@@ -74,7 +75,7 @@ export const Desc = styled.span`
 export const AccessCodeBox = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 3rem;
+  padding-top: 4rem;
 `
 export const AccessCodeHeader = styled.span`
   color: #000;
