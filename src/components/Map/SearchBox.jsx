@@ -41,7 +41,7 @@ const SearchIcon = styled.img`
   flex-shrink: 0;
   aspect-ratio: 1/1;
   position: absolute;
-  left: 2.2rem;
+  left: 1.2rem;
 `
 
 const SearchBox = ({ onSearch, onClick, txt }) => {
