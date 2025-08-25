@@ -9,7 +9,7 @@ export const Container = styled.div`
 
 export const TopImage = styled.div`
   width: 24.5625rem;
-  height: 15rem;
+  height: 20rem;
   flex-shrink: 0;
   position: relative;
 `
@@ -40,7 +40,7 @@ export const TextArea = styled.div`
   position: absolute;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 14.8rem;
+  padding-top: 18.5rem;
 `
 
 export const Title = styled.span`
