@@ -1,6 +1,6 @@
 import React from 'react'
-import Header from '../common/Header'
-import CafeListCard from '../common/CafeListCard'
+import Header from '../components/common/Header'
+import CafeListCard from '../components/common/CafeListCard'
 import cafeListLine from '@/assets/images/cafe-list-line.svg'
 import * as S from '@/components/CafeList/CafeList.Styled'
 import { useState, useEffect } from 'react'

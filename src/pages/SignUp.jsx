@@ -3,7 +3,7 @@ import RegisterBtn from '@/components/Button/RegisterBtn'
 import Input from '@/components/common/Input'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import * as S from './SignUp.Styled.js'
+import * as S from '../components/signup/SignUp.Styled.js'
 import axios from 'axios'
 
 function SignUp() {

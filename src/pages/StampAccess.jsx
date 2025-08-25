@@ -3,7 +3,7 @@ import axios from 'axios'
 import Header from '@/components/common/Header'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import GetStamp from '@/components/getStamp/GetStamp'
+import GetStamp from '@/pages/GetStamp'
 import * as S from '@/components/getStamp/StampAccess.Styled'
 
 function StampAccess() {

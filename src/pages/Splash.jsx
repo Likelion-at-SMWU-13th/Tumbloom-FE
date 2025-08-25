@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import splachImg from '@/assets/images/splash-logo.svg'
-import * as S from './Splash.Styled.js'
+import * as S from '../components/onboarding/Splash.Styled.js'
 import { useNavigate } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 
