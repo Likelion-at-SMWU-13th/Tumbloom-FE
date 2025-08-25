@@ -90,6 +90,7 @@ export default React.memo(function Qrcode(props) {
   }
 
   const handleClose = () => {
+    console.log(scannerRef)
     scannerRef.current?.stop().catch(() => {})
     scannerRef.current?.destroy()
     videoRef.current?.srcObject?.getTracks?.().forEach((t) => t.stop())
