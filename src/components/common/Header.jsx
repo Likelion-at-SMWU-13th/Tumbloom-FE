@@ -11,7 +11,7 @@ function Header({ title }) {
     if (hasPrevPage) {
       navigate(-1)
     } else {
-      navigate(`/`)
+      navigate(`/home`)
     }
   }
 

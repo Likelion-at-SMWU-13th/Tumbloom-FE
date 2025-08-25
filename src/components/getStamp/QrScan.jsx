@@ -32,7 +32,7 @@ const QrGuideText = styled.div`
   text-align: center;
   font-family: 'Pretendard Variable';
   font-size: 1.25rem;
-  transform: translateY(3rem);
+  transform: translateY(2rem);
   font-weight: 600;
   top: 68%;
   z-index: 2;
@@ -88,6 +88,14 @@ export default React.memo(function Qrcode(props) {
       }
     }
   }
+
+  const handleClose = () => {
+    scannerRef.current?.stop().catch(() => {})
+    scannerRef.current?.destroy()
+    videoRef.current?.srcObject?.getTracks?.().forEach((t) => t.stop())
+    navigate(-1)
+  }
+
   const QrOptions = {
     preferredCamera: 'environment',
     maxScansPerSecond: 5,
@@ -130,7 +138,7 @@ export default React.memo(function Qrcode(props) {
       {!qrError && (
         <VideoArea>
           <CloseBtn>
-            <img src={closeIcon} onClick={goToHome} />
+            <img src={closeIcon} onClick={handleClose} />
           </CloseBtn>
           <Video ref={videoRef} playsInline muted autoPlay />
           <SquareBoxArea />
