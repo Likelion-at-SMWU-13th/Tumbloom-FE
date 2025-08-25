@@ -7,6 +7,7 @@ import closeIcon from '@/assets/icons/close.svg'
 const VideoArea = styled.div`
   display: flex;
   flex-direction: column;
+  inset: 0;
   position: relative;
   width: 100%;
   height: 100dvh;
@@ -31,6 +32,7 @@ const QrGuideText = styled.div`
   text-align: center;
   font-family: 'Pretendard Variable';
   font-size: 1.25rem;
+  transform: translateY(10rem);
   font-weight: 600;
   top: 68%;
   z-index: 2;
@@ -51,7 +53,14 @@ const CloseBtn = styled.button`
   }
 `
 
-const Video = styled.video``
+const Video = styled.video`
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #000;
+`
 
 export default React.memo(function Qrcode(props) {
   const navigate = useNavigate()
