@@ -32,7 +32,7 @@ const QrGuideText = styled.div`
   text-align: center;
   font-family: 'Pretendard Variable';
   font-size: 1.25rem;
-  transform: translateY(10rem);
+  transform: translateY(3rem);
   font-weight: 600;
   top: 68%;
   z-index: 2;
@@ -92,10 +92,6 @@ export default React.memo(function Qrcode(props) {
     maxScansPerSecond: 5,
     highlightScanRegion: false,
     highlightCodeOutline: false,
-    // highlightScanRegionStyle: {
-    //   border: '2px solid rgba(0,0,0,0.2)',
-    //   borderRadius: '12px',
-    // },
   }
 
   useEffect(() => {
