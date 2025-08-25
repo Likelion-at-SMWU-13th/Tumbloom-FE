@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import NoticeModal from '@/components/common/NoticeModal'
-import Header from '@/components/common/Header'
+import CouponPrev from '@/components/Coupon/CouponPrev'
 import CouponUse from '@/components/CouponUse/CouponUse'
 
 const CouponDetailPage = () => {
@@ -70,7 +70,10 @@ const CouponDetailPage = () => {
         }}
         open={openUseModal}
       />
-      <Header title={'쿠폰 사용하기'} />
+      <CouponPrev
+        title='쿠폰 사용하기'
+        onLeftClick={() => navigate('/coupon', { state: { tab: 'myCoupon' } })}
+      />
       <CouponUse
         onUseClick={() => setOpenUseModal(true)}
         active={activeCoupon}
