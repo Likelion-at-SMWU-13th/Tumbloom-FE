@@ -1,12 +1,68 @@
-# React + Vite
+# Tumbloom-FE
+멋쟁이사자처럼 중앙해커톤 '텀블룸'팀의 프론트엔드 레포지토리입니다.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+# 🌱 Tumblerin
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<img width="5760" height="3240" alt="KakaoTalk_Photo_2025-08-25-19-58-33" src="https://github.com/user-attachments/assets/b184760a-764a-4b0b-b512-d6ce3d2cd9b9" />
 
-## Expanding the ESLint configuration
+## 🚀 Project Introduction
+> **Tumblerin (텀블러인)**  
+환경을 생각하는 텀블러 이용 문화를 확산하기 위해 제작된 서비스입니다.  
+사용자는 카페를 방문해 본인의 텀블러를 인증하고, 혜택 및 포인트를 적립할 수 있습니다.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠 Tech Stack
+
+<div align="center">
+
+### Frontend
+<!-- Frontend -->
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-FFD700?style=for-the-badge&logo=javascript&logoColor=black)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+
+### Backend
+<!-- Backend -->
+![Java](https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=openjdk&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
+
+### Infra
+<!-- Infra -->
+![AWS](https://img.shields.io/badge/AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![GoogleCloud](https://img.shields.io/badge/Google%20Cloud-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white)
+
+### Tools
+<!-- Tools -->
+![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
+![Notion](https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white)
+![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)
+
+</div>
+
+---
+
+## 📂 Repository Structure
+- **Backend**: [`Tumbloom-BE`](https://github.com/Likelion-at-SMWU-13th/Tumbloom-BE.git)  
+- **Frontend**: [`Tumbloom-FE`](https://github.com/Likelion-at-SMWU-13th/Tumbloom-FE.git)  
+- **Server**: [`https://tumbloom.store/`](https://tumbloom.store)  
+- **Client**: [`https://tumbloom-fe.vercel.app`](https://tumbloom-fe.vercel.app)  
+
+---
+
+## 🤝 Contributors
+<br>
+
+| 이름     | 개발분야  | 개인 레포                                         | 역할                    |
+| -------- | --------- | ------------------------------------------------- | ------------------------- |
+| 🦁이승채 | Front-end | [chootkuri](https://github.com/chootkuri)  | 알아서 |
+| 🦁이채빈 | Front-end | [chaebin1207](https://github.com/chaebin1207)  | 정리 |
+
+<br/>
+
+---
+## 🗂️ 프로젝트 구조
