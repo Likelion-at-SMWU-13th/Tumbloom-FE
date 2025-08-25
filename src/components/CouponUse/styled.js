@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
-  border-top: 1px solid #d9d9d9;
+  padding-top: 6.5rem;
 `
 
 export const CafeImage = styled.img`
