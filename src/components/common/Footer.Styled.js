@@ -10,7 +10,9 @@ export const FooterBox = styled.div`
   z-index: 2;
   justify-content: center;
   align-items: center;
-  width: 24.5625rem;
+  /* width: 24.5625rem; */
+  width: 100%;
+  max-width: 440px;
   transform: translateX(-50%);
   height: 5.6875rem;
   flex-shrink: 0;
