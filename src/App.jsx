@@ -8,7 +8,8 @@ import SignUp from './pages/SignUp'
 
 function App() {
   return (
-    <div className='phone-frame'>
+    // <div className='phone-frame'>
+    <div style={{ width: '100%' }}>
       <Outlet />
     </div>
   )
