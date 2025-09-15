@@ -312,7 +312,10 @@ export const InfoBackground = styled.div`
   display: flex;
   position: absolute;
   z-index: 4;
-  width: 24.5625rem;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  /* width: 24.5625rem; */
   /* height: 53.25rem; */
   background-color: rgba(0, 20, 16, 0.75);
   inset: 0;
