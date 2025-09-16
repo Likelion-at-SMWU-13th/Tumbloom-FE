@@ -9,7 +9,8 @@ export const Wrapper = styled.div`
   background-size: 100% auto;
   background-repeat: no-repeat;
   width: 100%;
-  min-height: 17.5rem;
+  min-height: 310px;
+  /* padding-bottom: 90px; */
 `
 
 export const GreetingWrapper = styled.div`
