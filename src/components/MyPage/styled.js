@@ -138,6 +138,7 @@ export const ContentContainer = styled.div`
   gap: 1.5rem;
   align-items: center;
   padding-top: 1rem;
+  padding-bottom: 6rem;
 `
 
 export const CurrentCountBox = styled.div`
