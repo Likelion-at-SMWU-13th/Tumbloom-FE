@@ -105,12 +105,14 @@ const CouponChange = ({ onChangeTab }) => {
             </S.CurrentChangeText>
           )}
         </S.ChangeTextBox>
+      </S.SearchArea>
+      <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: '2.44rem' }}>
         <CafeInputField
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
         />
-      </S.SearchArea>
+      </div>
       <S.NearCouponText>
         {searched && submittedQuery ? (
           <>

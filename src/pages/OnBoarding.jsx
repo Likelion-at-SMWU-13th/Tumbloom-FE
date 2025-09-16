@@ -99,7 +99,7 @@ const OnBoardingPages = [
 const Wrapper = styled.div`
   position: relative;
   width: 100%;
-  max-width: 24.5625rem;
+  max-width: 440px;
   margin: 0 auto;
   min-height: 100dvh;
   display: flex;
@@ -117,6 +117,7 @@ const ImgContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
   padding: 0 0 1.5rem 0;
 `
 
@@ -132,6 +133,8 @@ const ContentContainer = styled.div`
 `
 const OnBoardingImg = styled.img`
   flex-shrink: 0;
+  width: 100%;
+  height: auto;
 `
 const TextContainer = styled.div`
   display: flex;

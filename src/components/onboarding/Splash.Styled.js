@@ -6,7 +6,9 @@ export const SplashContainer = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #25af94;
-  width: 24.5625rem;
+  /* width: 24.5625rem; */
+  width: 100%;
+  max-width: 440px;
   min-height: 100dvh;
 `
 export const Logo = styled.img`
