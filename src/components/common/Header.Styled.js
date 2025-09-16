@@ -3,10 +3,11 @@ import styled from 'styled-components'
 export const HeaderBox = styled.div`
   display: grid;
   grid-template-columns: 3.5rem 1fr 3.5rem;
-  width: 24.5625rem;
+  /* width: 24.5625rem; */
+  width: 100%;
   height: 3.5rem;
   box-sizing: border-box;
-  position: fixed;
+  position: sticky;
   top: 0;
   z-index: 10;
   padding-top: 0;

@@ -9,7 +9,8 @@ export const Wrapper = styled.div`
   background-size: 100% auto;
   background-repeat: no-repeat;
   width: 100%;
-  min-height: 17.5rem;
+  min-height: 310px;
+  /* padding-bottom: 90px; */
 `
 
 export const GreetingWrapper = styled.div`
@@ -312,7 +313,10 @@ export const InfoBackground = styled.div`
   display: flex;
   position: absolute;
   z-index: 4;
-  width: 24.5625rem;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  /* width: 24.5625rem; */
   /* height: 53.25rem; */
   background-color: rgba(0, 20, 16, 0.75);
   inset: 0;

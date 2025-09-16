@@ -35,7 +35,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   border-top: 1px solid #d9d9d9;
-  padding-top: 3.5rem;
+  /* padding-top: 3.5rem; */
 `
 
 export const TitleBox = styled.div`

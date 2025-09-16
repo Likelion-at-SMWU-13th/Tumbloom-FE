@@ -138,6 +138,7 @@ export const ContentContainer = styled.div`
   gap: 1.5rem;
   align-items: center;
   padding-top: 1rem;
+  padding-bottom: 6rem;
 `
 
 export const CurrentCountBox = styled.div`
@@ -311,11 +312,13 @@ export const BoxValue = styled.p`
 //LevelModal.jsx
 
 export const LevelModalBackground = styled.div`
-  max-width: 100%;
+  max-width: 440px;
+  width: 100%;
+  margin: 0 auto;
   display: flex;
   position: absolute;
   z-index: 4;
-  width: 24.5625rem;
+  /* width: 24.5625rem; */
   background-color: rgba(0, 20, 16, 0.75);
   inset: 0;
   align-items: center;

@@ -3,10 +3,11 @@ import search from '@/assets/icons/search.svg'
 
 export const HeaderContainer = styled.div`
   display: flex;
-  width: 24.5625rem;
+  /* width: 24.5625rem; */
+  width: 100%;
   height: 3.5rem;
   box-sizing: border-box;
-  position: fixed;
+  position: sticky;
   top: 0;
   z-index: 1000;
   padding-top: 0;
@@ -17,7 +18,8 @@ export const HeaderContainer = styled.div`
 
 export const CouponChangeTap = styled.div`
   display: flex;
-  width: 12.28125rem;
+  /* width: 12.28125rem; */
+  width: 50%;
   height: 3.4rem;
   justify-content: center;
   align-items: center;
@@ -27,7 +29,8 @@ export const CouponChangeTap = styled.div`
 
 export const MyCouponTap = styled.div`
   display: flex;
-  width: 12.28125rem;
+  /* width: 12.28125rem; */
+  width: 50%;
   height: 3.4rem;
   justify-content: center;
   align-items: center;
@@ -49,7 +52,7 @@ export const Wrapper = styled.div`
   /* height: 43.5rem; */
   /* flex: 1; */
   /* width: 24.5625rem; */
-  padding-top: 3.5rem;
+  /* padding-top: 3.5rem; */
   padding-bottom: 6rem;
 `
 
@@ -259,7 +262,7 @@ export const MyCouponWrapper = styled.div`
   gap: 1.4rem;
   overflow-y: auto;
   /* height: 42rem; */
-  padding-top: 3.5rem;
+  /* padding-top: 3.5rem; */
   padding-bottom: 6rem;
 `
 
