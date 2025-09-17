@@ -1,5 +1,3 @@
-import React from 'react'
-import styled from 'styled-components'
 import { Map, MapMarker, CustomOverlayMap } from 'react-kakao-maps-sdk'
 import sprout from '@/assets/icons/dark-green-sprout.svg'
 import favSprout from '@/assets/icons/light-green-sprout.svg'
@@ -7,14 +5,7 @@ import sproutOff from '@/assets/icons/gray-sprout.svg'
 import myLoc from '@/assets/icons/current-loc.svg'
 import { useState } from 'react'
 import { useEffect } from 'react'
-
-const MapWrapper = styled.div`
-  width: 100%;
-  height: 100dvh;
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-`
+import * as S from './Map.Styled.js'
 
 function KakaoMap({ center, isMarker, filter, onSelectCafe, onCreateMap, searchKeyword }) {
   const baseURL = import.meta.env.VITE_API_BASE_URL
@@ -186,7 +177,7 @@ function KakaoMap({ center, isMarker, filter, onSelectCafe, onCreateMap, searchK
   }, [searchKeyword, filter, center?.lat, center?.lng])
 
   return (
-    <MapWrapper>
+    <S.MapWrapper>
       <Map
         center={center}
         level={3}
@@ -254,7 +245,7 @@ function KakaoMap({ center, isMarker, filter, onSelectCafe, onCreateMap, searchK
           )
         })}
       </Map>
-    </MapWrapper>
+    </S.MapWrapper>
   )
 }
 
