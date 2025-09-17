@@ -78,9 +78,7 @@ export const HighlightText = styled.span`
   line-height: normal;
 `
 
-export const SearchArea = styled.div`
-  padding-bottom: 2.44rem;
-`
+export const SearchArea = styled.div``
 
 export const NearCouponText = styled.p`
   color: #000;
@@ -99,14 +97,25 @@ export const SearchInput = styled.input`
   display: flex;
   width: 22.0625rem;
   height: 3.0625rem;
-  justify-content: center;
-  align-items: center;
   flex-shrink: 0;
   border-radius: 0.5rem;
-  border: 1px solid #e1e1e1;
   background: #fff;
-  padding-left: 3.14rem;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+  border: none;
+  padding-top: 0.25rem;
+  padding-left: 3.06rem;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
+
+  &::placeholder {
+    color: #757575;
+    font-family: 'Pretendard Variable';
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
 `
 
 export const SearchInputContainer = styled.div`
@@ -117,8 +126,12 @@ export const SearchInputContainer = styled.div`
 `
 
 export const SearchIcon = styled.img`
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  aspect-ratio: 1/1;
   position: absolute;
-  left: 1.8rem;
+  left: 1.2rem;
 `
 
 export const CouponList = styled.div`

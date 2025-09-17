@@ -41,24 +41,33 @@ const MyPage = () => {
   }, [])
 
   return (
-    <div style={{ backgroundColor: '#F6FCFB', padding: '0 0 0 0', height: '100%' }}>
-      <ProfileContent
-        onChangeInfo={setInfo}
-        nickName={userName}
-        level={level}
-        stepsLeft={stepsLeft}
-        tumblerCount={tumblerCount}
-      />
-      <ProfileInfo
-        tumblerCount={tumblerCount}
-        issuedCoupons={issuedCoupons}
-        availableCoupons={availableCoupons}
-        favoriteCafes={favoriteCafes}
-        topPreferences={topPreferences}
-      />
+    <>
+      <div
+        style={{
+          backgroundColor: '#F6FCFB',
+          padding: '0 0 0 0',
+          height: '100%',
+          overflowY: 'auto',
+        }}
+      >
+        <ProfileContent
+          onChangeInfo={setInfo}
+          nickName={userName}
+          level={level}
+          stepsLeft={stepsLeft}
+          tumblerCount={tumblerCount}
+        />
+        <ProfileInfo
+          tumblerCount={tumblerCount}
+          issuedCoupons={issuedCoupons}
+          availableCoupons={availableCoupons}
+          favoriteCafes={favoriteCafes}
+          topPreferences={topPreferences}
+        />
+        {info && <LevelModal onChangeInfo={setInfo} />}
+      </div>
       <Footer />
-      {info && <LevelModal onChangeInfo={setInfo} />}
-    </div>
+    </>
   )
 }
 
