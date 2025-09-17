@@ -4,11 +4,12 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  height: 100dvh;
+  /* height: 100dvh; */
 `
 
 export const TopImage = styled.div`
-  width: 24.5625rem;
+  /* width: 24.5625rem; */
+  width: 100%;
   height: 20rem;
   flex-shrink: 0;
   position: relative;

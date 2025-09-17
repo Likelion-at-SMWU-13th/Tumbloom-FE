@@ -301,6 +301,7 @@ export const AiRecommendContainer = styled.div`
 
 export const LoadingText = styled.div`
   padding-top: 5rem;
+  padding-bottom: 5rem;
   text-align: center;
   color: #999;
   font-family: 'Pretendard Variable';

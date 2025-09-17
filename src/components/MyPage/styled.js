@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
 export const ProfileContentBox = styled.div`
-  width: 24.5625rem;
+  /* width: 24.5625rem; */
+  width: 100%;
   height: 18rem;
   display: flex;
   flex-direction: column;
@@ -142,6 +143,7 @@ export const ContentContainer = styled.div`
 `
 
 export const CurrentCountBox = styled.div`
+  position: relative;
   width: 22.0625rem;
   height: 6.75rem;
   flex-shrink: 0;
