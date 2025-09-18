@@ -90,7 +90,8 @@ function StampAccess() {
           <S.ImgEffect />
           <S.TextArea>
             <S.Title>
-              <S.CafeName>{cafeName}</S.CafeName> 에서 <br /> 텀블러 테이크아웃할게요
+              <S.CafeName>{cafeName}</S.CafeName>
+              에서 <br /> 텀블러 테이크아웃할게요
             </S.Title>
             <S.Desc>
               음료 받을 때 직원에게 화면을 보여주고 <br />
