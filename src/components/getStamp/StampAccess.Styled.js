@@ -55,13 +55,20 @@ export const Title = styled.span`
   text-align: center;
 `
 export const CafeName = styled.span`
+  vertical-align: bottom;
+  padding-bottom: 0.3rem;
+  display: inline-block;
+  max-width: 23rem;
   color: #25af94;
   text-align: center;
   font-family: 'Pretendard Variable';
   font-size: 1.75rem;
   font-style: normal;
   font-weight: 700;
-  line-height: 130%; /* 2.275rem */
+  line-height: 90%; /* 2.275rem */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `
 export const Desc = styled.span`
   color: #767676;

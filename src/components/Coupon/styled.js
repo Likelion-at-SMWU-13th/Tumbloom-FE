@@ -199,6 +199,10 @@ export const CafeName = styled.span`
   line-height: normal;
   margin: 0;
   padding: 0.3rem 0 0.5rem 1.38rem;
+  width: 13rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `
 
 export const CafeDiscount = styled.span`
