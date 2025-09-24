@@ -1,7 +1,14 @@
 import axios from 'axios'
+const baseURL = import.meta.env.VITE_API_BASE_URL
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
+  baseURL,
+  withCredentials: true,
+  headers: { 'Content-Type': 'application/json' },
+})
+
+const refreshApi = axios.create({
+  baseURL,
   withCredentials: true,
   headers: { 'Content-Type': 'application/json' },
 })
@@ -15,17 +22,20 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (res) => res,
   async (err) => {
-    if (err.response?.status === 401) {
-      try {
-        const { data } = await axios.get(`/api/auth/refresh`, {
-          withCredentials: true,
-          headers: { 'Content-Type': 'application/json' },
-        })
-        localStorage.setItem('accessToken', data.accessToken)
+    const original = err.config
 
-        err.config.headers.Authorization = `Bearer ${data.accessToken}`
-        return api(err.config)
-      } catch {
+    if (err.response?.status === 401 && !original._retry) {
+      original._retry = true
+      try {
+        const { data } = await refreshApi.get(`/api/auth/refresh`)
+        const newToken = data.accessToken ?? data.data?.accessToken
+        if (!newToken) throw new Error('토큰 갱신에 실패했습니다.')
+
+        localStorage.setItem('accessToken', newToken)
+
+        original.headers.Authorization = `Bearer ${data.accessToken}`
+        return api(original)
+      } catch (e) {
         localStorage.removeItem('accessToken')
         window.location.href = '/login'
       }
