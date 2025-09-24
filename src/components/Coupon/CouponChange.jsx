@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import api from '@/apis/api'
 import * as S from './styled'
 import { InputBox } from '../common/Input.Styled'
 import CafeInputField from './CafeInputField'
@@ -7,7 +7,6 @@ import CafeCoupon from './CafeCoupon'
 import NoData from '../common/NoData'
 
 const CouponChange = ({ onChangeTab }) => {
-  const baseURL = import.meta.env.VITE_API_BASE_URL
   const lat = localStorage.getItem('lat')
   const lng = localStorage.getItem('lng')
   const [couponList, setCouponList] = useState([])
@@ -15,8 +14,6 @@ const CouponChange = ({ onChangeTab }) => {
   const [query, setQuery] = useState('')
   const [searched, setSearched] = useState(false)
   const [submittedQuery, setSubmittedQuery] = useState('')
-
-  const token = localStorage.getItem('accessToken')
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
@@ -34,14 +31,8 @@ const CouponChange = ({ onChangeTab }) => {
   }
 
   const exchangeCoupon = (id) => {
-    axios
-      .post(
-        `${baseURL}api/cafes/${id}/coupons`,
-        {},
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        },
-      )
+    api
+      .post(`/api/cafes/${id}/coupons`)
       .then((res) => {
         console.log(res)
         alert('쿠폰 교환이 완료되었습니다')
@@ -54,10 +45,9 @@ const CouponChange = ({ onChangeTab }) => {
 
   const fetchCoupon = (keyword = '') => {
     const params = { lat, lng, ...(keyword.trim() && { cafeName: keyword.trim() }) }
-    return axios
-      .get(`${baseURL}api/coupons`, {
+    return api
+      .get(`/api/coupons`, {
         params,
-        headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
         console.log(res.data)
@@ -73,10 +63,8 @@ const CouponChange = ({ onChangeTab }) => {
   }, [])
 
   useEffect(() => {
-    axios
-      .get(`${baseURL}api/users/me/home`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+    api
+      .get(`/api/users/me/home`)
       .then((res) => {
         console.log(res.data)
         setCurrentCount(res.data.data.stampStatus.validStampCnt)
