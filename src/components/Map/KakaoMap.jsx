@@ -6,30 +6,19 @@ import myLoc from '@/assets/icons/current-loc.svg'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import * as S from './Map.Styled.js'
+import api from '@/apis/api.js'
 
 function KakaoMap({ center, isMarker, filter, onSelectCafe, onCreateMap, searchKeyword }) {
-  const baseURL = import.meta.env.VITE_API_BASE_URL
   const [cafes, setCafes] = useState([])
   const [selectedCafe, setSelectedCafe] = useState(null)
 
-  const nearbyCafes = async (lat, lng) => {
-    const at = localStorage.getItem('accessToken')
-    if (!at || at === 'undefined') {
-      console.log('로컬스토리지에 accessToken 없음')
-      return
-    }
-    const res = await fetch(`${baseURL}api/cafes/nearby?lat=${lat}&lng=${lng}`, {
-      headers: { Authorization: `Bearer ${at}` },
-    })
-    const json = await res.json().catch(() => ({}))
-    if (!res.ok || !Array.isArray(json?.data)) {
-      console.log('nearby error', res.status, json)
+  const setCafeData = (data) => {
+    if (!Array.isArray(data)) {
       setCafes([])
       return
     }
-
     setCafes(
-      json.data.map((c) => ({
+      data.map((c) => ({
         id: c.id,
         name: c.cafeName,
         lat: c.latitude,
@@ -37,111 +26,56 @@ function KakaoMap({ center, isMarker, filter, onSelectCafe, onCreateMap, searchK
         fav: c.favorite,
       })),
     )
+  }
+
+  const nearbyCafes = async (lat, lng) => {
+    try {
+      const res = await api.get(`/api/cafes/nearby?lat=${lat}&lng=${lng}`, { params: { lat, lng } })
+      setCafeData(res.data.data)
+    } catch (err) {
+      console.log('카페 데이터 불러오기 실패', err)
+      setCafes([])
+    }
   }
 
   const popularCafes = async () => {
-    const at = localStorage.getItem('accessToken')
-    if (!at || at === 'undefined') {
-      console.log('로컬스토리지에 accessToken 없음')
-      return
-    }
-    const res = await fetch(`${baseURL}api/cafes/filtered/popular`, {
-      headers: { Authorization: `Bearer ${at}` },
-    })
-    const json = await res.json().catch(() => ({}))
-    if (!res.ok || !Array.isArray(json?.data)) {
-      console.log('popular error', res.status, json)
+    try {
+      const res = await api.get(`/api/cafes/filtered/popular`)
+      setCafeData(res.data.data)
+    } catch (err) {
+      console.log('카페 데이터 불러오기 실패', err)
       setCafes([])
-      return
     }
-    setCafes(
-      json.data.map((c) => ({
-        id: c.id,
-        name: c.cafeName,
-        lat: c.latitude,
-        lng: c.longitude,
-        fav: c.favorite,
-      })),
-    )
   }
 
   const myCouponCafes = async () => {
-    const at = localStorage.getItem('accessToken')
-    if (!at || at === 'undefined') {
-      console.log('로컬스토리지에 accessToken 없음')
-      return
-    }
-    const res = await fetch(`${baseURL}api/cafes/filtered/coupon`, {
-      headers: { Authorization: `Bearer ${at}` },
-    })
-    const json = await res.json().catch(() => ({}))
-    if (!res.ok || !Array.isArray(json?.data)) {
-      console.log('coupon error', res.status, json)
+    try {
+      const res = await api.get(`/api/cafes/filtered/coupon`)
+      setCafeData(res.data.data)
+    } catch (err) {
+      console.log('카페 데이터 불러오기 실패', err)
       setCafes([])
-      return
     }
-    setCafes(
-      json.data.map((c) => ({
-        id: c.id,
-        name: c.cafeName,
-        lat: c.latitude,
-        lng: c.longitude,
-        fav: c.favorite,
-      })),
-    )
   }
 
   const aiRecCafes = async () => {
-    const at = localStorage.getItem('accessToken')
-    if (!at || at === 'undefined') {
-      console.log('로컬스토리지에 accessToken 없음')
-      return
-    }
-    const res = await fetch(`${baseURL}api/cafes/filtered/ai`, {
-      headers: { Authorization: `Bearer ${at}` },
-    })
-    const json = await res.json().catch(() => ({}))
-    if (!res.ok || !Array.isArray(json?.data)) {
-      console.log('popular error', res.status, json)
+    try {
+      const res = await api.get(`/api/cafes/filtered/ai`)
+      setCafeData(res.data.data)
+    } catch (err) {
+      console.log('카페 데이터 불러오기 실패', err)
       setCafes([])
-      return
     }
-
-    setCafes(
-      json.data.map((c) => ({
-        id: c.id,
-        name: c.cafeName,
-        lat: c.latitude,
-        lng: c.longitude,
-        fav: c.favorite,
-      })),
-    )
   }
 
   const searchCafes = async (keyword) => {
-    const at = localStorage.getItem('accessToken')
-    if (!at || at === 'undefined') {
-      console.log('로컬스토리지에 accessToken 없음')
-      return
-    }
-    const res = await fetch(`${baseURL}api/cafes?keyword=${keyword}`, {
-      headers: { Authorization: `Bearer ${at}` },
-    })
-    const json = await res.json().catch(() => ({}))
-    if (!res.ok || !Array.isArray(json?.data)) {
-      console.log('search error', res.status, json)
+    try {
+      const res = await api.get(`/api/cafes?keyword=${keyword}`)
+      setCafeData(res.data.data)
+    } catch (err) {
+      console.log('카페 데이터 불러오기 실패', err)
       setCafes([])
-      return
     }
-    setCafes(
-      json.data.map((c) => ({
-        id: c.id,
-        name: c.cafeName,
-        lat: c.latitude,
-        lng: c.longitude,
-        fav: c.favorite,
-      })),
-    )
   }
 
   useEffect(() => {
@@ -151,9 +85,6 @@ function KakaoMap({ center, isMarker, filter, onSelectCafe, onCreateMap, searchK
   }, [searchKeyword])
 
   useEffect(() => {
-    if (localStorage.getItem('accessToken') === 'undefined') {
-      localStorage.removeItem('accessToken')
-    }
     if (searchKeyword) return
     setSelectedCafe(null)
     onSelectCafe?.(null)

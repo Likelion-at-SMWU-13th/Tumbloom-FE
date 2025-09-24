@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import api from '@/apis/api'
 import NoticeModal from '@/components/common/NoticeModal'
 import CouponPrev from '@/components/Coupon/CouponPrev'
 import CouponUse from '@/components/CouponUse/CouponUse'
 
 const CouponDetailPage = () => {
-  const baseURL = import.meta.env.VITE_API_BASE_URL
   const navigate = useNavigate()
   const [openUseModal, setOpenUseModal] = useState(false)
   const [activeCoupon, setActiveCoupon] = useState(true)
@@ -21,12 +20,8 @@ const CouponDetailPage = () => {
   const couponId = id ?? null
 
   useEffect(() => {
-    const token = localStorage.getItem('accessToken')
-
-    axios
-      .get(`${baseURL}api/coupons/my/${couponId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+    api
+      .get(`/api/coupons/my/${couponId}`)
       .then((res) => {
         console.log(res.data)
         setCafeName(res.data.cafeName)
@@ -40,12 +35,8 @@ const CouponDetailPage = () => {
   })
 
   const couponUse = () => {
-    const token = localStorage.getItem('accessToken')
-
-    axios
-      .delete(`${baseURL}api/coupons/my/${couponId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+    api
+      .delete(`/api/coupons/my/${couponId}`)
       .then((res) => {
         console.log(res.data)
       })

@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import api from '@/apis/api'
 import HeaderArea from '@/components/Home/HeaderArea'
 import StampArea from '@/components/Home/StampArea'
 import CafeRecommend from '@/components/Home/CafeRecommend'
 import Footer from '@/components/common/Footer'
 
 const HomePage = () => {
-  const baseURL = import.meta.env.VITE_API_BASE_URL
   const [userName, setuserName] = useState('')
   const [tumblerCount, setTumblerCount] = useState('')
   const [savedWater, setSavedWater] = useState('')
@@ -15,12 +14,8 @@ const HomePage = () => {
   const [exchangeable, setExchangeable] = useState(false)
 
   useEffect(() => {
-    const token = localStorage.getItem('accessToken')
-
-    axios
-      .get(`${baseURL}api/users/me/home`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+    api
+      .get(`/api/users/me/home`)
       .then((res) => {
         console.log(res.data)
         setuserName(res.data.data.welcomeStatus.nickname)

@@ -4,10 +4,9 @@ import Input from '@/components/common/Input'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as S from '../components/signup/SignUp.Styled.js'
-import axios from 'axios'
+import api from '@/apis/api'
 
 function SignUp() {
-  const baseURL = import.meta.env.VITE_API_BASE_URL
   const [nickname, setNickname] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -16,15 +15,11 @@ function SignUp() {
 
   const handleSignUp = async () => {
     try {
-      const response = await axios.post(
-        `${baseURL}api/auth/signup`,
-        {
-          email,
-          nickname,
-          password,
-        },
-        { headers: { 'Content-Type': 'application/json' } },
-      )
+      const response = await api.post(`/api/auth/signup`, {
+        email,
+        nickname,
+        password,
+      })
 
       console.log('회원가입 성공:', response.data)
       localStorage.setItem('accessToken', response.data.accessToken)

@@ -1,5 +1,5 @@
 import React from 'react'
-import axios from 'axios'
+import api from '@/apis/api'
 import Header from '@/components/common/Header'
 import styled from 'styled-components'
 import scrabOn from '@/assets/icons/clicked-bookmark.svg'
@@ -135,32 +135,29 @@ const BtnContainer = styled.div`
 `
 
 function CafeDetail() {
-  const baseURL = import.meta.env.VITE_API_BASE_URL
   const [tap, setTap] = useState(true)
   const navigate = useNavigate()
   const [cafe, setCafe] = useState(null)
-  // const { state } = useLocation()
-  // const cafeId = state?.cafeId
-  const params = useParams()
-  const id = params.cafeId
-  const cafeId = id ?? null
+  const { cafeId } = useParams()
   const hasMenu = Array.isArray(cafe?.menuList) && cafe.menuList.length > 0
 
   useEffect(() => {
+    if (!cafeId) return
     const getCafeInfo = async () => {
-      const at = localStorage.getItem('accessToken')
-      const res = await fetch(`${baseURL}api/cafes/${cafeId}`, {
-        headers: at ? { Authorization: `Bearer ${at}` } : {},
-      })
-      const json = await res.json().catch(() => ({}))
-      if (res.ok && json?.data) {
-        setCafe(json.data)
-      } else {
+      try {
+        const res = await api.get(`/api/cafes/${cafeId}`)
+        if (res.data?.data) {
+          setCafe(res.data.data)
+        } else {
+          setCafe(null)
+        }
+      } catch (err) {
+        console.error('카페 정보 불러오기 실패', err)
         setCafe(null)
       }
     }
     getCafeInfo()
-  }, [])
+  }, [cafeId])
 
   const handleFav = (id, isFav) => {
     const at = localStorage.getItem('accessToken')
@@ -171,9 +168,7 @@ function CafeDetail() {
     setCafe((prev) => (prev ? { ...prev, favorite: !isFav } : prev))
 
     const headers = { Authorization: `Bearer ${at}` }
-    const req = isFav
-      ? axios.delete(`${baseURL}api/favorites/${id}`, { headers })
-      : axios.post(`${baseURL}api/favorites/${id}`, {}, { headers })
+    const req = isFav ? api.delete(`/api/favorites/${id}`) : api.post(`/api/favorites/${id}`)
 
     req.catch((err) => {
       console.error(err)

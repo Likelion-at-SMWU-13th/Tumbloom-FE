@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import api from '@/apis/api'
 import Footer from '@/components/common/Footer'
 import ProfileContent from '@/components/MyPage/ProfileContent'
 import ProfileInfo from '@/components/MyPage/ProfileInfo'
 import LevelModal from '@/components/MyPage/LevelModal'
 
 const MyPage = () => {
-  const baseURL = import.meta.env.VITE_API_BASE_URL
   const [info, setInfo] = useState(false)
 
   const [userName, setUserName] = useState('')
@@ -19,12 +18,8 @@ const MyPage = () => {
   const [stepsLeft, setStepsLeft] = useState(0)
 
   useEffect(() => {
-    const token = localStorage.getItem('accessToken')
-
-    axios
-      .get(`${baseURL}api/users/me/mypage`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+    api
+      .get(`/api/users/me/mypage`)
       .then((res) => {
         setUserName(res.data.data.nickname)
         setLevel(res.data.data.level)

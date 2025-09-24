@@ -1,19 +1,15 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import api from '@/apis/api'
 import * as S from './styled'
 import CafeListCard from '../common/CafeListCard'
 
 const FavoriteCafeList = () => {
-  const baseURL = import.meta.env.VITE_API_BASE_URL
   const [favoriteCafeList, setFavoriteCafrList] = useState([])
 
   useEffect(() => {
-    const token = localStorage.getItem('accessToken')
-    axios
-      .get(`${baseURL}api/users/me/favorites`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+    api
+      .get(`/api/users/me/favorites`)
       .then((res) => {
         console.log(res.data)
         setFavoriteCafrList(res.data.data)
