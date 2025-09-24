@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import visibleIcon from '@/assets/icons/pwd-visible.svg'
 import invisibleIcon from '@/assets/icons/pwd-invisible.svg'
 import PwdInputField from '@/components/common/PwdInputField'
-import axios from 'axios'
+import api from '@/apis/api'
 
 const LoginContainer = styled.div`
   display: flex;
@@ -64,7 +64,6 @@ const LoginErrorText = styled.span`
 `
 
 function Login() {
-  const baseURL = import.meta.env.VITE_API_BASE_URL
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [btnColor, setBtnColor] = useState(false)
@@ -95,13 +94,7 @@ function Login() {
   const onLoginHandler = async () => {
     try {
       setError('')
-      const response = await axios.post(
-        `${baseURL}api/auth/login`,
-        { email, password },
-        { headers: { 'Content-Type': 'application/json' } },
-      )
-
-      console.log('login response.data =', response.data)
+      const response = await api.post(`/api/auth/login`, { email, password })
 
       const accessToken = response.data?.accessToken ?? response.data?.data?.accessToken
       if (!accessToken) {
@@ -125,10 +118,6 @@ function Login() {
     }
   }
 
-  const goToRegister = () => {
-    navigate('/signup')
-  }
-
   return (
     <>
       <LoginContainer>
@@ -145,7 +134,7 @@ function Login() {
         <RegisterBtn btnName='로그인' onClick={onLoginHandler} disabled={!btnColor} />
         <Desc>
           텀블러인 계정이 없나요?{' '}
-          <GoToRegisterBtn onClick={goToRegister}>회원가입하기</GoToRegisterBtn>
+          <GoToRegisterBtn onClick={() => navigate(`/signup`)}>회원가입하기</GoToRegisterBtn>
         </Desc>
       </LoginContainer>
     </>
