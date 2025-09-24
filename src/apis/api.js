@@ -27,7 +27,7 @@ api.interceptors.response.use(
     if (err.response?.status === 401 && !original._retry) {
       original._retry = true
       try {
-        const { data } = await refreshApi.get(`/api/auth/refresh`)
+        const { data } = await refreshApi.post(`/api/auth/refresh`)
         const newToken = data.accessToken ?? data.data?.accessToken
         if (!newToken) throw new Error('토큰 갱신에 실패했습니다.')
 
