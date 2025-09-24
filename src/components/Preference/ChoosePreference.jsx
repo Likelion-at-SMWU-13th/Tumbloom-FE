@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import api from '@/apis/api'
 import * as S from './styled'
 import Button from './Button'
 import NoticeModal from '../common/NoticeModal'
@@ -36,7 +36,6 @@ import unique from '@/assets/icons/unique.svg'
 import unique_green from '@/assets/icons/unique-green.svg'
 
 const ChoosePreference = () => {
-  const baseURL = import.meta.env.VITE_API_BASE_URL
   const PURPOSE = [
     { key: 'atmosphere', title: '감성/분위기', off: atmosphere, on: atmosphere_green },
     { key: 'study', title: '공부/작업공간', off: study, on: study_green },
@@ -99,8 +98,6 @@ const ChoosePreference = () => {
   const navigate = useNavigate()
 
   const handleSave = () => {
-    const token = localStorage.getItem('accessToken')
-
     const visitPurposes = selected.filter((k) => PURPOSE_ENUM[k]).map((k) => PURPOSE_ENUM[k])
 
     const preferredMenus = selected.filter((k) => MENU_ENUM[k]).map((k) => MENU_ENUM[k])
@@ -109,13 +106,8 @@ const ChoosePreference = () => {
 
     const body = { visitPurposes, preferredMenus, extraOptions }
 
-    axios
-      .put(`${baseURL}api/users/me/preferences`, body, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-      })
+    api
+      .put(`/api/users/me/preferences`, body)
       .then((res) => {
         console.log(res.data)
         setOpenModal(true)
