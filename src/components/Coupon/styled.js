@@ -307,7 +307,7 @@ export const ModalBackground = styled.div`
   width: 100%;
   display: flex;
   position: fixed;
-  z-index: 11;
+  z-index: 10000;
   top: 0;
   bottom: 0;
   left: 50%;
@@ -331,7 +331,7 @@ export const ModalWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  z-index: 5;
+  z-index: 10;
 `
 
 export const ModalImage = styled.img`

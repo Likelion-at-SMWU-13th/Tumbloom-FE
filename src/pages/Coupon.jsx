@@ -44,7 +44,7 @@ const Coupon = () => {
   return (
     <>
       <NoticeModal
-        cafeName={selectedCafe}
+        cafeName={selectedCafe?.name ?? ''}
         onChangeBtnLeft={handleCancel}
         onChangeBtnRight={exchangeCoupon}
         open={openUseModal}
