@@ -247,3 +247,78 @@ export const SearchIcon = styled.img`
   position: absolute;
   left: 1.2rem;
 `
+
+// Map.jsx
+
+export const MapContainer = styled.div`
+  position: relative;
+  width: 100%;
+`
+
+export const Wrapper = styled.div`
+  display: flex;
+  inset: 0;
+  flex-direction: column;
+  padding-top: 3rem;
+  position: absolute;
+  padding-bottom: 5.6875rem;
+  align-items: center;
+`
+
+export const HeaderBtns = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.6rem;
+  padding-top: 0.88rem;
+`
+
+export const FooterBtns = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 13rem;
+  padding-bottom: 1rem;
+  z-index: 10;
+  position: fixed;
+`
+export const MyLocBtn = styled.button`
+  width: 2.625rem;
+  height: 2.625rem;
+  flex-shrink: 0;
+  box-shadow: 0 2.1px 5.25px rgba(0, 0, 0, 0.15);
+  background-color: transparent;
+  border-radius: 10rem;
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+`
+
+export const ListBtn = styled.button`
+  display: inline-flex;
+  height: 2.375rem;
+  padding: 0 0.9375rem;
+  align-items: center;
+  gap: 0.4375rem;
+  flex-shrink: 0;
+  border-radius: 18.75rem;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  background-color: #fff;
+`
+
+export const ListBtnIcon = styled.img`
+  aspect-ratio: 1/1;
+`
+
+export const ListBtnName = styled.span`
+  color: #000;
+  text-align: center;
+  font-family: 'Pretendard Variable';
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+`
