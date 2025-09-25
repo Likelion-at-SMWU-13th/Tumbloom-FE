@@ -130,6 +130,24 @@ export const CurrentStateBar = styled.div`
   position: absolute;
   align-items: flex-start;
 `
+export const LogoutBtn = styled.button`
+  color: #005c4a;
+  background: none;
+  border: none;
+  margin-left: 68%;
+  cursor: pointer;
+  font-family: Inter;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: auto;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
+`
 
 //ProfileInfo.jsx
 
