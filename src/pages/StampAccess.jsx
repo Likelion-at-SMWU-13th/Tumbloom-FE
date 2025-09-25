@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import axios from 'axios'
+import api from '@/apis/api'
 import Header from '@/components/common/Header'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
@@ -7,7 +7,6 @@ import GetStamp from '@/pages/GetStamp'
 import * as S from '@/components/getStamp/StampAccess.Styled'
 
 function StampAccess() {
-  const baseURL = import.meta.env.VITE_API_BASE_URL
   const [accessCode, setAccessCode] = useState('')
   const [isError, setIsError] = useState(false)
   const [showStampBg, setShowStampBg] = useState(false)
@@ -23,18 +22,8 @@ function StampAccess() {
       return
     }
 
-    const at = localStorage.getItem('accessToken')
-    if (!at || at === 'undefined') {
-      setIsError(true)
-      return
-    }
-
-    axios
-      .post(
-        `${baseURL}api/cafes/${cafeId}/verification-code/verify`,
-        { code: accessCode },
-        { headers: { Authorization: `Bearer ${at}` } },
-      )
+    api
+      .post(`/api/cafes/${cafeId}/verification-code/verify`, { code: accessCode })
       .then(({ data }) => {
         if (data?.data?.valid === true) {
           setIsError(false)
@@ -64,21 +53,18 @@ function StampAccess() {
   }
 
   useEffect(() => {
-    const at = localStorage.getItem('accessToken')
-    if (!at || at === 'undefined') {
-      setIsError(true)
-      return
-    }
+    if (!cafeId) return
 
-    axios
-      .get(`${baseURL}api/cafes/${cafeId}`, {
-        headers: { Authorization: `Bearer ${at}` },
-      })
+    api
+      .get(`/api/cafes/${cafeId}`)
       .then((res) => {
         setCafeImg(res.data.data.imageUrl)
         setCafeName(res.data.data.cafeName)
       })
-  })
+      .catch((err) => {
+        console.log('카페 정보 불러오기 실패')
+      })
+  }, [cafeId])
 
   return (
     <>
@@ -90,7 +76,8 @@ function StampAccess() {
           <S.ImgEffect />
           <S.TextArea>
             <S.Title>
-              <S.CafeName>{cafeName}</S.CafeName> 에서 <br /> 텀블러 테이크아웃할게요
+              <S.CafeName>{cafeName}</S.CafeName>
+              에서 <br /> 텀블러 테이크아웃할게요
             </S.Title>
             <S.Desc>
               음료 받을 때 직원에게 화면을 보여주고 <br />

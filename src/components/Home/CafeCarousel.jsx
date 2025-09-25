@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react'
-import axios from 'axios'
+import api from '@/apis/api'
 import { useNavigate } from 'react-router-dom'
 import * as S from './styled'
 import FilterTap from './FilterTap'
@@ -12,9 +12,7 @@ import PreferenceCard from './PreferenceCard'
 const mod = (n, m) => ((n % m) + m) % m
 
 const CafeCarousel = () => {
-  const baseURL = import.meta.env.VITE_API_BASE_URL
   const navigate = useNavigate()
-  const token = localStorage.getItem('accessToken')
   const [cafeRecommendList, setCafeRecommendList] = useState([])
   const [cafeAIList, setCafeAIList] = useState([])
   const lat = localStorage.getItem('lat')
@@ -23,10 +21,7 @@ const CafeCarousel = () => {
   const toggleFavorite = (id, isFav) => {
     setCurrentList((prev) => prev.map((c) => (c.id === id ? { ...c, favorite: !isFav } : c)))
 
-    const headers = { Authorization: `Bearer ${token}` }
-    const req = isFav
-      ? axios.delete(`${baseURL}api/favorites/${id}`, { headers })
-      : axios.post(`${baseURL}api/favorites/${id}`, {}, { headers })
+    const req = isFav ? api.delete(`/api/favorites/${id}`) : api.post(`/api/favorites/${id}`)
 
     req.catch((err) => {
       console.error(err)
@@ -35,10 +30,9 @@ const CafeCarousel = () => {
   }
 
   useEffect(() => {
-    axios
-      .get(`${baseURL}api/cafes/nearby/top`, {
+    api
+      .get(`/api/cafes/nearby/top`, {
         params: { lat, lng },
-        headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
         console.log(res.data)
@@ -50,10 +44,8 @@ const CafeCarousel = () => {
   }, [])
 
   useEffect(() => {
-    axios
-      .get(`${baseURL}api/users/me/cafe-recommendations`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+    api
+      .get(`/api/users/me/cafe-recommendations`)
       .then((res) => {
         console.log(res.data)
         setCafeAIList(res.data.data)

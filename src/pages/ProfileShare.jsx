@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import api from '@/apis/api'
 import Header from '@/components/common/Header'
 import ProfileShareBox from '@/components/ProfileShare/ProfileShareBox'
 
 const ProfileShare = () => {
-  const baseURL = import.meta.env.VITE_API_BASE_URL
   const navigate = useNavigate()
 
   const [userName, setuserName] = useState('')
@@ -15,12 +14,8 @@ const ProfileShare = () => {
   const [level, setLevel] = useState(0)
 
   useEffect(() => {
-    const token = localStorage.getItem('accessToken')
-
-    axios
-      .get(`${baseURL}api/users/me/home`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+    api
+      .get(`/api/users/me/home`)
       .then((res) => {
         console.log(res.data)
         setuserName(res.data.data.welcomeStatus.nickname)
@@ -34,12 +29,8 @@ const ProfileShare = () => {
   }, [])
 
   useEffect(() => {
-    const token = localStorage.getItem('accessToken')
-
-    axios
-      .get(`${baseURL}api/users/me/mypage`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+    api
+      .get(`/api/users/me/mypage`)
       .then((res) => {
         setLevel(res.data.data.level)
       })
