@@ -30,7 +30,7 @@ function KakaoMap({ center, isMarker, filter, onSelectCafe, onCreateMap, searchK
 
   const nearbyCafes = async (lat, lng) => {
     try {
-      const res = await api.get(`/api/cafes/nearby?lat=${lat}&lng=${lng}`, { params: { lat, lng } })
+      const res = await api.get(`/api/cafes/nearby`, { params: { lat, lng } })
       setCafeData(res.data.data)
     } catch (err) {
       console.log('카페 데이터 불러오기 실패', err)
