@@ -6,7 +6,7 @@ import CafeInputField from './CafeInputField'
 import CafeCoupon from './CafeCoupon'
 import NoData from '../common/NoData'
 
-const CouponChange = ({ onChangeTab }) => {
+const CouponChange = ({ onChangeTab, onOpenConfirm }) => {
   const baseURL = import.meta.env.VITE_API_BASE_URL
   const lat = localStorage.getItem('lat')
   const lng = localStorage.getItem('lng')
@@ -31,25 +31,6 @@ const CouponChange = ({ onChangeTab }) => {
         fetchCoupon('')
       }
     }
-  }
-
-  const exchangeCoupon = (id) => {
-    axios
-      .post(
-        `${baseURL}api/cafes/${id}/coupons`,
-        {},
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        },
-      )
-      .then((res) => {
-        console.log(res)
-        alert('쿠폰 교환이 완료되었습니다')
-        onChangeTab('myCoupon')
-      })
-      .catch((err) => {
-        console.log(err)
-      })
   }
 
   const fetchCoupon = (keyword = '') => {
@@ -161,7 +142,7 @@ const CouponChange = ({ onChangeTab }) => {
                 count={availableCount}
                 type={'exchange'}
                 active={currentCount >= 8}
-                onClickExchange={exchangeCoupon}
+                onOpenConfirm={onOpenConfirm}
               />
             ))}
         </S.CouponList>

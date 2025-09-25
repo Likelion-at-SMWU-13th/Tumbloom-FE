@@ -15,10 +15,21 @@ const CafeCoupon = ({
   active,
   type,
   expiryDate = '',
-  onClickExchange,
+  onOpenConfirm,
 }) => {
   const navigate = useNavigate()
   const isExchange = type === 'exchange'
+
+  const handleClick = () => {
+    if (!active) return
+
+    if (isExchange) {
+      onOpenConfirm?.({ id, name: cafeName })
+    } else {
+      navigate(`/couponDetail/${id}`)
+    }
+  }
+
   return (
     <S.CouponWrapper>
       <S.CouponLeftWrapper>
@@ -38,13 +49,7 @@ const CafeCoupon = ({
         <S.DotLine src={dotLine} />
       </S.CouponLeftWrapper>
       <S.CouponRightWrapper style={{ cursor: active ? 'pointer' : 'default' }}>
-        <S.CouponRightContent
-          onClick={() => {
-            if (!active) return
-            if (isExchange) onClickExchange(id)
-            else navigate(`/couponDetail/${id}`)
-          }}
-        >
+        <S.CouponRightContent onClick={handleClick}>
           <S.ChangeIcon src={isExchange ? (active ? change : changeGray) : useIcon} />
           <S.ChangeText style={{ color: active ? '#000' : '#BCC6C4' }}>
             {isExchange ? '교환하기' : '사용하기'}

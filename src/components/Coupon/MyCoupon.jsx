@@ -41,7 +41,7 @@ const MyCoupon = () => {
               active={true}
               type={'use'}
               expiryDate={item.expiredDate}
-              onClickExchange={{}}
+              onOpenConfirm={undefined}
             />
           ))
         ) : (
