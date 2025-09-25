@@ -30,25 +30,6 @@ const CouponChange = ({ onChangeTab, onOpenConfirm }) => {
     }
   }
 
-  const exchangeCoupon = (id) => {
-    axios
-      .post(
-        `${baseURL}api/cafes/${id}/coupons`,
-        {},
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        },
-      )
-      .then((res) => {
-        console.log(res)
-        alert('쿠폰 교환이 완료되었습니다')
-        onChangeTab('myCoupon')
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }
-
   const fetchCoupon = (keyword = '') => {
     const params = { lat, lng, ...(keyword.trim() && { cafeName: keyword.trim() }) }
     return api
