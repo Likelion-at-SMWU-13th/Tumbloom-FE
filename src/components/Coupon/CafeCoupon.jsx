@@ -8,7 +8,7 @@ import changeGray from '@/assets/icons/change-gray.svg'
 import useIcon from '@/assets/icons/coupon-use.svg'
 
 const CafeCoupon = ({
-  id = 0,
+  id: cafeId = 0,
   cafeName,
   price,
   count = 0,
@@ -24,9 +24,9 @@ const CafeCoupon = ({
     if (!active) return
 
     if (isExchange) {
-      onOpenConfirm?.({ id, name: cafeName })
+      onOpenConfirm?.({ id: Number(cafeId), name: cafeName })
     } else {
-      navigate(`/couponDetail/${id}`)
+      navigate(`/couponDetail/${cafeId}`)
     }
   }
 

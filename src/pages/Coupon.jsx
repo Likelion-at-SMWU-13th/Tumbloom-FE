@@ -33,12 +33,13 @@ const Coupon = () => {
       )
       .then((res) => {
         console.log(res)
-        alert('쿠폰 교환이 완료되었습니다')
         setTab('myCoupon')
       })
       .catch((err) => {
         console.log(err)
       })
+
+    setOpenUseModal(false)
   }
 
   return (
@@ -46,7 +47,7 @@ const Coupon = () => {
       <NoticeModal
         cafeName={selectedCafe?.name ?? ''}
         onChangeBtnLeft={handleCancel}
-        onChangeBtnRight={exchangeCoupon}
+        onChangeBtnRight={() => exchangeCoupon(selectedCafe?.id)}
         open={openUseModal}
       />
       <CouponHeader tab={tab} onChangeTab={setTab} />

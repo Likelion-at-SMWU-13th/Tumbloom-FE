@@ -25,7 +25,7 @@ const NoticeModal = ({ cafeName, onChangeBtnLeft, onChangeBtnRight, open }) => {
           </S.Button>
           <S.Button
             style={{ color: '#fff', backgroundColor: '#25af94' }}
-            onClick={() => onChangeBtnRight()}
+            onClick={onChangeBtnRight}
           >
             확인
           </S.Button>
