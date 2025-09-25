@@ -56,7 +56,6 @@ function MapCafeCard({ cafeId }) {
   }, [cafeId])
 
   if (!cafe) return null
-
   return (
     <S.Container onClick={goToDetail}>
       <S.TopContent>
