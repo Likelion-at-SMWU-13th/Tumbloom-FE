@@ -82,13 +82,13 @@ export const MenuWrapper = styled.div`
 
 export const MenuRow = styled.div`
   display: grid;
-  grid-template-columns: 8.5rem 3.9rem 3.9rem;
+  grid-template-columns: 6rem 3.9rem 3.9rem;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding-left: 1.56rem;
+  padding-left: 3.2rem;
   box-sizing: border-box;
-  padding-right: 4.94rem;
+  padding-right: 5.3rem;
 `
 
 export const MenuName = styled.span`
