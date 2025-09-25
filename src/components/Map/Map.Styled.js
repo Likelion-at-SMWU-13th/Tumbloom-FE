@@ -45,7 +45,8 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 0;
-  width: 24.5625rem;
+  width: 100%;
+  max-width: 440px;
   height: 12.125rem;
   flex-shrink: 0;
   border-radius: 0.9375rem 0.9375rem 0 0;
