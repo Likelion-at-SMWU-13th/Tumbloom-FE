@@ -2,21 +2,20 @@ import styled from 'styled-components'
 
 export const ScrollArea = styled.div`
   display: flex;
-  width: 24.5625rem;
+  width: 100%;
   flex-direction: column;
   /* height: 55rem; */
   background: #fff;
 `
 
 export const Wrapper = styled.div`
-  width: 24.5625rem;
+  width: 100%;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-top: 1px solid #d9d9d9;
   flex: 1;
-  padding-top: 3.5rem;
   min-height: 0;
   /* overflow-y: auto; */
   & > *:not(:first-child) {

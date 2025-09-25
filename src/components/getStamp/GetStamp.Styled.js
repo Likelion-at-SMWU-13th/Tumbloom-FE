@@ -15,8 +15,6 @@ export const Wrapper = styled.div`
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 24.5625rem;
-  max-width: 100vw;
   align-items: center;
   justify-content: center;
 `
