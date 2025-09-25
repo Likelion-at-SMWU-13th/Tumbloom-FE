@@ -24,14 +24,6 @@ body,
   src: url('./font/woff2/PretendardVariable.woff2') format('woff2-variations');
 }
 
-@font-face {
-  font-family: 'Cafe24Decoshadow';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Decoshadow.woff2')
-    format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
-
 /* .phone-frame {
   width: 24.5625rem;
   max-width: 100%;

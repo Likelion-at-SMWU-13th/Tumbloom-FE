@@ -1,11 +1,9 @@
 import React from 'react'
 import Header from '../components/common/Header'
 import CafeListCard from '../components/common/CafeListCard'
-import cafeListLine from '@/assets/images/cafe-list-line.svg'
 import * as S from '@/components/CafeList/CafeList.Styled'
 import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
 import api from '@/apis/api'
 
 function CafeList() {

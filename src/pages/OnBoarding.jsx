@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import onboarding1 from '@/assets/images/onboarding1.svg'
 import onboarding2 from '@/assets/images/onboarding2.svg'
 import onboarding3 from '@/assets/images/onboarding3.png'
