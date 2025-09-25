@@ -8,60 +8,7 @@ import visibleIcon from '@/assets/icons/pwd-visible.svg'
 import invisibleIcon from '@/assets/icons/pwd-invisible.svg'
 import PwdInputField from '@/components/common/PwdInputField'
 import api from '@/apis/api'
-
-const LoginContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 3.5rem 0 0 0;
-`
-
-const LoginHeader = styled.h1`
-  color: #000;
-  text-align: center;
-  font-family: 'Pretendard Variable';
-  font-size: 1.5rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-`
-
-const Desc = styled.p`
-  color: #000;
-  font-family: 'Pretendard Variable';
-  font-size: 0.875rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  padding: 1.38rem 0 0 0;
-`
-
-const GoToRegisterBtn = styled.span`
-  color: #25af94;
-  font-family: 'Pretendard Variable';
-  font-size: 0.875rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  text-decoration-line: underline;
-  text-decoration-style: solid;
-  text-decoration-skip-ink: auto;
-  text-decoration-thickness: auto;
-  text-underline-offset: auto;
-  text-underline-position: from-font;
-  cursor: pointer;
-`
-
-const LoginErrorText = styled.span`
-  color: #f54d4dff;
-  font-family: Inter;
-  font-size: 0.9375rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  padding: 0.94rem 0 0 0;
-`
+import * as S from '@/components/Login/Login.Styled.js'
 
 function Login() {
   const [email, setEmail] = useState('')
@@ -120,8 +67,8 @@ function Login() {
 
   return (
     <>
-      <LoginContainer>
-        <LoginHeader>로그인</LoginHeader>
+      <S.LoginContainer>
+        <S.LoginHeader>로그인</S.LoginHeader>
         <Input label='이메일' placeholder='이메일 입력' value={email} onChange={handleEmail} />
         <PwdInputField
           label='비밀번호'
@@ -130,13 +77,13 @@ function Login() {
           value={password}
           type='password'
         />
-        {error && <LoginErrorText>{error}</LoginErrorText>}
+        {error && <S.LoginErrorText>{error}</S.LoginErrorText>}
         <RegisterBtn btnName='로그인' onClick={onLoginHandler} disabled={!btnColor} />
-        <Desc>
+        <S.Desc>
           텀블러인 계정이 없나요?{' '}
-          <GoToRegisterBtn onClick={() => navigate(`/signup`)}>회원가입하기</GoToRegisterBtn>
-        </Desc>
-      </LoginContainer>
+          <S.GoToRegisterBtn onClick={() => navigate(`/signup`)}>회원가입하기</S.GoToRegisterBtn>
+        </S.Desc>
+      </S.LoginContainer>
     </>
   )
 }

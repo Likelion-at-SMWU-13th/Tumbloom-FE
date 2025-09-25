@@ -9,7 +9,8 @@ import dotGreen from '@/assets/icons/green-circle.svg'
 import dotGrey from '@/assets/icons/grey-circle.svg'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
+import * as S from '@/components/onboarding/Onboarding.Styled'
 
 const OnBoardingPages = [
   {
@@ -96,107 +97,6 @@ const OnBoardingPages = [
   },
 ]
 
-const Wrapper = styled.div`
-  position: relative;
-  width: 100%;
-  max-width: 440px;
-  margin: 0 auto;
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-`
-const Slide = styled(motion.div)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100dvh;
-`
-
-const ImgContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 0 0 1.5rem 0;
-`
-
-const ContentContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  left: 0;
-  bottom: 0;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  z-index: 1;
-`
-const OnBoardingImg = styled.img`
-  flex-shrink: 0;
-  width: 100%;
-  height: auto;
-`
-const TextContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`
-const Title = styled.span`
-  color: #000;
-  text-align: center;
-  font-family: 'Pretendard Variable';
-  font-size: 1.5rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-`
-const Desc = styled.span`
-  color: #767676;
-  text-align: center;
-  font-family: 'Pretendard Variable';
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  padding: 0.81rem 0 0.81rem 0;
-`
-const DotContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 2.38rem 0 3rem 0;
-`
-
-const BtnContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-`
-
-const NextBtn = styled.button`
-  color: #fff;
-  text-align: center;
-  font-family: 'Pretendard Variable';
-  font-size: 1.375rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  display: flex;
-  width: 22.0625rem;
-  height: 4rem;
-  padding: 0.625rem;
-  justify-content: center;
-  align-items: center;
-  gap: 0.625rem;
-  flex-shrink: 0;
-  border-radius: 1.875rem;
-  background: #25af94;
-  border: none;
-  cursor: pointer;
-`
-
 function OnBoarding() {
   const [page, setPage] = useState(1)
   const totalPages = 5
@@ -206,32 +106,32 @@ function OnBoarding() {
 
   return (
     <>
-      <Wrapper>
+      <S.Wrapper>
         <AnimatePresence mode='wait'>
-          <Slide
+          <S.Slide
             key={page}
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -30 }}
             transition={{ duration: 0.2 }}
           >
-            <ImgContainer
+            <S.ImgContainer
               style={{ justifyContent: page === 1 ? 'flex-end' : 'center', padding: onb.padding }}
             >
-              <OnBoardingImg src={onb.img} />
-            </ImgContainer>
-            <ContentContainer>
-              <TextContainer>
-                <Title>{onb.title}</Title>
-                <Desc>{onb.desc}</Desc>
-              </TextContainer>
-              <DotContainer>
+              <S.OnBoardingImg src={onb.img} />
+            </S.ImgContainer>
+            <S.ContentContainer>
+              <S.TextContainer>
+                <S.Title>{onb.title}</S.Title>
+                <S.Desc>{onb.desc}</S.Desc>
+              </S.TextContainer>
+              <S.DotContainer>
                 {[0, 1, 2, 3, 4].map((i) => (
                   <img key={i} src={i === page - 1 ? dotGreen : dotGrey} />
                 ))}
-              </DotContainer>
-              <BtnContainer>
-                <NextBtn
+              </S.DotContainer>
+              <S.BtnContainer>
+                <S.NextBtn
                   onClick={() => {
                     if (page < totalPages) {
                       setPage(page + 1)
@@ -241,12 +141,12 @@ function OnBoarding() {
                   }}
                 >
                   {page === totalPages ? '텀블러인 시작하기' : '다음'}
-                </NextBtn>
-              </BtnContainer>
-            </ContentContainer>
-          </Slide>
+                </S.NextBtn>
+              </S.BtnContainer>
+            </S.ContentContainer>
+          </S.Slide>
         </AnimatePresence>
-      </Wrapper>
+      </S.Wrapper>
     </>
   )
 }
