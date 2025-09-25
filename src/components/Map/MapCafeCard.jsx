@@ -32,72 +32,69 @@ function MapCafeCard({ cafeId }) {
     navigate(`/stamp/${cafeId}`)
   }
 
-  const cafeInfo = async (cafeId) => {
+  useEffect(() => {
     if (!cafeId) return
-    try {
-      const res = await api.get(`/api/cafes/${cafeId}`)
-      const info = res.data.data
+    const fetchCafe = async () => {
+      try {
+        const res = await api.get(`/api/cafes/${cafeId}`)
+        const info = res.data.data
 
-      setCafe({
-        id: info.id,
-        cName: info.cafeName,
-        address: info.address,
-        t: info.businessHours,
-        img: info.imageUrl,
-        favorite: !!info.favorite,
-      })
-    } catch (err) {
-      console.error('카페 정보 불러오기 실패', err)
-      setCafe(null)
+        setCafe({
+          id: info.id,
+          cName: info.cafeName,
+          address: info.address,
+          t: info.businessHours,
+          img: info.imageUrl,
+          favorite: !!info.favorite,
+        })
+      } catch (err) {
+        console.error('카페 정보 불러오기 실패', err)
+        setCafe(null)
+      }
     }
+    fetchCafe()
+  }, [cafeId])
 
-    useEffect(() => {
-      cafeInfo(cafeId)
-    }, [cafeId])
-
-    if (!cafe) return null
-
-    return (
-      <S.Container onClick={goToDetail}>
-        <S.TopContent>
-          <S.CafeName>{cafe.cName}</S.CafeName>
-          <S.Scrab>
-            <S.ScrabState
-              onClick={(e) => {
-                e.stopPropagation()
-                handleFav(cafe.id, !!cafe.favorite)
-              }}
-              src={cafe.favorite ? scrabOn : scrabOff}
-            />
-          </S.Scrab>
-        </S.TopContent>
-        <S.ContentBox>
-          <S.LeftCard>
-            <S.CafeImg src={cafe.img} />
-          </S.LeftCard>
-          <S.RightCard>
-            <S.StampBtn
-              onClick={(e) => {
-                e.stopPropagation()
-                goToGetStamp()
-              }}
-            >
-              스탬프 적립하기
-            </S.StampBtn>
-            <S.InfoBox>
-              <S.LocBox>
-                <S.LocImg src={locImg} />
-                <S.Loc>{cafe.address}</S.Loc>
-              </S.LocBox>
-              <S.TimeBox>
-                <S.TimeImg src={timeImg} />
-                <S.Time>{cafe.t.substr(2, 13)}</S.Time>
-              </S.TimeBox>
-            </S.InfoBox>
-          </S.RightCard>
-        </S.ContentBox>
-      </S.Container>
-    )
-  }
+  return (
+    <S.Container onClick={goToDetail}>
+      <S.TopContent>
+        <S.CafeName>{cafe.cName}</S.CafeName>
+        <S.Scrab>
+          <S.ScrabState
+            onClick={(e) => {
+              e.stopPropagation()
+              handleFav(cafe.id, !!cafe.favorite)
+            }}
+            src={cafe.favorite ? scrabOn : scrabOff}
+          />
+        </S.Scrab>
+      </S.TopContent>
+      <S.ContentBox>
+        <S.LeftCard>
+          <S.CafeImg src={cafe.img} />
+        </S.LeftCard>
+        <S.RightCard>
+          <S.StampBtn
+            onClick={(e) => {
+              e.stopPropagation()
+              goToGetStamp()
+            }}
+          >
+            스탬프 적립하기
+          </S.StampBtn>
+          <S.InfoBox>
+            <S.LocBox>
+              <S.LocImg src={locImg} />
+              <S.Loc>{cafe.address}</S.Loc>
+            </S.LocBox>
+            <S.TimeBox>
+              <S.TimeImg src={timeImg} />
+              <S.Time>{cafe.t.substr(2, 13)}</S.Time>
+            </S.TimeBox>
+          </S.InfoBox>
+        </S.RightCard>
+      </S.ContentBox>
+    </S.Container>
+  )
 }
 export default MapCafeCard
