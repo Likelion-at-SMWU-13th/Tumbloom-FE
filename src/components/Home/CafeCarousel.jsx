@@ -8,6 +8,7 @@ import cafeImg from '@/assets/images/cafe-img.png'
 import dotGreen from '@/assets/icons/green-circle.svg'
 import dotGrey from '@/assets/icons/grey-circle.svg'
 import PreferenceCard from './PreferenceCard'
+import Loading from '../common/Loading'
 
 const mod = (n, m) => ((n % m) + m) % m
 
@@ -78,7 +79,7 @@ const CafeCarousel = () => {
           <PreferenceCard />
         </S.AiRecommendContainer>
       ) : len === 0 ? (
-        <S.LoadingText>주변 카페를 불러오는 중…</S.LoadingText>
+        <Loading />
       ) : (
         <S.CafeCarousel>
           <S.CardRow>
