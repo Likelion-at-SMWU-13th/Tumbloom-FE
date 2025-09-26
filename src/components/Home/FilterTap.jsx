@@ -1,5 +1,4 @@
 import React from 'react'
-import { useState } from 'react'
 import * as S from './styled'
 import star_icon from '../../assets/icons/star_icon.svg'
 import star_gray_icon from '../../assets/icons/star_gray_icon.svg'

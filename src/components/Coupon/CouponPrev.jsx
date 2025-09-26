@@ -1,11 +1,8 @@
 import React from 'react'
 import backBtn from '../../assets/icons/back-btn.svg'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
 import * as S from '@/components/Coupon/styled'
 
 function CouponPrev({ title, onLeftClick }) {
-  const navigate = useNavigate()
-
   return (
     <S.HeaderBox>
       <S.LeftArea>

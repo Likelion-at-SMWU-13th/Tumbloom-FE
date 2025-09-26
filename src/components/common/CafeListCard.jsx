@@ -1,6 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
-import cafeListImg from '@/assets/images/cafe-list.svg'
 import locImg from '@/assets/icons/cafe-info-loc.svg'
 import timeImg from '@/assets/icons/cafe-info-time.svg'
 import * as S from '@/components/common/CafeListCard.Styled'

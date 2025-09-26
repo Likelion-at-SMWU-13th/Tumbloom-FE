@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import api from '@/apis/api'
 import * as S from './styled'
-import { InputBox } from '../common/Input.Styled'
 import CafeInputField from './CafeInputField'
 import CafeCoupon from './CafeCoupon'
 import NoData from '../common/NoData'

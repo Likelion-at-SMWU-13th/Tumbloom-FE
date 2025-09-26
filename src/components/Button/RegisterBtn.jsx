@@ -1,5 +1,5 @@
 import React from 'react'
-import * as S from './RegisterBtn.Styled.js'
+import * as S from '@/components/Button/RegisterBtn.Styled'
 
 function RegisterBtn({ btnName, onClick, disabled }) {
   return (
