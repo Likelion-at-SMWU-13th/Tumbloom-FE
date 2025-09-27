@@ -1,6 +1,6 @@
 import React from 'react'
 import backBtn from '../../assets/icons/back-btn.svg'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import * as S from './Header.Styled.js'
 
 function Header({ title }) {

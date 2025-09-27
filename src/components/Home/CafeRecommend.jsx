@@ -1,6 +1,5 @@
 import React from 'react'
 import * as S from './styled'
-import FilterTap from './FilterTap'
 import CafeCarousel from './CafeCarousel'
 
 const CafeRecommend = () => {

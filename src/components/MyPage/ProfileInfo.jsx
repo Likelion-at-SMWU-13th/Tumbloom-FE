@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as S from './styled'
+import api from '@/apis/api'
 import dotLine from '@/assets/images/dot-green-line.svg'
 import arrow from '@/assets/icons/right-arrow.svg'
 import check from '@/assets/icons/check-green.svg'
@@ -31,6 +32,18 @@ const ProfileInfo = ({
     OUTDOOR_TERRACE: '야외/테라스',
     ECO_LOCAL: '친환경/로컬',
     UNIQUE_THEME: '이색테마/메뉴',
+  }
+
+  const handleLogout = async () => {
+    try {
+      await api.post('/api/auth/logout')
+      localStorage.removeItem('accessToken')
+      navigate('/login')
+    } catch (err) {
+      console.error('로그아웃 실패', err)
+      localStorage.removeItem('accessToken')
+      navigate('/login')
+    }
   }
 
   return (
@@ -80,6 +93,7 @@ const ProfileInfo = ({
           onClick={() => navigate('/favoriteCafe')}
         />
       </S.CouponCafeBox>
+      <S.LogoutBtn onClick={handleLogout}>로그아웃</S.LogoutBtn>
     </S.ContentContainer>
   )
 }

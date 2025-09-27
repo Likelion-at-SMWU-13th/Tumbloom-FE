@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const ModalBackground = styled.div`
-  max-width: 100%;
+  width: 100%;
   display: flex;
   position: fixed;
   z-index: 11;
@@ -9,8 +9,8 @@ export const ModalBackground = styled.div`
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 24.5625rem;
-  max-width: 100vw;
+  /* width: 24.5625rem; */
+  max-width: 440px;
   background-color: rgba(0, 20, 16, 0.75);
   /* inset: 0; */
   align-items: center;

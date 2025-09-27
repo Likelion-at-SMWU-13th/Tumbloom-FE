@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import api from '@/apis/api'
 import Footer from '@/components/common/Footer'
 import ProfileContent from '@/components/MyPage/ProfileContent'
 import ProfileInfo from '@/components/MyPage/ProfileInfo'
 import LevelModal from '@/components/MyPage/LevelModal'
 
 const MyPage = () => {
-  const baseURL = import.meta.env.VITE_API_BASE_URL
   const [info, setInfo] = useState(false)
 
   const [userName, setUserName] = useState('')
@@ -19,12 +18,8 @@ const MyPage = () => {
   const [stepsLeft, setStepsLeft] = useState(0)
 
   useEffect(() => {
-    const token = localStorage.getItem('accessToken')
-
-    axios
-      .get(`${baseURL}api/users/me/mypage`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+    api
+      .get(`/api/users/me/mypage`)
       .then((res) => {
         setUserName(res.data.data.nickname)
         setLevel(res.data.data.level)
@@ -41,24 +36,33 @@ const MyPage = () => {
   }, [])
 
   return (
-    <div style={{ backgroundColor: '#F6FCFB', padding: '0 0 6rem 0' }}>
-      <ProfileContent
-        onChangeInfo={setInfo}
-        nickName={userName}
-        level={level}
-        stepsLeft={stepsLeft}
-        tumblerCount={tumblerCount}
-      />
-      <ProfileInfo
-        tumblerCount={tumblerCount}
-        issuedCoupons={issuedCoupons}
-        availableCoupons={availableCoupons}
-        favoriteCafes={favoriteCafes}
-        topPreferences={topPreferences}
-      />
+    <>
+      <div
+        style={{
+          backgroundColor: '#F6FCFB',
+          padding: '0 0 0 0',
+          height: '100%',
+          overflowY: 'auto',
+        }}
+      >
+        <ProfileContent
+          onChangeInfo={setInfo}
+          nickName={userName}
+          level={level}
+          stepsLeft={stepsLeft}
+          tumblerCount={tumblerCount}
+        />
+        <ProfileInfo
+          tumblerCount={tumblerCount}
+          issuedCoupons={issuedCoupons}
+          availableCoupons={availableCoupons}
+          favoriteCafes={favoriteCafes}
+          topPreferences={topPreferences}
+        />
+        {info && <LevelModal onChangeInfo={setInfo} />}
+      </div>
       <Footer />
-      {info && <LevelModal onChangeInfo={setInfo} />}
-    </div>
+    </>
   )
 }
 

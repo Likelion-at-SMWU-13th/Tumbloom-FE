@@ -1,26 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import api from '@/apis/api'
 import CafeCoupon from './CafeCoupon'
 import * as S from './styled'
 import NoData from '../common/NoData'
 
 const MyCoupon = () => {
-  const baseURL = import.meta.env.VITE_API_BASE_URL
   const [availableCouponList, setAvailableCouponList] = useState([])
   const [usableCount, setUsableCount] = useState(0)
 
   useEffect(() => {
-    const token = localStorage.getItem('accessToken')
-
-    axios
-      .get(`${baseURL}api/coupons/my`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((res) => {
-        console.log(res.data)
-        setAvailableCouponList(res.data.items)
-        setUsableCount(res.data.usableCount)
-      })
+    api.get(`/api/coupons/my`).then((res) => {
+      console.log(res.data)
+      setAvailableCouponList(res.data.items)
+      setUsableCount(res.data.usableCount)
+    })
   }, [])
 
   return (
@@ -41,7 +34,7 @@ const MyCoupon = () => {
               active={true}
               type={'use'}
               expiryDate={item.expiredDate}
-              onClickExchange={{}}
+              onOpenConfirm={undefined}
             />
           ))
         ) : (

@@ -1,5 +1,4 @@
 import React from 'react'
-import { useState } from 'react'
 import NavItem from './NavItem'
 import homeIcon from '@/assets/icons/footer-home.svg'
 import homeClickedIcon from '@/assets/icons/footer-clicked-home.svg'

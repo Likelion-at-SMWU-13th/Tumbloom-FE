@@ -1,67 +1,20 @@
 import React from 'react'
-import styled from 'styled-components'
+import * as S from './CafeInfo.Styled.js'
 import line from '@/assets/icons/menu-line.svg'
-
-const MenuWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 0.5rem;
-  height: 100%;
-  padding-top: 1.25rem;
-  box-sizing: border-box;
-`
-
-const MenuRow = styled.div`
-  display: grid;
-  grid-template-columns: 8.5rem 3.9rem 3.9rem;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding-left: 1.56rem;
-  box-sizing: border-box;
-  padding-right: 4.94rem;
-`
-
-const MenuName = styled.span`
-  color: #000;
-  font-family: 'Pretendard Variable';
-  font-size: 0.9375rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-`
-
-const Line = styled.img`
-  width: 4.375rem;
-  height: 0.0625rem;
-`
-
-const MenuPrice = styled.span`
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 0.4rem;
-  color: #000;
-  font-family: 'Pretendard Variable';
-  font-size: 0.9375rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-`
 
 function MenuBox({ cafe }) {
   const items = Array.isArray(cafe?.menuList) ? cafe.menuList : []
   if (!items.length) return null
   return (
-    <MenuWrapper>
+    <S.MenuWrapper>
       {items.map((m, i) => (
-        <MenuRow key={m.id ?? `${m.menuName}-${m.price}-${i}`}>
-          <MenuName>{m.menuName}</MenuName>
-          <Line src={line} />
-          <MenuPrice>{m.price.toLocaleString()}원</MenuPrice>
-        </MenuRow>
+        <S.MenuRow key={m.id ?? `${m.menuName}-${m.price}-${i}`}>
+          <S.MenuName>{m.menuName}</S.MenuName>
+          <S.Line src={line} />
+          <S.MenuPrice>{m.price.toLocaleString()}원</S.MenuPrice>
+        </S.MenuRow>
       ))}
-    </MenuWrapper>
+    </S.MenuWrapper>
   )
 }
 

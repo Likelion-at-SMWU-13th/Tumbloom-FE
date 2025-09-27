@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
 export const ProfileContentBox = styled.div`
-  width: 24.5625rem;
+  /* width: 24.5625rem; */
+  width: 100%;
   height: 18rem;
   display: flex;
   flex-direction: column;
@@ -129,6 +130,24 @@ export const CurrentStateBar = styled.div`
   position: absolute;
   align-items: flex-start;
 `
+export const LogoutBtn = styled.button`
+  color: #005c4a;
+  background: none;
+  border: none;
+  margin-left: 68%;
+  cursor: pointer;
+  font-family: Inter;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: auto;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
+`
 
 //ProfileInfo.jsx
 
@@ -138,9 +157,11 @@ export const ContentContainer = styled.div`
   gap: 1.5rem;
   align-items: center;
   padding-top: 1rem;
+  padding-bottom: 6rem;
 `
 
 export const CurrentCountBox = styled.div`
+  position: relative;
   width: 22.0625rem;
   height: 6.75rem;
   flex-shrink: 0;
@@ -311,11 +332,13 @@ export const BoxValue = styled.p`
 //LevelModal.jsx
 
 export const LevelModalBackground = styled.div`
-  max-width: 100%;
+  max-width: 440px;
+  width: 100%;
+  margin: 0 auto;
   display: flex;
   position: absolute;
   z-index: 4;
-  width: 24.5625rem;
+  /* width: 24.5625rem; */
   background-color: rgba(0, 20, 16, 0.75);
   inset: 0;
   align-items: center;

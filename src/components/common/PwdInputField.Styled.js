@@ -10,6 +10,7 @@ export const InputContainer = styled.div`
 export const InputField = styled.div`
   display: flex;
   flex-direction: row;
+  position: relative;
 `
 
 export const Label = styled.label`
@@ -44,7 +45,7 @@ export const InputBox = styled.input`
 
 export const EyeIcon = styled.img`
   position: absolute;
-  right: 2.5rem;
+  right: 2rem;
   transform: transLateY(60%);
   cursor: pointer;
 `

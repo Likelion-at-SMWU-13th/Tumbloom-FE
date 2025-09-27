@@ -7,9 +7,14 @@ body,
 
 #root {
   min-height: 100dvh;
+  max-width: 440px;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   justify-content: center;
   background: #fff;
+  box-shadow: 0 0 0.625rem rgb(184, 181, 181);
+  overflow-y: auto;
 }
 
 @font-face {
@@ -19,15 +24,7 @@ body,
   src: url('./font/woff2/PretendardVariable.woff2') format('woff2-variations');
 }
 
-@font-face {
-  font-family: 'Cafe24Decoshadow';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Decoshadow.woff2')
-    format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
-
-.phone-frame {
+/* .phone-frame {
   width: 24.5625rem;
   max-width: 100%;
   position: relative;
@@ -37,4 +34,4 @@ body,
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
   padding-bottom: env(safe-area-inset-bottom);
-}
+} */

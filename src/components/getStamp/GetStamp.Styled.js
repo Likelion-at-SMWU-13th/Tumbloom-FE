@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-  width: 100vw;
+  width: 100%;
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
@@ -9,14 +9,12 @@ export const Wrapper = styled.div`
   z-index: 10;
   position: fixed;
   overflow: hidden;
-  max-width: 100%;
+  max-width: 440px;
   z-index: 11;
   top: 0;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 24.5625rem;
-  max-width: 100vw;
   align-items: center;
   justify-content: center;
 `
