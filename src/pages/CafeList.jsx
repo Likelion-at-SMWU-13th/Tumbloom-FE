@@ -5,7 +5,6 @@ import cafeListLine from '@/assets/images/cafe-list-line.svg'
 import * as S from '@/components/CafeList/CafeList.Styled'
 import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
 
 function CafeList() {
   const baseURL = import.meta.env.VITE_API_BASE_URL
@@ -24,6 +23,7 @@ function CafeList() {
       headers: { Authorization: `Bearer ${at}` },
     })
     const json = await res.json().catch(() => ({}))
+    console.log('✅ nearby API raw response', json)
     if (!res.ok || !Array.isArray(json?.data)) {
       console.log('coupon error', res.status, json)
       setCafes([])
