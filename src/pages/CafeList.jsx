@@ -22,7 +22,7 @@ function CafeList() {
       }
 
       setCafes(
-        res.data.map((c) => ({
+        res.data.data.map((c) => ({
           id: c.id,
           cName: c.cafeName,
           address: c.address,
